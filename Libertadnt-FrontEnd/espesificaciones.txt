@@ -1,0 +1,11 @@
+menu principal => [menu de reclusos, menu de guardias,menu de sentencias,menu actividades, menu de celdas ]
+
+menu reclusos => [modificar recluso ,dar de alta un recluso,buscar relcuso , mover recluso ]
+ 
+menu guardias => [dar altaguardia, buscar guardia, menu turnos ,modificar guardias(incluye delete), mostrar guardias]
+
+menu sentencia => [dar de alta sentencia , modificar sentencia ]
+
+menu actividades => [dar de alta actividad(incluyen ilegales), modificar una actividad(incluye delete ),mostrar actividades]
+
+menu celdas => [buscar celda(muestra el sector), contar reclusos,modificar celdas, mostrar celdas ]

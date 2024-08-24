@@ -1,0 +1,34 @@
+<h1>ingrese los detalles de la condena</h1>
+<form [formGroup]="sActual"  (submit)="verFomrulario()" >
+    <fieldset>
+        <label>nombre</label>
+        <input type="text" formControlName="nombre" >        
+    </fieldset>
+    <fieldset>
+        <label>cantidad de condenas </label>
+        <input type="text" formControlName="cantidad_cond" >        
+    </fieldset>
+    <fieldset>
+        <label> descripcion</label>
+        <input type="text" formControlName="descripcion" >        
+    </fieldset>
+    <fieldset>
+        <label>"duracion "</label>
+        <input type="text" formControlName="duracion" >        
+    </fieldset>
+    <fieldset>
+        <label>fecha dia</label>
+        <input type="text" formControlName="fecha_dia" >        
+    </fieldset>
+    <fieldset>
+        <label>fecha mes </label>
+        <input type="text" formControlName="fecha_mes" >        
+    </fieldset>
+    <fieldset>
+        <label>fecha año</label>
+        <input type="text" formControlName="fecha_año" >        
+    </fieldset>
+    <button [disabled]="sActual.invalid">enviar modificacion</button>
+</form>
+
+

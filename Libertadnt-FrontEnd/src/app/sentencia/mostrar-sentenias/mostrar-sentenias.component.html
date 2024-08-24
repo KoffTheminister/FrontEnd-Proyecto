@@ -1,0 +1,9 @@
+<p>mostrar-sentenias works!</p>
+<button (click)="buscarSentencias()">buscar sentencias</button>
+<div>{{sentencias}}</div>
+
+<div>
+    <input type="text" [(ngModel)]="id" (click)="validarband()">
+    <button (click)="buscarUnaSentencia(id)" [disabled]="ban">buscar sentencia</button>
+    <p>{{uno}}</p>
+</div>

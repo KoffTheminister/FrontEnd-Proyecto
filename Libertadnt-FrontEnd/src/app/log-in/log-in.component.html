@@ -1,0 +1,10 @@
+<p>log-in works!</p>
+<input type="text" [(ngModel)]="usuario.nombre" placeholder="nombre" >
+<input type="text" [(ngModel)]="usuario.apellido" placeholder="apellido" >
+<input type="number" [(ngModel)]="usuario.id" placeholder="legajo" >
+<button (click)="cargarGuardias()" class="ingreso" >ingresar</button>
+<nav>
+    <a href="menu"> menu </a>
+</nav>
+<h2>{{usuario.nombre}}</h2>
+<p>{{bander}}</p>
