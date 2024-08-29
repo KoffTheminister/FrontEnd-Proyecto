@@ -1,10 +1,25 @@
-<p>log-in works!</p>
-<input type="text" [(ngModel)]="usuario.nombre" placeholder="nombre" >
-<input type="text" [(ngModel)]="usuario.apellido" placeholder="apellido" >
-<input type="number" [(ngModel)]="usuario.id" placeholder="legajo" >
-<button (click)="cargarGuardias()" class="ingreso" >ingresar</button>
-<nav>
+
+<h1>ingrese el ususario para ingresar</h1>
+<form [formGroup]="usuario"  (submit)="cargarUsuarios()" >
+    <fieldset>
+        <label> id : </label>
+        <input type="text" formControlName="id" > 
+        @if (id.invalid && id.touched) {
+            <h2 class="form-error">el codigo es requerido</h2>
+        }
+    </fieldset>
+    <fieldset>
+        <label>ingresar el tipo: </label>
+        <input type="text" formControlName="tipo" >        
+    </fieldset>
+    <fieldset>
+        <label> nombre:</label>
+        <input type="text" formControlName="nombre" >        
+    </fieldset>
+    <button [disabled]="usuario.invalid">enviar modificacion</button>
+</form>
+@if (!usuario.invalid) {<nav>
     <a href="menu"> menu </a>
-</nav>
-<h2>{{usuario.nombre}}</h2>
+</nav>}
+<h2>{{usuario.value}}</h2>
 <p>{{bander}}</p>

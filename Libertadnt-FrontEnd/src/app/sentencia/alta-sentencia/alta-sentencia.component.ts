@@ -52,6 +52,6 @@ export class AltaSentenciaComponent {
     this.sActual.reset();
   }
   enviarFormulario(){
-    this.service.postSentencias(this.sActual).subscribe({next: (data)=> console.log(data),error: (e)=> console.log(e)});
+    this.service.postSentencias(this.sActual.value).subscribe({next: (data)=> console.log(data),error: (e)=> console.log(e)});
   }
 }

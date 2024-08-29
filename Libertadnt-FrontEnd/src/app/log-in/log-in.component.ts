@@ -1,36 +1,45 @@
-import { Component, Input, input, Output, output,EventEmitter } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GuardiasService } from '../guardias.service.js';
 import { ActivatedRoute } from '@angular/router';
 import { RouterOutlet ,RouterLink} from '@angular/router';
+import { UsuarioService } from './usuario.service.js';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [FormsModule,RouterOutlet ,RouterLink],
+  imports: [FormsModule,RouterOutlet ,RouterLink,ReactiveFormsModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
-export class LogInComponent {
-usuario = {
-  nombre: '',
-  apellido: '',
-  id: 0,
-}
+export class LogInComponent { 
+    usuario: FormGroup;
+    id:FormControl;
+    nombre: FormControl;
+    tipo : FormControl;
 bander = false;
-constructor (private service : GuardiasService ,private route: ActivatedRoute){};
-validacion = 'nada';
-guardias:any = [{id: 9,nombre:'tomas',apellido:'fanta'}];
-cargarGuardias(){
- this.service.getGuardias().subscribe(respuesta => this.guardias= respuesta);
- this.validarGuardia();
+constructor (private service : UsuarioService ){
+      this.id = new FormControl('',[Validators.required,])
+      this.nombre = new FormControl('',[Validators.required])
+      this.tipo = new FormControl('',[Validators.required])
+      this.usuario = new FormGroup({
+  
+        id: this.id
+        ,nombre: this.nombre
+        ,tipo: this.tipo
+      
+        })
+};
+
+usuarios:any = [];
+cargarUsuarios(){
+ this.service.postUsuario(this.usuario.value).subscribe({next: (data)=> console.log(data),error: (e)=> console.log(e)});
+ console.log(this.usuarios)
+ console.log(this.usuario.value)
 }
-validarGuardia(){
-  const found = this.guardias.find((element:any) => element.id === this.usuario.id );
-  if(found.id === this.usuario.id){this.bander= true;};
-}
+
 
 
 

@@ -9,3 +9,7 @@ menu sentencia => [dar de alta sentencia , modificar sentencia ]
 menu actividades => [dar de alta actividad(incluyen ilegales), modificar una actividad(incluye delete ),mostrar actividades]
 
 menu celdas => [buscar celda(muestra el sector), contar reclusos,modificar celdas, mostrar celdas ]
+
+
+https://adminlte.io  ===> parte visual 
+https://material.angular.io 

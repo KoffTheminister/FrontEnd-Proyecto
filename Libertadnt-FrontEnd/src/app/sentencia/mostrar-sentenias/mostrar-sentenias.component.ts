@@ -24,8 +24,8 @@ export class MostrarSenteniasComponent {
   }
   
   buscarSentencias(){
-    //return this.service.getSentencias().subscribe((x:any) => this.sentencias = x)
-    return this.sentencias = this.pruebaSentencia
+    this.service.getSentencias().subscribe((x:any) => this.sentencias = x)
+    //return this.sentencias = this.pruebaSentencia
   }
 
   buscarUnaSentencia(id:any){
