@@ -16,4 +16,7 @@ private log(message: string) {
 getGuardias() {
   return this.http.get<any | JSON>("https://api.realworld.io/api/articles")
 }
+postGuardia(x:any){
+  return this.http.post<any|JSON>("https://api.realworld.io/api/articles",x);
+}
 }

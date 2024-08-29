@@ -1,0 +1,26 @@
+<p>alta-guardia works!</p>
+
+<h1>ingrese los detalles de la condena</h1>
+<form [formGroup]="guardia"  (submit)="enviarGuarida()" >
+    <fieldset>
+        <label>nombre:</label>
+        <input type="text" formControlName="nombre" >        
+    </fieldset>
+    <fieldset>
+        <label>codigo de guardia: </label>
+        <input type="text" formControlName="cod_guardia" >        
+    </fieldset>
+    <fieldset>
+        <label> apellido:</label>
+        <input type="text" formControlName="apellido" >        
+    </fieldset>
+    <fieldset>
+        <label>fecha de inicio:</label>
+        <input type="text" formControlName="fecha_ini" >        
+    </fieldset>
+    
+    <button [disabled]="guardia.invalid">enviar datos</button>
+</form>
+<div>
+    <nav><a href="menu/guardia">ATRAS</a></nav>
+</div>

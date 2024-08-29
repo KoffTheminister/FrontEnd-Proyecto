@@ -10,6 +10,6 @@ menu actividades => [dar de alta actividad(incluyen ilegales), modificar una act
 
 menu celdas => [buscar celda(muestra el sector), contar reclusos,modificar celdas, mostrar celdas ]
 
-
-https://adminlte.io  ===> parte visual 
+parte visual :
+https://adminlte.io   
 https://material.angular.io 

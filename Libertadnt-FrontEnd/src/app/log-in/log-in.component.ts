@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { GuardiasService } from '../guardias.service.js';
+
 import { ActivatedRoute } from '@angular/router';
 import { RouterOutlet ,RouterLink} from '@angular/router';
 import { UsuarioService } from './usuario.service.js';
