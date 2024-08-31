@@ -6,24 +6,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SentenciasService {
-
+  readonly api_url="https://jsonplaceholder.typicode.com/users/"
+  sentencia:any 
   messageService: any;
   constructor(
-    private http: HttpClient) { }  
+  private http: HttpClient) {this.sentencia =  []  }  
 private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
-
 }
 
 getSentencias() {
-  return this.http.get<any | JSON>("https://api.realworld.io/api/articles")
+  return this.http.get<any | JSON>(this.api_url)
   
 }
 getOneSentencias(id:any) {
-  return this.http.get<any | JSON>("https://api.realworld.io/api/articles"+{id})
+  return this.http.get<any | JSON>(this.api_url+id)
 }
 postSentencias(sActual:any){
-  return this.http.post<any| JSON>("https://api.realworld.io/api/articles",sActual)
+  return this.http.post<any| JSON>(this.api_url,sActual)
 }
 
 }

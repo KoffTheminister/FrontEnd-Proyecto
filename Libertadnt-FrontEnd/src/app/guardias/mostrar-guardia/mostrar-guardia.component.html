@@ -1,9 +1,17 @@
 <p>mostrar-guardias works!</p>
-
-<p>{{guardias}}</p>
-
-<p></p>
 <button (click)="traerGuardias()"> buscar todos los guardias </button>
+
+
+
+<ul>
+    @for (item of service.guardias; track $index) {
+        <li>
+            <p>{{item.name}}</p>
+        </li>
+    }
+</ul>
+<p></p>
+
 
 
 

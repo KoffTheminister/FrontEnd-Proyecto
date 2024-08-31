@@ -1,4 +1,29 @@
-<p>modificar-guardia works!</p>
+<p>ingrese el cod de guardia para modificar el nombre o apellido</p>
+
+<form [formGroup]="guardia"  (submit)="validarCodigo()" >
+    <fieldset>
+        <label>codigo de guardia: </label>
+        <input type="text" formControlName="cod_guardia" >        
+    </fieldset>
+    <button [disabled]="guardia.invalid">enviar datos</button>
+</form>
+    @if (guardia.disabled || encontrado === true) {
+        <form [formGroup]="guardia"  (submit)="enviarModificacion()" >
+        
+        <fieldset>
+            <label>nombre:</label>
+            <input type="text" formControlName="nombre" >        
+        </fieldset>
+        <fieldset>
+            <label> apellido:</label>
+            <input type="text" formControlName="apellido" >        
+        </fieldset>
+        <button [disabled]="guardia.invalid">enviar datos</button>
+    </form>
+    }    
+    
+
+
 <div>
     <nav><a href="menu/guardia">ATRAS</a></nav>
 </div>

@@ -5,18 +5,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GuardiasService {
-  
+  readonly api_url="https://jsonplaceholder.typicode.com/users/"
+  guardias:any 
   messageService: any;
-  constructor(
-    private http: HttpClient) { }  
-private log(message: string) {
+  constructor(private http: HttpClient) {this.guardias =  [] }  
+  private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 
 getGuardias() {
-  return this.http.get<any | JSON>("https://api.realworld.io/api/articles")
+  return this.http.get<any[] | JSON>(this.api_url)
 }
 postGuardia(x:any){
-  return this.http.post<any|JSON>("https://api.realworld.io/api/articles",x);
+  return this.http.post<any|JSON>(this.api_url,x);
+}
+getOneGuardias(id:number) {
+  return this.http.get<any | JSON>(this.api_url+id);
 }
 }

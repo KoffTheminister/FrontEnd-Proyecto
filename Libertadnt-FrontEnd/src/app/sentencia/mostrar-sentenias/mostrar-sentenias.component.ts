@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SentenciasService } from '../sentencias.service.js';
 import { FormsModule } from '@angular/forms';
 
@@ -10,30 +10,33 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './mostrar-sentenias.component.css'
 })
 export class MostrarSenteniasComponent {
-  constructor (private service : SentenciasService){}
+ 
+  constructor (public service : SentenciasService){}
   id = '';
-  ban = true;
-  sentencias: any= [];
-  pruebaSentencia:any =[1,2,34,5,"vamos newels",6,7,{mesi:'messi'}];
-  uno = [];
+  ban = false;
+  
+  
+  uno = {name:'',};
   validarband(){
     if(this.id !!= ''){
-      this.ban = false;
+      this.ban = true;
     }
     console.log(this.id)
   }
   
   buscarSentencias(){
-    this.service.getSentencias().subscribe((x:any) => this.sentencias = x)
-    //return this.sentencias = this.pruebaSentencia
+    this.service.getSentencias().subscribe({
+      next: (respuesta)=> {this.service.sentencia = respuesta},
+      error: (e) => {console.log(e)}
+    })
+    
   }
 
   buscarUnaSentencia(id:any){
-     //this.service.getOneSentencias(id.value).subscribe((x:any) => this.sentencias = x)
-    this.buscarSentencias();
-    const found = this.sentencias.find((element:any) => (element === id ));
-    console.log(found);
-    return this.uno =found;
+    this.service.getOneSentencias(id).subscribe({
+      next: (respuesta)=> {this.uno = respuesta},
+      error: (e) => {console.log(e)}}
+    )
 
   }
 

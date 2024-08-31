@@ -1,4 +1,31 @@
 <p>buscar-guardia works!</p>
+
+<form [formGroup]="guardia"  (submit)="buscarGuardia()" >
+    <fieldset>
+        <label>nombre:</label>
+        <input type="text" formControlName="nombre" >        
+    </fieldset>
+    <fieldset>
+        <label>codigo de guardia: </label>
+        <input type="text" formControlName="cod_guardia" >        
+    </fieldset>
+    <fieldset>
+        <label> apellido:</label>
+        <input type="text" formControlName="apellido" >        
+    </fieldset>
+    
+    
+    <button [disabled]="guardia.invalid">enviar datos</button>
+</form>
+<div>
+    @for (item of service.guardias; track item.id) {
+        <p>{{item.name}}</p>}
+</div>
+@if (bandera) {
+    <p>no existe guardia ingresado </p>
+}
+
+
 <div>
     <nav><a href="menu/guardia">ATRAS</a></nav>
 </div>
