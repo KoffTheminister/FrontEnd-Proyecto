@@ -18,12 +18,10 @@
     <button [disabled]="guardia.invalid">enviar datos</button>
 </form>
 <div>
-    @for (item of service.guardias; track item.id) {
-        <p>{{item.name}}</p>}
+    @if (bandera) {<p>el guardia ingresado no existe </p>}
+    @else {<P>{{service.guardia.title}}</P>}
 </div>
-@if (bandera) {
-    <p>no existe guardia ingresado </p>
-}
+
 
 
 <div>

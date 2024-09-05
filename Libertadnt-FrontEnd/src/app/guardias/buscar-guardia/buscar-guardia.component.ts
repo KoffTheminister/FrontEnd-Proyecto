@@ -26,17 +26,23 @@ nombre : FormControl;
 apellido : FormControl;
 cod_guardia: FormControl;
 bandera = false;
-guardias:any =[];
 buscarGuardia(){
   this.bandera= false;
-  this.service.getOneGuardias(this.cod_guardia.value).subscribe({next:(respuesta)=> {this.service.guardias = respuesta},
-    error: (e)=>{console.log(e)}
+  this.service.getOneGuardias(this.cod_guardia.value).subscribe({
+    next:(respuesta)=> {
+      this.service.guardia = respuesta
+      this.bandera = false;
+    },
+    error: (e)=>{console.log(e)
+      this.bandera=true
+    }
   })
-  console.log(this.service.guardias)
+  console.log(this.service.guardia)
   console.log(this.cod_guardia.value)
-  if(this.service.guardias.length === 0){
+  /*if(this.service.guardias.length === 0){
     this.bandera = true;
-  }
+  }*/
+ this.guardia.reset()
 }
 
 

@@ -1,0 +1,35 @@
+<ul> 
+    <li>
+        <h2 class="titulo">Turno mañana </h2>
+    </li>
+    @for (item of service.guardias; track item.userId) {
+        @if (item.userId === 1) {
+        <li>
+            <p>{{item.id}}</p>
+        </li>}
+    }
+    <li>
+        <h2 class="titulo">Turno tarde </h2>
+    </li>
+    @for (item of service.guardias; track item.userId) {
+        @if (item.userId === 2) {
+        <li>
+            <p>{{item.id}}</p>
+        </li>}
+    }
+    <li>
+        <h2 class="titulo">Turno noche </h2>
+    </li>
+    @for (item of service.guardias; track item.userId) {
+        @if (item.userId === 3) {
+        <li>
+            <p>{{item.id}}</p>
+        </li>}
+    }
+</ul>
+
+
+
+<div>
+    <nav><a href="menu/guardia">ATRAS</a></nav>
+</div>

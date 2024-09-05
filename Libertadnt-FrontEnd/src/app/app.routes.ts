@@ -12,11 +12,14 @@ import { AltaGuardiaComponent } from './guardias/alta-guardia/alta-guardia.compo
 import { BuscarGuardiaComponent } from './guardias/buscar-guardia/buscar-guardia.component.js';
 import { ModificarGuardiaComponent } from './guardias/modificar-guardia/modificar-guardia.component.js';
 import { MostrarGuardiaComponent } from './guardias/mostrar-guardia/mostrar-guardia.component.js';
+import { AccesoComponent } from './log-in/acceso/acceso.component.js';
+import { MostrarTurnosComponent } from './guardias/mostrar-turnos/mostrar-turnos.component.js';
 
 export const routes: Routes = [
-    {path: 'ruta1', component: LogInComponent},
+    {path: 'usuario', component: LogInComponent},
+    {path: 'usuario/:acceso', component: AccesoComponent},
     {path: 'menu', component: MenuComponent},
-    {path: '',redirectTo: 'ruta1',pathMatch:'full'},
+    {path: '',redirectTo: 'usuario',pathMatch:'full'},
     {path: 'menu/sentencia', component: MenuSentenciaComponent},
     {path: 'menu/sentencia/alta', component: AltaSentenciaComponent},
     {path: 'menu/sentencia/modificar', component: ModSentenciaComponent},
@@ -26,6 +29,7 @@ export const routes: Routes = [
     {path: 'menu/guardia/buscar-guardia', component:BuscarGuardiaComponent },
     {path: 'menu/guardia/modificar-guardia', component: ModificarGuardiaComponent},
     {path: 'menu/guardia/mostrar-guardia', component:MostrarGuardiaComponent },
+    {path: 'menu/guardia/turnos', component: MostrarTurnosComponent},
     
 
     

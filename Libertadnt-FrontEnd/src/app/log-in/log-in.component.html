@@ -1,6 +1,6 @@
 
 <h1>ingrese el ususario para ingresar</h1>
-<form [formGroup]="usuario"  (submit)="cargarUsuarios()" >
+<form [formGroup]="usuario" (submit)="cargarUsuarios()"   >
     <fieldset>
         <label> id : </label>
         <input type="text" formControlName="id" > 
@@ -10,16 +10,18 @@
     </fieldset>
     <fieldset>
         <label>ingresar el tipo: </label>
-        <input type="text" formControlName="tipo" >        
+        <input type="text" formControlName="tipo" >    
+        @if (tipo.invalid && tipo.touched) {
+            <h2 class="form-error">el tipo es requerido</h2>
+        }    
     </fieldset>
     <fieldset>
         <label> nombre:</label>
-        <input type="text" formControlName="nombre" >        
+        <input type="text" formControlName="nombre" >
+        @if (nombre.invalid && nombre.touched) {
+            <h2 class="form-error">el nombre es requerido</h2>
+        }        
     </fieldset>
-    <button [disabled]="usuario.invalid">enviar modificacion</button>
+    <button [disabled]="usuario.invalid" [routerLink]="bandera" >enviar datos</button>
 </form>
-@if (!usuario.invalid) {<nav>
-    <a href="menu"> menu </a>
-</nav>}
-<h2>{{usuario.value}}</h2>
-<p>{{bander}}</p>
+
