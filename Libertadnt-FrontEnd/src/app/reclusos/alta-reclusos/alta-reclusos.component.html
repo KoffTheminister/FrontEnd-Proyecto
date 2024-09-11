@@ -1,0 +1,37 @@
+<div>
+    <nav><a href="menu/guardia">ATRAS</a></nav>
+</div>
+<form [formGroup]="recluso" (submit)="validarRecluso()">
+    <fieldset>
+        <label>codigo de recluso: </label>
+        <input type="text" formControlName="cod_recluso" >      
+    </fieldset>
+    <fieldset>
+        <label>nombre del recluso: </label>
+        <input type="text" formControlName="nombre" >      
+    </fieldset>
+    <fieldset>
+        <label>apellido del recluso: </label>
+        <input type="text" formControlName="apellido" >      
+    </fieldset>
+    <fieldset>
+        <label>dni del recluso: </label>
+        <input type="text" formControlName="dni" >      
+    </fieldset>
+    <button>validar recluso</button>
+</form>
+@if (bandRecluso) {
+    <form [formGroup]="celda" (submit)="validarCelda()">
+        <fieldset>
+            <label>codigo de celda: </label>
+            <input type="text" formControlName="cod_celda" >      
+        </fieldset>
+        <button>validar recluso</button>
+    </form>
+    @if (bandCelda) {
+        <button (click)="enviarRecluso()"> enviar datos</button>
+    }@else if(bandCelda=== false){
+        <p>la celda no existe</p>
+    }
+}@else if(bandRecluso===false) {<h1>el recluso ya existe</h1>}
+

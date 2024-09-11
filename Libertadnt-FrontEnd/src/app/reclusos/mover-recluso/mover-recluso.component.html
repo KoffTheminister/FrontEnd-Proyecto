@@ -1,0 +1,44 @@
+
+<div>
+    <nav><a href="menu/recluso">ATRAS</a></nav>
+</div>
+<form [formGroup]="recluso" (submit)="validarRecluso()">
+    <fieldset>
+        <label>codigo de recluso: </label>
+        <input type="text" formControlName="cod_recluso" >      
+    </fieldset>
+    <fieldset>
+        <label>dni del recluso: </label>
+        <input type="text" formControlName="dni" >      
+    </fieldset>
+    <button>validar recluso</button>
+</form>
+@if (bandRecluso) {
+    @for (item of sRecluso.celdas; track $index) {
+        <ul>
+            <li>
+                <p>{{item.id}}</p>
+                <p></p>
+                <p>{{item.userId}}</p>
+            </li>
+        </ul>
+    }
+    <form [formGroup]="celda" (submit)="validarCelda()">
+        <fieldset>
+            <label>codigo de celda: </label>
+            <input type="text" formControlName="cod_celda" >      
+        </fieldset>
+        <fieldset>
+            <label>codigo del sector: </label>
+            <input type="text" formControlName="cod_sector" >      
+        </fieldset>
+        <button>enviar</button>
+    </form>
+    @if (bandCelda === false) {<h1>la celda ingresada no existe </h1>}
+    
+}@else if (bandRecluso === false) {
+    <h1>El relcuso ingresado no existe </h1>
+}
+@if (bandCelda===true) {<h1>los cambios fueron realizados </h1>}
+
+

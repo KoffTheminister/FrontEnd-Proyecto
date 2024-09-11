@@ -1,14 +1,14 @@
-menu principal => [menu de reclusos, menu de guardias,menu de sentencias,menu actividades, menu de celdas ]
+menu principal => [menu de reclusos, menu de guardias,menu de sentencias,menu actividades, menu sectores]
 
-menu reclusos => [modificar recluso ,dar de alta un recluso,buscar relcuso , mover recluso ]
+menu reclusos => [buscar relcuso, modificar condena de recluso, dar de alta un recluso, mover recluso]
  
-menu guardias => [dar altaguardia, buscar guardia, menu turnos ,modificar guardias(incluye delete), mostrar guardias]
+menu guardias => [dar alta guardia, buscar guardia, modificar guardias(incluye delete), mostrar guardias]
 
 menu sentencia => [dar de alta sentencia , modificar sentencia ]
 
 menu actividades => [dar de alta actividad(incluyen ilegales), modificar una actividad(incluye delete ),mostrar actividades]
 
-menu celdas => [buscar celda(muestra el sector), contar reclusos,modificar celdas, mostrar celdas ]
+menu sectores => [muestra todos los sectores => (en cada sector se muestra lo siguiente) => menu turnos, mostrar celdas => si elegis una celda se muestran los reclusos en esta ]
 
 parte visual :
 https://adminlte.io   
