@@ -7,10 +7,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SentenciasService {
   readonly api_url="https://jsonplaceholder.typicode.com/users/"
-  sentencia:any 
+  sentencias:any 
   messageService: any;
+  sentencia: any
   constructor(
-  private http: HttpClient) {this.sentencia =  []  }  
+  private http: HttpClient) {this.sentencias =  [],this.sentencia = {}}  
 private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
