@@ -18,6 +18,10 @@ import { AltaReclusosComponent } from './reclusos/alta-reclusos/alta-reclusos.co
 import { BuscarReclusosComponent } from './reclusos/buscar-reclusos/buscar-reclusos.component.js';
 import { MoverReclusoComponent } from './reclusos/mover-recluso/mover-recluso.component.js';
 import { ModificarCondenaComponent } from './reclusos/modificar-condena/modificar-condena.component.js';
+import { MenuActividadComponent } from './actividades/menu-actividad/menu-actividad.component.js';
+import { AltaActividadComponent } from './actividades/alta-actividad/alta-actividad.component.js';
+import { ModificarActividadComponent } from './actividades/modificar-actividad/modificar-actividad.component.js';
+import { MostrarActividadComponent } from './actividades/mostrar-actividad/mostrar-actividad.component.js';
 
 export const routes: Routes = [
     //log in
@@ -44,6 +48,12 @@ export const routes: Routes = [
     {path: 'menu/recluso/buscar-recluso', component: BuscarReclusosComponent},
     {path: 'menu/recluso/modificar-condena', component: ModificarCondenaComponent},
     {path: 'menu/recluso/Mover-Recluso', component: MoverReclusoComponent},
+    //actividad
+    {path: 'menu/actividad', component: MenuActividadComponent},
+    {path: 'menu/actividad/alta-actividad', component: AltaActividadComponent},
+    {path: 'menu/actividad/modificar-actividad', component: ModificarActividadComponent},
+    {path: 'menu/actividad/mostrar-actividad', component: MostrarActividadComponent},
+
     
     
 

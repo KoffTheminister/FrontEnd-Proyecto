@@ -1,28 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class ActividadService {
 
 readonly api_url ='https://jsonplaceholder.typicode.com/todos/'
-//readonly api_url ='tuma/usuarios/id'
 messageService: any;
-constructor(
-  private http: HttpClient) { }  
+actividades:any
+actividad:any
+constructor(private http: HttpClient) {
+  this.actividad={descipcion:String,cod_actividad:Number,locacion:String,hora:String,diaDeLaSemana:Date }
+  this.actividades= []
+}  
 private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
-getUsuario() {
+getActividades() {
   return this.http.get<any | JSON>(this.api_url)
-  
 }
-getOneUsuario(id:any) {
+getOneActividad(id:any) {
   return this.http.get<any | JSON>(this.api_url+`${id}`)
 }
-postUsuario(uActual:any){
+postActividad(uActual:any){
   return this.http.post<any| JSON>(this.api_url,uActual)
 }
-
 }

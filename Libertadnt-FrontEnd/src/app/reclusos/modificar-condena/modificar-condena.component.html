@@ -17,8 +17,8 @@
     @for (item of sSentencia.sentencias; track $index) {
         <ul>
             <li>
-                <p class="sentencia true">nombre sentencia : {{item.name}} || id sentencia: {{item.id}}</p>
-                <button (click)="agregarSentencia(item)" >agregar</button>
+                <p >nombre sentencia : {{item.name}} || id sentencia: {{item.id}}</p>
+                <button (click)="agregarSentencia(item)"  [ngClass]="value">agregar</button>
                 <button (click)="quitarSentencia(item)">quitar</button>
             </li>
         </ul>

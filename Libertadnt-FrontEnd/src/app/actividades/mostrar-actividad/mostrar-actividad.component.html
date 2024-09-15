@@ -1,0 +1,13 @@
+<div>
+    <p></p>
+    <a href="menu/actividad">ATRAS</a>
+    <p></p>
+</div>
+<div>
+    @for (item of service.actividades; track $index) {
+        <li>
+            <p>descripcion: {{item.title}} <br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+        </li>
+        
+    }
+</div>

@@ -1,0 +1,47 @@
+<div>
+    <p></p>
+    <a href="menu/actividad">ATRAS</a>
+    <p></p>
+</div>
+<div>
+    <form [formGroup]="actividad" (submit)="validarActividad()">
+        <fieldset>
+            <label>Codigo de Actividad:</label>
+            <input type="text" formControlName="cod_actividad" >      
+        </fieldset>
+        <button>Validar actividad</button>
+    </form>
+</div>
+@if (bandActividad) {
+    <div>
+        <h1>ingese el valor que desea cambiar</h1>
+        <form [formGroup]="actividad" (submit)="cambiarActiviada()">
+            <fieldset>
+                <label>descipcion de la actividad:</label>
+                <input type="text" formControlName="descripcion" >      
+            </fieldset>
+            <fieldset>
+                <label>locacion:</label>
+                <input type="text" formControlName="locacion" >      
+            </fieldset>
+            <fieldset>
+                <label>hora:</label>
+                <input type="text" formControlName="hora" >      
+            </fieldset>
+            <fieldset>
+                <label>dia de la semana:</label>
+                <input type="text" formControlName="diaDeLaSemana" >      
+            </fieldset>
+            <fieldset>
+                <label>Cantidad Maxima</label>
+                <input type="text" formControlName="cantMax" >      
+            </fieldset>
+            <fieldset>
+                <label>Edad Minima</label>
+                <input type="text" formControlName="edadMin" >      
+            </fieldset>
+            <button>enviar actividad</button>
+        </form>
+    </div>
+}
+

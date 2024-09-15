@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReclusosService } from '../reclusos.service.js';
 import { SentenciasService } from '../../sentencia/sentencias.service.js';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modificar-condena',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule],
+  imports: [ReactiveFormsModule,FormsModule,CommonModule],
   templateUrl: './modificar-condena.component.html',
   styleUrl: './modificar-condena.component.css'
 })
@@ -53,6 +54,7 @@ export class ModificarCondenaComponent implements OnInit{
     sentencia: FormGroup;
     bandRecluso:boolean|undefined
     condena:any = []
+    value:string|undefined
   validarRecluso(){
     this.sRecluso.getOneRecluso(this.dni.value).subscribe({
       next:(data)=>{
@@ -67,11 +69,15 @@ export class ModificarCondenaComponent implements OnInit{
   }
   agregarSentencia(sent:any){
     
-    if(this.validarSentencia(sent)){this.condena.push(sent)}
+    if(this.validarSentencia(sent)){
+      this.condena.push(sent)
+      this.value='true'
+    }
     
   }
   quitarSentencia(sent:any){
     this.condena.splice(this.condena.findIndex((item: any)=>{item == sent}),1)
+    this.value='false'
   }
   validarSentencia(sent:any){
     let encontrado = this.condena.find((x:any)=>x == sent)

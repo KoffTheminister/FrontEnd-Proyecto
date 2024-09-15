@@ -1,6 +1,8 @@
+//////// menus ////////:
 menu principal => [menu de reclusos, menu de guardias,menu de sentencias,menu actividades, menu sectores]
 
-menu reclusos => [buscar relcuso, modificar condena de recluso, dar de alta un recluso, mover recluso]
+menu reclusos => [buscar relcuso, modificar cond
+ena de recluso, dar de alta un recluso, mover recluso]
  
 menu guardias => [dar alta guardia, buscar guardia, modificar guardias(incluye delete), mostrar guardias]
 
@@ -10,6 +12,19 @@ menu actividades => [dar de alta actividad(incluyen ilegales), modificar una act
 
 menu sectores => [muestra todos los sectores => (en cada sector se muestra lo siguiente) => menu turnos, mostrar celdas => si elegis una celda se muestran los reclusos en esta ]
 
-parte visual :
+menu talleres => [alta tareas, mostrar tareas , inscribirse a tarea ,modificar tarea ]
+
+//////// parte visual ////////:
 https://adminlte.io   
 https://material.angular.io 
+
+//////pendientes&////////:
+Usuario (guardia-admin)
+
+mandar usuario completo (objeto) para el getone. Valida en front
+
+Sacar nombre recluso para buscarlo. Solo usar id
+
+En alta actividad agregar edad mínima
+En alta actividad, desc cant-min, cod(generado bakend no se ingresa), hora, locacion, diaSemana(1-7), estado, edadMin, codsector.
+Si hay error (tipo de dato- longitud) valida en front.

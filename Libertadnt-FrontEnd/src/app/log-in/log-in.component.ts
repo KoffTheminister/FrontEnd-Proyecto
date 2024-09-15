@@ -18,20 +18,23 @@ export class LogInComponent {
     usuario: FormGroup;
     id:FormControl;
     nombre: FormControl;
-    tipo : FormControl;
+    administador: FormControl
+    guardia:FormControl
 bander = false;
 constructor (private service : UsuarioService ){
       this.id = new FormControl('',[Validators.required,])
       this.nombre = new FormControl('',[Validators.required])
-      this.tipo = new FormControl('',[Validators.required])
+      this.administador = new FormControl(false,[Validators.required])
+      this.guardia = new FormControl(false,[Validators.required])
       this.usuario = new FormGroup({
   
-        id: this.id
-        ,nombre: this.nombre
-        ,tipo: this.tipo
-      
+        id: this.id,
+        nombre: this.nombre,
+        administador: this.administador,
+        guardia:this.guardia
         })
 };
+bandUsuario:boolean | undefined
 bandera = ''
 uPueba:any = {
   "userId": 1,
@@ -39,26 +42,31 @@ uPueba:any = {
   "title": "delectus aut autem",
   "completed": false
 }
-cargarUsuarios(){
-  let val = this.id.value
-  this.service.getOneUsuario(val).subscribe({next: (data:any|JSON)=> {
-    this.uPueba=data;
-  }
-  ,error: (e)=>{console.log(e)
-    
+validarUsuarios(){
+  this.bandUsuario=undefined;
+  this.service.getOneUsuario(this.id.value).subscribe({
+    next: (data:any|JSON)=> {
+      this.uPueba=data;
+      this.bandUsuario=true;
+      console.log(this.bandUsuario);
+      
+  },
+  error: (e)=>{
+    console.log(e)
+    this.bandUsuario=false;
 }})
- 
-  /*this.service.postUsuario(this.usuario.value).subscribe({next: (data)=> {console.log(data)
-  this.bandera= 'true';
- },
- error: (e)=> {console.log(e);
-  this.bandera= 'false';
- }});*/
-
 if(this.uPueba.id == this.id.value){this.bandera='true'}
 if(this.uPueba.id != this.id.value){this.bandera='false'}
- console.log(this.uPueba)
- console.log(this.bandera)
+ 
+ console.log(this.bandUsuario)
+
+}
+enviarUsuario(){
+  this.service.postUsuario(this.usuario.value).subscribe({
+    next: (data)=> {console.log(data)},
+    error: (e)=> {console.log(e);}
+  });
+  this.bandUsuario=undefined
 }
 
 
