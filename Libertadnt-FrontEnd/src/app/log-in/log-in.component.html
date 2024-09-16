@@ -27,7 +27,7 @@
     <button [disabled]="usuario.invalid"  >enviar datos</button>
 </form>
 @if (bandUsuario===true) {
-    <p>usuario valido ingrese al <a href="menu" (click)="enviarUsuario()">menu</a></p>
+    <p>usuario valido ingrese al <a [routerLink]="bandera" >menu</a></p>
 }@else if (bandUsuario===false) {
     <p>usuario invalido</p>
 }

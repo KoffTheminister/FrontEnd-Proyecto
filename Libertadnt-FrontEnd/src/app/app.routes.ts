@@ -11,7 +11,6 @@ import { AltaGuardiaComponent } from './guardias/alta-guardia/alta-guardia.compo
 import { BuscarGuardiaComponent } from './guardias/buscar-guardia/buscar-guardia.component.js';
 import { ModificarGuardiaComponent } from './guardias/modificar-guardia/modificar-guardia.component.js';
 import { MostrarGuardiaComponent } from './guardias/mostrar-guardia/mostrar-guardia.component.js';
-import { AccesoComponent } from './log-in/acceso/acceso.component.js';
 import { MostrarTurnosComponent } from './guardias/mostrar-turnos/mostrar-turnos.component.js';
 import { MenuReclusosComponent } from './reclusos/menu-reclusos/menu-reclusos.component.js';
 import { AltaReclusosComponent } from './reclusos/alta-reclusos/alta-reclusos.component.js';
@@ -26,9 +25,8 @@ import { MostrarActividadComponent } from './actividades/mostrar-actividad/mostr
 export const routes: Routes = [
     //log in
     {path: 'usuario', component: LogInComponent},
-    {path: 'usuario/:acceso', component: AccesoComponent},
     //menu
-    {path: 'menu', component: MenuComponent},
+    {path: 'usuario/:menu', component: MenuComponent},
     {path: '',redirectTo: 'usuario',pathMatch:'full'},
     //sentencia
     {path: 'menu/sentencia', component: MenuSentenciaComponent},

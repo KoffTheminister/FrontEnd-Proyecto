@@ -36,9 +36,9 @@ constructor (private service : UsuarioService ){
 };
 bandUsuario:boolean | undefined
 bandera = ''
-uPueba:any = {
+uIlegal:any = {
   "userId": 1,
-  "id": 1,
+  "id": 99,
   "title": "delectus aut autem",
   "completed": false
 }
@@ -46,7 +46,7 @@ validarUsuarios(){
   this.bandUsuario=undefined;
   this.service.getOneUsuario(this.id.value).subscribe({
     next: (data:any|JSON)=> {
-      this.uPueba=data;
+      this.uIlegal=data;
       this.bandUsuario=true;
       console.log(this.bandUsuario);
       
@@ -55,11 +55,11 @@ validarUsuarios(){
     console.log(e)
     this.bandUsuario=false;
 }})
-if(this.uPueba.id == this.id.value){this.bandera='true'}
-if(this.uPueba.id != this.id.value){this.bandera='false'}
+if(this.uIlegal.id == this.id.value){this.bandera='menu-maestro'}
+if(this.uIlegal.id != this.id.value){this.bandera='menu'}
  
  console.log(this.bandUsuario)
-
+ console.log(this.bandera)
 }
 enviarUsuario(){
   this.service.postUsuario(this.usuario.value).subscribe({
