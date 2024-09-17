@@ -1,0 +1,26 @@
+<div>
+    <p></p>
+    <a href="menu/taller">ATRAS</a>
+    <p></p>
+</div>
+@for (item of service.talleres; track $index) {
+    <li>
+       <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+       <button (click)="ingresarIsncripcion(item)">inscibirse</button>
+    </li>
+    @if (item.inscripcion) {
+        <p></p>
+        <form [formGroup]="recluso" (submit)="validarRecluso(item)">
+            <fieldset>
+                <label>dni del recluso: </label>
+                <input type="text" formControlName="dni" >      
+            </fieldset>
+            <p></p>
+            <button>valudar recluso</button>
+        </form>
+        @if (banderaRecluso===true) {
+            <p>inscripcion valida</p>
+        }@else if (banderaRecluso===false) {<p>inscripcion invalida</p>}
+    }
+}
+

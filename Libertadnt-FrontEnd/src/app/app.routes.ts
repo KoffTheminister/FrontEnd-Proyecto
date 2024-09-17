@@ -21,6 +21,11 @@ import { MenuActividadComponent } from './actividades/menu-actividad/menu-activi
 import { AltaActividadComponent } from './actividades/alta-actividad/alta-actividad.component.js';
 import { ModificarActividadComponent } from './actividades/modificar-actividad/modificar-actividad.component.js';
 import { MostrarActividadComponent } from './actividades/mostrar-actividad/mostrar-actividad.component.js';
+import { MenuTallerComponent } from './talleres/menu-taller/menu-taller.component.js';
+import { AltaTallerComponent } from './talleres/alta-taller/alta-taller.component.js';
+import { InscripcionTallerComponent } from './talleres/inscripcion-taller/inscripcion-taller.component.js';
+import { ModificarTallerComponent } from './talleres/modificar-taller/modificar-taller.component.js';
+import { MostrarTallerComponent } from './talleres/mostrar-taller/mostrar-taller.component.js';
 
 export const routes: Routes = [
     //log in
@@ -51,6 +56,14 @@ export const routes: Routes = [
     {path: 'menu/actividad/alta-actividad', component: AltaActividadComponent},
     {path: 'menu/actividad/modificar-actividad', component: ModificarActividadComponent},
     {path: 'menu/actividad/mostrar-actividad', component: MostrarActividadComponent},
+    //taller
+    {path: 'menu/taller', component: MenuTallerComponent},
+    {path: 'menu/taller/alta-taller', component: AltaTallerComponent},
+    {path: 'menu/taller/inscripcion-taller', component:InscripcionTallerComponent },
+    {path: 'menu/taller/modificar-taller', component: ModificarTallerComponent},
+    {path: 'menu/taller/mostrar-taller', component: MostrarTallerComponent},
+    
+
 
     
     
