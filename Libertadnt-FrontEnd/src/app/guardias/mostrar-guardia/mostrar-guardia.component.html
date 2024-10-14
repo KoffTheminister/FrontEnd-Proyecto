@@ -1,21 +1,27 @@
-<p>mostrar-guardias works!</p>
-<button (click)="traerGuardias()"> buscar todos los guardias </button>
+<head>
+  <link rel="stylesheet" href="mostrar-guardia.component.css">
+</head>
 
+<body>
+  <center>
+    <t><h2>Mostrar Guardias</h2></t>
+  </center>
 
+  <center>
+    <button (click)="traerGuardias()">Buscar a todos los guardias</button>
+  </center>
 
-<ul>
-    @for (item of service.guardias; track $index) {
-        <li>
-            <p>{{item.title}}</p>
-        </li>
-    }
-</ul>
-<p></p>
-
-
-
-
-
-<div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
-</div>
+  <center>
+    <ul>
+      @for (item of service.guardias; track $index) {
+      <li>
+        <p>{{item.title}}</p>
+      </li>
+      }
+    </ul>
+  </center>
+  
+  <div>
+    <center><nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav></center>
+  </div>
+</body>

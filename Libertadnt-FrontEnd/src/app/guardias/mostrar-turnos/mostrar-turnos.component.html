@@ -1,35 +1,49 @@
-<ul> 
-    <li>
-        <h2 class="titulo">Turno mañana </h2>
-    </li>
-    @for (item of service.guardias; track item.userId) {
-        @if (item.userId === 1) {
-        <li>
-            <p>{{item.id}}</p>
-        </li>}
-    }
-    <li>
-        <h2 class="titulo">Turno tarde </h2>
-    </li>
-    @for (item of service.guardias; track item.userId) {
-        @if (item.userId === 2) {
-        <li>
-            <p>{{item.id}}</p>
-        </li>}
-    }
-    <li>
-        <h2 class="titulo">Turno noche </h2>
-    </li>
-    @for (item of service.guardias; track item.userId) {
-        @if (item.userId === 3) {
-        <li>
-            <p>{{item.id}}</p>
-        </li>}
-    }
-</ul>
+<head>
+  <link rel="stylesheet" href="mostrar-guardia.component.css">
+</head>
 
+<body>
+  <ul>
+    <li>
+      <center><t><h2>Turno mañana</h2></t></center>
+    </li>
+    <center>
+      @for (item of service.guardias; track item.userId) {
+      @if (item.userId === 1) {
+    <li>
+      <p>{{item.id}}</p>
+    </li>}
+    }
+    </center>
 
+    <li>
+      <center><t><h2>Turno tarde</h2></t></center>
+    </li>
+    <center>
+      @for (item of service.guardias; track item.userId) {
+      @if (item.userId === 2) {
+    <li>
+      <p>{{item.id}}</p>
+    </li>}
+    }
+    </center>
 
-<div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
-</div>
+    <li>
+      <center><t><h2>Turno noche</h2></t></center>
+    </li>
+    <center>
+      @for (item of service.guardias; track item.userId) {
+      @if (item.userId === 3) {
+    <li>
+      <p>{{item.id}}</p>
+    </li>}
+    }
+    </center>
+  </ul>
+
+  <div>
+    <center>
+      <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
+    </center>
+  </div>
+</body>

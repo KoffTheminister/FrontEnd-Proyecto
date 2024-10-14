@@ -1,32 +1,53 @@
-<div>
-    <nav><a href="menu/recluso">ATRAS</a></nav>
-</div>
-<p></p>
-<form [formGroup]="recluso" (submit)="validarRecluso()">
+<head>
+  <link rel="stylesheet" href="modificar-condena.component.css">
+</head>
+
+<body>
+  <center>
+    <t><h2>Validar Recluso</h2></t>
+  </center>
+  <form [formGroup]="recluso" (submit)="validarRecluso()">
     <fieldset>
-        <label>nombre de recluso: </label>
-        <input type="text" formControlName="nombreR" >      
+      <center>
+        <label>Nombre: </label>
+        <input type="text" formControlName="nombreR">
+      </center>
     </fieldset>
     <fieldset>
-        <label>dni del recluso: </label>
-        <input type="text" formControlName="dni" >      
+      <center>
+        <label>Dni: </label>
+        <input type="text" formControlName="dni">
+      </center>
     </fieldset>
-    <button>validar recluso</button>
-</form>
-@if (bandRecluso === true) {
+    <center><button>Validar</button></center>
+  </form>
+  <center>
+    @if (bandRecluso === true) {
     @for (item of sSentencia.sentencias; track $index) {
-        <ul>
-            <li>
-                <p >nombre sentencia : {{item.name}} || id sentencia: {{item.id}}</p>
-                <button (click)="agregarSentencia(item)"  [ngClass]="value">agregar</button>
-                <button (click)="quitarSentencia(item)">quitar</button>
-            </li>
-        </ul>
+    <ul>
+      <li>
+        <p>Nombre de la sentencia : {{item.name}} || Id sentencia: {{item.id}}</p>
+        <button (click)="agregarSentencia(item)" [ngClass]="value">agregar</button>
+        <button (click)="quitarSentencia(item)">quitar</button>
+      </li>
+    </ul>
     }
+  </center>
+
+  <center>
     @for (item of condena; track $index) {
-        <p>sentencia : {{item.name}}</p>
+    <p>sentencia : {{item.name}}</p>
     }
-    <button (click)="enviarCondena()">enviar condena</button>
-}@else if (bandRecluso === false) {
+    <center>
+      <button (click)="enviarCondena()">enviar condena</button>
+    </center>
+    }@else if (bandRecluso === false) {
     <p>El recluso ingresado no existe</p>
-}
+    }
+  </center>
+  <center>
+    <div>
+      <nav><a href="menu/recluso">Retorno al Menu de Reclusos</a></nav>
+    </div>
+  </center>
+</body>

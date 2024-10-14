@@ -1,12 +1,26 @@
-<div>
-    <p></p>
-    <a href="menu/taller">ATRAS</a>
-    <p></p>
-</div>
-<div>
-    @for (item of service.talleres; track $index) {
-        <li>
-           <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
-        </li>
-    }
-</div>
+<head>
+  <link rel="stylesheet" href="mostrar-taller.component.css">
+</head>
+
+<body>
+  <center>
+    <t><h2>Mostrar todos los Talleres</h2></t>
+  </center>
+
+  <center>
+    <div>
+      @for (item of service.talleres; track $index) {
+      <li>
+        <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+      </li>
+      }
+    </div>
+  </center>
+  <center>
+    <div>
+      <p></p>
+      <a href="menu/taller">Retorno al Menu de Talleres</a>
+      <p></p>
+    </div>
+  </center>
+</body>

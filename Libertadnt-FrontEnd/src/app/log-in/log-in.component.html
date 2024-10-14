@@ -1,34 +1,56 @@
+<head>
+  <link rel="stylesheet" href="log-in.component.css">
+</head>
 
-<h1>ingrese el ususario para ingresar</h1>
-<form [formGroup]="usuario" (submit)="validarUsuarios()"   >
-    <fieldset>
-        <label> codigo: </label>
-        <input type="text" formControlName="id" > 
-        @if (id.invalid && id.touched) {
-            <h2 class="form-error">el codigo es requerido</h2>
-        }
-    </fieldset>
-    <fieldset>
-        <label>administacion: </label>
-        <input type="checkbox" formControlName="administador" >
-        <label> guardia: </label>
-        <input type="checkbox" formControlName="guardia" >    
-        @if ((administador.touched||guardia.touched) && (administador.value === true && guardia.value=== true || administador.value === false && guardia.value=== false)) {
-            <h2 class="form-error">el tipo es requerido</h2>
-        }    
-    </fieldset>
-    <fieldset>
-        <label> contrseña:</label>
-        <input type="text" formControlName="nombre" >
-        @if (nombre.invalid && nombre.touched) {
-            <h2 class="form-error">el nombre es requerido</h2>
-        }        
-    </fieldset>
-    <button [disabled]="usuario.invalid"  >enviar datos</button>
-</form>
-@if (bandUsuario===true) {
-    <p>usuario valido ingrese al <a [routerLink]="bandera" >menu</a></p>
-}@else if (bandUsuario===false) {
-    <p>usuario invalido</p>
-}
+<body>
+  <center>
+    <t><h2>Ingreso</h2></t>
+  </center>
 
+  <form [formGroup]="usuario" (submit)="validarUsuarios()">
+    <fieldset>
+      <center>
+        <label>Codigo: </label>
+        <input type="text" formControlName="id">
+      </center>
+    </fieldset>
+    <center>
+      @if (id.invalid && id.touched) {
+      <h2 class="form-error">el codigo es requerido</h2>
+      }
+    </center>
+    <fieldset>
+      <center>
+        <label>Administacion: </label>
+        <input type="checkbox" formControlName="administador">
+        <label>Guardia: </label>
+        <input type="checkbox" formControlName="guardia">
+      </center>
+    </fieldset>
+    <center>
+      @if ((administador.touched||guardia.touched) && (administador.value === true && guardia.value=== true || administador.value === false && guardia.value=== false)) {
+      <h2 class="form-error">el tipo es requerido</h2>
+      }
+    </center>
+    <fieldset>
+      <center>
+        <label>Contraseña: </label>
+        <input type="text" formControlName="nombre">
+      </center>
+    </fieldset>
+    <center>
+      @if (nombre.invalid && nombre.touched) {
+      <h2 class="form-error">el nombre es requerido</h2>
+      }
+    </center>
+    <center><button [disabled]="usuario.invalid">enviar datos</button></center>
+  </form>
+
+  <center>
+    @if (bandUsuario===true) {
+    <p>Usuario valido ingrese al <a [routerLink]="bandera">Menu</a></p>
+    }@else if (bandUsuario===false) {
+    <p>Usuario invalido</p>
+    }
+  </center>
+</body>

@@ -1,37 +1,64 @@
-<h1>ingrese los detalles de la condena</h1>
-<form [formGroup]="sActual"  (submit)="verFomrulario()" >
-    <fieldset>
-        <label>nombre</label>
-        <input type="text" formControlName="nombre" >        
-    </fieldset>
-    <fieldset>
-        <label>cantidad de condenas </label>
-        <input type="text" formControlName="cantidad_cond" >        
-    </fieldset>
-    <fieldset>
-        <label> descripcion</label>
-        <input type="text" formControlName="descripcion" >        
-    </fieldset>
-    <fieldset>
-        <label>"duracion "</label>
-        <input type="text" formControlName="duracion" >        
-    </fieldset>
-    <fieldset>
-        <label>fecha dia</label>
-        <input type="text" formControlName="fecha_dia" >        
-    </fieldset>
-    <fieldset>
-        <label>fecha mes </label>
-        <input type="text" formControlName="fecha_mes" >        
-    </fieldset>
-    <fieldset>
-        <label>fecha año</label>
-        <input type="text" formControlName="fecha_año" >        
-    </fieldset>
-    <button [disabled]="sActual.invalid">enviar modificacion</button>
-</form>
-<div>
-    <nav><a href="menu/sentencia">ATRAS</a></nav>
-</div>
+<head>
+  <link rel="stylesheet" href="alta-sentencia.component.css">
+</head>
 
+<body>
+  <center>
+    <t><h2>Alta Sentencia</h2></t>
+  </center>
+  <center>
+    <p>(ingrese los detalles de la condena)</p>
+  </center>
 
+  <form [formGroup]="sActual" (submit)="verFomrulario()">
+    <fieldset>
+      <center>
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Cantidad de condenas</label>
+        <input type="text" formControlName="cantidad_cond">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Descripcion</label>
+        <input type="text" formControlName="descripcion">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Duracion</label>
+        <input type="text" formControlName="duracion">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Dia de la fecha</label>
+        <input type="text" formControlName="fecha_dia">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Mes de la fecha</label>
+        <input type="text" formControlName="fecha_mes">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Anio de la fecha</label>
+        <input type="text" formControlName="fecha_año">
+      </center>
+    </fieldset>
+    <center><button [disabled]="sActual.invalid">Enviar modificacion</button></center>
+  </form>
+
+  <center>
+    <div>
+      <nav><a href="menu/sentencia">Retorno al Menu de Sentencia</a></nav>
+    </div>
+  </center>
+</body>

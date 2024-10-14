@@ -1,29 +1,38 @@
-<p>buscar-guardia works!</p>
+<head>
+  <link rel="stylesheet" href="buscar-guardia.component.css">
+</head>
 
-<form [formGroup]="guardia"  (submit)="buscarGuardia()" >
+<body>
+  <center>
+    <t><h2>Buscar Guardia</h2></t>
+  </center>
+
+  <form [formGroup]="guardia" (submit)="buscarGuardia()">
     <fieldset>
-        <label>nombre:</label>
-        <input type="text" formControlName="nombre" >        
+      <label>Nombre:</label>
+      <input type="text" formControlName="nombre">
     </fieldset>
     <fieldset>
-        <label>codigo de guardia: </label>
-        <input type="text" formControlName="cod_guardia" >        
+      <label>Codigo de guardia: </label>
+      <input type="text" formControlName="cod_guardia">
     </fieldset>
     <fieldset>
-        <label> apellido:</label>
-        <input type="text" formControlName="apellido" >        
+      <label>Apellido:</label>
+      <input type="text" formControlName="apellido">
     </fieldset>
-    
-    
-    <button [disabled]="guardia.invalid">enviar datos</button>
-</form>
-<div>
+
+
+    <center><button [disabled]="guardia.invalid">Enviar</button></center>
+  </form>
+
+  <div>
     @if (bandera) {<p>el guardia ingresado no existe </p>}
     @else {<P>{{service.guardia.title}}</P>}
-</div>
+  </div>
 
-
-
-<div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
-</div>
+  <div>
+    <center>
+      <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
+    </center>
+  </div>
+</body>

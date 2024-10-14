@@ -1,0 +1,33 @@
+<head>
+  <link rel="stylesheet" href="mostrar-sentencias.component.css">
+</head>
+
+<body>
+  <center>
+    <t><h2>Mostrar Sentencias</h2></t>
+  </center>
+  <center>
+    <button (click)="buscarSentencias()">buscar sentencias</button>
+  </center>
+  <center>
+    <ul>
+      @for (item of service.sentencia; track $index) {
+      <li>
+        <p>{{item.username}}</p>
+      </li>
+      }
+    </ul>
+  </center>
+  <center>
+    <div>
+      <input type="text" [(ngModel)]="id" (click)="validarband()">
+      <button (click)="buscarUnaSentencia(id)" [disabled]="ban">Buscar</button>
+      <p>{{uno.name}}</p>
+    </div>
+  </center>
+  <center>
+    <div>
+      <nav><a href="menu/sentencia">Retorno al Menu de Sentencias</a></nav>
+    </div>
+  </center>
+</body>

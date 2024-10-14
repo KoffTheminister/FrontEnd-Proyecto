@@ -1,26 +1,36 @@
+<head>
+  <link rel="stylesheet" href="alta-guardia.component.css">
+</head>
 
+<body>
+  <div>
+    <center>
+      <t><h1>Nuevo Guardia</h1></t>
+    </center>
+  </div>
+  <form [formGroup]="guardia" (submit)="enviarGuarida()">
+    <fieldset>
+      <label>Nombre:</label>
+      <input type="text" formControlName="nombre">
+    </fieldset>
+    <fieldset>
+      <label>Codigo de guardia: </label>
+      <input type="text" formControlName="cod_guardia">
+    </fieldset>
+    <fieldset>
+      <label>Apellido:</label>
+      <input type="text" formControlName="apellido">
+    </fieldset>
+    <fieldset>
+      <label>Fecha de inicio:</label>
+      <input type="text" formControlName="fecha_ini">
+    </fieldset>
 
-<h1>ingrese los datos del NUEVO guardia</h1>
-<form [formGroup]="guardia"  (submit)="enviarGuarida()" >
-    <fieldset>
-        <label>nombre:</label>
-        <input type="text" formControlName="nombre" >        
-    </fieldset>
-    <fieldset>
-        <label>codigo de guardia: </label>
-        <input type="text" formControlName="cod_guardia" >        
-    </fieldset>
-    <fieldset>
-        <label> apellido:</label>
-        <input type="text" formControlName="apellido" >        
-    </fieldset>
-    <fieldset>
-        <label>fecha de inicio:</label>
-        <input type="text" formControlName="fecha_ini" >        
-    </fieldset>
-    
-    <button [disabled]="guardia.invalid">enviar datos</button>
-</form>
-<div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
-</div>
+    <center><button [disabled]="guardia.invalid">Enviar</button></center>
+  </form>
+  <div>
+    <center>
+      <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
+    </center>
+  </div>
+</body>

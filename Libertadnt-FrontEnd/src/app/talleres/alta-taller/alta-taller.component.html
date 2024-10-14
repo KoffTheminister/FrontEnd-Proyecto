@@ -1,42 +1,75 @@
-<div>
-    <p></p>
-    <a href="menu/taller">ATRAS</a>
-    <p></p>
-</div>
-<div>
+<head>
+  <link rel="stylesheet" href="alta-taller.component.css">
+</head>
+
+<body>
+  <center>
+    <t>
+      <h2>Alta Taller</h2>
+    </t>
+  </center>
+
+  <div>
     <form [formGroup]="taller" (submit)="validarTaller()">
-        <fieldset>
-            <label>nombre del taller:</label>
-            <input type="text" formControlName="nombre" >      
-        </fieldset>
-        <fieldset>
-            <label>descipcion del taller:</label>
-            <input type="text" formControlName="decripcion" >      
-        </fieldset>
-        <fieldset>
-            <label>locacion:</label>
-            <input type="text" formControlName="locacion" >      
-        </fieldset>
-        <fieldset>
-            <label>hora FIN:</label>
-            <input type="text" formControlName="horaFin" >      
-        </fieldset>
-        <fieldset>
-            <label>dia de la semana:</label>
-            <input type="text" formControlName="diaDeLaSemana" >      
-        </fieldset>
-        <fieldset>
-            <label>hora INICIO</label>
-            <input type="text" formControlName="horaIni" >      
-        </fieldset>
-        <fieldset>
-            <label>Cantidad Minima</label>
-            <input type="text" formControlName="cantMin" >      
-        </fieldset>
-        <button>validar actividad</button>
+      <fieldset>
+        <center>
+          <label>Nombre:</label>
+          <input type="text" formControlName="nombre">
+        </center>
+      </fieldset>
+      <fieldset>
+        <center>
+          <label>Descipcion:</label>
+          <input type="text" formControlName="decripcion">
+        </center>
+      </fieldset>
+      <fieldset>
+        <center>
+          <label>Locacion:</label>
+          <input type="text" formControlName="locacion">
+        </center>
+      </fieldset>
+      <fieldset>
+        <center>
+          <label>Hora de finalizacion:</label>
+          <input type="text" formControlName="horaFin">
+        </center>
+      </fieldset>
+      <fieldset>
+        <center>
+          <label>Dia de la semana:</label>
+          <input type="text" formControlName="diaDeLaSemana">
+        </center>
+      </fieldset>
+      <fieldset>
+        <center>
+          <label>Hora de inicio</label>
+          <input type="text" formControlName="horaIni">
+        </center>
+      </fieldset>
+      <fieldset>
+        <center>
+          <label>Cantidad Minima</label>
+          <input type="text" formControlName="cantMin">
+        </center>
+      </fieldset>
+      <center><button>Validar</button></center>
     </form>
-</div>
-@if (bandTaller === false) {
+  </div>
+
+  <center>
+    @if (bandTaller === false) {
     <p></p>
-    <button (click)="enviarTaller()">Enviar taller</button>
-}
+    <center><button (click)="enviarTaller()">Enviar</button></center>
+    }
+  </center>
+
+  <center>
+    <div>
+      <p></p>
+      <a href="menu/taller">Retorno al Menu de Talleres</a>
+      <p></p>
+    </div>
+  </center>
+
+</body>

@@ -1,47 +1,69 @@
-<div>
-    <p></p>
-    <a href="menu/actividad">ATRAS</a>
-    <p></p>
-</div>
-<div>
-    <form [formGroup]="actividad" (submit)="validarActividad()">
-        <fieldset>
-            <label>Codigo de Actividad:</label>
-            <input type="text" formControlName="cod_actividad" >      
-        </fieldset>
-        <button>Validar actividad</button>
+<head>
+  <link rel="stylesheet" href="modificar-actividad.component.css">
+</head>
+
+<body>
+  <div>
+    <center>
+      <h2>
+        Verificación
+      </h2>
+    </center>
+  </div>
+  <form [formGroup]="actividad" (submit)="validarActividad()">
+    <fieldset>
+      <label>Codigo de Actividad:</label>
+      <input type="text" formControlName="cod_actividad">
+    </fieldset>
+    <center><button>Validar actividad</button></center>
+  </form>
+  <div>
+    <center>
+     <p></p>
+      <a href="menu/actividad">Retorno al Menu Principal</a>
+     <p></p>
+    </center>
+  </div>
+
+  @if (bandActividad) {
+  <div>
+    <center><h2>Modificación</h2></center>
+    <center><p>(ingese únicamente el valor que desea cambiar)</p></center>
+    <form [formGroup]="actividad" (submit)="cambiarActiviada()">
+      <fieldset>
+        <label>Descipcion de la actividad:</label>
+        <input type="text" formControlName="descripcion">
+      </fieldset>
+      <fieldset>
+        <label>Locacion:</label>
+        <input type="text" formControlName="locacion">
+      </fieldset>
+      <fieldset>
+        <label>Hora:</label>
+        <input type="text" formControlName="hora">
+      </fieldset>
+      <fieldset>
+        <label>Dia de la semana:</label>
+        <input type="text" formControlName="diaDeLaSemana">
+      </fieldset>
+      <fieldset>
+        <label>Cupo</label>
+        <input type="text" formControlName="cantMax">
+      </fieldset>
+      <fieldset>
+        <label>Edad Minima</label>
+        <input type="text" formControlName="edadMin">
+      </fieldset>
+      <center><button>Enviar</button></center>
     </form>
-</div>
-@if (bandActividad) {
-    <div>
-        <h1>ingese el valor que desea cambiar</h1>
-        <form [formGroup]="actividad" (submit)="cambiarActiviada()">
-            <fieldset>
-                <label>descipcion de la actividad:</label>
-                <input type="text" formControlName="descripcion" >      
-            </fieldset>
-            <fieldset>
-                <label>locacion:</label>
-                <input type="text" formControlName="locacion" >      
-            </fieldset>
-            <fieldset>
-                <label>hora:</label>
-                <input type="text" formControlName="hora" >      
-            </fieldset>
-            <fieldset>
-                <label>dia de la semana:</label>
-                <input type="text" formControlName="diaDeLaSemana" >      
-            </fieldset>
-            <fieldset>
-                <label>Cantidad Maxima</label>
-                <input type="text" formControlName="cantMax" >      
-            </fieldset>
-            <fieldset>
-                <label>Edad Minima</label>
-                <input type="text" formControlName="edadMin" >      
-            </fieldset>
-            <button>enviar actividad</button>
-        </form>
-    </div>
-}
+  </div>
+  }
+  <div>
+    <center>
+      <p></p>
+      <a href="menu/actividad">Retorno al Menu de Actividades</a>
+      <p></p>
+    </center>
+  </div>
+</body>
 

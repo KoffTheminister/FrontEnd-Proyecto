@@ -1,25 +1,46 @@
-<a href="menu/recluso">ATRAS</a>
+<head>
+  <link rel="stylesheet" href="buscar-reclusos.component.css">
+</head>
 
-<form [formGroup]="recluso" (submit)="validarRecluso()">
+<body>
+  <center>
+    <t><h2>Busqueda de Recluso</h2></t>
+  </center>
+  <form [formGroup]="recluso" (submit)="validarRecluso()">
     <fieldset>
-        <label>codigo de recluso: </label>
-        <input type="text" formControlName="cod_recluso" >      
+      <center>
+        <label>Codigo: </label>
+        <input type="text" formControlName="cod_recluso">
+      </center>
     </fieldset>
     <fieldset>
-        <label>nombre del recluso: </label>
-        <input type="text" formControlName="nombre" >      
+      <center>
+        <label>Nombre: </label>
+        <input type="text" formControlName="nombre">
+      </center>
     </fieldset>
     <fieldset>
-        <label>apellido del recluso: </label>
-        <input type="text" formControlName="apellido" >      
+      <center>
+        <label>Apellido: </label>
+        <input type="text" formControlName="apellido">
+      </center>
     </fieldset>
     <fieldset>
-        <label>dni del recluso: </label>
-        <input type="text" formControlName="dni" >      
+      <center>
+        <label>Dni: </label>
+        <input type="text" formControlName="dni">
+      </center>
     </fieldset>
-    <button>valudar recluso</button>
-</form>
-@if (bandera) {<p>
-    nombre:{{service.recluso.title}} apellido:{{service.recluso.userId}} title:{{service.recluso.completed}}
-</p>}
-@if (bandera=== false) {<p>el recluso no existe</p>}
+    <center><button>Validar</button></center>
+  </form>
+  <center>
+    @if (bandera === true) {<p>
+      nombre:{{service.recluso.title}} apellido:{{service.recluso.userId}} title:{{service.recluso.completed}}
+    </p>}
+    @else {<p>el recluso no existe</p>}
+  </center>
+
+  <center>
+    <a href="menu/recluso">Retorno al Menu de Reclusos</a>
+  </center>
+</body>
