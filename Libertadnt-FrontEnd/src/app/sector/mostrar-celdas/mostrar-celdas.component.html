@@ -1,0 +1,16 @@
+<div>
+    <nav>
+        <p></p>
+        <a href="menu/sector">ATRAS</a>
+        <p></p>
+    </nav>    
+</div>
+<div>
+    <p>capacidad: {{service.celda}}<br>codigo de celda: {{service.celda.id}}<br>descipcion: {{service.celda.name}}</p>
+</div>
+@for (celda of service.celdas; track $index) {
+    <p></p>
+    <p>capacidad: {{celda.email}}<br>codigo de celda: {{celda.id}}<br>descipcion: {{celda.name}}</p>
+    <p></p>
+}
+

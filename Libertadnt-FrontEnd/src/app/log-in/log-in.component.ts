@@ -30,8 +30,7 @@ constructor (private service : UsuarioService ){
   
         id: this.id,
         nombre: this.nombre,
-        administador: this.administador,
-        guardia:this.guardia
+        
         })
 };
 bandUsuario:boolean | undefined

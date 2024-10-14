@@ -1,0 +1,15 @@
+<p>mostrar-ilegal works!</p>
+<div>
+    <p></p>
+    <nav>
+        <a href="usuario/menu-maestro/menu">ATRAS</a>
+    </nav>
+    <p></p>
+</div>
+<div>
+    @for (item of service.ilegales; track $index) {
+        <li>
+           <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>horario: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br>ganancia: {{item.ganancia}}</p>
+        </li>
+    }
+</div>

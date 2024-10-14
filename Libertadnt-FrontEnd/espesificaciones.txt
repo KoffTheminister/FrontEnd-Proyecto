@@ -1,24 +1,23 @@
 //////// menus ////////:
-menu principal => [menu de reclusos, menu de guardias,menu de sentencias,menu actividades, menu sectores]
 
-menu reclusos => [buscar relcuso, modificar cond
-ena de recluso, dar de alta un recluso, mover recluso]
+menu principal => [menu de reclusos, menu de guardias, menu de sentencias, menu actividades, menu sectores]
+
+menu reclusos => [buscar relcuso, modificar condena de recluso, dar de alta un recluso, mover recluso]
  
-menu guardias => [dar alta guardia, buscar guardia, modificar guardias(incluye delete), mostrar guardias]
+menu guardias => [dar alta guardia, buscar guardia, mostrar guardias, finalizar contrato de guardia (se busca a un guardia y se aprieta ok y en el back se pone la fecha fin contrato)]
 
-menu sentencia => [dar de alta sentencia , modificar sentencia ]
+menu sentencia => [dar de alta sentencia, mostrar sentencias por orden de gravedad, borrar sentencia]
 
-menu actividades => [dar de alta actividad(incluyen ilegales), modificar una actividad(incluye delete ),mostrar actividades]
+menu actividades => [dar de alta actividad, modificar una actividad, mostrar actividades]
 
-menu sectores => [muestra todos los sectores => (en cada sector se muestra lo siguiente) => menu turnos, mostrar celdas => si elegis una celda se muestran los reclusos en esta ]
+menu taller => [dar de alta taller, modificar una taller, mostrar talleres por dia de semana, inscripcion de recluso a taller]
 
-menu talleres => [alta tareas, mostrar tareas , inscribirse a tarea ,modificar tarea ]
+menu sectores => [muestra todos los sectores => (en cada sector se muestra lo siguiente) => menu turnos, mostrar celdas => si elegis una celda se muestran los reclusos en esta ]
 
-//////// parte visual ////////:
+//////// parte visual ////////
 https://adminlte.io   
 https://material.angular.io 
-
-//////pendientes&////////:
+//////pendientes////////
 Usuario (guardia-admin)
 
 mandar usuario completo (objeto) para el getone. Valida en front

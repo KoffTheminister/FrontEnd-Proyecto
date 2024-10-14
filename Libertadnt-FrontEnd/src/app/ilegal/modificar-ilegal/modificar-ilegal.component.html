@@ -1,0 +1,69 @@
+<p>modificar-ilegal works!</p>
+<div>
+    <p></p>
+    <nav>
+        <a href="usuario/menu-maestro/menu">ATRAS</a>
+    </nav>
+    <p></p>
+</div>
+<div>
+    @for (item of service.ilegales; track $index) {
+        <li>
+           <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+           <button (click)="modificarIlegal(item)">modificar</button>
+        </li>
+        @if (item.inscripcion) {
+            <form [formGroup]="ilegal" (submit)="enviarModificacion(item)">
+                <fieldset>
+                    <label>nombre de la actividad :</label>
+                    <input type="text" formControlName="nombre" >      
+                </fieldset>
+                <fieldset>
+                    <label>descipcion de la actividad:</label>
+                    <input type="text" formControlName="decripcion" >      
+                </fieldset>
+                <fieldset>
+                    <label>locacion:</label>
+                    <input type="text" formControlName="locacion" >      
+                </fieldset>
+                <fieldset>
+                    <label>hora FIN:</label>
+                    <input type="text" formControlName="horaFin" >      
+                </fieldset>
+                <fieldset>
+                    <label>dia de la semana:</label>
+                    <input type="text" formControlName="diaDeLaSemana" >      
+                </fieldset>
+                <fieldset>
+                    <label>hora INICIO</label>
+                    <input type="text" formControlName="horaIni" >      
+                </fieldset>
+                <fieldset>
+                    <label>Cantidad Minima</label>
+                    <input type="text" formControlName="cantMin" >      
+                </fieldset>
+                <fieldset>
+                    <label>estado</label>
+                    <input type="text" formControlName="cantMin" >      
+                </fieldset>
+                <fieldset>
+                    <label>Cantidad Minima</label>
+                    <input type="text" formControlName="cantMin" >      
+                </fieldset>
+                <fieldset>
+                    <label>presupuesto</label>
+                    <input type="text" formControlName="presupuesto" >      
+                </fieldset>
+                <fieldset>
+                    <label>ganancias</label>
+                    <input type="text" formControlName="ganancias" >      
+                </fieldset>
+                <fieldset>
+                    <label>cantidad maxima</label>
+                    <input type="text" formControlName="cantMax" >      
+                </fieldset>
+                <button>enviar cambios</button>
+            </form>
+        }
+    }
+</div>

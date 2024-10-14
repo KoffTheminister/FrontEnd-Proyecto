@@ -1,0 +1,11 @@
+<div>
+    <p></p>
+    <a href="usuario/:menu">ATRAS</a>
+    <p></p>
+</div>
+<div>
+    @for (item of service.usuarios; track $index) {
+        <p>{{item.userId}} | {{item.id}} | {{item.title}} | {{item.completed}} <br></p>
+    }
+</div>
+<h2>hola</h2>

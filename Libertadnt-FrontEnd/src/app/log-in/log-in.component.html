@@ -2,20 +2,11 @@
 <h1>ingrese el ususario para ingresar</h1>
 <form [formGroup]="usuario" (submit)="validarUsuarios()"   >
     <fieldset>
-        <label> codigo: </label>
+        <label> codigo de usuario: </label>
         <input type="text" formControlName="id" > 
         @if (id.invalid && id.touched) {
             <h2 class="form-error">el codigo es requerido</h2>
         }
-    </fieldset>
-    <fieldset>
-        <label>administacion: </label>
-        <input type="checkbox" formControlName="administador" >
-        <label> guardia: </label>
-        <input type="checkbox" formControlName="guardia" >    
-        @if ((administador.touched||guardia.touched) && (administador.value === true && guardia.value=== true || administador.value === false && guardia.value=== false)) {
-            <h2 class="form-error">el tipo es requerido</h2>
-        }    
     </fieldset>
     <fieldset>
         <label> contrseña:</label>

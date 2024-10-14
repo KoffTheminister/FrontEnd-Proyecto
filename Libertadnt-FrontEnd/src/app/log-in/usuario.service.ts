@@ -9,8 +9,11 @@ export class UsuarioService {
 readonly api_url ='https://jsonplaceholder.typicode.com/todos/'
 //readonly api_url ='tuma/usuarios/id'
 messageService: any;
-constructor(
-  private http: HttpClient) { }  
+usuario:any
+usuarios:any
+usuarioEspecial:any
+constructor(private http: HttpClient) {this.usuarios = [],this.usuario={},this.usuarioEspecial={}
+ }  
 private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }

@@ -1,0 +1,58 @@
+<div>
+    <p></p>
+    <nav>
+        <a href="usuario/menu-maestro/menu">ATRAS</a>
+    </nav>
+    <p></p>
+</div>
+<div>
+    <form [formGroup]="ilegal" (submit)="validarActividad()">
+        <fieldset>
+            <label>nombre de la actividad:</label>
+            <input type="text" formControlName="nombre" >      
+        </fieldset>
+        <fieldset>
+            <label>descipcion de la actividad:</label>
+            <input type="text" formControlName="decripcion" >      
+        </fieldset>
+        <fieldset>
+            <label>locacion:</label>
+            <input type="text" formControlName="locacion" >      
+        </fieldset>
+        <fieldset>
+            <label>horario:</label>
+            <input type="text" formControlName="hora" >      
+        </fieldset>
+        <fieldset>
+            <label>dia de la semana:</label>
+            <input type="text" formControlName="diaDeLaSemana" >      
+        </fieldset>
+        <fieldset>
+            <label>Cantidad Maxima</label>
+            <input type="text" formControlName="cantMax" >      
+        </fieldset>
+        <fieldset>
+            <label>Edad Minima</label>
+            <input type="text" formControlName="edadMin" >      
+        </fieldset>
+        <fieldset>
+            <label>horario de inicio:</label>
+            <input type="text" formControlName="horaIni" >      
+        </fieldset>
+        <fieldset>
+            <label>horario de fin:</label>
+            <input type="text" formControlName="horaFin" >      
+        </fieldset>
+        <fieldset>
+            <label>presupuesto:</label>
+            <input type="text" formControlName="presupuesto" >      
+        </fieldset>
+        <button [disabled]="ilegal.invalid">enviar actividad</button>
+    </form>
+    @if (bandera === false) {<p>actividad ya existente</p>}
+    @else if (bandera === true) {
+        <p></p>
+        <button (click)="enviarActividad()">enviar atividad</button>
+        <p></p>
+    }
+</div>
