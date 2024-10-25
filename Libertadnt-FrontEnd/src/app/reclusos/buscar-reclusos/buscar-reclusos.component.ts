@@ -32,7 +32,7 @@ export class BuscarReclusosComponent {
   bandera: boolean | undefined;
   ;
   validarRecluso(){
-    this.service.getOneRecluso(this.cod_recluso.value).subscribe({next:(data)=>{
+    this.service.getOneRecluso(this.dni.value).subscribe({next:(data)=>{
       this.service.recluso=data
       this.bandera = true
     }

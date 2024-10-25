@@ -40,7 +40,7 @@ export class InscripcionTallerComponent {
     console.log(x)
   }
   validarRecluso(x:any){
-    this.sRecluso.getOneRecluso(this.cod_recluso.value).subscribe({next:(data)=>{
+    this.sRecluso.getOneRecluso(this.dni.value).subscribe({next:(data)=>{
       this.sRecluso.recluso=data
       this.banderaRecluso = true
       this.service.postTaller(x.cod_taller).subscribe({next:(data)=>{console.log(data)},error:(e)=>{console.log(e)}})

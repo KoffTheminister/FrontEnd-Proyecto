@@ -11,7 +11,7 @@ import { ReclusosService } from '../reclusos.service.js';
 })
 export class AltaReclusosComponent {
   constructor (private service : ReclusosService){
-    this.cod_recluso= new FormControl('',[Validators.required,Validators.maxLength(30)]);
+    this.fecha= new FormControl('',[Validators.required,Validators.maxLength(30)]);
     this.nombre= new FormControl('',[Validators.required,]);
     this.apellido= new FormControl('',[Validators.required,]);
     this.dni= new FormControl('',[Validators.required,]);
@@ -20,25 +20,25 @@ export class AltaReclusosComponent {
   
   this.recluso = new FormGroup({
         nombre: this.nombre,
-        cod_recluso: this.cod_recluso,
+        fecha: this.fecha,
         apellido: this.apellido,
         dni: this.dni})
   this.celda =new FormGroup({
     cod_celda:this.cod_celda
   })
-        
+  
 }
   recluso  : FormGroup;
   nombre : FormControl;
   apellido : FormControl;
-  cod_recluso: FormControl;
+  fecha: FormControl;
   cod_celda: FormControl;
   dni: FormControl;
   bandRecluso :boolean | undefined
   bandCelda :boolean | undefined
   celda: FormGroup;
 validarRecluso(){
-this.service.getOneCondena(this.cod_recluso.value).subscribe({
+this.service.getOneCondena(this.dni.value).subscribe({
   next: (data)=>{this.service.recluso=data,this.bandRecluso=false},
   error: (e)=>{console.log(e),this.bandRecluso=true}
 })
@@ -47,6 +47,7 @@ validarCelda(){
 this.service.getOneCelda(this.cod_celda.value).subscribe({
   next: (data)=>{this.service.recluso=data,this.bandCelda=true},
   error: (e)=>{console.log(e),this.bandCelda=false}
+  
 })
 }
 enviarRecluso(){

@@ -11,24 +11,22 @@ import { GuardiasService } from '../guardias.service.js';
 })
 export class BuscarGuardiaComponent {
 constructor(public service : GuardiasService){
-  this.cod_guardia= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-  this.nombre= new FormControl('',[Validators.required,]);
-  this.apellido= new FormControl('',[Validators.required,]);
+  this.dni= new FormControl('',[Validators.required,Validators.maxLength(30)]);
+  
+  
 
 
 this.guardia = new FormGroup({
-      nombre: this.nombre,
-      cod_guardia: this.cod_guardia,
-      apellido: this.apellido,})}
+      
+      dni: this.dni,
+      })}
 
 guardia  : FormGroup;
-nombre : FormControl;
-apellido : FormControl;
-cod_guardia: FormControl;
+dni: FormControl;
 bandera = false;
 buscarGuardia(){
   this.bandera= false;
-  this.service.getOneGuardias(this.cod_guardia.value).subscribe({
+  this.service.getOneGuardias(this.dni.value).subscribe({
     next:(respuesta)=> {
       this.service.guardia = respuesta
       this.bandera = false;
@@ -38,7 +36,7 @@ buscarGuardia(){
     }
   })
   console.log(this.service.guardia)
-  console.log(this.cod_guardia.value)
+  console.log(this.dni.value)
   /*if(this.service.guardias.length === 0){
     this.bandera = true;
   }*/

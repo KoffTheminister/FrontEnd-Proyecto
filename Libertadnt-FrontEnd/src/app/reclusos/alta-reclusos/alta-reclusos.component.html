@@ -1,11 +1,7 @@
 <div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
+    <nav><a href="menu/recluso">ATRAS</a></nav>
 </div>
 <form [formGroup]="recluso" (submit)="validarRecluso()">
-    <fieldset>
-        <label>codigo de recluso: </label>
-        <input type="text" formControlName="cod_recluso" >      
-    </fieldset>
     <fieldset>
         <label>nombre del recluso: </label>
         <input type="text" formControlName="nombre" >      
@@ -18,7 +14,11 @@
         <label>dni del recluso: </label>
         <input type="text" formControlName="dni" >      
     </fieldset>
-    <button>validar recluso</button>
+    <fieldset>
+        <label>fecha: </label>
+        <input type="text" formControlName="fecha" >      
+    </fieldset>
+    <button [disabled]="recluso.invalid">validar recluso</button>
 </form>
 @if (bandRecluso) {
     <form [formGroup]="celda" (submit)="validarCelda()">

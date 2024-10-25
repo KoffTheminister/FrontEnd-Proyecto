@@ -17,7 +17,7 @@ export class ReclusosService {
   celda:any;
   celdas:any
   constructor(private http: HttpClient) {this.reclusos =  [],
-    this.recluso={nombre:'',apellido:'',dni:'',cod_recluso:''},
+    this.recluso={nombre:'',apellido:'',dni:'', fecha_nac:''},
     this.condena={ fecha_ini:'', fecha_fin_estimada:'',fecha_fin_real :'',celda:this.celda},
     this.condenas = []
     this.celda= {}

@@ -11,23 +11,19 @@ import { SentenciasService } from '../sentencias.service.js';
 })
 export class AltaSentenciaComponent {
   constructor (private service : SentenciasService){
-    this.descripcion = new FormControl('',[Validators.required,Validators.maxLength(30)]);
-    this.duracion = new FormControl('',[Validators.required,Validators.maxLength(500)]);
-    this.cantidad_cond = new FormControl('',[Validators.required]);
-    this.fecha_dia = new FormControl('',[Validators.required,Validators.max(31)])
-    this.fecha_mes = new FormControl('',[Validators.required,Validators.max(12)])
-    this.fecha_año = new FormControl('',[Validators.required,Validators.max(9999)])
+    this.descripcion = new FormControl('',[Validators.required,Validators.maxLength(30)]);    
+    this.duracion_dia = new FormControl('',[Validators.required,Validators.max(31)])
+    this.duracion_mes = new FormControl('',[Validators.required,Validators.max(12)])
+    this.duracion_año = new FormControl('',[Validators.required,Validators.max(9999)])
     this.nombre = new FormControl('',[Validators.required])
   
     this.sActual = new FormGroup({
 
       nombre: this.nombre
       ,descripcion: this.descripcion
-      ,duracion: this.duracion
-      ,cantidad_cond: this.cantidad_cond
-      ,fecha_dia: this.fecha_dia
-      ,fecha_mes: this.fecha_mes
-      ,fecha_año: this.fecha_año 
+      ,duracion_dia: this.duracion_dia
+      ,duracion_mes: this.duracion_mes
+      ,duracion_año: this.duracion_año 
       })
   
       
@@ -36,11 +32,9 @@ export class AltaSentenciaComponent {
   sActual: FormGroup;
   nombre: FormControl;
   descripcion: FormControl;
-  duracion: FormControl;
-  cantidad_cond: FormControl;
-  fecha_dia: FormControl
-  fecha_mes: FormControl
-  fecha_año: FormControl
+  duracion_dia: FormControl
+  duracion_mes: FormControl
+  duracion_año: FormControl
   verFomrulario(){
     let x = {cod_sentencia: 123456,
       descripcion: "exeso de facha"
