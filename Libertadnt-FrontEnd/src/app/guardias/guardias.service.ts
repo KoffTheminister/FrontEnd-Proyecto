@@ -17,7 +17,7 @@ export class GuardiasService {
 }
 
 getGuardias() {
-  return this.http.get<any[] | JSON>(this.api_url)
+  return this.http.get<any | JSON>(this.api_url)
 }
 postGuardia(x:any){
   const today = new Date();

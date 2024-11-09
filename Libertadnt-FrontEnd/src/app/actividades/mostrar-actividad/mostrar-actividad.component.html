@@ -4,10 +4,15 @@
     <p></p>
 </div>
 <div>
-    @for (item of service.actividades; track $index) {
-        <li>
-            <p>descripcion: {{item.title}} <br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
-        </li>
-        
+    @if (bandera === undefined) {
+        @for (item of service.actividades; track $index) {
+            <li>
+                <p>descripcion: {{item.title}} <br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+            </li>
+        }
     }
+    @if (bandera === true) {
+        <p> no hay actividades </p>
+    }
+
 </div>

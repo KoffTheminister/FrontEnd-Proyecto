@@ -28,11 +28,32 @@ export class AltaGuardiaComponent {
   nombre : FormControl;
   apellido : FormControl;
   dni: FormControl;
+  bandera: undefined| boolean
  
   enviarGuarida(){
     this.service.guardia=this.guardia.value
     console.log(this.service.guardia)
-    this.service.postGuardia(this.service.guardia).subscribe({next: (data)=> console.log(data),error: (e)=> console.log(e)});
+    this.service.getOneGuardias(this.dni.value).subscribe({
+      next:(data)=>{
+        if(data.status === undefined){
+          console.log("el guardia existe ", data)
+          this.bandera=false
+        }
+      },
+      error:(e)=>{
+        if(e.status === 404){
+          this.bandera = true
+          this.service.postGuardia(this.service.guardia).subscribe({
+            next: (data)=> {
+              if(data.status === undefined){console.log("guarida posteado",data)}
+              
+            },
+            error: (e)=> {
+              if(e.status === undefined){console.log("guarida NO posteado",e)}
+            }})
+        }
+      }})
+      this.guardia.reset()
   }
 
 

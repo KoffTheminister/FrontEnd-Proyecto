@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActividadService } from '../actividad.service.js';
+import { idText } from 'typescript';
 
 @Component({
   selector: 'app-mostrar-actividad',
@@ -10,10 +11,21 @@ import { ActividadService } from '../actividad.service.js';
 })
 export class MostrarActividadComponent implements OnInit{
   constructor (public service : ActividadService){}
+  bandera:undefined|boolean
   ngOnInit(): void {
     this.service.getActividades().subscribe({
-      next:(data)=>{this.service.actividades=data},
-      error:(e)=>{console.log(e)}})
+      next:(data)=>{
+        if(data.status === undefined){
+          this.service.actividades=data
+          console.log("actividades encontradas" , data)
+        }
+      },
+      error:(e)=>{
+        if(e.status === 404){
+          this.bandera = true
+          console.log("actividades no encontradas ",e)
+        }
+      }})
   }
   
 }

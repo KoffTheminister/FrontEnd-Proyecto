@@ -42,13 +42,29 @@ export class AltaActividadComponent {
   bandActividad:boolean | undefined
   validarActividad(){
     this.service.getOneActividad(this.decripcion.value).subscribe({
-      next:(data)=>{this.service.actividades=data 
-        this.bandActividad=false},
-      error:(e)=>{console.log,
-         this.bandActividad = true
-         console.log(this.actividad.value)
-         this.service.postActividad(this.actividad.value).subscribe({next:(data)=>{console.log(data)},error:(e)=>{console.log(e)}})
-         this.actividad.reset()
+      next:(data)=>{
+        if(data.status == undefined){
+          console.log("la actividad fue validada", data.status)
+          this.service.actividad=data 
+          this.bandActividad=false
+          }
+        },
+      error:(e)=>{
+         console.log("actividad no validada")
+         if(e.status === 404){
+          this.bandActividad = true
+          console.log(this.actividad.value)
+          this.service.postActividad(this.service.actividad).subscribe({
+            next:(data)=>{
+              console.log("estatus:",data.status)
+              console.log("actvidad posteada")
+            },
+            error:(e)=>{
+              console.log(e.status)
+              console.log("la actividad NO pudo ser posteada")
+            }})
+          this.actividad.reset() 
+         }
         }})
   }
 }

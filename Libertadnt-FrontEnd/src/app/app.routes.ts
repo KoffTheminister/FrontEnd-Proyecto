@@ -11,7 +11,7 @@ import { AltaGuardiaComponent } from './guardias/alta-guardia/alta-guardia.compo
 import { BuscarGuardiaComponent } from './guardias/buscar-guardia/buscar-guardia.component.js';
 import { ModificarGuardiaComponent } from './guardias/modificar-guardia/modificar-guardia.component.js';
 import { MostrarGuardiaComponent } from './guardias/mostrar-guardia/mostrar-guardia.component.js';
-import { MostrarTurnosComponent } from './guardias/mostrar-turnos/mostrar-turnos.component.js';
+import { MostrarTurnosComponent } from './sector/mostrar-turnos/mostrar-turnos.component.js';
 import { MenuReclusosComponent } from './reclusos/menu-reclusos/menu-reclusos.component.js';
 import { AltaReclusosComponent } from './reclusos/alta-reclusos/alta-reclusos.component.js';
 import { BuscarReclusosComponent } from './reclusos/buscar-reclusos/buscar-reclusos.component.js';
@@ -56,7 +56,6 @@ export const routes: Routes = [
     {path: 'menu/guardia/buscar-guardia', component:BuscarGuardiaComponent },
     {path: 'menu/guardia/modificar-guardia', component: ModificarGuardiaComponent},
     {path: 'menu/guardia/mostrar-guardia', component:MostrarGuardiaComponent },
-    {path: 'menu/guardia/turnos', component: MostrarTurnosComponent},
     //recluso
     {path: 'menu/recluso', component: MenuReclusosComponent},
     {path: 'menu/recluso/alta-recluso', component:AltaReclusosComponent },
@@ -78,6 +77,7 @@ export const routes: Routes = [
     {path: 'menu/sector', component: MenuSectorComponent},
     {path: 'menu/sector/t/:turno', component: MenuTurnosComponent},
     {path: 'menu/sector/c/:sector', component: MostrarCeldasComponent},
+    {path: 'menu/sector/turnos', component: MostrarTurnosComponent},
     //ilegal
     {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent},
     {path: 'usuario/menu-maestro/menu/alta-actvidad', component: AltaIlegalComponent},

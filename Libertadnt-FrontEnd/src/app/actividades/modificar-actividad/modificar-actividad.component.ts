@@ -21,7 +21,7 @@ export class ModificarActividadComponent {
   
   
   this.actividad = new FormGroup({
-        decripcion: this.descripcion,
+        descripcion: this.descripcion,
         cod_actividad: this.cod_actividad,
         locacion: this.locacion,
         hora: this.hora,
@@ -42,13 +42,17 @@ export class ModificarActividadComponent {
   validarActividad(){
     this.service.getOneActividad(this.cod_actividad.value).subscribe({
       next:(data)=>{
-        this.service.actividad=data
-        console.log(data);
-        this.bandActividad=true;
+        if(data.status === undefined ){
+          this.service.actividad=data
+          console.log("actividad existente ",data);
+          this.bandActividad=true;
+        }
       },
       error:(e)=>{
-        console.log(e)
-        this.bandActividad=false
+        if(e.status){
+          console.log("actividad no encontrada ",e)
+          this.bandActividad=false
+        }
       }})
   }
   cambiarActiviada(){
@@ -58,6 +62,9 @@ export class ModificarActividadComponent {
    if(this.hora.value!==''){this.service.actividad.hora=this.hora.value}
    if(this.cantMax.value!==''){this.service.actividad.cantMax=this.cantMax.value}
    if(this.edadMin.value!==''){this.service.actividad.edadMin=this.edadMin.value}
-   this.service.postActividad(this.service.actividad).subscribe({next:(data)=>{console.log("activad enviada")},error:(e)=>{console.log(e)}})
+   this.service.postActividad(this.service.actividad).subscribe({
+    next:(data)=>{console.log("activad posteada ", data)},
+    error:(e)=>{console.log("actividad no posteada ", e)}})
+    this.bandActividad = undefined
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GuardiasService } from '../guardias.service.js';
+import { GuardiasService } from '../../guardias/guardias.service.js';
 
 @Component({
   selector: 'app-mostrar-turnos',

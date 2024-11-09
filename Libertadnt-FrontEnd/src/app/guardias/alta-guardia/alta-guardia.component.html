@@ -1,6 +1,7 @@
 
 
 <h1>ingrese los datos del NUEVO guardia</h1>
+
 <form [formGroup]="guardia"  (submit)="enviarGuarida()" >
     <fieldset>
         <label>nombre:</label>
@@ -18,6 +19,14 @@
     
     <button [disabled]="guardia.invalid">enviar datos</button>
 </form>
+<div>
+    @if(bandera === true){
+        <p>guardia guardado</p>
+    }
+    @if(bandera === false){
+        <p>GUARDIA YA EXISTENTE</p>
+    }
+</div>
 <div>
     <nav><a href="menu/guardia">ATRAS</a></nav>
 </div>

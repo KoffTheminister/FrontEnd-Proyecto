@@ -12,15 +12,9 @@ import { GuardiasService } from '../guardias.service.js';
 export class BuscarGuardiaComponent {
 constructor(public service : GuardiasService){
   this.dni= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-  
-  
-
-
 this.guardia = new FormGroup({
-      
       dni: this.dni,
       })}
-
 guardia  : FormGroup;
 dni: FormControl;
 bandera = false;
@@ -28,19 +22,22 @@ buscarGuardia(){
   this.bandera= false;
   this.service.getOneGuardias(this.dni.value).subscribe({
     next:(respuesta)=> {
-      this.service.guardia = respuesta
-      this.bandera = false;
+      if(respuesta.status === undefined){
+        console.log("guardia encontrado",respuesta)
+        this.service.guardia = respuesta
+        this.bandera = false;
+      }
     },
     error: (e)=>{console.log(e)
-      this.bandera=true
+      if(e.status === 404){
+        console.log("guardia no encontrado", e)
+        this.bandera=true
+      }
     }
   })
   console.log(this.service.guardia)
   console.log(this.dni.value)
-  /*if(this.service.guardias.length === 0){
-    this.bandera = true;
-  }*/
- this.guardia.reset()
+  this.guardia.reset()
 }
 
 
