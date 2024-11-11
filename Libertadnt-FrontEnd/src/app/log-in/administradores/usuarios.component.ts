@@ -12,9 +12,20 @@ export class UsuariosComponent implements OnInit{
   constructor(public service: UsuarioService){}
   ngOnInit(): void {
     this.service.getUsuario().subscribe({
-      next:(data)=>{this.service.usuarios=data},
-      error:(e)=>{console.log(e)}})
+      next:(data)=>{
+        if(data.status === 201){
+          console.log("administradores encontrados ")
+          this.service.usuarios=data
+          this.bandera=true
+        }},
+      error:(e)=>{
+        if(e.status=== 404){
+          console.log("admibnistradores no encontrados")
+          this.bandera= false
+        }
+        }})
     console.log(this.service.usuarios)
   }
+  bandera:boolean|undefined
 
 }

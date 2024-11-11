@@ -3,23 +3,25 @@
 <form [formGroup]="usuario" (submit)="validarUsuarios()"   >
     <fieldset>
         <label> codigo de usuario: </label>
-        <input type="text" formControlName="id" > 
-        @if (id.invalid && id.touched) {
+        <input type="text" formControlName="cod_administrador" > 
+        @if (cod_administrador.invalid && cod_administrador.touched) {
             <h2 class="form-error">el codigo es requerido</h2>
         }
     </fieldset>
     <fieldset>
         <label> contrseña:</label>
-        <input type="text" formControlName="nombre" >
-        @if (nombre.invalid && nombre.touched) {
+        <input type="text" formControlName="contrasenia" >
+        @if (contrasenia.invalid && contrasenia.touched) {
             <h2 class="form-error">el nombre es requerido</h2>
         }        
     </fieldset>
     <button [disabled]="usuario.invalid"  >enviar datos</button>
 </form>
-@if (bandUsuario===true) {
+@if (bandUsuario==='encontrado') {
     <p>usuario valido ingrese al <a [routerLink]="bandera" >menu</a></p>
-}@else if (bandUsuario===false) {
+}@else if (bandUsuario==='no encontrado') {
     <p>usuario invalido</p>
+}@else if (bandUsuario === 'incorrecto') {
+    <p>contraseña incorrecta</p>
 }
 

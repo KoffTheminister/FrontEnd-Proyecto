@@ -12,20 +12,22 @@ messageService: any;
 usuario:any
 usuarios:any
 usuarioEspecial:any
-constructor(private http: HttpClient) {this.usuarios = [],this.usuario={},this.usuarioEspecial={}
+constructor(private http: HttpClient) {
+  this.usuarios = [],
+  this.usuario={ cod_administrador: 0,  contrasenia: ""}
  }  
 private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 getUsuario() {
-  return this.http.get<any | JSON>(this.api_url)
+  return this.http.get<any | JSON>("http://localhost:8080/administradores")
   
 }
 getOneUsuario(id:any) {
-  return this.http.get<any | JSON>(this.api_url+`${id}`)
+  return this.http.get<any | JSON>("http://localhost:8080/administradores/"+`${id}`)
 }
-postUsuario(uActual:any){
-  return this.http.post<any| JSON>(this.api_url,uActual)
+postAdministrador(uActual:any){
+  return this.http.post<any| JSON>("http://localhost:8080/administradores/logInContent-Type: application/",uActual)
 }
 
 }

@@ -10,14 +10,18 @@ export class GuardiasService {
   guardias:any 
   messageService: any;
   constructor(private http: HttpClient) {this.guardias =  [],
-    this.guardia={nombre: ' ', apellido: ' ', dni: ' ', fechaIniContrato: ' '}
+    this.guardia={
+    nombre: "",
+    apellido: "", 
+    dni: 0, 
+    fechaIniContrato: "0"}
    }  
   private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 
 getGuardias() {
-  return this.http.get<any | JSON>(this.api_url)
+  return this.http.get<any | JSON>("http://localhost:8080/guardias")
 }
 postGuardia(x:any){
   const today = new Date();
@@ -26,10 +30,13 @@ postGuardia(x:any){
   let year = today.getFullYear();
   let finalDate = `${year}-${month}-${day}`
   this.guardia.fechaIniContrato = finalDate
-  return this.http.post<any|JSON>(this.api_url,x);
+  return this.http.post<any|JSON>("http://localhost:8080/guardias",x);
+}
+postFinalizarGuardia(id:any){
+  return this.http.get<any | JSON>("http://localhost:8080/guardias/finalizarContratoDe"+`${id}`);
 }
 getOneGuardias(id:number) {
-  return this.http.get<any | JSON>(this.api_url+`${id}`);
+  return this.http.get<any | JSON>("http://localhost:8080/guardias/"+`${id}`);
 }
 }
 

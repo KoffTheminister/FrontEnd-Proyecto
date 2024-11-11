@@ -24,17 +24,17 @@ private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 getSectores() {
-  return this.http.get<any | JSON>(this.api_url)
+  return this.http.get<any | JSON>("http://localhost:8080/sectores")
   
 }
 getOneSector(id:any) {
-  return this.http.get<any | JSON>(this.api_url+`${id}`)
+  return this.http.get<any | JSON>("http://localhost:8080/sectores/"+`${id}`)
 }
 postSector(uActual:any){
   return this.http.post<any| JSON>(this.api_url,uActual)
 }
 getCeldasDSeSector(id:any) {
-  return this.http.get<any | JSON>(this.celda_url+`${id}`)
+  return this.http.get<any | JSON>("http://localhost:8080/sectores/celdas/"+`${id}`)
   
 }
 getOneCeldaDeSector(idSector:any,idCelda:any) {

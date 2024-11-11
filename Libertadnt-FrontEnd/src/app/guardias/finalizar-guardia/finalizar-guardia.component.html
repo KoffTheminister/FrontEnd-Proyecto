@@ -1,0 +1,25 @@
+<div>
+    <p></p>
+    <nav><a href="menu/guardia">ATRAS</a></nav>
+    <p></p>
+</div>
+<div>
+    <form [formGroup]="guardia"  (submit)="validarGuarida()" >
+        <fieldset>
+            <label>dni de guardia: </label>
+            <input type="text" formControlName="dni" >        
+        </fieldset>
+        <button [disabled]="guardia.invalid">enviar datos</button>
+    </form>
+</div>
+<div>
+    @if (bandera === true) {
+        <p>guarida encontrado   <button (click)="finalizarContrato()">finalizar contrato</button></p>
+        @if (fin==="exito") {<p>contrato finalizado</p>}
+        @if (fin==="no encontrado") {<p>erro de servidor</p>}
+        @if (fin==="finalizado") {<p>contrato ya posteriormente finalizado</p>}
+    }
+    @if (bandera=== false) {
+        <h2>guarida no encontrado</h2>
+    }
+</div>
