@@ -38,10 +38,10 @@ getOneCondena(id:number) {
   return this.http.get<any | JSON>(this.api_condena+`${id}`);
 }
 getCondena() {
-  return this.http.get<any[] | JSON>(this.api_condena)
+  return this.http.get<any[] | JSON>("http://localhost:8080/condenas")
 }
 postCondena(x:any|JSON){
-  return this.http.post<any|JSON>(this.api_condena,x);
+  return this.http.post<any|JSON>("http://localhost:8080/condenas",x);
 }
 getOneCelda(id:number) {
   return this.http.get<any | JSON>(this.api_celda+`${id}`);

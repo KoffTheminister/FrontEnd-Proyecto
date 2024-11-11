@@ -47,12 +47,19 @@ putActividad(id:any,uActual:any){
 }
 
 getIlegales() {
-  return this.http.get<any | JSON>(this.ilegal_url)
+  return this.http.get<any | JSON>("http://localhost:8080/actividadesIlegales")
 }
 getOneIlegal(id:any) {
-  return this.http.get<any | JSON>(this.ilegal_url+`${id}`)
+  return this.http.get<any | JSON>("http://localhost:8080/actividadesIlegales/"+`${id}`)
 }
 postIlegal(uActual:any){
-  return this.http.post<any| JSON>(this.ilegal_url,uActual)
+  return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales",uActual)
+}
+putIlegal(id:any,uActual:any){
+  return this.http.put<any| JSON>("http://localhost:8080/actividades/"+`${id}`,uActual)
+}
+InscribirActividadIlegal(recluso:any,actividad:any){
+  let respuesta={cod_act_ilegal:actividad,cod_recluso:recluso}
+  return this.http.post("http://localhost:8080/actividadesIlegales/inscripcion/"+`${recluso}`+"&"+`${actividad}`,respuesta)
 }
 }

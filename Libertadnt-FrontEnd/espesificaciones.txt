@@ -226,3 +226,44 @@ Content-Type: application/json
 }
 
 201 si se logueo bien, 401 si la contra es incorrecta, 404 no encontrado
+
+-------------------------------------------------------------------------------------------------------------------------------
+### get talleres
+GET http://localhost:8080/talleres
+
+### get taller
+GET http://localhost:8080/talleres/5
+
+### POST an actividad
+POST http://localhost:8080/talleres
+Content-Type: application/json
+
+{
+    "nombre": "recoleccion de naranjaeee",
+    "descripcion": "recolectamos naranjas", 
+    "locacion": "arboleda del sector 1", 
+    "diaDeLaSemana": 4, 
+    "horaInicio": 23, 
+    "horaFin": 24,
+    "estado": 1
+}
+201 para creado correctamente, 409 ya hay un taller con ese nombre en ese horario en ese dia de la semana
+
+### inscripcion :cod_taller&:cod_recluso
+POST http://localhost:8080/talleres/inscripcion/1&12
+201 para inscripcion hecha correctamente, 403 para recluso no encontrado, 404 para taller no encontrado, 409  inscripcion hecha anteriormente, 410 taller inhabilitado
+
+### modificar taller
+PUT http://localhost:8080/talleres/5
+Content-Type: application/json
+
+{
+    "nombre": "recoleccion de kiwis radioactivos",
+    "descripcion": "recolectamos kiwis radioactivos", 
+    "locacion": "arboleda del sector 1", 
+    "diaDeLaSemana": 4, 
+    "horaInicio": 23, 
+    "horaFin": 24,
+    "estado": 0
+}
+201 modificacion hecha, 404 no encontrado

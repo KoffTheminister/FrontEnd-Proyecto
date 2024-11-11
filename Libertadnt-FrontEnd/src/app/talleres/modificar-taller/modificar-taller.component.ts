@@ -46,7 +46,11 @@ export class ModificarTallerComponent implements OnInit{
   estado:FormControl;
   ngOnInit(): void {
     this.service.getTalleres().subscribe({
-      next:(data)=>{this.service.talleres=data},
+      next:(data)=>{
+        if(data.status === 201){
+          this.service.talleres=data
+          console.log("talleres obtenidos")
+        }},
       error:(e)=>{console.log(e)}})
   }
   modificarTalller(x:any){
@@ -55,15 +59,24 @@ export class ModificarTallerComponent implements OnInit{
     console.log(x)
   }
   enviarModificacion(x:any){
-    if(this.nombre.value!==''){x.nombre=this.nombre.value}
-    if(this.diaDeLaSemana.value!==''){x.diaDeLaSemana=this.diaDeLaSemana.value}
-    if(this.decripcion.value!==''){x.decripcion=this.decripcion.value}
-    if(this.locacion.value!==''){x.locacion=this.locacion.value}
-    if(this.horaIni.value!==''){x.horaIni=this.horaFin.value}
-    if(this.horaFin.value!==''){x.horaFin=this.horaFin.value}
-    if(this.cantMin.value!==''){x.cantMin=this.cantMin.value}
+    if(this.nombre.value!==''){x.nombre=this.nombre.value}else{x.nombre=undefined}
+    if(this.diaDeLaSemana.value!==''){x.diaDeLaSemana=this.diaDeLaSemana.value}else{x.diaDeLaSemana=undefined}
+    if(this.decripcion.value!==''){x.decripcion=this.decripcion.value}else{x.descipcion=undefined}
+    if(this.locacion.value!==''){x.locacion=this.locacion.value}else{x.locacion=undefined}
+    if(this.horaIni.value!==''){x.horaIni=this.horaFin.value}else{x.horaIni=undefined}
+    if(this.horaFin.value!==''){x.horaFin=this.horaFin.value}else{x.horaFin=undefined}
+    if(this.cantMin.value!==''){x.cantMin=this.cantMin.value}else{x.cantMin=undefined}
     if(this.estado.value=='cancelado'){x.estado=0}
-    this.service.postTaller(x).subscribe({next:(data)=>{console.log(data)},error:(e)=>{console.log(e)}})
+    this.service.putTaller(x).subscribe({
+      next:(data)=>{
+        if(data.status=== 201){
+          console.log(data)
+          console.log("taller modificado")
+        }},
+      error:(e)=>{
+        if(e.status=== 404){
+          console.log("taller no modificado ")
+        }}})
     console.log(x)
     console.log(this.taller.value)
     this.taller.reset()
