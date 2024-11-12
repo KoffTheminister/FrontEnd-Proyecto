@@ -1,44 +1,59 @@
-<div>
-    <p></p>
-    <a href="menu/taller">ATRAS</a>
-    <p></p>
-</div>
-@for (item of service.talleres; track $index) {
+<head>
+  <link rel="stylesheet" href="modificar-taller.component.css">
+</head>
+
+<body>
+  
+   <h2>Modificar Taller</h2>
+  
+
+ 
+    @for (item of service.talleres; track $index) {
     <li>
-       <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
-       <button (click)="modificarTalller(item)">modificar</button>
+      <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+      <button (click)="modificarTalller(item)">Modificar</button>
     </li>
     @if (item.inscripcion) {
-        <form [formGroup]="taller" (submit)="enviarModificacion(item)">
-            <fieldset>
-                <label>nombre del taller:</label>
-                <input type="text" formControlName="nombre" >      
-            </fieldset>
-            <fieldset>
-                <label>descipcion del taller:</label>
-                <input type="text" formControlName="decripcion" >      
-            </fieldset>
-            <fieldset>
-                <label>locacion:</label>
-                <input type="text" formControlName="locacion" >      
-            </fieldset>
-            <fieldset>
-                <label>hora FIN:</label>
-                <input type="text" formControlName="horaFin" >      
-            </fieldset>
-            <fieldset>
-                <label>dia de la semana:</label>
-                <input type="text" formControlName="diaDeLaSemana" >      
-            </fieldset>
-            <fieldset>
-                <label>hora INICIO</label>
-                <input type="text" formControlName="horaIni" >      
-            </fieldset>
-            <fieldset>
-                <label>Cantidad Minima</label>
-                <input type="text" formControlName="cantMin" >      
-            </fieldset>
-            <button>enviar cambios</button>
-        </form>
+    <form [formGroup]="taller" (submit)="enviarModificacion(item)">
+      <fieldset>
+        <label>Nombre:</label>
+        <input type="text" formControlName="nombre">
+      </fieldset>
+      <fieldset>
+        <label>Descipcion:</label>
+        <input type="text" formControlName="decripcion">
+      </fieldset>
+      <fieldset>
+        <label>Locacion:</label>
+        <input type="text" formControlName="locacion">
+      </fieldset>
+      <fieldset>
+        <label>Hora de finalizacion:</label>
+        <input type="text" formControlName="horaFin">
+      </fieldset>
+      <fieldset>
+        <label>Dia de la semana:</label>
+        <input type="text" formControlName="diaDeLaSemana">
+      </fieldset>
+      <fieldset>
+        <label>Hora de inicio</label>
+        <input type="text" formControlName="horaIni">
+      </fieldset>
+      <fieldset>
+        <label>Cantidad Minima</label>
+        <input type="text" formControlName="cantMin">
+      </fieldset>
+      <button>Enviar cambios</button>
+    </form>
     }
-}
+    }
+  
+
+  
+    <div>
+      <p></p>
+      <a href="menu/taller">Retorno al Menu de Talleres</a>
+      <p></p>
+    </div>
+  
+</body>

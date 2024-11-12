@@ -30,5 +30,52 @@
         </li>}
     }
 </ul>
+<head>
+  <link rel="stylesheet" href="mostrar-guardia.component.css">
+</head>
 
+<body>
+  <ul>
+    <li>
+      <h2>Turno mañana</h2>
+    </li>
+    
+      @for (item of service.guardias; track item.userId) {
+      @if (item.userId === 1) {
+    <li>
+      <p>{{item.id}}</p>
+    </li>}
+    }
+    
 
+    <li>
+      <h2>Turno tarde</h2>
+    </li>
+    
+      @for (item of service.guardias; track item.userId) {
+      @if (item.userId === 2) {
+    <li>
+      <p>{{item.id}}</p>
+    </li>}
+    }
+    
+
+    <li>
+      <h2>Turno noche</h2>
+    </li>
+    
+      @for (item of service.guardias; track item.userId) {
+      @if (item.userId === 3) {
+    <li>
+      <p>{{item.id}}</p>
+    </li>}
+    }
+    
+  </ul>
+
+  <div>
+    
+      <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
+    
+  </div>
+</body>

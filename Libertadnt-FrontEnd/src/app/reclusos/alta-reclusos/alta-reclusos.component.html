@@ -5,33 +5,71 @@
     <fieldset>
         <label>nombre del recluso: </label>
         <input type="text" formControlName="nombre" >      
+<head>
+  <link rel="stylesheet" href="alta-reclusos.component.css">
+</head>
+
+<body>
+
+  
+    <h2>Alta Recluso</h2>
+  
+
+  <form [formGroup]="recluso" (submit)="validarRecluso()">
+    <fieldset>
+      
+        <label>Codigo: </label>
+        <input type="text" formControlName="cod_recluso">
+      
     </fieldset>
     <fieldset>
-        <label>apellido del recluso: </label>
-        <input type="text" formControlName="apellido" >      
+      
+        <label>Nombre: </label>
+        <input type="text" formControlName="nombre">
+      
     </fieldset>
     <fieldset>
-        <label>dni del recluso: </label>
-        <input type="text" formControlName="dni" >      
+      
+        <label>Apellido: </label>
+        <input type="text" formControlName="apellido">
+      
+    </fieldset>
+    <fieldset>
+      
+        <label>Dni: </label>
+        <input type="text" formControlName="dni">
+      
     </fieldset>
     <fieldset>
         <label>fecha: </label>
         <input type="text" formControlName="fecha" >      
     </fieldset>
     <button [disabled]="recluso.invalid">validar recluso</button>
-</form>
-@if (bandRecluso) {
+  </form><form>
+    @if (bandRecluso) {
+      <button>Validar Recluso</button>}
+  </form>
+
+  
+    @if (bandRecluso) {
     <form [formGroup]="celda" (submit)="validarCelda()">
-        <fieldset>
-            <label>codigo de celda: </label>
-            <input type="text" formControlName="cod_celda" >      
-        </fieldset>
-        <button>validar recluso</button>
+      <fieldset>
+        <label>codigo de celda: </label>
+        <input type="text" formControlName="cod_celda">
+      </fieldset>
+      <button>Validar Celda</button>
     </form>
     @if (bandCelda) {
-        <button (click)="enviarRecluso()"> enviar datos</button>
+    <button (click)="enviarRecluso()">Enviar</button>
     }@else if(bandCelda=== false){
-        <p>la celda no existe</p>
+    <p>la celda no existe</p>
     }
-}@else if(bandRecluso===false) {<h1>el recluso ya existe</h1>}
+    }@else if(bandRecluso===false) {<h2 class="form-error">El recluso ya existe</h2>}
+  
+  
+    <div>
+      <nav><a href="menu/recluso">Retorno al Menu de Reclusos</a></nav>
+    </div>
+  
 
+</body>

@@ -1,43 +1,69 @@
-<h1>ingrese la/las caracteristicas a modificar</h1>
-<form [formGroup]="sActual"  (submit)="verFomrulario()" >
+<head>
+  <link rel="stylesheet" href="mod-sentencia.component.css">
+</head>
+
+<body>
+  <center>
+    <t><h2>Modificacion de Sentencia</h2></t>
+  </center>
+  <center>
+    <p>ingrese la/las caracteristicas a modificar</p>
+  </center>
+
+  <form [formGroup]="sActual" (submit)="verFomrulario()">
     <fieldset>
-        <label>"codigo de centencia "</label>
-        <input type="text" formControlName="cod_sentencia" > 
+      <center>
+        <label>"Codigo de sentencia"</label>
+        <input type="text" formControlName="cod_sentencia">
+      </center>
+      <center>
         @if (cod_sentencia.invalid && cod_sentencia.touched) {
-            <h2 class="form-error">el codigo es requerido</h2>
+        <h2 class="form-error">el codigo es requerido</h2>
         }
+      </center>
     </fieldset>
     <fieldset>
-        <label>cantidad de condenas </label>
-        <input type="text" formControlName="cantidad_cond" >        
+      <center>
+        <label>Cantidad de condenas</label>
+        <input type="text" formControlName="cantidad_cond">
+      </center>
     </fieldset>
     <fieldset>
-        <label> descripcion</label>
-        <input type="text" formControlName="descripcion" >        
+      <center>
+        <label>Descripcion</label>
+        <input type="text" formControlName="descripcion">
+      </center>
     </fieldset>
     <fieldset>
-        <label>"duracion "</label>
-        <input type="text" formControlName="duracion" >        
+      <center>
+        <label>Duracion</label>
+        <input type="text" formControlName="duracion">
+      </center>
     </fieldset>
     <fieldset>
-        <label>fecha dia</label>
-        <input type="text" formControlName="fecha_dia" >        
+      <center>
+        <label>Dia de la fecha</label>
+        <input type="text" formControlName="fecha_dia">
+      </center>
     </fieldset>
     <fieldset>
-        <label>fecha mes </label>
-        <input type="text" formControlName="fecha_mes" >        
+      <center>
+        <label>Mes de la fecha</label>
+        <input type="text" formControlName="fecha_mes">
+      </center>
     </fieldset>
     <fieldset>
-        <label>fecha año</label>
-        <input type="text" formControlName="fecha_año" >        
+      <center>
+        <label>Anio de la fecha</label>
+        <input type="text" formControlName="fecha_año">
+      </center>
     </fieldset>
-    <button [disabled]="sActual.invalid">enviar modificacion</button>
-</form>
-<div>
-    <nav><a href="menu/sentencia">ATRAS</a></nav>
-</div>
+    <center><button [disabled]="sActual.invalid">Enviar modificacion</button></center>
+  </form>
 
-
-
-
-
+  <center>
+    <div>
+      <nav><a href="menu/sentencia">Retorno al Menu de Sentencia</a></nav>
+    </div>
+  </center>
+</body>

@@ -1,44 +1,74 @@
+<head>
+  <link rel="stylesheet" href="mover-recluso.component.css">
+</head>
 
-<div>
-    <nav><a href="menu/recluso">ATRAS</a></nav>
-</div>
-<form [formGroup]="recluso" (submit)="validarRecluso()">
+<body>
+
+  <center>
+    <t><h2>Validar Recluso</h2></t>
+  </center>
+
+  <form [formGroup]="recluso" (submit)="validarRecluso()">
     <fieldset>
-        <label>codigo de recluso: </label>
-        <input type="text" formControlName="cod_recluso" >      
+      <center>
+        <label>Codigo: </label>
+        <input type="text" formControlName="cod_recluso">
+      </center>
     </fieldset>
     <fieldset>
-        <label>dni del recluso: </label>
-        <input type="text" formControlName="dni" >      
+      <center>
+        <label>Dni: </label>
+        <input type="text" formControlName="dni">
+      </center>
     </fieldset>
-    <button>validar recluso</button>
-</form>
-@if (bandRecluso) {
+    <center><button>Validar</button></center>
+  </form>
+
+  <center>
+    @if (bandRecluso) {
     @for (item of sRecluso.celdas; track $index) {
-        <ul>
-            <li>
-                <p>{{item.id}}</p>
-                <p></p>
-                <p>{{item.userId}}</p>
-            </li>
-        </ul>
+    <ul>
+      <li>
+        <p>{{item.id}}</p>
+        <p></p>
+        <p>{{item.userId}}</p>
+      </li>
+    </ul>
     }
-    <form [formGroup]="celda" (submit)="validarCelda()">
-        <fieldset>
-            <label>codigo de celda: </label>
-            <input type="text" formControlName="cod_celda" >      
-        </fieldset>
-        <fieldset>
-            <label>codigo del sector: </label>
-            <input type="text" formControlName="cod_sector" >      
-        </fieldset>
-        <button>enviar</button>
-    </form>
-    @if (bandCelda === false) {<h1>la celda ingresada no existe </h1>}
-    
-}@else if (bandRecluso === false) {
-    <h1>El relcuso ingresado no existe </h1>
-}
-@if (bandCelda===true) {<h1>los cambios fueron realizados </h1>}
+  </center>
 
+  <center>
+    <t><h2>Validar Celda</h2></t>
+  </center>
 
+  <form [formGroup]="celda" (submit)="validarCelda()">
+    <fieldset>
+      <center>
+        <label>Codigo de celda: </label>
+        <input type="text" formControlName="cod_celda">
+      </center>
+    </fieldset>
+    <fieldset>
+      <center>
+        <label>Codigo de sector: </label>
+        <input type="text" formControlName="cod_sector">
+      </center>
+    </fieldset>
+    <center><button>Enviar</button></center>
+  </form>
+
+  <center>
+    @if (bandCelda === false) {<h2 class="form-error">La celda ingresada no existe </h2>}
+
+    }@else if (bandRecluso === false) {
+    <h2 class="form-error">El relcuso ingresado no existe </h2>
+    }
+    @if (bandCelda===true) {<h2 class="true">Los cambios fueron realizados </h2>}
+  </center>
+
+  <center>
+    <div>
+      <nav><a href="menu/recluso">Retorno al Menu de Reclusos</a></nav>
+    </div>
+  </center>
+</body>

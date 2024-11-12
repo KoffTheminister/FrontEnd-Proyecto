@@ -15,3 +15,30 @@
 
 
 
+<head>
+  <link rel="stylesheet" href="mostrar-guardia.component.css">
+</head>
+
+<body>
+  
+    <h2>Mostrar Guardias</h2>
+  
+
+  
+    <button (click)="traerGuardias()">Buscar a todos los guardias</button>
+  
+
+  
+    <ul>
+      @for (item of service.guardias; track $index) {
+      <li>
+        <p>{{item.title}}</p>
+      </li>
+      }
+    </ul>
+  
+  
+  <div>
+    <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
+  </div>
+</body>

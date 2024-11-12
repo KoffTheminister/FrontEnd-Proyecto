@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="log-in.component.css">
+</head>
 
 <h1>ingrese el ususario para ingresar</h1>
 <form [formGroup]="usuario" (submit)="validarUsuarios()"   >
@@ -23,5 +26,4 @@
     <p>usuario invalido</p>
 }@else if (bandUsuario === 'incorrecto') {
     <p>contraseña incorrecta</p>
-}
-
+}  
