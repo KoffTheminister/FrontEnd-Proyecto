@@ -21,17 +21,11 @@
     <button [disabled]="recluso.invalid">validar recluso</button>
 </form>
 @if (bandRecluso) {
-    <form [formGroup]="celda" (submit)="validarCelda()">
-        <fieldset>
-            <label>codigo de celda: </label>
-            <input type="text" formControlName="cod_celda" >      
-        </fieldset>
-        <button>validar recluso</button>
-    </form>
-    @if (bandCelda) {
-        <button (click)="enviarRecluso()"> enviar datos</button>
-    }@else if(bandCelda=== false){
+ @for (item of sSentencia.sentencias; track $index) {
+    <p>codigo sentencia: {{item.data.cod_sentencia}} <br> nombre sentencia: {{item.data.nombre}}</p>
+    <button >selecionar sentencia</button>
+ }
+}@else if(bandCelda=== false){
         <p>la celda no existe</p>
-    }
-}@else if(bandRecluso===false) {<h1>el recluso ya existe</h1>}
+    }@else if(bandRecluso===false) {<h1>el recluso ya existe</h1>}
 

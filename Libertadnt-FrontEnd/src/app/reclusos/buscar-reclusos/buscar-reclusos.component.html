@@ -8,6 +8,6 @@
     <button>valudar recluso</button>
 </form>
 @if (bandera) {<p>
-    nombre:{{service.recluso.title}} apellido:{{service.recluso.userId}} title:{{service.recluso.completed}}
+    nombre:{{service.recluso.data.nombre}} <br>apellido:{{service.recluso.data.apellido}} <br>fecha de nacimiento:{{service.recluso.data.fecha_nac}}
 </p>}
 @if (bandera=== false) {<p>el recluso no existe</p>}

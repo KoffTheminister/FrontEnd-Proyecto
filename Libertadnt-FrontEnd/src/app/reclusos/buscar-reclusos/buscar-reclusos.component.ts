@@ -32,15 +32,24 @@ export class BuscarReclusosComponent {
   bandera: boolean | undefined;
   ;
   validarRecluso(){
-    this.service.getOneRecluso(this.dni.value).subscribe({next:(data)=>{
-      this.service.recluso=data
-      this.bandera = true
-    }
-    ,error: (e)=>{console.log(e)
+    this.service.getOneRecluso(this.dni.value).subscribe({
+      next:(data)=>{
+        console.log(data)
+        if(data.status === 201){
+          this.service.recluso = data
+          this.bandera = true
+          console.log("fue asignado")
+          console.log(this.service.recluso)
+        }
+      }
+    ,error: (e)=>{
+      if(e.status == 404){
+      console.log(e)
       this.bandera=false
+      }
     }
     });
-  console.log(this.service.recluso);
+  ;
   this.recluso.reset();
   }
   

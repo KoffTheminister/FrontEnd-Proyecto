@@ -17,7 +17,7 @@ export class ReclusosService {
   celda:any;
   celdas:any;
   constructor(private http: HttpClient) {this.reclusos =  [],
-    this.recluso={nombre:'',apellido:'',dni:'', fecha_nac:''},
+    this.recluso={codigo_recluso:'',nombre:'',apellido:'',dni:'', fecha_nac:''},
     this.condena={ fecha_ini:'', fecha_fin_estimada:'',fecha_fin_real :'',celda:this.celda},
     this.condenas = []
     this.celda= {}
@@ -26,10 +26,10 @@ export class ReclusosService {
 
 
 getReclusos() {
-  return this.http.get<any[] | JSON>("http://localhost:8080/reclusos")
+  return this.http.get<any | JSON>("http://localhost:8080/reclusos")
 }
 postRecluso(x:any){
-  return this.http.post<any|JSON>("http://localhost:8080/reclusos",x);
+  return this.http.post<any|JSON>("http://localhost:8080/reclusos",{cod_recluso: 0,cod_sentencia1: 3,cod_sentencia2: 1,cod_sentencia3: 4,});
 }
 getOneRecluso(id:number) {
   return this.http.get<any | JSON>("http://localhost:8080/reclusos/"+`${id}`);
