@@ -26,7 +26,7 @@ export class SentenciasService {
 }
 
 getSentencias() {
-  return this.http.get<any | JSON>(this.api_url)
+  return this.http.get<any | JSON>("http://localhost:8080/sentencias")
   
 }
 getOneSentencias(id:any) {

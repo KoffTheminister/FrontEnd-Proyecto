@@ -18,8 +18,8 @@ export class LogInComponent implements OnChanges {
     
 bander = false;
 constructor (private service : UsuarioService ){
-      this.contrasenia= new FormControl('',[Validators.required])
-      this.cod_administrador= new FormControl('',[Validators.required])
+      this.contrasenia= new FormControl('muajaja',[Validators.required])
+      this.cod_administrador= new FormControl(1,[Validators.required])
       this.usuario = new FormGroup({
   
         cod_administrador: this.cod_administrador,
@@ -41,25 +41,25 @@ validarUsuarios(){
 }
 enviarUsuario(){
   this.service.postAdministrador(this.usuario.value).subscribe({
-    next: (data)=> {
-      console.log("usuario enviado ")
-      if(data.status === 201){
+    next: (response)=> {
+      console.log(response)
+      if(response.status == 201){
         this.bandUsuario='encontrado';
         this.bandera='menu'
         console.log("usuario normal ")
       }
-      if(data.status === 202){
-        this.bandUsuario='encontrado'
-        this.bandera= "menu-maestro"
+      if(response.status == 202){
+        this.bandUsuario ='encontrado'
+        this.bandera = "menu-maestro"
         console.log("usuario especial")
       }
     },
     error: (e)=> {
       console.log("usuario no valido ")
-      if(e.status===404){
+      if(e.status==404){
         this.bandUsuario='no encontrado';
       }
-      if(e.status === 401){
+      if(e.status == 401){
         this.bandUsuario='incorrecto'
       }
     }

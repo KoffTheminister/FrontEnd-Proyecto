@@ -49,7 +49,7 @@ export class BuscarReclusosComponent {
       }
     }
     });
-  console.log(this.service.recluso);
+  ;
   this.recluso.reset();
   }
   

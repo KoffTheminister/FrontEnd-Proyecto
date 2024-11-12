@@ -27,7 +27,11 @@ getOneUsuario(id:any) {
   return this.http.get<any | JSON>("http://localhost:8080/administradores/"+`${id}`)
 }
 postAdministrador(uActual:any){
-  return this.http.post<any| JSON>("http://localhost:8080/administradores/logInContent-Type: application/",uActual)
+  return this.http.post<any| JSON>("http://localhost:8080/administradores/logIn", uActual)
 }
 
 }
+
+
+
+
