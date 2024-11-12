@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-mostrar-sentenias',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './mostrar-sentenias.component.html',
-  styleUrl: './mostrar-sentenias.component.css'
+  templateUrl: './mostrar-sentencias.component.html',
+  styleUrl: './mostrar-sentencias.component.css'
 })
 export class MostrarSenteniasComponent {
  

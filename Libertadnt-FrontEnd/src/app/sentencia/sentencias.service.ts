@@ -11,8 +11,17 @@ export class SentenciasService {
   messageService: any;
   sentencia: any
   constructor(
-  private http: HttpClient) {this.sentencias =  [],this.sentencia = {}}  
-private log(message: string) {
+  private http: HttpClient) {this.sentencias =  [],
+    this.sentencia = {
+      cod_sentencia :0, 
+      nombre :'', 
+      descripcion: '', 
+      duracion_anios:'',  
+      duracion_meses : '',
+      duracion_dias: '',  
+      orden_de_gravedad:''
+    }}  
+  private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 

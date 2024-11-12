@@ -4,31 +4,31 @@
 
 <body>
   <div>
-    <center>
+    
       <h2>
         Verificación
       </h2>
-    </center>
+    
   </div>
   <form [formGroup]="actividad" (submit)="validarActividad()">
     <fieldset>
       <label>Codigo de Actividad:</label>
       <input type="text" formControlName="cod_actividad">
     </fieldset>
-    <center><button>Validar actividad</button></center>
+    <button>Validar actividad</button>
   </form>
   <div>
-    <center>
+    
      <p></p>
       <a href="menu/actividad">Retorno al Menu Principal</a>
      <p></p>
-    </center>
+    
   </div>
 
   @if (bandActividad) {
   <div>
-    <center><h2>Modificación</h2></center>
-    <center><p>(ingese únicamente el valor que desea cambiar)</p></center>
+    <h2>Modificación</h2>
+    <p>(ingese únicamente el valor que desea cambiar)</p>
     <form [formGroup]="actividad" (submit)="cambiarActiviada()">
       <fieldset>
         <label>Descipcion de la actividad:</label>
@@ -54,16 +54,16 @@
         <label>Edad Minima</label>
         <input type="text" formControlName="edadMin">
       </fieldset>
-      <center><button>Enviar</button></center>
+      <button>Enviar</button>
     </form>
   </div>
   }
   <div>
-    <center>
+    
       <p></p>
       <a href="menu/actividad">Retorno al Menu de Actividades</a>
       <p></p>
-    </center>
+    
   </div>
 </body>
 

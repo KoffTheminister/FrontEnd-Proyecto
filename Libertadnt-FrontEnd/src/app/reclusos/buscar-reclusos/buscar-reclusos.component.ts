@@ -32,12 +32,21 @@ export class BuscarReclusosComponent {
   bandera: boolean | undefined;
   ;
   validarRecluso(){
-    this.service.getOneRecluso(this.dni.value).subscribe({next:(data)=>{
-      this.service.recluso=data
-      this.bandera = true
+    this.service.getOneRecluso(this.dni.value).subscribe({
+      next:(data)=>{
+        if(data.status == 201){
+          console.log("recluso existente")
+          this.service.recluso=data
+          this.bandera = true    
+        }
+
     }
-    ,error: (e)=>{console.log(e)
-      this.bandera=false
+    ,error: (e)=>{
+      if(e.status == 404){
+        console.log("recluso no existente")
+        console.log(e)
+        this.bandera=false  
+      }
     }
     });
   console.log(this.service.recluso);

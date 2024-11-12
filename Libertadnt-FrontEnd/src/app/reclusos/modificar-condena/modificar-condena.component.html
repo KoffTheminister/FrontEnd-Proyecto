@@ -1,27 +1,25 @@
-<head>
-  <link rel="stylesheet" href="modificar-condena.component.css">
-</head>
+
 
 <body>
-  <center>
-    <t><h2>Validar Recluso</h2></t>
-  </center>
+  
+    <h2>Validar Recluso</h2>
+  
   <form [formGroup]="recluso" (submit)="validarRecluso()">
     <fieldset>
-      <center>
+      
         <label>Nombre: </label>
         <input type="text" formControlName="nombreR">
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Dni: </label>
         <input type="text" formControlName="dni">
-      </center>
+      
     </fieldset>
-    <center><button>Validar</button></center>
+    <button>Validar</button>
   </form>
-  <center>
+  
     @if (bandRecluso === true) {
     @for (item of sSentencia.sentencias; track $index) {
     <ul>
@@ -32,22 +30,22 @@
       </li>
     </ul>
     }
-  </center>
+  
 
-  <center>
+  
     @for (item of condena; track $index) {
     <p>sentencia : {{item.name}}</p>
     }
-    <center>
+    
       <button (click)="enviarCondena()">enviar condena</button>
-    </center>
+    
     }@else if (bandRecluso === false) {
     <p>El recluso ingresado no existe</p>
     }
-  </center>
-  <center>
+  
+  
     <div>
       <nav><a href="menu/recluso">Retorno al Menu de Reclusos</a></nav>
     </div>
-  </center>
+  
 </body>

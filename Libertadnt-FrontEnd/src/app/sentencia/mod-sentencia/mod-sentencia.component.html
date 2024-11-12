@@ -3,67 +3,67 @@
 </head>
 
 <body>
-  <center>
-    <t><h2>Modificacion de Sentencia</h2></t>
-  </center>
-  <center>
+  
+    <h2>Modificacion de Sentencia</h2>
+  
+  
     <p>ingrese la/las caracteristicas a modificar</p>
-  </center>
+  
 
   <form [formGroup]="sActual" (submit)="verFomrulario()">
     <fieldset>
-      <center>
+      
         <label>"Codigo de sentencia"</label>
         <input type="text" formControlName="cod_sentencia">
-      </center>
-      <center>
+      
+      
         @if (cod_sentencia.invalid && cod_sentencia.touched) {
         <h2 class="form-error">el codigo es requerido</h2>
         }
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Cantidad de condenas</label>
         <input type="text" formControlName="cantidad_cond">
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Descripcion</label>
         <input type="text" formControlName="descripcion">
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Duracion</label>
         <input type="text" formControlName="duracion">
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Dia de la fecha</label>
         <input type="text" formControlName="fecha_dia">
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Mes de la fecha</label>
         <input type="text" formControlName="fecha_mes">
-      </center>
+      
     </fieldset>
     <fieldset>
-      <center>
+      
         <label>Anio de la fecha</label>
         <input type="text" formControlName="fecha_año">
-      </center>
+      
     </fieldset>
-    <center><button [disabled]="sActual.invalid">Enviar modificacion</button></center>
+    <button [disabled]="sActual.invalid">Enviar modificacion</button>
   </form>
 
-  <center>
+  
     <div>
       <nav><a href="menu/sentencia">Retorno al Menu de Sentencia</a></nav>
     </div>
-  </center>
+  
 </body>

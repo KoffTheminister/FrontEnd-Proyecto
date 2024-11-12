@@ -4,18 +4,18 @@
 
 <body>
 
-  <center>
-    <t><h2>Verificación</h2></t>
-  </center>
-  <center>
+  
+    <h2>Verificación</h2>
+  
+  
     <p>(Ingrese el codigo de guardia a modificar)</p>
-  </center>
+  
   <form [formGroup]="guardia" (submit)="validarCodigo()">
     <fieldset>
       <label>Codigo de guardia:</label>
       <input type="text" formControlName="cod_guardia">
     </fieldset>
-    <center><button [disabled]="guardia.invalid">Enviar</button></center>
+    <button [disabled]="guardia.invalid">Enviar</button>
   </form>
 
   @if (guardia.disabled || encontrado === true) {
@@ -28,13 +28,13 @@
       <label>Apellido:</label>
       <input type="text" formControlName="apellido">
     </fieldset>
-    <center><button [disabled]="guardia.invalid">Enviar</button></center>
+    <button [disabled]="guardia.invalid">Enviar</button>
   </form>
   }
 
   <div>
-    <center>
+    
       <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
-    </center>
+    
 </div>
 </body>

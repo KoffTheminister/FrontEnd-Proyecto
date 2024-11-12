@@ -3,11 +3,11 @@
 </head>
 
 <body>
-  <center>
-    <t><h2>Inscripcion a Taller</h2></t>
-  </center>
+  
+    <h2>Inscripcion a Taller</h2>
+ 
 
-  <center>
+  
     @for (item of service.talleres; track $index) {
     <li>
       <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
@@ -28,12 +28,12 @@
     }@else if (banderaRecluso===false) {<p>inscripcion invalida</p>}
     }
     }
-  </center>
-  <center>
+ 
+  
     <div>
       <p></p>
       <a href="menu/taller">Retorno al Menu de Talleres</a>
       <p></p>
     </div>
-  </center>
+ 
 </body>

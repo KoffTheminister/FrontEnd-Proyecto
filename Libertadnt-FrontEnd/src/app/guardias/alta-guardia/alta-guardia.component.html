@@ -4,9 +4,9 @@
 
 <body>
   <div>
-    <center>
-      <t><h1>Nuevo Guardia</h1></t>
-    </center>
+    
+      <h1>Nuevo Guardia</h1>
+    
   </div>
   <form [formGroup]="guardia" (submit)="enviarGuarida()">
     <fieldset>
@@ -26,7 +26,6 @@
       <input type="text" formControlName="fecha_ini">
     </fieldset>
 
-<<<<<<< HEAD
 <h1>ingrese los datos del NUEVO guardia</h1>
 
 <form [formGroup]="guardia"  (submit)="enviarGuarida()" >
@@ -57,13 +56,3 @@
 <div>
     <nav><a href="menu/guardia">ATRAS</a></nav>
 </div>
-=======
-    <center><button [disabled]="guardia.invalid">Enviar</button></center>
-  </form>
-  <div>
-    <center>
-      <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
-    </center>
-  </div>
-</body>
->>>>>>> e64396e125f62cb0d85416fae9964fadc8191930

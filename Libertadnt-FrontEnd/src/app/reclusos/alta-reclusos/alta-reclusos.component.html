@@ -1,13 +1,10 @@
-<div>
-    <nav><a href="menu/recluso">ATRAS</a></nav>
-</div>
-<form [formGroup]="recluso" (submit)="validarRecluso()">
-    <fieldset>
-        <label>nombre del recluso: </label>
-        <input type="text" formControlName="nombre" >      
+
 <head>
   <link rel="stylesheet" href="alta-reclusos.component.css">
 </head>
+<div>
+  <nav><a href="menu/recluso">ATRAS</a></nav>
+</div>
 
 <body>
 
@@ -16,12 +13,6 @@
   
 
   <form [formGroup]="recluso" (submit)="validarRecluso()">
-    <fieldset>
-      
-        <label>Codigo: </label>
-        <input type="text" formControlName="cod_recluso">
-      
-    </fieldset>
     <fieldset>
       
         <label>Nombre: </label>
@@ -41,30 +32,25 @@
       
     </fieldset>
     <fieldset>
-        <label>fecha: </label>
+        <label>fecha de nacimiento: </label>
         <input type="text" formControlName="fecha" >      
     </fieldset>
     <button [disabled]="recluso.invalid">validar recluso</button>
-  </form><form>
-    @if (bandRecluso) {
-      <button>Validar Recluso</button>}
   </form>
 
   
-    @if (bandRecluso) {
-    <form [formGroup]="celda" (submit)="validarCelda()">
-      <fieldset>
-        <label>codigo de celda: </label>
-        <input type="text" formControlName="cod_celda">
-      </fieldset>
-      <button>Validar Celda</button>
-    </form>
-    @if (bandCelda) {
-    <button (click)="enviarRecluso()">Enviar</button>
-    }@else if(bandCelda=== false){
-    <p>la celda no existe</p>
+    @if (bandRecluso== true) {
+      @for (item of sSentencia.sentencias; track $index) {
+        <p>codigo: {{item.data.cod_sentencia}}<br>nombre: {{item.data.nombre}}<br>descripcion: {{item.data.descripcion}}<br></p>
+        <button (click)="agregarSentencia(item.data.cod_sentencia)">AGREGAR</button>
+      }
+      <button (click)="enviarCondena()">ENVIAR</button>
+
     }
-    }@else if(bandRecluso===false) {<h2 class="form-error">El recluso ya existe</h2>}
+    @if (bandRecluso== false) {
+      <p>el recluso no fue dado de alta</p>
+    }
+    
   
   
     <div>

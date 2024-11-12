@@ -3,73 +3,73 @@
 </head>
 
 <body>
-  <center>
-    <t>
+  
+    
       <h2>Alta Taller</h2>
-    </t>
-  </center>
+    
+  
 
   <div>
     <form [formGroup]="taller" (submit)="validarTaller()">
       <fieldset>
-        <center>
+        
           <label>Nombre:</label>
           <input type="text" formControlName="nombre">
-        </center>
+        
       </fieldset>
       <fieldset>
-        <center>
+        
           <label>Descipcion:</label>
           <input type="text" formControlName="decripcion">
-        </center>
+        
       </fieldset>
       <fieldset>
-        <center>
+        
           <label>Locacion:</label>
           <input type="text" formControlName="locacion">
-        </center>
+        
       </fieldset>
       <fieldset>
-        <center>
+        
           <label>Hora de finalizacion:</label>
           <input type="text" formControlName="horaFin">
-        </center>
+        
       </fieldset>
       <fieldset>
-        <center>
+        
           <label>Dia de la semana:</label>
           <input type="text" formControlName="diaDeLaSemana">
-        </center>
+        
       </fieldset>
       <fieldset>
-        <center>
+        
           <label>Hora de inicio</label>
           <input type="text" formControlName="horaIni">
-        </center>
+        
       </fieldset>
       <fieldset>
-        <center>
+        
           <label>Cantidad Minima</label>
           <input type="text" formControlName="cantMin">
-        </center>
+        
       </fieldset>
-      <center><button>Validar</button></center>
+      <button>Validar</button>
     </form>
   </div>
 
-  <center>
+  
     @if (bandTaller === false) {
     <p></p>
-    <center><button (click)="enviarTaller()">Enviar</button></center>
+    <button (click)="enviarTaller()">Enviar</button>
     }
-  </center>
+  
 
-  <center>
+  
     <div>
       <p></p>
       <a href="menu/taller">Retorno al Menu de Talleres</a>
       <p></p>
     </div>
-  </center>
+  
 
 </body>
