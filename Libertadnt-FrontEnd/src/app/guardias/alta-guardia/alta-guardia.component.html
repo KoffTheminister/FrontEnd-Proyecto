@@ -3,29 +3,6 @@
 </head>
 
 <body>
-  <div>
-    
-      <h1>Nuevo Guardia</h1>
-    
-  </div>
-  <form [formGroup]="guardia" (submit)="enviarGuarida()">
-    <fieldset>
-      <label>Nombre:</label>
-      <input type="text" formControlName="nombre">
-    </fieldset>
-    <fieldset>
-      <label>Codigo de guardia: </label>
-      <input type="text" formControlName="cod_guardia">
-    </fieldset>
-    <fieldset>
-      <label>Apellido:</label>
-      <input type="text" formControlName="apellido">
-    </fieldset>
-    <fieldset>
-      <label>Fecha de inicio:</label>
-      <input type="text" formControlName="fecha_ini">
-    </fieldset>
-
 <h1>ingrese los datos del NUEVO guardia</h1>
 
 <form [formGroup]="guardia"  (submit)="enviarGuarida()" >

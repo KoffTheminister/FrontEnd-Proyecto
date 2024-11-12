@@ -22,7 +22,7 @@ buscarGuardia(){
   this.bandera= false;
   this.service.getOneGuardias(this.dni.value).subscribe({
     next:(respuesta)=> {
-      if(respuesta.status === undefined){
+      if(respuesta.status === 201){
         console.log("guardia encontrado",respuesta)
         this.service.guardia = respuesta
         this.bandera = false;

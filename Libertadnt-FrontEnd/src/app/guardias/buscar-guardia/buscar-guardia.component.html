@@ -19,7 +19,10 @@
 
   <div>
     @if (bandera) {<p>el guardia ingresado no existe </p>}
-    @else {<P>{{service.guardia.title}}</P>}
+    @else {<P>nombre: {{service.guardia.data.nombre}}<br>
+      apellido: {{service.guardia.data.apellido}}<br>
+      dni: {{service.guardia.data.dni}}<br>
+      fechaIniContrato: {{service.guardia.data.fechaIniContrato}}<br></P>}
   </div>
 
   <div>

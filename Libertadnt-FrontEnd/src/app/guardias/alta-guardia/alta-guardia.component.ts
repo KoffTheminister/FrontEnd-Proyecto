@@ -35,13 +35,14 @@ export class AltaGuardiaComponent {
     console.log(this.service.guardia)
     this.service.getOneGuardias(this.dni.value).subscribe({
       next:(data)=>{
-        if(data.status === undefined){
+        if(data.status === 201){
           console.log("el guardia existe ", data)
           this.bandera=false
         }
       },
       error:(e)=>{
         if(e.status === 404){
+          console.log("guardia inexistente ")
           this.bandera = true
           this.service.postGuardia(this.service.guardia).subscribe({
             next: (data)=> {
