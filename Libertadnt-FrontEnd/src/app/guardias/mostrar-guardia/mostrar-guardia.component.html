@@ -5,7 +5,10 @@
 <ul>
     @for (item of service.guardias; track $index) {
         <li>
-            <p>{{item.title}}</p>
+            <p>nombre: {{item.data.nombre}}<br>
+              apellido: {{item.data.apellido}}<br>
+              dni: {{item.data.dni}}<br>
+              fechaIniContrato: {{item.data.fechaIniContrato}}<br></p>
         </li>
     }
 </ul>

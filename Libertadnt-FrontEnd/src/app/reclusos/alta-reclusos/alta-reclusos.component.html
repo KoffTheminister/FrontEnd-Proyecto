@@ -33,17 +33,18 @@
     </fieldset>
     <fieldset>
         <label>fecha de nacimiento: </label>
-        <input type="text" formControlName="fecha" >      
+        <input type="text" formControlName="fecha_nac" >      
     </fieldset>
     <button [disabled]="recluso.invalid">validar recluso</button>
   </form>
 
   
-    @if (bandRecluso== true) {
-      @for (item of sSentencia.sentencias; track $index) {
-        <p>codigo: {{item.data.cod_sentencia}}<br>nombre: {{item.data.nombre}}<br>descripcion: {{item.data.descripcion}}<br></p>
-        <button (click)="agregarSentencia(item.data.cod_sentencia)">AGREGAR</button>
+    @if (bandRecluso == true) {
+      @for (item of sSentencia.sentencias.data; track $index) {
+        <p>codigo: {{item.cod_sentencia}}<br>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}}<br></p>
+        <button (click)="agregarSentencia(item.cod_sentencia)">AGREGAR</button><button (click)="quitarSentencia(item.cod_sentencia)">Eliminar</button>
       }
+      <p></p>
       <button (click)="enviarCondena()">ENVIAR</button>
 
     }

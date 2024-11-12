@@ -12,18 +12,19 @@ import { SentenciasService } from '../../sentencia/sentencias.service.js';
 })
 export class AltaReclusosComponent implements OnInit{
   constructor (public service : ReclusosService,public sSentencia : SentenciasService){
-    this.fecha= new FormControl('',[Validators.required,Validators.maxLength(30)]);
+    this.fecha_nac= new FormControl('',[Validators.required,]);
     this.nombre= new FormControl('',[Validators.required,]);
     this.apellido= new FormControl('',[Validators.required,]);
     this.dni= new FormControl('',[Validators.required,]);
-    this.cod_sentencia = new FormControl('',[Validators.required])
+    this.cod_sentencia = new FormControl('',)
   
   
   this.recluso = new FormGroup({
-        nombre: this.nombre,
-        fecha: this.fecha,
-        apellido: this.apellido,
-        dni: this.dni})
+    nombre:this.nombre ,
+    apellido: this.apellido, 
+    dni: this.dni,
+    fecha_nac:this.fecha_nac   
+  })
   this.condena =new FormGroup({
     cod_sentencia:this.cod_sentencia
   })
@@ -32,19 +33,24 @@ export class AltaReclusosComponent implements OnInit{
   ngOnInit(): void {
     this.sSentencia.getSentencias().subscribe({
       next:(data)=>{
-        if(data.status == 201){
-          this.sSentencia.sentencias=data
-          console.log("sentencias obtenidas")
-        }
+        console.log(this.sSentencia.sentencias)
+        this.sSentencia.sentencias=data
+        console.log("sentencias obtenidas")
+        console.log(this.sSentencia.sentencias)
+        
       },
       error:(e)=>{
-        if(e.status == 404){console.log("error en cargar sentencias")}
+        console.log("error en cargar sentencias")
+        
       }})
   }
+
+
+  
   recluso  : FormGroup;
   nombre : FormControl;
   apellido : FormControl;
-  fecha: FormControl;
+  fecha_nac: FormControl;
   cod_sentencia: FormControl;
   dni: FormControl;
   bandRecluso :boolean | undefined
@@ -52,36 +58,42 @@ export class AltaReclusosComponent implements OnInit{
   condena: FormGroup;
   respuesta:any = []
   value:string|undefined
-validarRecluso(){
-this.service.postRecluso(this.dni.value).subscribe({
-  next: (data)=>{
-    console.log("recluso posteado")
-    if(data.status == 201){
-      this.enviarCondena()
-      console.log("recluso creado")
-      this.service.recluso=data
-      this.bandRecluso=true
+  cod_rec: number | undefined
+
+
+validarRecluso(){/// kofler se la come 
+  this.service.postRecluso(this.recluso.value).subscribe({
+    next: (data)=>{
+      console.log("recluso posteado")
+      this.cod_rec = data.data
+      if(data.status == 201){
+        console.log("recluso creado")
+        this.service.recluso = data
+        this.bandRecluso = true
+      }
+      if(data.status == 202 ) {
+        console.log("recluso existente")
+        this.bandRecluso=true      
+      }
     }
-  },
-  error: (e)=>{
-    if(e.status == 203){
-      console.log("recluso tiene condena activa")
-      this.bandRecluso=false}
-    if(e.status == 202 ) {
-      console.log("recluso existente")
-      this.enviarCondena()
-      this.bandRecluso=true      
-    }}
-})
+    ,error: (e)=>{
+      if(e.status == 203){
+        console.log("recluso tiene condena activa")
+        this.bandRecluso=false
+      }
+    }
+  })
 }
+
 enviarCondena(){
   let sentencia_enviar={
-    cod_recluso: this.dni,
+    cod_recluso: this.cod_rec,
     cod_sentencias: this.respuesta
   }
+  console.log(sentencia_enviar)
   this.service.postCondena(sentencia_enviar).subscribe({
     next:(data)=>{
-      if(data.status== 201){
+      if(data.status == 201){
         console.log("condena posteada")
       }
     },
@@ -91,6 +103,7 @@ enviarCondena(){
       }
     }})
 }
+
 agregarSentencia(sent:any){
   if(this.validarSentencia(sent)){
     this.respuesta.push(sent)
