@@ -1,4 +1,4 @@
-<p>incribirse-ilegal works!</p>
+
 <div>
     <p></p>
     <nav>
@@ -6,26 +6,27 @@
     </nav>
     <p></p>
 </div>
-<div>
-    @for (item of service.ilegales; track $index) {
-        <li>
-           <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br> ganancia: {{item.ganancia}}</p>
-           <button (click)="ingresarIsncripcion(item)">inscibirse</button>
-        </li>
-        @if (item.inscripcion) {
-            <p></p>
-            <form [formGroup]="recluso" (submit)="validarRecluso(item)">
-                <fieldset>
-                    <label>dni del recluso: </label>
-                    <input type="text" formControlName="dni" >      
-                </fieldset>
+<body>
+    <div>
+        @for (item of service.ilegales; track $index) {
+            <li>
+               <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br> ganancia: {{item.ganancia}}</p>
+               <button (click)="ingresarIsncripcion(item)">inscibirse</button>
+            </li>
+            @if (item.inscripcion) {
                 <p></p>
-                <button>valudar recluso</button>
-            </form>
-            @if (banderaRecluso===true) {
-                <p>inscripcion valida</p>
-            }@else if (banderaRecluso===false) {<p>inscripcion invalida</p>}
+                <form [formGroup]="recluso" (submit)="validarRecluso(item)">
+                    <fieldset>
+                        <label>codigo del recluso: </label>
+                        <input type="text" formControlName="cod_recluso" >      
+                    </fieldset>
+                    <p></p>
+                    <button>valudar recluso</button>
+                </form>
+                @if (banderaRecluso===true) {
+                    <p>inscripcion valida</p>
+                }@else if (banderaRecluso===false) {<p>inscripcion invalida</p>}
+            }
         }
-    }
-    
-</div>
+    </div>    
+</body>

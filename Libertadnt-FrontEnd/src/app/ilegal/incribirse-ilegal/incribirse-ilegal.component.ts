@@ -12,26 +12,27 @@ import { ActividadService } from '../../actividades/actividad.service.js';
 })
 export class IncribirseIlegalComponent implements OnInit{
   constructor (public service : ActividadService,public sRecluso : ReclusosService){
-    this.cod_recluso= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-    this.nombre= new FormControl('',[Validators.required,]);
-    this.apellido= new FormControl('',[Validators.required,]);
-    this.dni= new FormControl('',[Validators.required,]);
+    this.cod_recluso= new FormControl('',[Validators.required,]);
   this.recluso = new FormGroup({
-        nombre: this.nombre,
-        cod_recluso: this.cod_recluso,
-        apellido: this.apellido,
-        dni: this.dni})    
+        cod_recluso:this.cod_recluso
+      })    
   }
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
-      next:(data)=>{this.service.ilegales=data},
-      error:(e)=>{console.log(e)}})
+      next:(data)=>{
+        if(data.status== 201){
+          console.log("se recuperaron las actividades")
+          this.service.ilegales=data
+        }},
+      error:(e)=>{
+        if(e.status == 404){
+          console.log("no se recuperaron las actividades",e)
+        }
+      }})
   }
   recluso  : FormGroup;
-  nombre : FormControl;
-  apellido : FormControl;
+  
   cod_recluso: FormControl;
-  dni: FormControl;
   banderaRecluso:boolean|undefined
   inscriptos = []
   ingresarIsncripcion(x:any){
@@ -40,10 +41,24 @@ export class IncribirseIlegalComponent implements OnInit{
     console.log(x)
   }
   validarRecluso(x:any){
-    this.sRecluso.getOneRecluso(this.cod_recluso.value).subscribe({next:(data)=>{
-      this.sRecluso.recluso=data
-      this.banderaRecluso = true
-      this.service.postIlegal(x.cod_taller).subscribe({next:(data)=>{console.log(data)},error:(e)=>{console.log(e)}})
+    this.sRecluso.getOneRecluso(this.cod_recluso.value).subscribe({
+      next:(data)=>{
+      if(data.status == 201){
+        this.sRecluso.recluso=data
+        this.banderaRecluso = true
+        this.service.InscribirActividadIlegal(this.sRecluso.recluso.data.cod_recluso,x.cod_taller).subscribe({
+          next:(data)=>{
+            if(data.status == 201){
+              console.log("taller posteado",data)
+
+            }},
+          error:(e)=>{
+            if(e.status== 404){
+              console.log("talller no posteado",e)
+            }
+            }})
+      }
+      
     }
     ,error: (e)=>{console.log(e)
       this.banderaRecluso=false

@@ -26,7 +26,16 @@ constructor(private http: HttpClient) {
     edadMinima: 0, 
     cod_sector: 0}
   this.actividades= []
-  this.ilegal={}
+  this.ilegal={
+    nombre: "",
+    descripcion: "", 
+    locacion: "", 
+    diaDeLaSemana: 0, 
+    horaInicio: 0, 
+    horaFin: 0,
+    estado: 0,
+    cantidad_maxima: 0
+  }
   this.ilegales=[]
 
 }  
@@ -60,6 +69,6 @@ putIlegal(id:any,uActual:any){
 }
 InscribirActividadIlegal(recluso:any,actividad:any){
   let respuesta={cod_act_ilegal:actividad,cod_recluso:recluso}
-  return this.http.post("http://localhost:8080/actividadesIlegales/inscripcion/"+`${recluso}`+"&"+`${actividad}`,respuesta)
+  return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales/inscripcion/"+`${recluso}`+"&"+`${actividad}`,respuesta)
 }
 }

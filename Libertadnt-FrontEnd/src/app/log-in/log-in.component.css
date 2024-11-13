@@ -39,4 +39,11 @@ fieldset {
   padding: 20px 40px;
   width: 300px;
   margin: auto;
+  
+}
+button{
+  margin: auto;
+  justify-content: center;
+  width: 300px;
+  margin-left: 35%;
 }
