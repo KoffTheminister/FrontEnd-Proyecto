@@ -18,8 +18,8 @@ export class LogInComponent implements OnChanges {
     
 bander = false;
 constructor (private service : UsuarioService ){
-      this.contrasenia= new FormControl('muajaja',[Validators.required])
-      this.cod_administrador= new FormControl(1,[Validators.required])
+      this.contrasenia= new FormControl('',[Validators.required])
+      this.cod_administrador= new FormControl(0,[Validators.required])
       this.usuario = new FormGroup({
   
         cod_administrador: this.cod_administrador,

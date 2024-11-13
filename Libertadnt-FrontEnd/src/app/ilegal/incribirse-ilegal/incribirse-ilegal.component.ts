@@ -33,7 +33,7 @@ export class IncribirseIlegalComponent implements OnInit{
   recluso  : FormGroup;
   
   cod_recluso: FormControl;
-  banderaRecluso:boolean|undefined
+  banderaRecluso:string|undefined
   inscriptos = []
   ingresarIsncripcion(x:any){
     if(x.inscripcion!== true ){x.inscripcion = true}
@@ -41,32 +41,31 @@ export class IncribirseIlegalComponent implements OnInit{
     console.log(x)
   }
   validarRecluso(x:any){
-    this.sRecluso.getOneRecluso(this.cod_recluso.value).subscribe({
+    this.service.InscribirActividadIlegal(this.cod_recluso.value,x.cod_taller).subscribe({
       next:(data)=>{
-      if(data.status == 201){
-        this.sRecluso.recluso=data
-        this.banderaRecluso = true
-        this.service.InscribirActividadIlegal(this.sRecluso.recluso.data.cod_recluso,x.cod_taller).subscribe({
-          next:(data)=>{
-            if(data.status == 201){
-              console.log("taller posteado",data)
-
-            }},
-          error:(e)=>{
-            if(e.status== 404){
-              console.log("talller no posteado",e)
-            }
-            }})
+        if(data.status == 201){
+          console.log("recluso inscripto",data)
+          this.banderaRecluso='inscripto'
+        }},
+      error:(e)=>{
+        if(e.status== 404){
+          console.log("recluso no encontrado",e)
+          this.banderaRecluso='no inscripto'
+        }
+        if(e.status == 408){
+          console.log("recluso ya inscripto a actividad")
+          this.banderaRecluso='existente'
+        }
+        if(e.status== 409){
+          console.log("no hay mas lugar")
+          this.banderaRecluso='lleno'
+        }
+        }})
+      console.log(this.sRecluso.recluso);
+      this.recluso.reset();
       }
       
     }
-    ,error: (e)=>{console.log(e)
-      this.banderaRecluso=false
-    }
-    });
-  console.log(this.sRecluso.recluso);
-  this.recluso.reset();
+    
+ 
   
-  }
-  
-}

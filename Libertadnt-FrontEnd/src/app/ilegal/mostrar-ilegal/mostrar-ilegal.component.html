@@ -1,4 +1,4 @@
-<p>mostrar-ilegal works!</p>
+
 <div>
     <p></p>
     <nav>
@@ -7,9 +7,9 @@
     <p></p>
 </div>
 <div>
-    @for (item of service.ilegales; track $index) {
+    @for (item of service.ilegales.data; track $index) {
         <li>
-           <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>horario: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br>ganancia: {{item.ganancia}}</p>
+           <p>nombre:{{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>diaDeLaSemana: {{item.diaDeLaSemana}}<br>horaInicio: {{item.horaInicio}}<br>horaFin: {{item.horaFin}}<br>estado: {{item.estado}}<br>cantidad_maxima: {{item.cantidad_maxima}}</p>
         </li>
     }
 </div>

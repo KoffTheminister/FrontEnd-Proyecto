@@ -8,9 +8,9 @@
 </div>
 <body>
     <div>
-        @for (item of service.ilegales; track $index) {
+        @for (item of service.ilegales.data; track $index) {
             <li>
-               <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br> ganancia: {{item.ganancia}}</p>
+                <p>nombre:{{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>diaDeLaSemana: {{item.diaDeLaSemana}}<br>horaInicio: {{item.horaInicio}}<br>horaFin: {{item.horaFin}}<br>estado: {{item.estado}}<br>cantidad_maxima: {{item.cantidad_maxima}}</p>
                <button (click)="ingresarIsncripcion(item)">inscibirse</button>
             </li>
             @if (item.inscripcion) {
@@ -21,11 +21,13 @@
                         <input type="text" formControlName="cod_recluso" >      
                     </fieldset>
                     <p></p>
-                    <button>valudar recluso</button>
+                    <button>inscribir recluso</button>
                 </form>
-                @if (banderaRecluso===true) {
+                @if (banderaRecluso==='inscripto') {
                     <p>inscripcion valida</p>
-                }@else if (banderaRecluso===false) {<p>inscripcion invalida</p>}
+                }@else if (banderaRecluso==='no inscripto') {<p>recluso no encontrado</p>}
+                @else if (banderaRecluso==='existente') {<p>recluso ya inscripto</p>}
+                @else if (banderaRecluso==='lleno') {<p>no hay cupas para esta actividad</p>}
             }
         }
     </div>    

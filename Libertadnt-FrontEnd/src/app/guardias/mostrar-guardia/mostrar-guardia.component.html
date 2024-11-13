@@ -1,17 +1,3 @@
-<div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
-</div>
-
-<ul>
-    @for (item of service.guardias; track $index) {
-        <li>
-            <p>nombre: {{item.data.nombre}}<br>
-              apellido: {{item.data.apellido}}<br>
-              dni: {{item.data.dni}}<br>
-              fechaIniContrato: {{item.data.fechaIniContrato}}<br></p>
-        </li>
-    }
-</ul>
 <p></p>
 
 
@@ -28,14 +14,17 @@
   
 
   
-    <button (click)="traerGuardias()">Buscar a todos los guardias</button>
+  
   
 
   
     <ul>
-      @for (item of service.guardias; track $index) {
+      @for (item of service.guardias.data; track $index) {
       <li>
-        <p>{{item.title}}</p>
+        <p>nombre: {{item.nombre}}<br>
+          apellido: {{item.apellido}}<br>
+          dni: {{item.dni}}<br>
+          fechaIniContrato: {{item.fecha_ini_contrato}}<br></p>
       </li>
       }
     </ul>

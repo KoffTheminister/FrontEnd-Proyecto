@@ -19,7 +19,7 @@ export class MostrarGuardiaComponent implements OnInit {
   traerGuardias(){
     this.service.getGuardias().subscribe({
       next: (data)=> {
-        if(data.status === 201 || data.status === undefined){
+        if(data.status == 201 || data.status == undefined){
           console.log("guardias cargados", data)
           this.service.guardias = data}
       },

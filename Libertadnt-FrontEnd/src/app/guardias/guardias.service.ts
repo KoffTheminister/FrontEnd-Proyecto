@@ -32,8 +32,8 @@ postGuardia(x:any){
   this.guardia.fechaIniContrato = finalDate
   return this.http.post<any|JSON>("http://localhost:8080/guardias",x);
 }
-postFinalizarGuardia(id:any){
-  return this.http.get<any | JSON>("http://localhost:8080/guardias/finalizarContratoDe"+`${id}`);
+putFinalizarGuardia(x:any){
+  return this.http.put<any | JSON>("http://localhost:8080/guardias/finalizarContrato",x);
 }
 getOneGuardias(id:number) {
   return this.http.get<any | JSON>("http://localhost:8080/guardias/"+`${id}`);
