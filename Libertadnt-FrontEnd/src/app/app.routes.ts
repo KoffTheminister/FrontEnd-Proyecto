@@ -11,7 +11,7 @@ import { AltaGuardiaComponent } from './guardias/alta-guardia/alta-guardia.compo
 import { BuscarGuardiaComponent } from './guardias/buscar-guardia/buscar-guardia.component.js';
 import { ModificarGuardiaComponent } from './guardias/modificar-guardia/modificar-guardia.component.js';
 import { MostrarGuardiaComponent } from './guardias/mostrar-guardia/mostrar-guardia.component.js';
-import { MostrarTurnosComponent } from './sector/mostrar-turnos/mostrar-turnos.component.js';
+
 import { MenuReclusosComponent } from './reclusos/menu-reclusos/menu-reclusos.component.js';
 import { AltaReclusosComponent } from './reclusos/alta-reclusos/alta-reclusos.component.js';
 import { BuscarReclusosComponent } from './reclusos/buscar-reclusos/buscar-reclusos.component.js';
@@ -39,6 +39,7 @@ import { UsuariosComponent } from './log-in/administradores/usuarios.component.j
 import { LiberarReclusoComponent } from './reclusos/liberar-recluso/liberar-recluso.component.js';
 import { FinalizarGuardiaComponent } from './guardias/finalizar-guardia/finalizar-guardia.component.js';
 import { MostrarSenteniasComponent } from './sentencia/mostrar-sentencias/mostrar-sentenias.component.js';
+import { MostrarTurnosComponent } from './sector/crear-turnos/mostrar-turnos.component.js';
 
 export const routes: Routes = [
     //log in
