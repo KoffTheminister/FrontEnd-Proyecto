@@ -35,7 +35,7 @@ export class FinalizarGuardiaComponent {
       }})
   }
   finalizarContrato(){
-    this.service.postFinalizarGuardia(this.dni.value).subscribe({
+    this.service.putFinalizarGuardia(this.dni.value).subscribe({
       next:(data)=>{
         if(data.status===201){
           console.log("contrato finalizado")

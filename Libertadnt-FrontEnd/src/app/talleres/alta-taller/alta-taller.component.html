@@ -20,7 +20,7 @@
       <fieldset>
         
           <label>Descipcion:</label>
-          <input type="text" formControlName="decripcion">
+          <input type="text" formControlName="descripcion">
         
       </fieldset>
       <fieldset>
@@ -44,27 +44,20 @@
       <fieldset>
         
           <label>Hora de inicio</label>
-          <input type="text" formControlName="horaIni">
+          <input type="text" formControlName="horaInicio">
         
       </fieldset>
-      <fieldset>
-        
-          <label>Cantidad Minima</label>
-          <input type="text" formControlName="cantMin">
-        
-      </fieldset>
-      <button>Validar</button>
+      <button>ENVIAR ACTIVIDAD</button>
     </form>
   </div>
-
-  
-    @if (bandTaller === false) {
-    <p></p>
-    <button (click)="enviarTaller()">Enviar</button>
-    }
-  
-
-  
+    <div>
+      @if (bandTaller== true) {
+        <p> taller guardado con exito </p>
+      }
+      @if (bandTaller== false) {
+        <p>taller no guardado, interferencia con el horario y el dia </p>
+      }
+    </div>  
     <div>
       <p></p>
       <a href="menu/taller">Retorno al Menu de Talleres</a>

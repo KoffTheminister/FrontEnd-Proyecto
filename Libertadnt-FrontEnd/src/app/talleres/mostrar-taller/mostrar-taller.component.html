@@ -9,7 +9,7 @@
 
   
     <div>
-      @for (item of service.talleres; track $index) {
+      @for (item of service.talleres.data; track $index) {
       <li>
         <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
       </li>
