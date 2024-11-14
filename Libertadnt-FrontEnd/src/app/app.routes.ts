@@ -79,10 +79,10 @@ export const routes: Routes = [
     {path: 'menu/taller/modificar-taller', component: ModificarTallerComponent},
     {path: 'menu/taller/mostrar-taller', component: MostrarTallerComponent},
     //sector
-    {path: 'menu/sector', component: MenuSectorComponent},
-    {path: 'menu/sector/t/:turno', component: MenuTurnosComponent},
-    {path: 'menu/sector/c/:sector', component: MostrarCeldasComponent},
-    {path: 'menu/sector/turnos', component: MostrarTurnosComponent},
+    {path: 'usuario/menu/sector', component: MenuSectorComponent},
+    {path: 'usuario/menu/sector/t/:sector', component: MenuTurnosComponent},
+    {path: 'usuario/menu/sector/c/:sector', component: MostrarCeldasComponent},
+    {path: 'usuario/menu/sector/turnos', component: MostrarTurnosComponent},
     //ilegal
     {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent},
     {path: 'usuario/menu-maestro/menu/alta-actvidad', component: AltaIlegalComponent},

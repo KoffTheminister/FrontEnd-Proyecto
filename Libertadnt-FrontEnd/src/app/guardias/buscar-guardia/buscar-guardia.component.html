@@ -18,11 +18,11 @@
   </form>
 
   <div>
-    @if (bandera) {<p>el guardia ingresado no existe </p>}
-    @else {<P>nombre: {{service.guardia.data.nombre}}<br>
+    @if (bandera=== true) {<p>el guardia ingresado no existe </p>}
+    @else if(bandera === false){<P>nombre: {{service.guardia.data.nombre}}<br>
       apellido: {{service.guardia.data.apellido}}<br>
       dni: {{service.guardia.data.dni}}<br>
-      fechaIniContrato: {{service.guardia.data.fechaIniContrato}}<br></P>}
+      fecha inicio de Contrato: {{service.guardia.data.fecha_ini_contrato}}<br></P>}
   </div>
 
   <div>

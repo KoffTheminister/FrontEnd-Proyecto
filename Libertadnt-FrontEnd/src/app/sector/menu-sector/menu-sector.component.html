@@ -5,18 +5,17 @@
         <p></p>
     </nav>    
 </div>
-<div>
-    <a href="menu/sector/turnos"> ----- VER TURNOS -----</a>
-</div>
+
 
 
 
 <div>
-    @for (sector of service.sectores; track $index) {
+    @for (sector of service.sectores.data; track $index) {
         <p></p>
-        <p>nombre: {{sector.title}}<br>descripcion: {{sector.body}}<br>codigo de sector: {{sector.id}}<br></p>
+        <p>nombre: {{sector.nombre}}<br>descripcion: {{sector.descripcion}}<br>codigo de sector: {{sector.cod_sector}}<br></p>
         <p></p>
-        <button [routerLink]="direccion" (click)="verCeldas(sector.id)">ver celdas</button>
+        <button [routerLink]="direccion" (click)="verCeldas(sector.cod_sector)">ver celdas</button>
+        <button [routerLink]="direccion" (click)="verTurnos(sector.cod_sector)">ver turnos</button>
     }
 </div>
 

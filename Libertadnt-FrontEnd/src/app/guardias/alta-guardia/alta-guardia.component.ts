@@ -28,30 +28,27 @@ export class AltaGuardiaComponent {
   nombre : FormControl;
   apellido : FormControl;
   dni: FormControl;
-  bandera: undefined| boolean
+  bandera: undefined| string
  
   enviarGuarida(){
+    this.bandera=undefined
     this.service.guardia=this.guardia.value
     console.log(this.service.guardia)
-    this.service.getOneGuardias(this.dni.value).subscribe({
+    this.service.postGuardia(this.service.guardia).subscribe({
       next:(data)=>{
         if(data.status === 201){
-          console.log("el guardia existe ", data)
-          this.bandera=false
+          console.log("el guardia se creo ", data)
+          this.bandera='creado'
+        }
+        if(data.status == 202){
+          this.bandera='existente'
+          console.log("el guardia ya existe y se reanuda el contrato")
         }
       },
       error:(e)=>{
         if(e.status === 404){
-          console.log("guardia inexistente ")
-          this.bandera = true
-          this.service.postGuardia(this.service.guardia).subscribe({
-            next: (data)=> {
-              if(data.status === undefined){console.log("guarida posteado",data)}
-              
-            },
-            error: (e)=> {
-              if(e.status === undefined){console.log("guarida NO posteado",e)}
-            }})
+          console.log("guardia y esta activo  ")
+          this.bandera = 'activo'
         }
       }})
       this.guardia.reset()

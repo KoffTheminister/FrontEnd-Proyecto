@@ -11,44 +11,54 @@ import { TallerService } from '../taller.service.js';
 })
 export class AltaTallerComponent {
   constructor (private service : TallerService){
-    this.estado= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-    this.decripcion= new FormControl('',[Validators.required,]);
+    this.estado= new FormControl(1,[Validators.required,Validators.maxLength(30)]);
+    this.descripcion= new FormControl('',[Validators.required,]);
     this.nombre= new FormControl('',[Validators.required,]);
     this.locacion= new FormControl('',[Validators.required,]);
-    this.hora= new FormControl('',[Validators.required,]);
-    this.diaDeLaSemana = new FormControl('',[Validators.required])
-    this.cantMax= new FormControl('',[Validators.required,]);
-    this.cantMin= new FormControl('',[Validators.required,]);
+    this.dia_de_la_semana = new FormControl('',[Validators.required])
+    this.hora_inicio= new FormControl('',[Validators.required,]);
+    this.hora_fin= new FormControl('',[Validators.required,]);
   
   this.taller = new FormGroup({
         nombre:this.nombre,
-        decripcion: this.decripcion,
+        descripcion: this.descripcion,
         estado: this.estado,
         locacion: this.locacion,
-        hora: this.hora,
-        diaDeLaSemana:this.diaDeLaSemana,
-        cantMax:this.cantMax,
-        cantMin:this.cantMin,
+        dia_de_la_semana:this.dia_de_la_semana,
+        hora_inicio:this.hora_inicio,
+        hora_fin:this.hora_fin
         
       })      
 }
   taller  : FormGroup;
   nombre:FormControl;
-  decripcion : FormControl;
+  descripcion : FormControl;
   locacion : FormControl;
   estado: FormControl;
-  diaDeLaSemana: FormControl;
-  hora: FormControl;
-  cantMax: FormControl;
-  cantMin: FormControl;
-  bandTaller:boolean | undefined
-  validarTaller(){
-    this.bandTaller=this.service.validarTaller(this.taller.value)
-  }
+  dia_de_la_semana: FormControl;
+  hora_inicio: FormControl;
+  hora_fin: FormControl;
+  bandTaller:string | undefined
+ 
   enviarTaller(){
+    console.log(this.taller.value)
     this.service.postTaller(this.taller.value).subscribe({
-      next:(data)=>{console.log(data)},
-      error:(e)=>{console.log(e)}})
+      next:(data)=>{
+        if(data.status == 201){
+          console.log('status: ',data.status)
+          console.log("el taller fue posteado",data)
+          this.bandTaller= 'exito'
+        }},
+      error:(e)=>{
+        console.log('status: ',e.status)
+        if(e.status== 409){
+          console.log("coincide el dia y la hora",e)
+          this.bandTaller='interferencia'
+        }
+        if(e.status== 400){
+          console.log("falta atributos")
+        }
+      }})
     this.taller.reset()
   }
 

@@ -31,10 +31,14 @@ getOneSector(id:any) {
   return this.http.get<any | JSON>("http://localhost:8080/sectores/"+`${id}`)
 }
 postSector(uActual:any){
-  return this.http.post<any| JSON>(this.api_url,uActual)
+  return this.http.post<any| JSON>("http://localhost:8080/sectores",uActual)
 }
 getCeldasDSeSector(id:any) {
   return this.http.get<any | JSON>("http://localhost:8080/sectores/celdas/"+`${id}`)
+  
+}
+getTuenosDSeSector(cod_sector:any) {
+  return this.http.get<any | JSON>("http://localhost:8080/turnos/"+`${cod_sector}`)
   
 }
 getOneCeldaDeSector(idSector:any,idCelda:any) {

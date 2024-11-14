@@ -21,7 +21,7 @@ export class IncribirseIlegalComponent implements OnInit{
     this.service.getIlegales().subscribe({
       next:(data)=>{
         if(data.status== 201){
-          console.log("se recuperaron las actividades")
+          console.log("se recuperaron las actividades",data)
           this.service.ilegales=data
         }},
       error:(e)=>{
@@ -41,27 +41,43 @@ export class IncribirseIlegalComponent implements OnInit{
     console.log(x)
   }
   validarRecluso(x:any){
-    this.service.InscribirActividadIlegal(this.cod_recluso.value,x.cod_taller).subscribe({
+    console.log("codigo de actividad" ,x)
+    console.log("codigo de recluso" ,this.cod_recluso.value)
+    this.service.InscribirActividadIlegal(x.cod_act_ilegal,this.cod_recluso.value).subscribe({
       next:(data)=>{
+        console.log("data",data.status);
         if(data.status == 201){
-          console.log("recluso inscripto",data)
+          console.log("recluso inscripto ",data.status)
           this.banderaRecluso='inscripto'
-        }},
-      error:(e)=>{
-        if(e.status== 404){
-          console.log("recluso no encontrado",e)
-          this.banderaRecluso='no inscripto'
         }
-        if(e.status == 408){
-          console.log("recluso ya inscripto a actividad")
-          this.banderaRecluso='existente'
+        if(data.status== 405){
+          console.log("actividad no encontrada ",data.status)
+          this.banderaRecluso='no encontrada'
         }
-        if(e.status== 409){
-          console.log("no hay mas lugar")
+        if(data.status == 409){
+          console.log("no hay mas lugar", data.status)
           this.banderaRecluso='lleno'
         }
+        if(data.status == 408){
+          console.log("recluso ya inscripto", data.status)
+          this.banderaRecluso='existente'
+        }
+      },
+      error:(e)=>{
+        console.log("error ", e.status)
+        if(e.status == 404){
+          console.log("recluso no encontrado ",e.status)
+          this.banderaRecluso='no inscripto'
+        }
+        if(e.status == 409){
+          console.log("no hay mas lugar", e.status)
+          this.banderaRecluso='lleno'
+        }
+        if(e.status== 405){
+          console.log("actividad no encontrada ",e.status)
+          this.banderaRecluso='no encontrada'
+        }
         }})
-      console.log(this.sRecluso.recluso);
       this.recluso.reset();
       }
       

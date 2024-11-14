@@ -3,14 +3,19 @@
 </head>
 
 <body>
+  <div>
+    <p></p>
+    <a href="menu/taller">Retorno al Menu de Talleres</a>
+    <p></p>
+  </div>
   
    <h2>Modificar Taller</h2>
   
 
  
-    @for (item of service.talleres; track $index) {
+    @for (item of service.talleres.data; track $index) {
     <li>
-      <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+      <p>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>dia de la semana {{item.dia_de_la_semana}}<br>hora inicio: {{item.hora_inicio}}<br>hora de fin: {{item.hora_fin}}</p>
       <button (click)="modificarTalller(item)">Modificar</button>
     </li>
     @if (item.inscripcion) {
@@ -20,7 +25,7 @@
         <input type="text" formControlName="nombre">
       </fieldset>
       <fieldset>
-        <label>Descipcion:</label>
+        <label>Descripcion:</label>
         <input type="text" formControlName="decripcion">
       </fieldset>
       <fieldset>
@@ -28,32 +33,38 @@
         <input type="text" formControlName="locacion">
       </fieldset>
       <fieldset>
-        <label>Hora de finalizacion:</label>
-        <input type="text" formControlName="horaFin">
-      </fieldset>
-      <fieldset>
         <label>Dia de la semana:</label>
-        <input type="text" formControlName="diaDeLaSemana">
+        <input type="text" formControlName="dia_de_la_semana">
       </fieldset>
       <fieldset>
         <label>Hora de inicio</label>
-        <input type="text" formControlName="horaIni">
+        <input type="text" formControlName="hora_inicio">
       </fieldset>
       <fieldset>
-        <label>Cantidad Minima</label>
-        <input type="text" formControlName="cantMin">
+        <label>Hora de finalizacion:</label>
+        <input type="text" formControlName="hora_fin">
       </fieldset>
-      <button>Enviar cambios</button>
+      <fieldset>
+        <label>anular taller</label>
+        <input type="checkbox" formControlName="estado">
+      </fieldset>
+      <button>registrar cambios</button>
     </form>
+    @if(bandera == 'modificado'){
+      <p></p>
+      <p>taller modificado con  exito</p>
+      <p></p>
+    }
+    @if(bandera == 'no modificado'){
+      <p></p>
+      <p>taller NO modificado/p>
+      <p></p>
+    }
     }
     }
   
 
   
-    <div>
-      <p></p>
-      <a href="menu/taller">Retorno al Menu de Talleres</a>
-      <p></p>
-    </div>
+  
   
 </body>

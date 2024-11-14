@@ -13,25 +13,22 @@ import { ReclusosService } from '../../reclusos/reclusos.service.js';
 export class InscripcionTallerComponent {
   constructor (public service : TallerService,public sRecluso : ReclusosService){
     this.cod_recluso= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-    this.nombre= new FormControl('',[Validators.required,]);
-    this.apellido= new FormControl('',[Validators.required,]);
-    this.dni= new FormControl('',[Validators.required,]);
   this.recluso = new FormGroup({
-        nombre: this.nombre,
         cod_recluso: this.cod_recluso,
-        apellido: this.apellido,
-        dni: this.dni})    
+      })    
   }
   recluso  : FormGroup;
-  nombre : FormControl;
-  apellido : FormControl;
   cod_recluso: FormControl;
-  dni: FormControl;
-  banderaRecluso:boolean|undefined
+  banderaRecluso:string|undefined
 
   ngOnInit(): void {
     this.service.getTalleres().subscribe({
-      next:(data)=>{this.service.talleres=data},
+      next:(data)=>{
+        if(data.status == 201){
+          console.log
+          this.service.talleres=data
+        }
+      },
       error:(e)=>{console.log(e)}})
   }
   ingresarIsncripcion(x:any){
@@ -40,17 +37,47 @@ export class InscripcionTallerComponent {
     console.log(x)
   }
   validarRecluso(x:any){
-    this.sRecluso.getOneRecluso(this.dni.value).subscribe({next:(data)=>{
-      this.sRecluso.recluso=data
-      this.banderaRecluso = true
-      this.service.postTaller(x.cod_taller).subscribe({next:(data)=>{console.log(data)},error:(e)=>{console.log(e)}})
-    }
-    ,error: (e)=>{console.log(e)
-      this.banderaRecluso=false
-    }
-    });
-  console.log(this.sRecluso.recluso);
-  this.recluso.reset();
-  
-  }
+    console.log("codigo de actividad" ,x)
+    console.log("codigo de recluso" ,this.cod_recluso.value)
+    this.service.postIncripcionTaller(x.cod_taller,this.cod_recluso.value).subscribe({
+      next:(data)=>{
+        console.log("data",data.status);
+        if(data.status == 201){
+          console.log("recluso inscripto ",data.status)
+          this.banderaRecluso='inscripto'
+        }
+        if(data.status== 403){
+          console.log("taller no encontrada ",data.status)
+          this.banderaRecluso='no encontrada'
+        }
+        if(data.status == 410){
+          console.log("estado ocupado", data.status)
+          this.banderaRecluso='ocupado'
+        }
+        if(data.status == 409){
+          console.log("recluso ya inscripto", data.status)
+          this.banderaRecluso='existente'
+        }
+      },
+      error:(e)=>{
+        console.log("error ", e.status)
+        if(e.status == 404){
+          console.log("recluso no encontrado ",e.status)
+          this.banderaRecluso='no inscripto'
+        }
+        if(e.status == 410){
+         console.log("estado ocupado", e.status)
+          this.banderaRecluso='ocupado'
+        }
+        if(e.status== 403){
+          console.log("taller no encontrada ",e.status)
+          this.banderaRecluso='no encontrada'
+        }
+        if(e.status == 409){
+          console.log("recluso ya inscripto", e.status)
+          this.banderaRecluso='existente'
+        }
+      }})
+      this.recluso.reset();
+      }
 }

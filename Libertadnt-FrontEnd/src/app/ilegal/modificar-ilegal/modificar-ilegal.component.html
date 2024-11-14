@@ -1,4 +1,4 @@
-<p>modificar-ilegal works!</p>
+
 <div>
     <p></p>
     <nav>
@@ -7,9 +7,9 @@
     <p></p>
 </div>
 <div>
-    @for (item of service.ilegales; track $index) {
+    @for (item of service.ilegales.data; track $index) {
         <li>
-           <p>nombre:{{item}}<br>descripcion: {{item.title}} <br>cantidad:{{item}}<br>locacion: {{item}}<br>dia de la semana {{item}}<br>hora: {{item.id}}<br>codigo: {{item.userId}}<br>estado: {{item.completed}}<br></p>
+            <p>nombre:{{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>dia de la semana: {{item.dia_de_la_semana}}<br>hora de inicio: {{item.hora_inicio}}<br>hora de fin: {{item.hora_fin}}<br>cantidad maxima: {{item.cantidad_maxima}}</p>
            <button (click)="modificarIlegal(item)">modificar</button>
         </li>
         @if (item.inscripcion) {
@@ -27,43 +27,46 @@
                     <input type="text" formControlName="locacion" >      
                 </fieldset>
                 <fieldset>
-                    <label>hora FIN:</label>
-                    <input type="text" formControlName="horaFin" >      
+                    <label>hora fin:</label>
+                    <input type="text" formControlName="hora_fin" >      
                 </fieldset>
                 <fieldset>
                     <label>dia de la semana:</label>
-                    <input type="text" formControlName="diaDeLaSemana" >      
+                    <input type="text" formControlName="dia_de_la_semana" >      
                 </fieldset>
                 <fieldset>
-                    <label>hora INICIO</label>
-                    <input type="text" formControlName="horaIni" >      
+                    <label>hora inicio</label>
+                    <input type="text" formControlName="hora_inicio" >      
                 </fieldset>
                 <fieldset>
-                    <label>Cantidad Minima</label>
+                    <label>cantidad minima</label>
                     <input type="text" formControlName="cantMin" >      
-                </fieldset>
-                <fieldset>
-                    <label>estado</label>
-                    <input type="text" formControlName="cantMin" >      
-                </fieldset>
-                <fieldset>
-                    <label>Cantidad Minima</label>
-                    <input type="text" formControlName="cantMin" >      
-                </fieldset>
-                <fieldset>
-                    <label>presupuesto</label>
-                    <input type="text" formControlName="presupuesto" >      
-                </fieldset>
-                <fieldset>
-                    <label>ganancias</label>
-                    <input type="text" formControlName="ganancias" >      
                 </fieldset>
                 <fieldset>
                     <label>cantidad maxima</label>
                     <input type="text" formControlName="cantMax" >      
                 </fieldset>
+                <fieldset>
+                    <label>dar de baja actividad </label>
+                    <input type="checkbox" formControlName="estado" >      
+                </fieldset>
                 <button>enviar cambios</button>
             </form>
+            @if(bandera=='modificado'){
+                <p></p>
+                <p>la actividad fue modificada</p>
+                <p></p>
+            }
+            @if(bandera == 'no encontrado'){
+                <p></p>
+                <p>la actividad no fue encontrada</p>
+                <p></p>
+            }
+            @if(bandera == 'imposible'){
+                <p></p>
+                <p>la actividad no puede ser modificada </p>
+                <p></p>
+            }
         }
     }
 </div>

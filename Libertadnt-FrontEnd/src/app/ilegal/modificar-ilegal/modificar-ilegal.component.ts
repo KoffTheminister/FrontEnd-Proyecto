@@ -14,13 +14,11 @@ export class ModificarIlegalComponent {
     this.decripcion= new FormControl('',[]);
     this.nombre= new FormControl('',[]);
     this.locacion= new FormControl('',[]);
-    this.horaIni= new FormControl('',[]);
-    this.diaDeLaSemana = new FormControl('',[])
-    this.horaFin= new FormControl('',[]);
+    this.hora_inicio= new FormControl('',[]);
+    this.dia_de_la_semana = new FormControl('',[])
+    this.hora_fin= new FormControl('',[]);
     this.cantMin= new FormControl('',[]);
     this.estado = new FormControl('',[]);
-    this.presupuesto = new FormControl('',[]);
-    this.ganancias = new FormControl('',[]);
     this.cantMax = new FormControl('',[]);
     
   
@@ -28,14 +26,12 @@ export class ModificarIlegalComponent {
         nombre:this.nombre,
         decripcion: this.decripcion,
         locacion: this.locacion,
-        horaIni: this.horaIni,
-        diaDeLaSemana:this.diaDeLaSemana,
-        horaFin:this.horaFin,
+        hora_inicio: this.hora_inicio,
+        dia_de_la_semana:this.dia_de_la_semana,
+        hora_fin:this.hora_fin,
         cantMax:this.cantMax,
         cantMin:this.cantMin,
         estado:this.estado,
-        presupuesto:this.presupuesto,
-        ganancias:this.ganancias
         
       })      
 }
@@ -43,14 +39,13 @@ export class ModificarIlegalComponent {
   nombre:FormControl;
   decripcion : FormControl;
   locacion : FormControl;
-  diaDeLaSemana: FormControl;
-  horaIni: FormControl;
-  horaFin: FormControl;
+  dia_de_la_semana: FormControl;
+  hora_inicio: FormControl;
+  hora_fin: FormControl;
   cantMin: FormControl;
   estado:FormControl;
-  presupuesto:FormControl;
-  ganancias:FormControl;
   cantMax:FormControl
+  bandera: undefined|string
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
       next:(data)=>{this.service.ilegales=data},
@@ -61,19 +56,34 @@ export class ModificarIlegalComponent {
     else if(x.inscripcion == true){x.inscripcion=false}
     console.log(x)
   }
-  enviarModificacion(x:any){
+  enviarModificacion(x:any ){
+    console.log( "estado:",this.estado.value)
     if(this.nombre.value!==''){x.nombre=this.nombre.value}
-    if(this.diaDeLaSemana.value!==''){x.diaDeLaSemana=this.diaDeLaSemana.value}
+    if(this.dia_de_la_semana.value!==''){x.dia_de_la_semana=this.dia_de_la_semana.value}
     if(this.decripcion.value!==''){x.decripcion=this.decripcion.value}
     if(this.locacion.value!==''){x.locacion=this.locacion.value}
-    if(this.horaIni.value!==''){x.horaIni=this.horaFin.value}
-    if(this.horaFin.value!==''){x.horaFin=this.horaFin.value}
+    if(this.hora_inicio.value!==''){x.hora_inicio=this.hora_inicio.value}
+    if(this.hora_fin.value!==''){x.hora_fin=this.hora_fin.value}
     if(this.cantMin.value!==''){x.cantMin=this.cantMin.value}
     if(this.cantMax.value!==''){x.cantMax=this.cantMax.value}
-    if(this.presupuesto.value!==''){x.presupuesto=this.presupuesto.value}
-    if(this.ganancias.value!==''){x.ganancias=this.ganancias.value}
-    if(this.estado.value=='cancelado'){x.estado=0}
-    this.service.postIlegal(x).subscribe({next:(data)=>{console.log(data)},error:(e)=>{console.log(e)}})
+    if(this.estado.value==true){x.estado=0}else if(this.estado.value== false){x.estado=1}
+    this.service.putIlegal(x.cod_act_ilegal,x).subscribe({
+      next:(data)=>{
+        console.log("status: ",data.status)
+        if(data.status == 201){
+          console.log("actividad modificada",data)
+          this.bandera='modificado'
+        }},
+      error:(e)=>{
+        if(e.status == 404){
+          console.log("no se encontro la modificacion ",e)
+          this.bandera='no encontrado'
+        }
+        if(e.status == 409){
+          console.log("no es posible modificar",e)
+          this.bandera='imposible'
+        }
+      }})
     console.log(x)
     console.log(this.ilegal.value)
     this.ilegal.reset()

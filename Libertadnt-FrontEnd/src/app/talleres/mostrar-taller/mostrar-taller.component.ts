@@ -12,8 +12,16 @@ export class MostrarTallerComponent implements OnInit{
   constructor (public service : TallerService){}
   ngOnInit(): void {
     this.service.getTalleres().subscribe({
-      next:(data)=>{this.service.talleres=data},
-      error:(e)=>{console.log(e)}})
+      next:(data)=>{
+        if(data.status == 201){
+          console.log("talleres rescatados", data.status)
+          this.service.talleres=data
+          console.log(this.service.talleres)
+        }
+      },
+      error:(e)=>{
+        console.log("talleres no rescatados", e.status)
+      }})
   }
 
 

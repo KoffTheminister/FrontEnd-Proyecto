@@ -11,43 +11,33 @@ import { GuardiasService } from '../guardias.service.js';
 })
 export class FinalizarGuardiaComponent {
   constructor(public service : GuardiasService){
-    this.dni= new FormControl('',[Validators.required,Validators.maxLength(30)]);
+    this.cod_guardia= new FormControl('',[Validators.required,Validators.maxLength(30)]);
   this.guardia = new FormGroup({
-        dni: this.dni,
+        cod_guardia: this.cod_guardia,
         })}
   guardia  : FormGroup;
-  dni: FormControl;
+  cod_guardia: FormControl;
   fin:string | undefined
   bandera :undefined|boolean;
   validarGuarida(){
-    this.service.getOneGuardias(this.dni.value).subscribe({
-      next:(data)=>{
-        if(data.status === 201){
-          this.bandera=true
-          console.log("guardia encontrado")
-        }
-      },
-      error:(e)=>{
-        if(e.status===404){
-          this.bandera=false
-          console.log("guardia no encontrado")
-        }
-      }})
+    this.finalizarContrato()  
   }
   finalizarContrato(){
-    this.service.postFinalizarGuardia(this.dni.value).subscribe({
+    console.log(this.cod_guardia.value)
+    this.service.putFinalizarGuardia(this.guardia.value).subscribe({
       next:(data)=>{
-        if(data.status===201){
+        if(data.status==201){
           console.log("contrato finalizado")
           this.fin="exito"
+          
         }
       },
       error:(e)=>{
-        if(e.status===404){
+        if(e.status==404){
           this.fin="no encontrado"
-          console.log("no se encontro el post")
+          console.log("no se encontro el guardia")
         }
-        if(e.status === 409){
+        if(e.status == 409){
           this.fin="finalizado"
           console.log("contrato ya finalizado")
         }

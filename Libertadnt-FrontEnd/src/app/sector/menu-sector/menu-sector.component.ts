@@ -14,7 +14,9 @@ export class MenuSectorComponent implements OnInit{
   direccion:string | undefined
   ngOnInit(): void {
     this.service.getSectores().subscribe({
-      next:(data)=>{this.service.sectores=data},
+      next:(data)=>{
+        console.log("sectores obtenidos")
+        this.service.sectores=data},
       error:(e)=>{console.log(e)}})
   }
   verCeldas(x:any){
@@ -22,6 +24,11 @@ export class MenuSectorComponent implements OnInit{
     console.log(this.direccion)
     
   }
+  verTurnos(x:any){
+    this.direccion= "t/"+`${x}`
+    console.log(this.direccion)
+  }
+  
   
 
 }

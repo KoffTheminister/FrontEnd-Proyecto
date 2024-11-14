@@ -54,7 +54,7 @@ postActividad(uActual:any){
 putActividad(id:any,uActual:any){
   return this.http.put<any| JSON>("http://localhost:8080/actividades/"+`${id}`,uActual)
 }
-
+///////ILEGALES/////////
 getIlegales() {
   return this.http.get<any | JSON>("http://localhost:8080/actividadesIlegales")
 }
@@ -65,10 +65,10 @@ postIlegal(uActual:any){
   return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales",uActual)
 }
 putIlegal(id:any,uActual:any){
-  return this.http.put<any| JSON>("http://localhost:8080/actividades/"+`${id}`,uActual)
+  return this.http.put<any| JSON>("http://localhost:8080/actividadesIlegales/"+`${id}`,uActual)
 }
-InscribirActividadIlegal(recluso:any,actividad:any){
+InscribirActividadIlegal(actividad:any,recluso:any){
   let respuesta={cod_act_ilegal:actividad,cod_recluso:recluso}
-  return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales/inscripcion/"+`${recluso}`+"&"+`${actividad}`,respuesta)
+  return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales/inscripcion/"+`${actividad}`+"&"+`${recluso}`,respuesta)
 }
 }

@@ -23,13 +23,17 @@
     <button [disabled]="guardia.invalid">enviar datos</button>
 </form>
 <div>
-    @if(bandera === true){
-        <p>guardia guardado</p>
+    @if(bandera === 'creado'){
+        <p>GUARDIA GUARDADO</p>
     }
-    @if(bandera === false){
-        <p>GUARDIA YA EXISTENTE</p>
+    @if(bandera === 'existente'){
+        <p>GUARDIA EXISTENTE CONTRATADO</p>
+    }
+    @if(bandera === 'activo'){
+        <p>GUARDIA YA EXISTENTE Y OPERATIVO</p>
     }
 </div>
 <div>
     <nav><a href="menu/guardia">ATRAS</a></nav>
 </div>
+
