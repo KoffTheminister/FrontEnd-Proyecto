@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GuardiasService } from '../../guardias/guardias.service.js';
+import { SectorService } from '../sector.service.js';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mostrar-turnos',
@@ -9,12 +11,22 @@ import { GuardiasService } from '../../guardias/guardias.service.js';
   styleUrl: './mostrar-turnos.component.css'
 })
 export class MostrarTurnosComponent implements OnInit{
-  constructor (public service : GuardiasService){};
+  constructor (public service : SectorService,public route: ActivatedRoute){
+    let cod_sector = route.snapshot.params['sector'];
+    console.log(route)
+  }
+  
   ngOnInit(): void {
-    this.service.getGuardias().subscribe({
-    next:(data)=>{this.service.guardias = data},
-    error: (e)=>{console.log(e)}})
-    console.log(this.service.guardias)
+    console.log(this.route.snapshot.params['sector'])
+    this.service.getTuenosDSeSector(this.route.snapshot.params['sector']).subscribe({
+      next:(data)=>{
+        console.log("turnos obtenidos ")
+        this.service.celdas=data;
+        console.log("devolucio",data.data)
+      },
+      error:(e)=>{
+        console.log("turnos no obtenidos",e)
+      }})
   }
   
 }

@@ -14,7 +14,7 @@ export class MenuTurnosComponent {
     let cod_sector = route.snapshot.params['sector'];
     console.log(route)
   }
-  
+  crear:boolean|undefined
   ngOnInit(): void {
     console.log(this.route.snapshot.params['sector'])
     this.service.getTuenosDSeSector(this.route.snapshot.params['sector']).subscribe({
@@ -27,4 +27,5 @@ export class MenuTurnosComponent {
         console.log("turnos no obtenidos",e)
       }})
   }
+  crearTurno(){}
 }
