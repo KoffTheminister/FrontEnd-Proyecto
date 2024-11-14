@@ -44,6 +44,10 @@ getTuenosDSeSector(cod_sector:any) {
 getOneCeldaDeSector(idSector:any,idCelda:any) {
   return this.http.get<any | JSON>(this.celda_url+`${idSector}`+`${idCelda}`)
 }
+postTurno(uActual:any){
+  return this.http.post<any| JSON>("http://localhost:8080/turnos",uActual)
+}
+
 
 
 }

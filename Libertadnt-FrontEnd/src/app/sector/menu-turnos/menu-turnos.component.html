@@ -6,7 +6,29 @@
     </nav>    
 </div>
 <h2>Turnos :</h2>
-<button>crear un turno</button>
+<button (click)="crearTurno()">crear un turno</button>
+@if(crear == true){
+    <form [formGroup]="nuevo_turno" >
+        <fieldset>
+            <label>codigo de guardia: </label>
+            <input type="text" formControlName="dni" >        
+        </fieldset>
+        <fieldset>
+            <label>turno: </label>
+            <input type="text" formControlName="turno" >        
+        </fieldset>
+    </form>
+    @if(bandera== true){
+        <p></p>
+        <p> el turno se creo con exito </p>
+        <p></p>
+    }
+    @if(bandera== false){
+        <p></p>
+        <p> el guardia no esta disponible en ese turno </p>
+        <p></p>
+    }
+}
 <p></p>
 @for (turno of service.celdas.data; track $index) {
     <p></p>
