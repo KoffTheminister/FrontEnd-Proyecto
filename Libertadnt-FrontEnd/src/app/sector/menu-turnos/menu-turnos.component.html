@@ -5,31 +5,16 @@
         <p></p>
     </nav>    
 </div>
+<div>
+    <nav>
+        <a href="usuario/menu/sector/t/:sector/crear-turnos"> crear turnos <br></a>
+        <a href="usuario/menu/sector/c/:sector/finalizar-turnos"> finalizar turnos</a>
+    </nav>
+</div>
+
 <h2>Turnos :</h2>
-<button (click)="crearTurno()">crear un turno</button>
-@if(crear == true){
-    <form [formGroup]="nuevo_turno" >
-        <fieldset>
-            <label>codigo de guardia: </label>
-            <input type="text" formControlName="dni" >        
-        </fieldset>
-        <fieldset>
-            <label>turno: </label>
-            <input type="text" formControlName="turno" >        
-        </fieldset>
-    </form>
-    @if(bandera== true){
-        <p></p>
-        <p> el turno se creo con exito </p>
-        <p></p>
-    }
-    @if(bandera== false){
-        <p></p>
-        <p> el guardia no esta disponible en ese turno </p>
-        <p></p>
-    }
-}
-<p></p>
+
+
 @for (turno of service.celdas.data; track $index) {
     <p></p>
     <p>codigo de guardia: {{turno.cod_guardia_cod_guardia}}<br>codigo de sector: {{turno.cod_sector_cod_sector}}<br>turno: {{turno.turno}}<br>fecha de inicio: {{turno.fecha_ini}}<br>

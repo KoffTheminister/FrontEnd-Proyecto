@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MostrarTurnosComponent } from './mostrar-turnos.component';
+import { FinalizarTurnosComponent } from './finalizar-turnos.component';
 
-describe('MostrarTurnosComponent', () => {
-  let component: MostrarTurnosComponent;
-  let fixture: ComponentFixture<MostrarTurnosComponent>;
+describe('FinalizarTurnosComponent', () => {
+  let component: FinalizarTurnosComponent;
+  let fixture: ComponentFixture<FinalizarTurnosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MostrarTurnosComponent]
+      imports: [FinalizarTurnosComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MostrarTurnosComponent);
+    fixture = TestBed.createComponent(FinalizarTurnosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

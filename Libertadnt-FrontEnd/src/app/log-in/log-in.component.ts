@@ -17,6 +17,7 @@ export class LogInComponent implements OnChanges {
     contrasenia: FormControl;
     
 bander = false;
+  router: any;
 constructor (private service : UsuarioService ){
       this.contrasenia= new FormControl('',[Validators.required])
       this.cod_administrador= new FormControl(0,[Validators.required])
@@ -47,11 +48,13 @@ enviarUsuario(){
         this.bandUsuario='encontrado';
         this.bandera='menu'
         console.log("usuario normal ")
+        this.router.navigateByUrl('/menu')
       }
       if(response.status == 202){
         this.bandUsuario ='encontrado'
         this.bandera = "menu-maestro"
         console.log("usuario especial")
+        this.router.navigateByUrl('/menu-maestro')
       }
     },
     error: (e)=> {

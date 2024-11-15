@@ -1,0 +1,31 @@
+
+
+<body>
+    <div>
+        <nav>
+            <p></p>
+            <a href="usuario/menu/sector/t/:sector">ATRAS</a>
+            <p></p>
+        </nav>    
+    </div>
+    <h2>Dar de baja turno</h2>
+    <p></p>
+    <form [formGroup]="baja_turno" >
+        <fieldset>
+            <label>codigo de guardia: </label>
+            <input type="text" formControlName="cod_guardia" >        
+        </fieldset>
+        <fieldset>
+            <label>turno: </label>
+            <input type="text" formControlName="turno" >        
+        </fieldset>
+        <button [disabled]="baja_turno.invalid">finalizar turno </button>
+    </form>
+    @if (bandera == true) {
+        <p>el turno fue dado de baja </p>
+    }
+    @if (bandera == false) {
+        <p>no existen turnos con esas espesificaciones  </p>
+    }
+    
+</body>

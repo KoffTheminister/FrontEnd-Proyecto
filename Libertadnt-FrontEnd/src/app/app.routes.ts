@@ -39,7 +39,9 @@ import { UsuariosComponent } from './log-in/administradores/usuarios.component.j
 import { LiberarReclusoComponent } from './reclusos/liberar-recluso/liberar-recluso.component.js';
 import { FinalizarGuardiaComponent } from './guardias/finalizar-guardia/finalizar-guardia.component.js';
 import { MostrarSenteniasComponent } from './sentencia/mostrar-sentencias/mostrar-sentenias.component.js';
-import { MostrarTurnosComponent } from './sector/crear-turnos/mostrar-turnos.component.js';
+import { CrearTurnosComponent } from './sector/crear-turnos/crear-turnos.component.js';
+import { FinalizarTurnosComponent } from './sector/finalizar-turnos/finalizar-turnos.component.js';
+
 
 export const routes: Routes = [
     //log in
@@ -83,7 +85,9 @@ export const routes: Routes = [
     {path: 'usuario/menu/sector', component: MenuSectorComponent},
     {path: 'usuario/menu/sector/t/:sector', component: MenuTurnosComponent},
     {path: 'usuario/menu/sector/c/:sector', component: MostrarCeldasComponent},
-    {path: 'usuario/menu/sector/turnos', component: MostrarTurnosComponent},
+    {path: 'usuario/menu/sector/t/:sector/crear-turnos', component: CrearTurnosComponent},
+    {path: 'usuario/menu/sector/c/:sector/finalizar-turnos', component: FinalizarTurnosComponent},
+    
     //ilegal
     {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent},
     {path: 'usuario/menu-maestro/menu/alta-actvidad', component: AltaIlegalComponent},
