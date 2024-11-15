@@ -52,7 +52,8 @@ putBajaTurno(cod_guardia:any,cod_sector:any,turno:any){
     cod_guardia: cod_guardia,
     cod_sector: cod_sector,
     turno: turno}
-  return this.http.put<any|JSON>("http://localhost:8080/turnos/",respuesta)
+  console.log(respuesta)
+  return this.http.put<any | JSON>("http://localhost:8080/turnos",respuesta)
 }
 
 

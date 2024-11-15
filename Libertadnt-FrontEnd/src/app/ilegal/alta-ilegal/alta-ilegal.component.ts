@@ -50,13 +50,19 @@ bandera:string |undefined;
 validarActividad(){
   this.service.postIlegal(this.ilegal.value).subscribe({
     next:(data)=>{
+      console.log(data.status)
     if(data == 201){
-      this.bandera='correcto'
       console.log("la actividad fue enviada")}
-      console.log("paso por el post")
-    },
+      console.log("paso por el post", data.status)
+      this.bandera='correcto'
+    
+    if(data.status == 409){
+      console.log("actividad ya existente ")
+      this.bandera='existente'
+    }},
     error:(e)=>{
-      if(e.status==404){
+      console.log(e.status)
+      if(e.status == 404){
         console.log("error al postear")
         this.bandera='error'
       }
@@ -66,8 +72,6 @@ validarActividad(){
       }
     }})
 }
-enviarActividad(){
-this.bandera=undefined
-}
+
 
 }

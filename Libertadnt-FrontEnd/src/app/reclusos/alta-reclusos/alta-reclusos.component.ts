@@ -53,7 +53,7 @@ export class AltaReclusosComponent implements OnInit{
   fecha_nac: FormControl;
   cod_sentencia: FormControl;
   dni: FormControl;
-  bandRecluso :boolean | undefined
+  bandRecluso :string | undefined
   bandCelda :boolean | undefined
   condena: FormGroup;
   respuesta:any = []
@@ -61,25 +61,30 @@ export class AltaReclusosComponent implements OnInit{
   cod_rec: number | undefined
 
 
-validarRecluso(){/// kofler se la come 
+validarRecluso(){ 
   this.service.postRecluso(this.recluso.value).subscribe({
     next: (data)=>{
-      console.log("recluso posteado")
+      console.log("status",data.status)
+
       this.cod_rec = data.data
       if(data.status == 201){
         console.log("recluso creado")
         this.service.recluso = data
-        this.bandRecluso = true
+        this.bandRecluso = 'exito'
       }
       if(data.status == 202 ) {
         console.log("recluso existente")
-        this.bandRecluso=true      
+        this.bandRecluso= 'exito'      
+      }
+      if(data.status == 203){
+        console.log("recluso tiene condena activa")
+        this.bandRecluso='activa'
       }
     }
     ,error: (e)=>{
       if(e.status == 203){
         console.log("recluso tiene condena activa")
-        this.bandRecluso=false
+        this.bandRecluso='activa'
       }
     }
   })
@@ -98,10 +103,12 @@ enviarCondena(){
       }
     },
     error:(e)=>{
-      if(e.status== 404){
+      if(e.status == 404){
         console.log("condena no posteada")
       }
     }})
+    this.bandRecluso = undefined
+    this.recluso.reset()
 }
 
 agregarSentencia(sent:any){

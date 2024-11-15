@@ -39,7 +39,10 @@
   </form>
 
   
-    @if (bandRecluso == true) {
+    @if (bandRecluso == 'exito') {
+      <p></p>
+      <h2>Sentencias :</h2>
+      <p></p>
       @for (item of sSentencia.sentencias.data; track $index) {
         <p>codigo: {{item.cod_sentencia}}<br>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}}<br></p>
         <button (click)="agregarSentencia(item.cod_sentencia)">AGREGAR</button><button (click)="quitarSentencia(item.cod_sentencia)">Eliminar</button>
@@ -48,15 +51,13 @@
       <button (click)="enviarCondena()">ENVIAR</button>
 
     }
-    @if (bandRecluso== false) {
-      <p>el recluso no fue dado de alta</p>
+    @if (bandRecluso == 'activa') {
+      <p>el recluso tiene una condena activa</p>
     }
     
   
   
-    <div>
-      <nav><a href="menu/recluso">Retorno al Menu de Reclusos</a></nav>
-    </div>
+    
   
 
 </body>

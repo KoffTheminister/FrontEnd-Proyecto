@@ -86,7 +86,7 @@ export const routes: Routes = [
     {path: 'usuario/menu/sector/t/:sector', component: MenuTurnosComponent},
     {path: 'usuario/menu/sector/c/:sector', component: MostrarCeldasComponent},
     {path: 'usuario/menu/sector/t/:sector/crear-turnos', component: CrearTurnosComponent},
-    {path: 'usuario/menu/sector/c/:sector/finalizar-turnos', component: FinalizarTurnosComponent},
+    {path: 'usuario/menu/sector/t/:sector/finalizar-turnos', component: FinalizarTurnosComponent},
     
     //ilegal
     {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent},
