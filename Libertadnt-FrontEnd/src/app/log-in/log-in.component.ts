@@ -21,6 +21,7 @@ bander = false;
 constructor (private service : UsuarioService ){
       this.contrasenia= new FormControl('',[Validators.required])
       this.cod_administrador= new FormControl('',[Validators.required])
+      console.log(this.cod_administrador)
       this.usuario = new FormGroup({
   
         cod_administrador: this.cod_administrador,
@@ -29,7 +30,7 @@ constructor (private service : UsuarioService ){
         })
 }ngOnChanges(changes: SimpleChanges): void {
     if(this.cod_administrador.value !== ''){
-      
+      console.log(this.cod_administrador)
     }
   }
 
@@ -59,6 +60,7 @@ enviarUsuario(){
     },
     error: (e)=> {
       console.log("usuario no valido ")
+      console.log(e)
       if(e.status==404){
         this.bandUsuario='no encontrado';
       }

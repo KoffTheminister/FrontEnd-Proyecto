@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit{
         }},
       error:(e)=>{
         if(e.status=== 404){
-          console.log("admibnistradores no encontrados")
+          console.log("administradores no encontrados")
           this.bandera= false
         }
         }})
