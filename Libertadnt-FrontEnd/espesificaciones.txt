@@ -18,7 +18,7 @@ menu sectores => [muestra todos los sectores => (en cada sector se muestra lo si
 https://adminlte.io   
 https://material.angular.io 
 //////pendientes////////
- la nueva rama fue actualizada ??????
+ la nueva rama fue actualizada ahora si ?????
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### get all
 GET http://localhost:8080/sectores
