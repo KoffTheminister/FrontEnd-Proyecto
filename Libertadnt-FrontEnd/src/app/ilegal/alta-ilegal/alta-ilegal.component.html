@@ -42,11 +42,8 @@
             <p></p>
         </form>
         @if (bandera === 'existente') {<p>actividad ya existente</p>}
-        @else if (bandera === 'correcto') {
-            <p></p>
-            <p>actividad registrada con exito</p>
-            <p></p>
-        }
+        @if (bandera === 'error') {<p>error al postear</p>}
+        @if (bandera === 'correcto'){<p>actividad registrada con exito</p>}
     </div>
 </body>
 

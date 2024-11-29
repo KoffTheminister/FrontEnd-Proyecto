@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { SectorService } from '../sector.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-menu-turnos',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './menu-turnos.component.html',
   styleUrl: './menu-turnos.component.css'
 })
@@ -16,11 +16,14 @@ export class MenuTurnosComponent {
     console.log(route)
     service.sector.cod_sector=codi_sector
     }
- 
-  crear:boolean|undefined
+  finalizar:string|undefined
+  crear:string|undefined
   bandera:boolean|undefined
+
   ngOnInit(): void {
     console.log(this.route.snapshot.params['sector'])
+    this.crear="crear-turnos"
+    this.finalizar="finalizar-turnos"
     this.service.getTuenosDSeSector(this.route.snapshot.params['sector']).subscribe({
       next:(data)=>{
         console.log("turnos obtenidos ")
