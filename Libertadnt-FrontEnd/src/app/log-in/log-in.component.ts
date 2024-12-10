@@ -1,8 +1,9 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; 
-import { RouterOutlet ,RouterLink} from '@angular/router';
+import { RouterOutlet ,RouterLink, Route, Router} from '@angular/router';
 import { UsuarioService } from './usuario.service.js';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-log-in',
@@ -17,10 +18,11 @@ export class LogInComponent implements OnChanges {
     contrasenia: FormControl;
 
 bander = false;
-  router: any;
-constructor (private service : UsuarioService ){
+  toaster: any;
+constructor (private service : UsuarioService,private router:Router ){
       this.contrasenia= new FormControl('',[Validators.required])
       this.cod_administrador= new FormControl('',[Validators.required])
+      console.log(this.cod_administrador)
       this.usuario = new FormGroup({
   
         cod_administrador: this.cod_administrador,
@@ -29,7 +31,7 @@ constructor (private service : UsuarioService ){
         })
 }ngOnChanges(changes: SimpleChanges): void {
     if(this.cod_administrador.value !== ''){
-      
+      console.log(this.cod_administrador)
     }
   }
 
@@ -48,17 +50,18 @@ enviarUsuario(){
         this.bandUsuario='encontrado';
         this.bandera='menu'
         console.log("usuario normal ")
-        this.router.navigateByUrl('/menu')
+        this.router.navigate(['menu'])
       }
       if(response.status == 202){
         this.bandUsuario ='encontrado'
         this.bandera = "menu-maestro"
         console.log("usuario especial")
-        this.router.navigateByUrl('/menu-maestro')
+        this.router.navigate(['menu-maestro'])
       }
     },
     error: (e)=> {
       console.log("usuario no valido ")
+      console.log(e)
       if(e.status==404){
         this.bandUsuario='no encontrado';
       }
@@ -68,6 +71,13 @@ enviarUsuario(){
     }
   });
 
+}
+mensajeError(e:HttpErrorResponse){
+  if(e.error.msg){
+    this.toaster.error(e.error.msg, "error");
+  }else{
+    this.toaster.error('ocurrio un error', 'error')
+  }
 }
 
 

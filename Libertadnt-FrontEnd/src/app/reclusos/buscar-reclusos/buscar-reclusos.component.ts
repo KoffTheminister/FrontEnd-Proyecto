@@ -11,9 +11,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 })
 export class BuscarReclusosComponent {
   constructor(public service : ReclusosService){
-    this.cod_recluso= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-    this.nombre= new FormControl('',[Validators.required,]);
-    this.apellido= new FormControl('',[Validators.required,]);
+    this.cod_recluso= new FormControl('',);
+    this.nombre= new FormControl('',);
+    this.apellido= new FormControl('',);
     this.dni= new FormControl('',[Validators.required,]);
   
   

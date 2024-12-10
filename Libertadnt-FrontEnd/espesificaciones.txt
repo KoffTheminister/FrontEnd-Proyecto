@@ -18,15 +18,6 @@ menu sectores => [muestra todos los sectores => (en cada sector se muestra lo si
 https://adminlte.io   
 https://material.angular.io 
 //////pendientes////////
-Usuario (guardia-admin)
-
-mandar usuario completo (objeto) para el getone. Valida en front
-
-Sacar nombre recluso para buscarlo. Solo usar id
-
-En alta actividad agregar edad mínima
-En alta actividad, desc cant-min, cod(generado bakend no se ingresa), hora, locacion, diaSemana(1-7), estado, edadMin, codsector.
-Si hay error (tipo de dato- longitud) valida en front.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### get all
 GET http://localhost:8080/sectores

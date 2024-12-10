@@ -1,27 +1,37 @@
 
-    <div class="boton">
+
+<body class="listado">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="menu/recluso">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+        </a>
         <p></p>
-        <a href="menu/recluso">ATRAS</a>
-        <p></p>
-    </div>
-    <body>
-        <div>
-            @if (bandera=== true) {
-                @for (item of sRecluso.reclusos; track $index) {
-                    <p>"nombre": {{item.nombre}},
-                        <br>"apellido": {{item.apellido}}, 
-                        <br>"dni": {{item.dni}}, 
-                        <br>"fecha_nac": {{item.fecha_nac}}</p>
-                }
+        @if (bandera=== true) {
+            @for (item of sRecluso.reclusos; track $index) {
+                <ul class="list-group">
+                    <li class="list-group-item disabled" aria-disabled="true">
+                        <p>"nombre": {{item.nombre}},
+                            <br>"apellido": {{item.apellido}}, 
+                            <br>"dni": {{item.dni}}, 
+                            <br>"fecha_nac": {{item.fecha_nac}}
+                        </p>
+                    </li>
+                  </ul>
             }
-            @if (bandera === false) {
+        }
+        @if (bandera === false) {
+            <div class="alert alert-warning" role="alert">
                 <p>No hay reclusos proximos a liberar</p>
-            }
-            @if (bandera === undefined) {
+              </div>
+        }
+        @if (bandera === undefined) {
+            <div class="alert alert-danger" role="alert">
                 <p> error de conexion con el servidor </p>
-            }
-        </div>
+            </div>
+        }
         
-    </body>
+    </div>        
+</body>
     
 

@@ -1,36 +1,30 @@
-<p></p>
-
-
-
-
-
-<head>
-  <link rel="stylesheet" href="mostrar-guardia.component.css">
-</head>
-
-<body>
-  
+<body class="listado">
+  <div class="w-50 p-3">
+    <a class="icon-link icon-link-hover" href="menu/guardia">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+    <p></p>
     <h2>Mostrar Guardias</h2>
-  
+    <p></p>
 
-  
-  
-  
-
-  
-    <ul>
-      @for (item of service.guardias.data; track $index) {
-      <li>
-        <p>nombre: {{item.nombre}}<br>
-          apellido: {{item.apellido}}<br>
-          dni: {{item.dni}}<br>
-          fechaIniContrato: {{item.fecha_ini_contrato}}<br></p>
-      </li>
+    @for (item of service.guardias.data; track $index) {
+      <ul class="list-group">
+        <li class="list-group-item disabled" aria-disabled="true">
+          <p>nombre: {{item.nombre}}<br>
+            apellido: {{item.apellido}}<br>
+            dni: {{item.dni}}<br>
+            fechaIniContrato: {{item.fecha_ini_contrato}}<br>
+          </p>
+        </li>
+      </ul>
       }
-    </ul>
-  
-  
-  <div>
-    <nav><a href="menu/guardia">Retorno al Menu de Guardias</a></nav>
   </div>
-</body>
+  
+
+  
+  
+  
+
+  
+    

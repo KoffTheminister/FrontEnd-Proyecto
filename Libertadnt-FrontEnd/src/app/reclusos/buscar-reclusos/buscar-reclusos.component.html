@@ -1,26 +1,37 @@
-<head>
-  <link rel="stylesheet" href="buscar-reclusos.component.css">
-</head>
-<div>
-  <nav><a href="menu/recluso">Retorno al Menu de Reclusos</a></nav>
-</div>
-<body>
-  <form [formGroup]="recluso" (submit)="validarRecluso()"> 
-    <fieldset>
-      
-        <label>dni recluso: </label>
-        <input type="text" formControlName="dni">
-      
-    </fieldset>
-    <button (click)="validarRecluso()">ENVIAR</button>
-  </form>
-  <div>
+
+<body class="formulario">
+  <div class="w-50 p-3">
+    <a class="icon-link icon-link-hover" href="menu/recluso">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h2>Buscar Recluso</h2>
+
+    <form [formGroup]="recluso" (submit)="validarRecluso()">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Dni</span>
+        <input type="text" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <button [disabled]="recluso.invalid" type="button" class="btn btn-primary">Buscar </button>
+      <p></p>
+    </form>
+
     @if (bandera == true) {
-      <p>nombre: {{service.recluso.data.nombre}}<br> apellido: {{service.recluso.data.apellido}}<br> dni: {{service.recluso.data.dni}}<br> fecha de nacimiento: {{service.recluso.data.fecha_nac}}</p>
+      <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <p>nombre: {{service.recluso.data.nombre}}<br> apellido: {{service.recluso.data.apellido}}<br> dni: {{service.recluso.data.dni}}<br> fecha de nacimiento: {{service.recluso.data.fecha_nac}}</p>
+      </div>
+      
     }
     @if (bandera == false) {
-      <p>recluso no encontrado</p>
+      <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <p>recluso no encontrado</p>
+      </div>
     }
+   
+
   </div>
 </body>
 

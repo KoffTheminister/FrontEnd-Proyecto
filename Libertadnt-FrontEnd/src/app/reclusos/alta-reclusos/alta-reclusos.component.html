@@ -1,63 +1,66 @@
 
-<head>
-  <link rel="stylesheet" href="alta-reclusos.component.css">
-</head>
-<div>
-  <nav><a href="menu/recluso">ATRAS</a></nav>
-</div>
+<body class="formulario">
+  <div class="w-50 p-3">
 
-<body>
+    <a class="icon-link icon-link-hover" href="menu/recluso">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+    <p></p>
 
-  
     <h2>Alta Recluso</h2>
+
+    <form [formGroup]="recluso" (submit)="validarRecluso()">
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+        <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
+        <input type="text" formControlName="apellido" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Dni</span>
+        <input type="text" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">fecha de nacimiento</span>
+        <input type="text" formControlName="fecha_nac" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <button [disabled]="recluso.invalid" type="button" class="btn btn-primary">validar recluso</button>
+    </form>
   
-
-  <form [formGroup]="recluso" (submit)="validarRecluso()">
-    <fieldset>
-      
-        <label>Nombre: </label>
-        <input type="text" formControlName="nombre">
-      
-    </fieldset>
-    <fieldset>
-      
-        <label>Apellido: </label>
-        <input type="text" formControlName="apellido">
-      
-    </fieldset>
-    <fieldset>
-      
-        <label>Dni: </label>
-        <input type="text" formControlName="dni">
-      
-    </fieldset>
-    <fieldset>
-        <label>fecha de nacimiento: </label>
-        <input type="text" formControlName="fecha_nac" >      
-    </fieldset>
-    <button [disabled]="recluso.invalid">validar recluso</button>
-  </form>
-
   
     @if (bandRecluso == 'exito') {
       <p></p>
       <h2>Sentencias :</h2>
       <p></p>
       @for (item of sSentencia.sentencias.data; track $index) {
-        <p>codigo: {{item.cod_sentencia}}<br>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}}<br></p>
-        <button (click)="agregarSentencia(item.cod_sentencia)">AGREGAR</button><button (click)="quitarSentencia(item.cod_sentencia)">Eliminar</button>
+        <ul class="list-group">
+          <li class="list-group-item disabled" aria-disabled="true">
+            <p>codigo: {{item.cod_sentencia}}<br>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}}<br></p>
+          </li>
+        </ul>
+        <button (click)="agregarSentencia(item.cod_sentencia)" type="button" class="btn btn-success">AGREGAR</button>
+        <button (click)="quitarSentencia(item.cod_sentencia)" type="button" class="btn btn-danger">Eliminar</button>
       }
       <p></p>
-      <button (click)="enviarCondena()">ENVIAR</button>
+      <button (click)="enviarCondena()" type="button" class="btn btn-primary">ENVIAR</button>
 
     }
     @if (bandRecluso == 'activa') {
-      <p>el recluso tiene una condena activa</p>
+      <div class="alert alert-danger" role="alert">
+        el recluso tiene una condena activa
+      </div>
     }
-    
   
   
     
   
-
+  </div>
 </body>

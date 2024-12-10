@@ -2,118 +2,50 @@
   <link rel="stylesheet" href="menu.component.css">
 </head>
 
-<body>
-    <h2>Menu Principal</h2>
-  <div>
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-  </div>
-  <div>
+<body class="menu">
+  <div class="w-50 p-3">
+    <h1>Menu Principal</h1>
+    <p></p>
+    <p></p>
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <a href="menu/recluso" class="link-offset-2 link-underline link-underline-opacity-0">Menu de Reclusos</a>
+    </div>
     
-      <p>
-        <a href="menu/recluso">Menu de Reclusos</a>
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-        <a href="menu/guardia">Menu de Guardias</a>
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-        <a href="menu/sentencia">Menu de Sentencia</a>
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-        <a href="menu/actividad">Menu de Actividades</a>
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-        <a href="menu/taller">Menu de Talleres</a>
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-        <a href="usuario/:menu/ver-usuarios">Menu de administradores</a>
-      </p>
-    
-  </div>
-  <div>
-    
-      <p>
-         ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-      </p>
-    
-  </div>
-  <div>
-    
-    <p>
-      <a href="usuario/menu/sector">Menu de sectores</a>
-    </p>
+      <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <a href="menu/guardia" class="link-offset-2 link-underline link-underline-opacity-0">Menu de Guardias</a>
+      </div>
+       
+      <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <a href="menu/sentencia" class="link-offset-2 link-underline link-underline-opacity-0">Menu de Sentencia</a>
+      </div>
+     
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <a href="menu/actividad" class="link-offset-2 link-underline link-underline-opacity-0">Menu de Actividades</a>
+    </div>
   
-  </div>
-  <div>
-    
-    <p>
-       ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ 
-    </p>
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <a href="menu/taller" class="link-offset-2 link-underline link-underline-opacity-0">Menu de Talleres</a>
+    </div>
   
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <a href="usuario/:menu/ver-usuarios" class="link-offset-2 link-underline link-underline-opacity-0">Menu de administradores</a>
+    </div>
+  
+  <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <a href="usuario/menu/sector" class="link-offset-2 link-underline link-underline-opacity-0">Menu de sectores</a>
   </div>
+  <p></p>
+  <p></p>
 
-  
-    @if (bandera === true) {
-    <h2>BIENVENIDO MAESTRO</h2>
-    <nav>
-      <a href="usuario/menu-maestro/menu">Negocio ILEGAL</a>
-    </nav>
-    }
-  
+
+  @if (bandera === true) {
+  <h2>BIENVENIDO MAESTRO</h2>
+  <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <a href="usuario/menu-maestro/menu" class="link-offset-2 link-underline link-underline-opacity-0">Negocio ILEGAL</a>
+  </div>
+  }
+  </div>
+    
+   
+    
 </body>
