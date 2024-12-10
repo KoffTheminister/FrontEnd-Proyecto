@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class GuardiasService {
   readonly api_url="https://jsonplaceholder.typicode.com/todos/"
   guardia: any
-  guardias:any 
+  guardias:any //
   messageService: any;
   constructor(private http: HttpClient) {this.guardias =  [],
     this.guardia={
@@ -32,9 +32,11 @@ postGuardia(x:any){
   this.guardia.fechaIniContrato = finalDate
   return this.http.post<any|JSON>("http://localhost:8080/guardias",x);
 }
+
 putFinalizarGuardia(x:any){
   return this.http.put<any | JSON>("http://localhost:8080/guardias/finalizarContrato",x);
 }
+
 getOneGuardias(id:number) {
   return this.http.get<any | JSON>("http://localhost:8080/guardias/"+`${id}`);
 }

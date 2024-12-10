@@ -21,3 +21,5 @@ export class MenuComponent {
     console.log(this.route.snapshot.params['menu'])
   }
 }
+
+

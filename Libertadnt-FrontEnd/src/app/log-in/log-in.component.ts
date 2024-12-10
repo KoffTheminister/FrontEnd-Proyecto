@@ -15,7 +15,7 @@ export class LogInComponent implements OnChanges {
     usuario: FormGroup;
     cod_administrador:FormControl;
     contrasenia: FormControl;
-    
+
 bander = false;
   router: any;
 constructor (private service : UsuarioService ){
