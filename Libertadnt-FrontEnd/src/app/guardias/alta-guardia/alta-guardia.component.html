@@ -1,39 +1,49 @@
-<head>
-  <link rel="stylesheet" href="alta-guardia.component.css">
-</head>
 
-<body>
-<h1>ingrese los datos del NUEVO guardia</h1>
 
-<form [formGroup]="guardia"  (submit)="enviarGuarida()" >
-    <fieldset>
-        <label>nombre:</label>
-        <input type="text" formControlName="nombre" >        
-    </fieldset>
-    <fieldset>
-        <label> apellido:</label>
-        <input type="text" formControlName="apellido" >        
-    </fieldset>
-    <fieldset>
-        <label>dni de guardia: </label>
-        <input type="text" formControlName="dni" >        
-    </fieldset>
-    
-    
-    <button [disabled]="guardia.invalid">enviar datos</button>
-</form>
-<div>
-    @if(bandera === 'creado'){
-        <p>GUARDIA GUARDADO</p>
-    }
-    @if(bandera === 'existente'){
-        <p>GUARDIA EXISTENTE CONTRATADO</p>
-    }
-    @if(bandera === 'activo'){
-        <p>GUARDIA YA EXISTENTE Y OPERATIVO</p>
-    }
-</div>
-<div>
-    <nav><a href="menu/guardia">ATRAS</a></nav>
-</div>
+<body class="formulario">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="menu/guardia">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+        </a>
+        <p></p>
+        <h2>Alta Guardia</h2>
+
+        <form [formGroup]="guardia" (submit)="enviarGuarida()">
+
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+              <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+      
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
+              <input type="text" formControlName="apellido" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+      
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Dni</span>
+              <input type="text" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <button [disabled]="guardia.invalid" type="button" class="btn btn-primary">Enviar</button>
+            <p></p>
+        </form>
+        @if(bandera === 'creado'){
+            <div class="alert alert-success" role="alert">
+                <p>GUARDIA GUARDADO</p>
+            </div>
+        }
+        @if(bandera === 'existente'){
+            <div class="alert alert-primary" role="alert">
+                <p>GUARDIA EXISTENTE CONTRATADO</p>
+            </div>
+        }
+        @if(bandera === 'activo'){
+            <div class="alert alert-danger" role="alert">
+                <p>GUARDIA YA EXISTENTE Y OPERATIVO</p>
+            </div>
+        }
+    </div>
+
 

@@ -5,7 +5,7 @@ import { routes } from '../app.routes.js';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterOutlet ,RouterLink],
+  imports: [],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })

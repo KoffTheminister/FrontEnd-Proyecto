@@ -17,7 +17,7 @@ this.guardia = new FormGroup({
       })}
 guardia  : FormGroup;
 dni: FormControl;
-bandera = false;
+bandera :undefined|boolean;
 buscarGuardia(){
   this.bandera= false;
   this.service.getOneGuardias(this.dni.value).subscribe({

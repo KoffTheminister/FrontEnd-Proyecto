@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+html, body{
+    height: 100%;
+    background-color: #a2a6aa
+    
+   
+    
+}
+.body{
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: #a2a6aa
+  }
+.titulo{
+    margin-bottom: 10px;
+  }
+.menu{
+  
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  background-color:  #a2a6aa
+  
+}
+.formulario{
+  background-color:  #a2a6aa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listado{
+  background-color:  #a2a6aa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,57 +1,59 @@
-<head>
-  <link rel="stylesheet" href="alta-actividad.component.css">
-</head>
 
-<body>
-  <div>
-    <div>
-      <h2>Nueva Actividad</h2>
-    </div>
-    <div>
-      <form [formGroup]="actividad" (submit)="validarActividad()">
-        <fieldset>
-          <label>descipcion de la actividad:</label>
-          <input type="text" formControlName="decripcion">
-        </fieldset>
-        <fieldset>
-          <label>locacion:</label>
-          <input type="text" formControlName="locacion">
-        </fieldset>
-        <fieldset>
-          <label>hora:</label>
-          <input type="text" formControlName="hora">
-        </fieldset>
-        <fieldset>
-          <label>dia de la semana:</label>
-          <input type="text" formControlName="diaDeLaSemana">
-        </fieldset>
-        <fieldset>
-          <label>Cupo de Participantes</label>
-          <input type="text" formControlName="cantMax">
-        </fieldset>
-        <fieldset>
-          <label>Edad Minima</label>
-          <input type="text" formControlName="edadMin">
-        </fieldset>
-        <button>Enviar</button>
-      </form>
-      <div>
-        <p></p>
-        
-          <a href="menu/actividad">Retorno al Menu de Actividades</a>
-        
-        <p></p>
+
+<body class="formulario">
+  <div class="w-50 p-3">
+
+    <a class="icon-link icon-link-hover" href="menu/actividad">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+    <p></p>
+
+    <h2>Alta Recluso</h2>
+
+    <form [formGroup]="actividad" (submit)="validarActividad()">
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">descipcion</span>
+        <input type="text" formControlName="decripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
-    </div>
-  </div>
-  <div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">locacion</span>
+        <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">hora</span>
+        <input type="text" formControlName="hora" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">dia de la semana</span>
+        <input type="text" formControlName="diaDeLaSemana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Cupo de Participantes</span>
+        <input type="text" formControlName="cantMax" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Edad Minima</span>
+        <input type="text" formControlName="edadMin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <button [disabled]="actividad.invalid" type="button" class="btn btn-primary">enviar</button>
+    </form>
     @if (bandActividad === true) {
-    <div>
-      <p>datos enviados con exito </p>
-    </div>
+      <div class="alert alert-success" role="alert">
+        <p>datos enviados con exito </p>
+      </div>
     }@else if (bandActividad === false) {
-    <p>actividad ya existente </p>
+      <div class="alert alert-danger" role="alert">
+        <p>actividad ya existente </p>
+      </div>
     }
   </div>
-</body>
+
 
