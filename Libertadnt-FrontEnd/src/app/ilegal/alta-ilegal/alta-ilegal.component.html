@@ -1,49 +1,76 @@
-<div>
-    <p></p>
-    <nav>
-        <a href="usuario/menu-maestro/menu">ATRAS</a>
-    </nav>
-    <p></p>
-</div>
-<body>
-    <div>
-        <h1>ingrese los datos de la NUEVA actividad</h1>
+
+<body class="formularioi">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="usuario/menu-maestro/menu">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+        </a>
+          
+        <h2>ingrese los datos de la NUEVA actividad</h2>
+        <p></p>
         <form [formGroup]="ilegal" (submit)="validarActividad()">
             <fieldset>
-                <label>nombre de la actividad:</label>
-                <input type="text" formControlName="nombre" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">nombre</span>
+                    <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
             </fieldset>
             <fieldset>
-                <label>descipcion de la actividad:</label>
-                <input type="text" formControlName="descripcion" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">descipcion</span>
+                    <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>     
             </fieldset>
             <fieldset>
-                <label>locacion:</label>
-                <input type="text" formControlName="locacion" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">locacion</span>
+                    <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>      
             </fieldset>
             <fieldset>
-                <label>dia de la semana:</label>
-                <input type="text" formControlName="diaDeLaSemana" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">dia de la semana</span>
+                    <input type="text" formControlName="diaDeLaSemana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>     
             </fieldset>
             <fieldset>
-                <label>Cantidad Maxima</label>
-                <input type="text" formControlName="cantidad_maxima" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Cantidad Maxima</span>
+                    <input type="text" formControlName="cantidad_maxima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>     
             </fieldset>
             <fieldset>
-                <label>horario de inicio:</label>
-                <input type="text" formControlName="horaInicio" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">horario de inicio</span>
+                    <input type="text" formControlName="horaInicio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>     
             </fieldset>
             <fieldset>
-                <label>horario de fin:</label>
-                <input type="text" formControlName="horaFin" >      
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">horario de fin</span>
+                    <input type="text" formControlName="horaFin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>     
             </fieldset>
-            <p></p>
-            <button [disabled]="ilegal.invalid">enviar actividad</button>
-            <p></p>
+            
+            <button [disabled]="ilegal.invalid" type="button" class="btn btn-dark">enviar</button>
+            
+            
         </form>
-        @if (bandera === 'existente') {<p>actividad ya existente</p>}
-        @if (bandera === 'error') {<p>error al postear</p>}
-        @if (bandera === 'correcto'){<p>actividad registrada con exito</p>}
+        @if (bandera === 'existente') {
+            <div class="alert alert-warning" role="alert">
+                <p>actividad ya existente</p>
+            </div>
+            }
+        @if (bandera === 'error') {
+            <div class="alert alert-dark" role="alert">
+                <p>error al postear</p>
+            </div>
+            }
+        @if (bandera === 'correcto'){
+            <div class="alert alert-success" role="alert">
+                <p>actividad registrada con exito</p>
+            </div>
+            }
     </div>
 </body>
 

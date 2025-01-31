@@ -1,19 +1,28 @@
-<div>
-    <nav>
-        <p></p>
-        <a href="usuario/menu">ATRAS</a>
-        <p></p>
-    </nav>    
-</div>
 
-<h2>Sectores:</h2>
-<div>
-    @for (sector of service.sectores.data; track $index) {
-        <p></p>
-        <p>nombre: {{sector.nombre}}<br>descripcion: {{sector.descripcion}}<br>codigo de sector: {{sector.cod_sector}}<br></p>
-        <p></p>
-        <button [routerLink]="direccion" (click)="verCeldas(sector.cod_sector)">ver celdas</button>
-        <button [routerLink]="direccion" (click)="verTurnos(sector.cod_sector)">ver turnos</button>
-    }
-</div>
+<body class="menu">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="usuario/menu">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <p></p>
+          <h2>Sectores:</h2>
+          
+        <div>
+            @for (sector of service.sectores.data; track $index) {
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        nombre: {{sector.nombre}}<br>
+                        descripcion: {{sector.descripcion}}<br>
+                        codigo de sector: {{sector.cod_sector}}<br>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                            <button [routerLink]="direccion" (click)="verCeldas(sector.cod_sector)" type="button" class="btn btn-outline-primary">celdas</button>
+                            <button [routerLink]="direccion" (click)="verTurnos(sector.cod_sector)" type="button" class="btn btn-outline-primary">turnos</button>
+                        </div> 
+                    </li>
+                  </ul>
+            }
+        </div>
+    </div>
+</body>
 

@@ -1,25 +1,29 @@
-<head>
-  <link rel="stylesheet" href="mostrar-taller.component.css">
-</head>
 
-<body>
-  <div>
+<body class="listado">
+  <div class="w-50 p-3">
+    <a class="icon-link icon-link-hover" href="menu/taller">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
     <p></p>
-    <a href="menu/taller">Retorno al Menu de Talleres</a>
-    <p></p>
-  </div>
-  
+
     <h2>Mostrar todos los Talleres</h2>
   
 
   
     <div>
       @for (item of service.talleres.data; track $index) {
-      <li>
-        <p>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>dia de la semana {{item.dia_de_la_semana}}<br>hora inicio: {{item.hora_inicio}}<br>hora de fin: {{item.hora_fin}}</p>
-      </li>
+        <ul class="list-group">
+          <li class="list-group-item disabled" aria-disabled="true">
+            <p>nombre: {{item.nombre}}<br>
+              descripcion: {{item.descripcion}} <br>
+              locacion: {{item.locacion}}<br>
+              dia de la semana {{item.dia_de_la_semana}}<br>
+              hora inicio: {{item.hora_inicio}}<br>
+              hora de fin: {{item.hora_fin}}</p>
+          </li>
+        </ul>
       }
     </div>
-  
-  
+  </div>
 </body>

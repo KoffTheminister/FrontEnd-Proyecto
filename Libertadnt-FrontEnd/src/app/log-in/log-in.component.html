@@ -1,15 +1,18 @@
-<div class="log-in">
-    <div class="body">
-        <div class="titulo"><h1>BIEMBENIDO</h1></div>
-        <form [formGroup]="usuario" (submit)="validarUsuarios()" class="formulario"  >
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control"  formControlName="cod_administrador" placeholder="ingrese codigo de usuario">
-                <label >codigo de usuario:</label>
+
+    <body class="login">
+        <div class="w-50 p-3">
+        <h1>BIEMBENIDO</h1>
+        <form [formGroup]="usuario" (submit)="validarUsuarios()" >
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                <input type="text" formControlName="nombre" class="form-control" formControlName="cod_administrador" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control"  formControlName="contrasenia" placeholder="ingrese contraseña de usuario">
-                <label >contraseña:</label>
-              </div>
+            
+              
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">contraseña</span>
+                <input type="password"  class="form-control" formControlName="contrasenia" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
             <button (click)="validarUsuarios()" type="button" class="btn btn-primary" [disabled]="usuario.invalid">enviar</button>
         </form>
         <div class="respuesta">
@@ -21,7 +24,7 @@
             }@else if (bandUsuario === 'incorrecto') {
                 <p>contraseña incorrecta</p>
             }
-        </div>  
-    </div>
+        </div>        
+    </div>  
+    </body>
 
-</div>
