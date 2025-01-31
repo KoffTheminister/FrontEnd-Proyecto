@@ -9,6 +9,7 @@ import { GuardiasService } from '../guardias.service.js';
   templateUrl: './alta-guardia.component.html',
   styleUrl: './alta-guardia.component.css'
 })
+
 export class AltaGuardiaComponent {
   constructor (private service : GuardiasService){
     this.dni= new FormControl('',[Validators.required,Validators.maxLength(30)]);

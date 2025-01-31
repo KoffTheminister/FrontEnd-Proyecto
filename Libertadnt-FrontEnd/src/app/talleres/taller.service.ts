@@ -8,7 +8,7 @@ export class TallerService {
   readonly api_url="https://jsonplaceholder.typicode.com/todos/"
  
   taller: any
-  talleres:any 
+  talleres:any /////
   messageService: any;
   constructor(private http: HttpClient) {this.talleres =  [],
     this.taller={

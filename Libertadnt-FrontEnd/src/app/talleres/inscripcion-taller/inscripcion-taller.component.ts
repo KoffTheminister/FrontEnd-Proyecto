@@ -16,7 +16,7 @@ export class InscripcionTallerComponent {
   this.recluso = new FormGroup({
         cod_recluso: this.cod_recluso,
       })    
-  }
+  }////
   recluso  : FormGroup;
   cod_recluso: FormControl;
   banderaRecluso:string|undefined
@@ -46,14 +46,17 @@ export class InscripcionTallerComponent {
           console.log("recluso inscripto ",data.status)
           this.banderaRecluso='inscripto'
         }
+        
         if(data.status== 403){
           console.log("taller no encontrada ",data.status)
           this.banderaRecluso='no encontrada'
         }
+
         if(data.status == 410){
           console.log("estado ocupado", data.status)
           this.banderaRecluso='ocupado'
         }
+
         if(data.status == 409){
           console.log("recluso ya inscripto", data.status)
           this.banderaRecluso='existente'
