@@ -1,27 +1,27 @@
 <div class="log-in">
     <div class="body">
-        <div class="titulo"><h1>BIEMBENIDO</h1></div>
-        <form [formGroup]="usuario" (submit)="validarUsuarios()" class="formulario"  >
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control"  formControlName="cod_administrador" placeholder="ingrese codigo de usuario">
-                <label >codigo de usuario:</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control"  formControlName="contrasenia" placeholder="ingrese contraseña de usuario">
-                <label >contraseña:</label>
-              </div>
-            <button (click)="validarUsuarios()" type="button" class="btn btn-primary" [disabled]="usuario.invalid">enviar</button>
-        </form>
-        <div class="respuesta">
-            
-            @if (bandUsuario==='encontrado') {
-                <p>usuario valido ingrese al <a [routerLink]="bandera" >menu</a></p>
-            }@else if (bandUsuario==='no encontrado') {
-                <p>usuario invalido</p>
-            }@else if (bandUsuario === 'incorrecto') {
-                <p>contraseña incorrecta</p>
-            }
+        <div class="w-50 p-3">
+                <h1>BIEMVENIDO</h1>
+            <form [formGroup]="usuario" (submit)="validarUsuarios()" class="formulario"  >
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control"  formControlName="cod_administrador" placeholder="ingrese codigo de usuario">
+                    <label >codigo de usuario:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control"  formControlName="contrasenia" placeholder="ingrese contraseña de usuario">
+                    <label >contraseña:</label>
+                </div>
+                <button (click)="validarUsuarios()" type="button" class="btn btn-primary" [disabled]="usuario.invalid">enviar</button>
+            </form>
+            <div class="respuesta">
+                
+                @if (bandUsuario==='encontrado') {
+                    <p>usuario valido ingrese al <a [routerLink]="bandera" >menu</a></p>
+                }@else if (bandUsuario==='no encontrado') {
+                    <p>usuario invalido</p>
+                }@else if (bandUsuario === 'incorrecto') {
+                    <p>contraseña incorrecta</p>
+                }
         </div>  
     </div>
-
 </div>
