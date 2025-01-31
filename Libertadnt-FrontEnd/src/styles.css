@@ -6,6 +6,32 @@ html, body{
    
     
 }
+.ilegal{
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  background-color:  #663e37
+}
+.formularioi{
+  background-color:  #663e37;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listadoi{
+  background-color:  #663e37;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login{
+  background-color:  #a2a6aa;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
 .body{
     margin-bottom: 10px;
     width: 100%;

@@ -1,72 +1,88 @@
 
-<div>
-    <p></p>
-    <nav>
-        <a href="usuario/menu-maestro/menu">ATRAS</a>
-    </nav>
-    <p></p>
-</div>
-<div>
-    @for (item of service.ilegales.data; track $index) {
-        <li>
-            <p>nombre:{{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>dia de la semana: {{item.dia_de_la_semana}}<br>hora de inicio: {{item.hora_inicio}}<br>hora de fin: {{item.hora_fin}}<br>cantidad maxima: {{item.cantidad_maxima}}</p>
-           <button (click)="modificarIlegal(item)">modificar</button>
-        </li>
-        @if (item.inscripcion) {
-            <form [formGroup]="ilegal" (submit)="enviarModificacion(item)">
-                <fieldset>
-                    <label>nombre de la actividad :</label>
-                    <input type="text" formControlName="nombre" >      
-                </fieldset>
-                <fieldset>
-                    <label>descipcion de la actividad:</label>
-                    <input type="text" formControlName="decripcion" >      
-                </fieldset>
-                <fieldset>
-                    <label>locacion:</label>
-                    <input type="text" formControlName="locacion" >      
-                </fieldset>
-                <fieldset>
-                    <label>hora fin:</label>
-                    <input type="text" formControlName="hora_fin" >      
-                </fieldset>
-                <fieldset>
-                    <label>dia de la semana:</label>
-                    <input type="text" formControlName="dia_de_la_semana" >      
-                </fieldset>
-                <fieldset>
-                    <label>hora inicio</label>
-                    <input type="text" formControlName="hora_inicio" >      
-                </fieldset>
-                <fieldset>
-                    <label>cantidad minima</label>
-                    <input type="text" formControlName="cantMin" >      
-                </fieldset>
-                <fieldset>
-                    <label>cantidad maxima</label>
-                    <input type="text" formControlName="cantMax" >      
-                </fieldset>
-                <fieldset>
-                    <label>dar de baja actividad </label>
-                    <input type="checkbox" formControlName="estado" >      
-                </fieldset>
-                <button>enviar cambios</button>
-            </form>
-            @if(bandera=='modificado'){
-                <p></p>
-                <p>la actividad fue modificada</p>
-                <p></p>
+<body class="listadoi">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="usuario/menu-maestro/menu">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+        </a>
+    
+        <div>
+            @for (item of service.ilegales.data; track $index) {
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item">nombre:{{item.nombre}}</li>
+                    <li class="list-group-item">descripcion: {{item.descripcion}} </li>
+                    <li class="list-group-item">diaDeLaSemana: {{item.diaDeLaSemana}} </li>
+                    <li class="list-group-item">horaInicio: {{item.horaInicio}} </li>
+                    <li class="list-group-item">horaFin: {{item.horaFin}} </li>
+                    <li class="list-group-item">estado: {{item.estado}} </li>
+                    <li class="list-group-item">cantidad_maxima: {{item.cantidad_maxima}} </li>
+                    <li class="list-group-item">locacion: {{item.locacion}}</li>
+                    <button (click)="modificarIlegal(item)">modificar</button>
+                </ul>
+                @if (item.inscripcion) {
+                    <form [formGroup]="ilegal" (submit)="enviarModificacion(item)">
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">nombre</span>
+                                <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">descipcion</span>
+                                <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>     
+                        </fieldset>
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">locacion</span>
+                                <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>      
+                        </fieldset>
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">dia de la semana</span>
+                                <input type="text" formControlName="diaDeLaSemana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>     
+                        </fieldset>
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Cantidad Maxima</span>
+                                <input type="text" formControlName="cantidad_maxima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>     
+                        </fieldset>
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">horario de inicio</span>
+                                <input type="text" formControlName="horaInicio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>     
+                        </fieldset>
+                        <fieldset>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">horario de fin</span>
+                                <input type="text" formControlName="horaFin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>     
+                        </fieldset>
+                        
+                        <button [disabled]="ilegal.invalid" type="button" class="btn btn-dark">enviar</button>
+                    </form>
+                    @if(bandera=='modificado'){
+                        <div class="alert alert-success" role="alert">
+                            <p>la actividad fue modificada</p>
+                        </div>
+                    }
+                    @if(bandera == 'no encontrado'){
+                        <div class="alert alert-warning" role="alert">
+                            <p>la actividad no fue encontrada</p>
+                        </div>
+                    }
+                    @if(bandera == 'imposible'){
+                        <div class="alert alert-dark" role="alert">
+                            <p>la actividad no puede ser modificada </p>
+                        </div>
+                    }
+                }
             }
-            @if(bandera == 'no encontrado'){
-                <p></p>
-                <p>la actividad no fue encontrada</p>
-                <p></p>
-            }
-            @if(bandera == 'imposible'){
-                <p></p>
-                <p>la actividad no puede ser modificada </p>
-                <p></p>
-            }
-        }
-    }
-</div>
+        </div>
+    </div>
+</body>

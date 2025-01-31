@@ -2,43 +2,68 @@
   <link rel="stylesheet" href="inscripcion-taller.component.css">
 </head>
 
-<body>
-  <div>
+<body class="formulario">
+  <div class="w-50 p-3">
+    <a class="icon-link icon-link-hover" href="menu/taller">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
     <p></p>
-    <a href="menu/taller">Retorno al Menu de Talleres</a>
-    <p></p>
-  </div>
-  
+
     <h2>Inscripcion a Taller</h2>
  ////
 
   
     @for (item of service.talleres.data; track $index) {
-    <li>
-      <p>nombre: {{item.nombre}}<br>descripcion: {{item.descripcion}} <br>locacion: {{item.locacion}}<br>dia de la semana {{item.dia_de_la_semana}}<br>hora inicio: {{item.hora_inicio}}<br>hora de fin: {{item.hora_fin}}</p>
-      <button (click)="ingresarIsncripcion(item)">expandir</button>
-    </li>
+      <ul class="list-group">
+        <li class="list-group-item disabled" aria-disabled="true">
+          <p>nombre: {{item.nombre}}<br>
+            descripcion: {{item.descripcion}} <br>
+            locacion: {{item.locacion}}<br>
+            dia de la semana {{item.dia_de_la_semana}}<br>
+            hora inicio: {{item.hora_inicio}}<br>
+            hora de fin: {{item.hora_fin}}</p>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-light" (click)="ingresarIsncripcion(item)">expandir</button>
     @if (item.inscripcion) {
     <p></p>
     <form [formGroup]="recluso" (submit)="validarRecluso(item)">
       <fieldset>
-        <label>codigo del recluso: </label>
-        <input type="text" formControlName="cod_recluso">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">codigo del recluso</span>
+          <input type="text" formControlName="cod_recluso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
       </fieldset>
       <p></p>
-      <button>inscribir recluso</button>
+      <button type="button" class="btn btn-primary">inscribir recluso</button>
     </form>
     @if (banderaRecluso=='inscripto') {
-    <p>inscripcion valida</p>
-    }@else if (banderaRecluso== 'no encontrada') {<p>taller no encontrado</p>}
-    @else if (banderaRecluso== 'no encontrada') {<p>taller no encontrado</p>}
-    @else if (banderaRecluso== 'ocupado') {<p>el taller esta ocupado</p>}
-    @else if (banderaRecluso== 'existente') {<p>el recluso ya esta inscripto </p>}
-    @else if (banderaRecluso== 'no inscripto') {<p>recluso no encontrado </p>}
+      <div class="alert alert-success" role="alert">
+        <p>inscripcion valida</p>
+      </div>
+    }@else if (banderaRecluso== 'no encontrada') {
+      <div class="alert alert-danger" role="alert">
+        <p>taller no encontrado</p>
+      </div>
+      <p>taller no encontrado</p>}
+    @else if (banderaRecluso== 'no encontrada') {
+      <div class="alert alert-danger" role="alert">
+        <p>taller no encontrado</p>
+      </div>}
+    @else if (banderaRecluso== 'ocupado') {
+      <div class="alert alert-danger" role="alert">
+        <p>el taller esta ocupado</p>
+      </div>}
+    @else if (banderaRecluso== 'existente') {
+      <div class="alert alert-warning" role="alert">
+        <p>el recluso ya esta inscripto </p>
+      </div>}
+    @else if (banderaRecluso== 'no inscripto') {
+      <div class="alert alert-warning" role="alert">
+        <p>recluso no encontrado </p>
+      </div>}
     }
     }
- 
-  
-   
- 
+  </div> 
 </body>

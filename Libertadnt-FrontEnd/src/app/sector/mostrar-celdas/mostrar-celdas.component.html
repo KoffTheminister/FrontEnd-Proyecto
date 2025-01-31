@@ -1,15 +1,26 @@
-<div>
-    <nav>
-        <p></p>
-        <a href="usuario/menu/sector">ATRAS</a>
-        <p></p>
-    </nav>    
-</div>
-<h2>celdas :</h2>
-<p></p>
-@for (celda of service.celdas.data; track $index) {
-    <p></p>
-    <p>capacidad: {{celda.capacidad}}<br>codigo de celda: {{celda.cod_celda}}<br>descipcion: {{celda.descipcion}}</p>
-    <p></p>
-}
 
+<body class="listado">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="usuario/menu/sector">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <p></p>
+
+          <h2>celdas :</h2>
+        <p></p>
+        @for (celda of service.celdas.data; track $index) {
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <p>
+                        capacidad: {{celda.capacidad}}
+                        <br>codigo de celda: {{celda.cod_celda}}
+                        <br>descipcion: {{celda.descipcion}}
+                    </p>
+                </li>
+              </ul>
+            <p></p>
+        }
+
+    </div>
+</body>

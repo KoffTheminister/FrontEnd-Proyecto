@@ -1,27 +1,30 @@
 
-<body>
-    <h2>Mostrar Sentencias</h2>
-    <button (click)="buscarSentencias()">buscar sentencias</button>
-  
-  
+<body class="listado"> 
+  <div class="w-50 p-3">
+    <a class="icon-link icon-link-hover" href="menu/sentencia">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+    <p></p>
+    <p></p>
+    <h2>Mostrar sentencias</h2>
+    <p></p>
+    
     <ul>
       @for (item of service.sentencia; track $index) {
-      <li>
-        <p>{{item.username}}</p>
-      </li>
+        <ul class="list-group">
+          <li class="list-group-item disabled" aria-disabled="true">
+            <p>
+              nombre: {{item.nombre}} <br>
+              descripcion: {{item.descripcion}}<br>
+              duracion_anios {{item.duracion_anios}}<br>
+              duracion_meses: {{item.duracion_meses}}<br>
+              duracion_dias: {{item.duracion_dias}}<br>
+              orden_de_gravedad: {{item.orden_de_gravedad}}<br>
+            </p>
+            </li>
+        </ul>
       }
-    </ul>
-  
-  
-    <div>
-      <input type="text" [(ngModel)]="id" (click)="validarband()">
-      <button (click)="buscarUnaSentencia(id)" [disabled]="ban">Buscar</button>
-      <p>{{uno.name}}</p>
-    </div>
-  
-  
-    <div>
-      <nav><a href="menu/sentencia">Retorno al Menu de Sentencias</a></nav>
-    </div>
-  
+    </ul> 
+  </div>  
 </body>

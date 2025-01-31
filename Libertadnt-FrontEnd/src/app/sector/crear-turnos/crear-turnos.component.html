@@ -1,36 +1,42 @@
 
-<body>
-    <div>
-        <nav>
+<body class="formulario">
+    <div class="w-50 p-3">
+            <a class="icon-link icon-link-hover" href="usuario/menu/sector/t/:sector">
+                ATRAS
+                <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+            </a>
             <p></p>
-            <a href="usuario/menu/sector/c/:sector">ATRAS</a>
+            <h2>crear turnos: </h2>
             <p></p>
-        </nav>    
+            <form [formGroup]="nuevo_turno" (submit)="crearTurno()">
+                <fieldset>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">codigo de guardia</span>
+                        <input type="number" formControlName="cod_guardia" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>        
+                </fieldset>
+                <fieldset>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">turno</span>
+                        <input type="text" formControlName="turno" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>       
+                </fieldset>
+                <button [disabled]="nuevo_turno.invalid" type="button" class="btn btn-outline-success">crear</button>
+            </form>
+            @if(bandera== 'exito'){
+                <div class="alert alert-success" role="alert">
+                    <p> el turno se creo con exito </p>
+                </div>
+            }
+            @if(bandera== 'ocupado'){
+                <div class="alert alert-warning" role="alert">
+                    <p> el guardia no esta disponible en ese turno </p>
+                </div>
+            }
+            @if(bandera== 'no encontrado'){
+                <div class="alert alert-danger" role="alert">
+                    <p> no se pudo encontrar ningun guardia activo con ese codigo  </p>
+                </div>
+            }
     </div>
-    <h2>crear turnos: </h2>
-    <p></p>
-    <form [formGroup]="nuevo_turno" (submit)="crearTurno()">
-        <fieldset>
-            <label>codigo de guardia: </label>
-            <input type="number" formControlName="cod_guardia" >        
-        </fieldset>
-        <fieldset>
-            <label>turno: </label>
-            <input type="text" formControlName="turno" >        
-        </fieldset>
-        <button [disabled]="nuevo_turno.invalid"> crear turno</button>
-    </form>
-    @if(bandera== 'exito'){
-        <p></p>
-        <p> el turno se creo con exito </p>
-        <p></p>
-    }
-    @if(bandera== 'ocupado'){
-        <p></p>
-        <p> el guardia no esta disponible en ese turno </p>
-        <p></p>}
-    @if(bandera== 'no encontrado'){
-        <p></p>
-        <p> no se pudo encontrar ningun guardia activo con ese codigo  </p>
-        <p></p>}
 </body>

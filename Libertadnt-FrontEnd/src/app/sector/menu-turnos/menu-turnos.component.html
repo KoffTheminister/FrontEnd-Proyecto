@@ -1,25 +1,38 @@
-<div>
-    <nav>
+<body class="menu">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="usuario/menu/sector">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+        </a>
         <p></p>
-        <a href="usuario/menu/sector">ATRAS</a>
-        <p></p>
-    </nav>    
-</div>
-<div>
-    <nav>
-        <a  [routerLink]="crear"> crear turnos <br></a>
-        <a  [routerLink]="finalizar"> finalizar turnos</a>
-    </nav>
-</div>
+        <div>
+            <div class="d-grid gap-2">
 
-<h2>Turnos :</h2>
+                <button class="btn btn-primary" type="button">
+                    <a href="#" class="btn" role="button" data-bs-toggle="button" [routerLink]="crear">crear turnos</a>
+                </button>
+                <button class="btn btn-primary" type="button">
+                    <a href="#" class="btn" role="button" data-bs-toggle="button" [routerLink]="finalizar">finalizar turnos</a>
+                </button>
+            </div>              
+        </div>
+        
+        <h2>Turnos :</h2>
+        
+        
+        @for (turno of service.celdas.data; track $index) {
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <p>codigo de guardia: {{turno.cod_guardia_cod_guardia}}
+                        <br>codigo de sector: {{turno.cod_sector_cod_sector}}
+                        <br>turno: {{turno.turno}}
+                        <br>fecha de inicio: {{turno.fecha_ini}}<br>
+                    @if(turno.fecha_fin == null){<p>turno no terminado</p>}@else {<p>fecha de fin: {{turno.fecha_fin}}</p>}</p>
+                    <p></p>        
+                </li>
+              </ul>
+        }
+    </div>
+</body>
 
-
-@for (turno of service.celdas.data; track $index) {
-    <p></p>
-    <p>codigo de guardia: {{turno.cod_guardia_cod_guardia}}<br>codigo de sector: {{turno.cod_sector_cod_sector}}<br>turno: {{turno.turno}}<br>fecha de inicio: {{turno.fecha_ini}}<br>
-    @if(turno.fecha_fin == null){<p>turno no terminado</p>}@else {<p>fecha de fin: {{turno.fecha_fin}}</p>}</p>
-    <p></p>
-
-}
 

@@ -1,73 +1,77 @@
-<head>
-  <link rel="stylesheet" href="alta-taller.component.css">
-</head>
 
-<body>
-  
+
+<body class="formulario">
+  <div class="w-50 p-3">
+    <a class="icon-link icon-link-hover" href="menu/taller">
+      ATRAS
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+    <p></p>
     
-      <h2>Alta Taller</h2>
+    
+    <h2>Alta Taller</h2>
     
   
 
   <div>
     <form [formGroup]="taller" (submit)="enviarTaller()">
-      <fieldset>
-        
-          <label>Nombre:</label>
-          <input type="text" formControlName="nombre">
-        
-      </fieldset>
-      <fieldset>
-        
-          <label>Descripcion:</label>
-          <input type="text" formControlName="descripcion">
-        
-      </fieldset>
-      <fieldset>
-        
-          <label>Locacion:</label>
-          <input type="text" formControlName="locacion">
-        
-      </fieldset>
-      <fieldset>
-        
-        <label>Dia de la semana:</label>
-        <input type="number" formControlName="dia_de_la_semana">
       
+      <fieldset>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+          <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
+          <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Locacion</span>
+          <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Dia de la semana</span>
+          <input type="text" formControlName="dia_de_la_semana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
     </fieldset>
+
     <fieldset>
-        
-      <label>Hora de inicio</label>
-      <input type="number" formControlName="hora_inicio">
-    
-  </fieldset>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Hora de inicio</span>
+        <input type="text" formControlName="hora_inicio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+    </fieldset>
+
       <fieldset>
-        
-          <label>Hora de finalizacion:</label>
-          <input type="number" formControlName="hora_fin">
-        
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Hora de finalizacion</span>
+          <input type="text" formControlName="hora_fin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
       </fieldset>
      
      
-      
-      <button [disabled]="taller.invalid">registrar taller</button>
+      <button [disabled]="taller.invalid" type="button" class="btn btn-primary">enviar</button>
     </form>
   </div>
   @if(bandTaller== 'exito'){
-    <p>el taller fue guardado con exito </p>
+    <div class="alert alert-success" role="alert">
+      <p>el taller fue guardado con exito </p>
+    </div>
   }
   @if(bandTaller== 'interferencia'){
-    <p>el taller coincide en horario y dia con otro taller</p>
+    <div class="alert alert-danger" role="alert">
+      <p>el taller coincide en horario y dia con otro taller</p>
+    </div>
   }
 
-  
-
-  
-    <div>
-      <p></p>
-      <a href="menu/taller">Retorno al Menu de Talleres</a>
-      <p></p>
-    </div>
-  
-
+  </div>
 </body>

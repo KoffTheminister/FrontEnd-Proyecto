@@ -1,17 +1,35 @@
-<div>
-    <p></p>
-    <a href="usuario/:menu">ATRAS</a>
-    <p></p>
-</div>
-<div>
-    @if (bandera=== true) {
-    @for (item of service.usuarios; track $index) {
-        <p>{{item.cod_administrador}} | {{item.id}} | {{item.title}} | {{item.completed}} <br></p>
-    }}
-    @if (bandera=== false) {
-        <p>no hay administrtadores para mostrar </p>
-    }
-    @if (bandera=== undefined ) {
-        <h2>problema de servidor </h2>
-    }
-</div>
+<body class="listado">
+    <div class="w-50 p-3">
+        <a class="icon-link icon-link-hover" href="usuario/:menu">
+            ATRAS
+            <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <p></p>
+          <div>
+            @if (bandera=== true) {
+            @for (item of service.usuarios; track $index) {
+                <ul class="list-group list-group-horizontal-sm">
+                    <li class="list-group-item">{{item.cod_administrador}}</li>
+                    <li class="list-group-item">{{item.id}}</li>
+                    <li class="list-group-item">{{item.title}}</li>
+                    <li class="list-group-item">{{item.completed}}</li>
+                  </ul>
+            }}
+            @if (bandera=== false) {
+                <div class="alert alert-primary" role="alert">
+                    <p>no hay administrtadores para mostrar </p>
+                </div>
+            }
+            @if (bandera=== undefined ) {
+                <div class="alert alert-warning" role="alert">
+                    <p>problema de servidor </p>
+                    
+                </div>
+            }
+        </div>
+    
+
+
+    </div>    
+</body>
+
