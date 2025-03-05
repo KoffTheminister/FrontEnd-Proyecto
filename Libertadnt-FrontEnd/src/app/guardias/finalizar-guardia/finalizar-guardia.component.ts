@@ -12,9 +12,11 @@ import { GuardiasService } from '../guardias.service.js';
 export class FinalizarGuardiaComponent {
   constructor(public service : GuardiasService){
     this.cod_guardia= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-  this.guardia = new FormGroup({
-        cod_guardia: this.cod_guardia,
-        })}
+    this.guardia = new FormGroup({
+      cod_guardia: this.cod_guardia,
+    })
+  }
+
   guardia  : FormGroup;
   cod_guardia: FormControl;
   fin:string | undefined

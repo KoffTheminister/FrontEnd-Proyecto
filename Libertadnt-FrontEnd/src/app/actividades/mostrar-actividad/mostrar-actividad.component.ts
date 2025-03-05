@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActividadService } from '../actividad.service.js';
-import { idText } from 'typescript';
 
 @Component({
   selector: 'app-mostrar-actividad',
@@ -25,7 +24,8 @@ export class MostrarActividadComponent implements OnInit{
           this.bandera = true
           console.log("actividades no encontradas ",e)
         }
-      }})
+      }
+    })
   }
   
 }

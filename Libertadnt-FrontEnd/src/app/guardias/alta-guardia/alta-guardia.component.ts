@@ -48,10 +48,11 @@ export class AltaGuardiaComponent {
       },
       error:(e)=>{
         if(e.status === 404){
-          console.log("guardia y esta activo  ")
+          console.log("el guardia ya existe y se encuentra con contrato activo")
           this.bandera = 'activo'
         }
-      }})
+      }
+    })
       this.guardia.reset()
   }
 

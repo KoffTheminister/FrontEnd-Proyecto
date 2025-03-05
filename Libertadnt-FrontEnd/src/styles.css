@@ -51,9 +51,11 @@ html, body{
 }
 .formulario{
   background-color:  #a2a6aa;
-  display: flex;
   justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  
 }
 .listado{
   background-color:  #a2a6aa;

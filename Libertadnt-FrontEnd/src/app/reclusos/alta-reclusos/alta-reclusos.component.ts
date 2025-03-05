@@ -13,8 +13,8 @@ import { SentenciasService } from '../../sentencia/sentencias.service.js';
 export class AltaReclusosComponent implements OnInit{
   constructor (public service : ReclusosService,public sSentencia : SentenciasService){
     this.fecha_nac= new FormControl('',[Validators.required,]);
-    this.nombre= new FormControl('',[Validators.required,]);
-    this.apellido= new FormControl('',[Validators.required,]);
+    this.nombre= new FormControl('',[Validators.required,Validators.maxLength(40),Validators.minLength(1)]);
+    this.apellido= new FormControl('',[Validators.required,Validators.maxLength(40),Validators.minLength(1)]);
     this.dni= new FormControl('',[Validators.required,]);
     this.cod_sentencia = new FormControl('',)
   
@@ -46,7 +46,7 @@ export class AltaReclusosComponent implements OnInit{
   }
 
 
-  
+  banana:string | undefined
   recluso  : FormGroup;
   nombre : FormControl;
   apellido : FormControl;
@@ -62,6 +62,7 @@ export class AltaReclusosComponent implements OnInit{
 
 
 validarRecluso(){ 
+  console.log(this.recluso.value)
   this.service.postRecluso(this.recluso.value).subscribe({
     next: (data)=>{
       console.log("status",data.status)
@@ -80,11 +81,17 @@ validarRecluso(){
         console.log("recluso tiene condena activa")
         this.bandRecluso='activa'
       }
-    }
-    ,error: (e)=>{
+    },
+    error: (e)=>{
       if(e.status == 203){
         console.log("recluso tiene condena activa")
         this.bandRecluso='activa'
+      }
+      if(e.status == 400){
+        console.log("la respuesta es",e)
+        console.log("el mensaje es:",e.error.message)
+        this.banana=e.error.message
+        this.bandRecluso='message'
       }
     }
   })

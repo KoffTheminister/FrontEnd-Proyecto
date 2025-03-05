@@ -12,40 +12,58 @@ import { SentenciasService } from '../sentencias.service.js';
 export class AltaSentenciaComponent {
   constructor (private service : SentenciasService){
     this.descripcion = new FormControl('',[Validators.required,Validators.maxLength(30)]);    
-    this.duracion_dia = new FormControl('',[Validators.required,Validators.max(31)])
-    this.duracion_mes = new FormControl('',[Validators.required,Validators.max(12)])
     this.duracion_año = new FormControl('',[Validators.required,Validators.max(9999)])
     this.nombre = new FormControl('',[Validators.required])
+    this.orden_de_gravedad = new FormControl('',[Validators.required])
   
-    this.sActual = new FormGroup({
+    this.sentencia = new FormGroup({
 
-      nombre: this.nombre
-      ,descripcion: this.descripcion
-      ,duracion_dia: this.duracion_dia
-      ,duracion_mes: this.duracion_mes
-      ,duracion_año: this.duracion_año 
-      })
+      nombre: this.nombre,
+      descripcion: this.descripcion,
+      duracion_año: this.duracion_año ,
+      orden_de_gravedad: this.orden_de_gravedad
+    })
   
       
   };
   
-  sActual: FormGroup;
+  sentencia: FormGroup;
   nombre: FormControl;
   descripcion: FormControl;
-  duracion_dia: FormControl
-  duracion_mes: FormControl
   duracion_año: FormControl
-  verFomrulario(){
-    let x = {cod_sentencia: 123456,
-      descripcion: "exeso de facha"
-      ,duracion: 20
-      ,cantidad_cond: 30
-      ,fecha_ini: "26/02/2001"}
+  orden_de_gravedad: FormControl
+  bandera: undefined| string
+  verFormulario(){
+    let x = {
+      cod_sentencia: 0,
+      nombre: "",
+      descripcion: "",
+      duracion_anios: 0,
+      orden_de_gravedad: 0
 
-    console.log(this.sActual.value);
-    this.sActual.reset();
+    }
+    
+    this.sentencia.reset();
   }
   enviarFormulario(){
-    this.service.postSentencias(this.sActual.value).subscribe({next: (data)=> console.log(data),error: (e)=> console.log(e)});
+    this.service.postSentencias(this.sentencia.value).subscribe({
+      next:(data)=>{
+        if(data.status === 201){
+          console.log("la sentencia fue creada ", data)
+          this.bandera='creada'
+        }
+        if(data.status == 202){
+          this.bandera='existente'
+          console.log("el guardia ya existe y se reanuda el contrato")
+        }
+      },
+      error:(e)=>{
+        if(e.status === 404){
+          console.log("el guardia ya existe y se encuentra con contrato activo")
+          this.bandera = 'activo'
+        }
+      }
+    })
+    this.sentencia.reset()
   }
 }
