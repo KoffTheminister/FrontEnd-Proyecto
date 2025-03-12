@@ -49,10 +49,11 @@
               descripcion: {{item.descripcion}}<br>
             </p>
           </li>
+            <div class="form-check form-switch form-check-reverse">
+              <input (change)="agregarSentencia(item.cod_sentencia)" class="form-check-input" type="checkbox"  id="flexSwitchCheckReverse">
+              <label class="form-check-label" for="flexSwitchCheckReverse">AGREGAR</label>
+            </div>
         </ul>
-        
-        <button (click)="agregarSentencia(item.cod_sentencia)" type="button" class="btn btn-success">AGREGAR</button>
-        <button (click)="quitarSentencia(item.cod_sentencia)" type="button" class="btn btn-danger">ELIMINAR</button>
         <p></p>
         <p></p>
       }
@@ -68,6 +69,12 @@
     }@else if(bandRecluso == 'message'){
       <div class="alert alert-danger" role="alert">
         <h4> {{banana}} </h4>
+      </div>
+    }
+    @if (bandRecluso == 'celda') {
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <h5> recluso sera asignado a la celda {{celda.cod_celda}}, en el sector {{celda.cod_sector}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     }
   

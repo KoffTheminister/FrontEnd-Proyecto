@@ -45,7 +45,7 @@ export class AltaReclusosComponent implements OnInit{
       }})
   }
 
-
+  celda={cod_celda:0,cod_sector:0}
   banana:string | undefined
   recluso  : FormGroup;
   nombre : FormControl;
@@ -106,7 +106,10 @@ enviarCondena(){
   this.service.postCondena(sentencia_enviar).subscribe({
     next:(data)=>{
       if(data.status == 201){
+        console.log( "response:",data)
         console.log("condena posteada")
+        this.bandRecluso = 'celda'
+        this.celda= data.celda
       }
     },
     error:(e)=>{
@@ -122,12 +125,11 @@ agregarSentencia(sent:any){
   if(this.validarSentencia(sent)){
     this.respuesta.push(sent)
     this.value='true'
+  }else{
+    this.respuesta.splice(this.respuesta.findIndex((item: any)=>{item == sent}),1)
+    this.value='false'
   }
   
-}
-quitarSentencia(sent:any){
-  this.respuesta.splice(this.respuesta.findIndex((item: any)=>{item == sent}),1)
-  this.value='false'
 }
 validarSentencia(sent:any){
   let encontrado = this.respuesta.find((x:any)=>x == sent)

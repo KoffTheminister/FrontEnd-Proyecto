@@ -35,6 +35,7 @@ export class ModificarIlegalComponent {
         
       })      
 }
+  banana: undefined|boolean = false
   ilegal  : FormGroup;
   nombre:FormControl;
   decripcion : FormControl;
@@ -48,7 +49,10 @@ export class ModificarIlegalComponent {
   bandera: undefined|string
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
-      next:(data)=>{this.service.ilegales=data},
+      next:(data)=>{
+        this.service.ilegales=data
+        this.banana=true 
+      },
       error:(e)=>{console.log(e)}})
   }
   modificarIlegal(x:any){

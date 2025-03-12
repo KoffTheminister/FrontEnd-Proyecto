@@ -56,19 +56,24 @@ export class ActividadService {
   }
   ///////ILEGALES/////////
   getIlegales() {
-    return this.http.get<any | JSON>("http://localhost:8080/actividadesIlegales")
+    return this.http.get<any | JSON>("http://localhost:8080/actividades_Ilegales")
   }
   getOneIlegal(id:any) {
-    return this.http.get<any | JSON>("http://localhost:8080/actividadesIlegales/"+`${id}`)
+
+    return this.http.get<any | JSON>("http://localhost:8080/actividades_ilegales/"+`${id}`)
   }
   postIlegal(uActual:any){
-    return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales",uActual)
+    uActual.dia_de_la_semana=Number.parseInt(uActual.dia_de_la_semana)
+    return this.http.post<any| JSON>("http://localhost:8080/actividades_ilegales",uActual)
   }
   putIlegal(id:any,uActual:any){
-    return this.http.put<any| JSON>("http://localhost:8080/actividadesIlegales/"+`${id}`,uActual)
+    return this.http.put<any| JSON>("http://localhost:8080/actividades_ilegales/"+`${id}`,uActual)
   }
   InscribirActividadIlegal(actividad:any,recluso:any){
-    let respuesta={cod_act_ilegal:actividad,cod_recluso:recluso}
-    return this.http.post<any| JSON>("http://localhost:8080/actividadesIlegales/inscripcion/"+`${actividad}`+"&"+`${recluso}`,respuesta)
+    let respuesta={
+      cod_act_ilegal:actividad
+      ,cod_recluso:recluso
+    }
+    return this.http.post<any| JSON>("http://localhost:8080/actividades_ilegales/inscripcion/"+`${actividad}`+"&"+`${recluso}`,respuesta)
   }
 }

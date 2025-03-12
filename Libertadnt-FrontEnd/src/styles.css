@@ -6,21 +6,29 @@ html, body{
    
     
 }
+.tituloi{
+  color: #f72104;
+}
+.checkbox{
+  color: #ffffff;
+}
+
 .ilegal{
   margin-bottom: 10px;
   width: 100%;
   text-align: left;
-  background-color:  #663e37
+  background-color:  #090100
 }
 .formularioi{
-  background-color:  #663e37;
+  background-color:  #090100;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .listadoi{
-  background-color:  #663e37;
+  background-color:  #090100;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }

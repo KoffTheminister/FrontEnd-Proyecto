@@ -20,6 +20,7 @@ export class IncribirseIlegalComponent implements OnInit{
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
       next:(data)=>{
+        this.banana=true
         if(data.status== 201){
           console.log("se recuperaron las actividades",data)
           this.service.ilegales=data
@@ -31,7 +32,7 @@ export class IncribirseIlegalComponent implements OnInit{
       }})
   }
   recluso  : FormGroup;
-  
+  banana=false
   cod_recluso: FormControl;
   banderaRecluso:string|undefined
   inscriptos = []

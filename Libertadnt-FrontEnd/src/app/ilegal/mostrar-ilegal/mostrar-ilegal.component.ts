@@ -10,9 +10,13 @@ import { ActividadService } from '../../actividades/actividad.service.js';
 })
 export class MostrarIlegalComponent implements OnInit{
   constructor(public service: ActividadService){}
+  banana = false
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
-      next:(data)=>{this.service.ilegales=data},
+      next:(data)=>{
+        this.service.ilegales=data
+        this.banana=true
+      },
       error:(e)=>{console.log(e)}})
   }
   
