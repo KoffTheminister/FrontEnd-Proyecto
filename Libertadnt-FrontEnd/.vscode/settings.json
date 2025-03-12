@@ -61,7 +61,11 @@
     "*.ndjson": "jsonl",
     "*.dbclient-js": "javascript",
     "iostream": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "array": "cpp",
+    "string_view": "cpp",
+    "initializer_list": "cpp",
+    "utility": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

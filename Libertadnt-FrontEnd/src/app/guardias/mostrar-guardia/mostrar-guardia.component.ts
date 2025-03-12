@@ -21,14 +21,15 @@ export class MostrarGuardiaComponent implements OnInit {
       next: (data)=> {
         if(data.status == 201 || data.status == undefined){
           console.log("guardias cargados", data)
-          this.service.guardias = data}
+          this.service.guardias = data
+        }
       },
       error: (e) => {
         if(e.status === 404){
           console.log("guardias no existentes ",e)
         }
       }
-      });
+    });
     console.log(this.service.guardias);
   }
 

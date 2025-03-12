@@ -23,7 +23,7 @@ export class BuscarReclusosComponent {
         apellido: this.apellido,
         dni: this.dni})    
   }
-  
+  fecha:Date = new Date()
   recluso  : FormGroup;
   nombre : FormControl;
   apellido : FormControl;
@@ -32,12 +32,14 @@ export class BuscarReclusosComponent {
   bandera: boolean | undefined;
   ;
   validarRecluso(){
+    console.log("peticion")
     this.service.getOneRecluso(this.dni.value).subscribe({
       next:(data)=>{
         if(data.status == 201){
-          console.log("recluso existente")
+          console.log("recluso existente",data)
           this.service.recluso=data
-          this.bandera = true    
+          this.bandera = true   
+          this.fecha = new Date(this.service.recluso.data.fecha_nac) 
         }
 
     }

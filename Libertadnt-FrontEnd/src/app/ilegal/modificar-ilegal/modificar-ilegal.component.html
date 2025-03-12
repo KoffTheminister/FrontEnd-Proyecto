@@ -5,20 +5,24 @@
             ATRAS
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
         </a>
-    
+        <p></p>
+    @if(banana){
         <div>
             @for (item of service.ilegales.data; track $index) {
+                <p></p>
                 <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item">nombre:{{item.nombre}}</li>
-                    <li class="list-group-item">descripcion: {{item.descripcion}} </li>
-                    <li class="list-group-item">diaDeLaSemana: {{item.diaDeLaSemana}} </li>
-                    <li class="list-group-item">horaInicio: {{item.horaInicio}} </li>
-                    <li class="list-group-item">horaFin: {{item.horaFin}} </li>
-                    <li class="list-group-item">estado: {{item.estado}} </li>
-                    <li class="list-group-item">cantidad_maxima: {{item.cantidad_maxima}} </li>
-                    <li class="list-group-item">locacion: {{item.locacion}}</li>
-                    <button (click)="modificarIlegal(item)">modificar</button>
+                    <li class="list-group-item">
+                        nombre: {{item.nombre}} <br>
+                        descripcion: {{item.descripcion}} <br>
+                        dia De La Semana: {{item.dia_de_laSemana}} <br>
+                        hora inicio: {{item.hora_inicio}} <br>
+                        hora fin: {{item.hora_fin}} <br>
+                        cantidad_maxima: {{item.cantidad_maxima}} <br>
+                        locacion: {{item.locacion}} <br>
+                    </li>
                 </ul>
+                <button (click)="modificarIlegal(item)">modificar</button>
+                <p></p>
                 @if (item.inscripcion) {
                     <form [formGroup]="ilegal" (submit)="enviarModificacion(item)">
                         <fieldset>
@@ -29,7 +33,7 @@
                         </fieldset>
                         <fieldset>
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">descipcion</span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">descripcion</span>
                                 <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             </div>     
                         </fieldset>
@@ -47,7 +51,7 @@
                         </fieldset>
                         <fieldset>
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Cantidad Maxima</span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">cantidad maxima</span>
                                 <input type="text" formControlName="cantidad_maxima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             </div>     
                         </fieldset>
@@ -84,5 +88,12 @@
                 }
             }
         </div>
+    }@else {
+        <p></p>
+        <div class="alert alert-primary" role="alert">
+            <h4> hay actividades disponibles </h4>
+        </div>
+    }
+        
     </div>
 </body>

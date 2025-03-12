@@ -1,17 +1,13 @@
-
 import { Routes } from '@angular/router';
 import { LogInComponent } from './log-in/log-in.component.js';
 import { MenuComponent } from './menu/menu.component.js';
 import { MenuSentenciaComponent } from './sentencia/menu-sentencia/menu-sentencia.component.js';
 import { AltaSentenciaComponent } from './sentencia/alta-sentencia/alta-sentencia.component.js';
-import { ModSentenciaComponent } from './sentencia/mod-sentencia/mod-sentencia.component.js';
-
 import { MenuGuardiaComponent } from './guardias/menu-guardia/menu-guardia.component.js';
 import { AltaGuardiaComponent } from './guardias/alta-guardia/alta-guardia.component.js';
 import { BuscarGuardiaComponent } from './guardias/buscar-guardia/buscar-guardia.component.js';
 import { ModificarGuardiaComponent } from './guardias/modificar-guardia/modificar-guardia.component.js';
 import { MostrarGuardiaComponent } from './guardias/mostrar-guardia/mostrar-guardia.component.js';
-
 import { MenuReclusosComponent } from './reclusos/menu-reclusos/menu-reclusos.component.js';
 import { AltaReclusosComponent } from './reclusos/alta-reclusos/alta-reclusos.component.js';
 import { BuscarReclusosComponent } from './reclusos/buscar-reclusos/buscar-reclusos.component.js';
@@ -45,7 +41,7 @@ import { FinalizarTurnosComponent } from './sector/finalizar-turnos/finalizar-tu
 
 export const routes: Routes = [
     //log in
-    {path: 'usuario', component: LogInComponent},
+    {path: ':usuario', component: LogInComponent},
     //menu
     {path: 'usuario/:menu', component: MenuComponent},
     {path: '',redirectTo: 'usuario',pathMatch:'full'},
@@ -54,7 +50,6 @@ export const routes: Routes = [
     //sentencia
     {path: 'menu/sentencia', component: MenuSentenciaComponent},
     {path: 'menu/sentencia/alta', component: AltaSentenciaComponent},
-    {path: 'menu/sentencia/modificar', component: ModSentenciaComponent},
     {path: 'menu/sentencia/sentencias', component: MostrarSenteniasComponent},
     //guardia
     {path: 'menu/guardia', component: MenuGuardiaComponent},
@@ -87,7 +82,6 @@ export const routes: Routes = [
     {path: 'usuario/menu/sector/c/:sector', component: MostrarCeldasComponent},
     {path: 'usuario/menu/sector/t/:sector/crear-turnos', component: CrearTurnosComponent},
     {path: 'usuario/menu/sector/t/:sector/finalizar-turnos', component: FinalizarTurnosComponent},
-    
     //ilegal
     {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent},
     {path: 'usuario/menu-maestro/menu/alta-actvidad', component: AltaIlegalComponent},
@@ -95,13 +89,4 @@ export const routes: Routes = [
     {path: 'usuario/menu-maestro/menu/inscripcion-actividad', component: IncribirseIlegalComponent},
     {path: 'usuario/menu-maestro/menu/mostrar-actividad', component: MostrarIlegalComponent},
 
-    
-
-
-    
-    
-
-    
-    
-    
 ];

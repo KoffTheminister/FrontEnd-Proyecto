@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './menu-reclusos.component.css'
 })
 export class MenuReclusosComponent {
-
+//
 }

@@ -4,20 +4,27 @@
             ATRAS
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
         </a>
-        <div>
-            @for (item of service.ilegales.data; track $index) {
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item">nombre:{{item.nombre}}</li>
-                    <li class="list-group-item">descripcion: {{item.descripcion}} </li>
-                    <li class="list-group-item">diaDeLaSemana: {{item.diaDeLaSemana}} </li>
-                    <li class="list-group-item">horaInicio: {{item.horaInicio}} </li>
-                    <li class="list-group-item">horaFin: {{item.horaFin}} </li>
-                    <li class="list-group-item">estado: {{item.estado}} </li>
-                    <li class="list-group-item">cantidad_maxima: {{item.cantidad_maxima}} </li>
-                    <li class="list-group-item">locacion: {{item.locacion}}</li>
-                </ul>
-            }
-        </div>
+        @if (banana) {
+            <div>
+                @for (item of service.ilegales.data; track $index) {
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">nombre:{{item.nombre}}</li>
+                        <li class="list-group-item">descripcion: {{item.descripcion}} </li>
+                        <li class="list-group-item">diaDeLaSemana: {{item.diaDeLaSemana}} </li>
+                        <li class="list-group-item">horaInicio: {{item.horaInicio}} </li>
+                        <li class="list-group-item">horaFin: {{item.horaFin}} </li>
+                        <li class="list-group-item">estado: {{item.estado}} </li>
+                        <li class="list-group-item">cantidad_maxima: {{item.cantidad_maxima}} </li>
+                        <li class="list-group-item">locacion: {{item.locacion}}</li>
+                    </ul>
+                }
+            </div>
+        }@else {
+            <p></p>
+            <div class="alert alert-primary" role="alert">
+                <h4> hay actividades disponibles </h4>
+            </div>
+        }
     </div>
 </body>
 

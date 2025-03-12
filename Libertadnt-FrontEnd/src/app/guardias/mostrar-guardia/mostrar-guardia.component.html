@@ -11,10 +11,10 @@
     @for (item of service.guardias.data; track $index) {
       <ul class="list-group">
         <li class="list-group-item disabled" aria-disabled="true">
-          <p>nombre: {{item.nombre}}<br>
+          <p>codigo de guardia: {{item.cod_guardia}}<br>
+            nombre: {{item.nombre}}<br>
             apellido: {{item.apellido}}<br>
             dni: {{item.dni}}<br>
-            fechaIniContrato: {{item.fecha_ini_contrato}}<br>
           </p>
         </li>
       </ul>

@@ -23,10 +23,11 @@
       
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Dni</span>
-              <input type="text" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="number" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
 
-            <button [disabled]="guardia.invalid" type="button" class="btn btn-primary">Enviar</button>
+            <button (click)="enviarGuarida()" type="button" class="btn btn-primary">Enviar</button>
+            <!-- <button [disabled]="guardia.invalid" type="button" class="btn btn-primary">Enviar</button> -->
             <p></p>
         </form>
         @if(bandera === 'creado'){

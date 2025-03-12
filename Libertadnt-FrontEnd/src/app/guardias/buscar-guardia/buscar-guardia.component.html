@@ -6,13 +6,13 @@
     </a>
     <p></p>
     <h2>Buscar Guardia</h2>
-    <form [formGroup]="guardia" (submit)="buscarGuardia()">
+    <form [formGroup]="guardia">
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Dni</span>
         <input type="text" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
 
-      <button [disabled]="guardia.invalid" type="button" class="btn btn-primary">Enviar</button>
+      <button (click)="buscarGuardia()" type="button" class="btn btn-primary">Enviar</button>
       <p></p>
     </form>
     @if (bandera === true) {
@@ -22,13 +22,15 @@
     }
     @else if(bandera === false){
       <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <P>nombre: {{service.guardia.data.nombre}}<br>
+        <P>codigo del guardia: {{service.guardia.data.cod_guardia}}<br>
+          nombre: {{service.guardia.data.nombre}}<br>
           apellido: {{service.guardia.data.apellido}}<br>
           dni: {{service.guardia.data.dni}}<br>
-          fecha inicio de Contrato: {{service.guardia.data.fecha_ini_contrato}}<br></P>
+          fecha inicio de Contrato: {{fecha.getDate()}} / {{fecha.getMonth() + 1}} / {{fecha.getFullYear()}}
+            <br></P>
       </div>
     }  
 
-    
   </div>
 </body>
+
