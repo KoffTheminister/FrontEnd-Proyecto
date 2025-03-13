@@ -9,9 +9,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './mostrar-sentencias.component.html',
   styleUrl: './mostrar-sentencias.component.css'
 })
-export class MostrarSenteniasComponent {
+export class MostrarSenteniasComponent implements OnInit {
  
   constructor (public service : SentenciasService){}
+    ngOnInit(): void {
+      this.service.getSentencias().subscribe({
+        next: (data)=> {
+          if(data.status== 201){
+            this.service.sentencia = data
+            console.log("sentencias obteidas",this.service.sentencia)
+          }
+        },
+        error: (e) => {
+          if(e.status== 404){
+            console.log("no se pudo obtener las sentencias",e)
+          }
+        }
+      })
+    }
   id = '';
   ban = false;
   

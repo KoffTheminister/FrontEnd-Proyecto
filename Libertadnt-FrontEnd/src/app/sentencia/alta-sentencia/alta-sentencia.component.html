@@ -10,7 +10,7 @@
     
         <h2>Alta Sentencia</h2>
     
-        <form [formGroup]= "sentencia" (submit)="verFormulario()">
+        <form [formGroup]= "sentencia" >
     
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
@@ -24,16 +24,36 @@
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">duracion en años</span>
-            <input type="text" formControlName="duracion_año" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input type="number" formControlName="duracion_anios" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">orden de gravedad</span>
-            <input type="text" formControlName="orden_de_gravedad" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input type="number" formControlName="orden_de_gravedad" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
 
           <button (click)="enviarFormulario()" type="button" class="btn btn-primary">Enviar</button>
         </form>
+        <p></p>
+
+        @if (bandera == 'creada') {
+          <div class="alert alert-success" role="alert">
+            <h5> la sentencia fue creada con exito</h5>
+          </div>
+        }@else if (bandera == 'gravedad') {
+          <div class="alert alert-danger" role="alert">
+            <h5> la gravedad coincide con otra</h5>
+          </div>
+        }@else if (bandera == 'nombre') {
+          <div class="alert alert-danger" role="alert">
+            <h5>el nombre coincide con otra sentencia </h5>
+          </div>
+        }@else if (bandera == 'error') {
+          <div class="alert alert-danger" role="alert">
+            <h5>{{error}}</h5>
+          </div>
+        }
+
     </div>
 </body>
   

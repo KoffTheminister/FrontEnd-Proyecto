@@ -8,22 +8,26 @@
         </a>
         <p></p>
         @if (bandera=== true) {
-            @for (item of sRecluso.reclusos; track $index) {
+            <h3>Reclusos a liberar con condena finalizada</h3>
+            <p></p>
+            @for (item of sRecluso.reclusos.data; track $index) {
                 <ul class="list-group">
                     <li class="list-group-item disabled" aria-disabled="true">
-                        <p>"nombre": {{item.nombre}},
-                            <br>"apellido": {{item.apellido}}, 
-                            <br>"dni": {{item.dni}}, 
-                            <br>"fecha_nac": {{item.fecha_nac}}
-                        </p>
+                        <h5>Nombre: {{item.nombre}}
+                            <br>Apellido: {{item.apellido}} 
+                            <br>DNI: {{item.dni}} 
+                            <br>FECHA DE NACIMIENTO: {{item.fecha_nac.getDate()}} / {{item.fecha_nac.getMonth() + 1}} / {{item.fecha_nac.getFullYear()}}
+                        </h5>
+                    <p></p>
                     </li>
                   </ul>
+                <p></p>
             }
         }
         @if (bandera === false) {
             <div class="alert alert-warning" role="alert">
                 <p>No hay reclusos proximos a liberar</p>
-              </div>
+            </div>
         }
         @if (bandera === undefined) {
             <div class="alert alert-danger" role="alert">

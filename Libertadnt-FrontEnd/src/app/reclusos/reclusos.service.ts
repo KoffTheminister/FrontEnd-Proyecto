@@ -56,10 +56,10 @@ export class ReclusosService {
     return this.http.get<any[] | JSON>(this.api_celda)
   }
   getLiberarRecluso(){
-    return this.http.get<any | JSON>("http://localhost:8080/reclusos/finalizarCondena")
+    let ObjetoVacio={respuesta:"este objeto esta vacio "}///<-----esto esta mal, deberia ser un get
+    return this.http.post<any | JSON>("http://localhost:8080/condenas/finalizar_condenas",ObjetoVacio)
   }
 
 
 }
-
 

@@ -12,7 +12,7 @@ import { SentenciasService } from '../sentencias.service.js';
 export class AltaSentenciaComponent {
   constructor (private service : SentenciasService){
     this.descripcion = new FormControl('',[Validators.required,Validators.maxLength(30)]);    
-    this.duracion_año = new FormControl('',[Validators.required,Validators.max(9999)])
+    this.duracion_anios = new FormControl('',[Validators.required,Validators.max(9999)])
     this.nombre = new FormControl('',[Validators.required])
     this.orden_de_gravedad = new FormControl('',[Validators.required])
   
@@ -20,7 +20,7 @@ export class AltaSentenciaComponent {
 
       nombre: this.nombre,
       descripcion: this.descripcion,
-      duracion_año: this.duracion_año ,
+      duracion_anios: this.duracion_anios ,
       orden_de_gravedad: this.orden_de_gravedad
     })
   
@@ -30,37 +30,33 @@ export class AltaSentenciaComponent {
   sentencia: FormGroup;
   nombre: FormControl;
   descripcion: FormControl;
-  duracion_año: FormControl
+  duracion_anios: FormControl
   orden_de_gravedad: FormControl
   bandera: undefined| string
-  verFormulario(){
-    let x = {
-      cod_sentencia: 0,
-      nombre: "",
-      descripcion: "",
-      duracion_anios: 0,
-      orden_de_gravedad: 0
+  error:string =''
 
-    }
-    
-    this.sentencia.reset();
-  }
   enviarFormulario(){
     this.service.postSentencias(this.sentencia.value).subscribe({
       next:(data)=>{
-        if(data.status === 201){
+        console.log(data)
+        if(data.status == 201){
           console.log("la sentencia fue creada ", data)
           this.bandera='creada'
         }
-        if(data.status == 202){
-          this.bandera='existente'
-          console.log("el guardia ya existe y se reanuda el contrato")
-        }
       },
       error:(e)=>{
-        if(e.status === 404){
-          console.log("el guardia ya existe y se encuentra con contrato activo")
-          this.bandera = 'activo'
+        if(e.status == 400){
+          console.log("error de imput",e.message)
+          this.error=e.error.message
+          this.bandera='error'
+        }
+        if(e.status == 409){
+          console.log("orden de gravedad ya existent")
+          this.bandera = 'gravedad'
+        }
+        if(e.status == 410){
+          console.log("nombre ya existente")
+          this.bandera = 'nombre'
         }
       }
     })

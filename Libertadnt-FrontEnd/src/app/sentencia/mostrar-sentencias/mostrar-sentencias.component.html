@@ -7,21 +7,23 @@
     </a>
     <p></p>
     <p></p>
-    <h2>Mostrar sentencias</h2>
+    <h1>Mostrar sentencias</h1>
     <p></p>
     
     <ul>
-      @for (item of service.sentencia; track $index) {
+      @for (item of service.sentencia.data; track $index) {
         <ul class="list-group">
           <li class="list-group-item disabled" aria-disabled="true">
-            <p>
-              nombre: {{item.nombre}} <br>
-              descripcion: {{item.descripcion}}<br>
-              duracion_anios {{item.duracion_anios}}<br>
-              orden_de_gravedad: {{item.orden_de_gravedad}}<br>
-            </p>
+            <h4>
+              CODIGO DE SENTENCIA: {{item.cod_sentencia}}<br>
+              NOMBRE: {{item.nombre}} <br>
+              DESCRIPCION: {{item.descripcion}}<br>
+              DURACION EN AÑOS: {{item.duracion_anios}}<br>
+              ORDEN DE GRAVEDAD: {{item.orden_de_gravedad}}<br>
+            </h4>
             </li>
         </ul>
+        <p></p>
       }
     </ul> 
   </div>  

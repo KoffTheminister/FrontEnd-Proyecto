@@ -18,13 +18,17 @@ export class LiberarReclusoComponent  implements OnInit{
       next:(data)=>{
         if(data.status === 201){
           this.sRecluso.reclusos=data
-          console.log("los reclusos fueron obtenidos")
+          console.log("los reclusos fueron obtenidos",this.sRecluso.reclusos )
+          for (let item of this.sRecluso.reclusos.data) {
+            item.fecha_nac=new Date(item.fecha_nac);
+          }
+          
           this.bandera= true
         }
       },
       error:(e)=>{
-        if(e.status=== 404){
-          console.log("los recluos no pudieorn ser obtenidios")
+        if(e.status === 404){
+          console.log("los reclusos no pudieron ser obtenidios")
           this.bandera=false
         }
       }
