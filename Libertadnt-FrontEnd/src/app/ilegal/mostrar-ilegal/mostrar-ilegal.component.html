@@ -4,25 +4,37 @@
             ATRAS
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
         </a>
+        <h2 class="titulo">Actividades Ilegales Activas </h2>
         @if (banana) {
             <div>
                 @for (item of service.ilegales.data; track $index) {
                     <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item">nombre:{{item.nombre}}</li>
-                        <li class="list-group-item">descripcion: {{item.descripcion}} </li>
-                        <li class="list-group-item">diaDeLaSemana: {{item.diaDeLaSemana}} </li>
-                        <li class="list-group-item">horaInicio: {{item.horaInicio}} </li>
-                        <li class="list-group-item">horaFin: {{item.horaFin}} </li>
-                        <li class="list-group-item">estado: {{item.estado}} </li>
-                        <li class="list-group-item">cantidad_maxima: {{item.cantidad_maxima}} </li>
-                        <li class="list-group-item">locacion: {{item.locacion}}</li>
+                        <li class="list-group-item">
+                            <h5>
+                                nombre: {{item.nombre}}<br>
+                                locacion: {{item.locacion}} <br>
+                                descripcion: {{item.descripcion}} <br>
+                                hora de inicio: {{item.hora_inicio}} <br>
+                                hora de fin: {{item.hora_fin}} <br>
+                                cantidad maxima: {{item.cantidad_maxima}} <br>
+                                locacion: {{item.locacion}} <br>
+                                @if (item.dia_de_la_semana == 1) {dia de la semana: Lunes}
+                                @if (item.dia_de_la_semana == 2) {dia de la semana: Martes}
+                                @if (item.dia_de_la_semana == 3) {dia de la semana: Miercoles}
+                                @if (item.dia_de_la_semana == 4) {dia de la semana: Jueves}
+                                @if (item.dia_de_la_semana == 5) {dia de la semana: Viernes}
+                                @if (item.dia_de_la_semana == 6) {dia de la semana: Sabado}
+                                @if (item.dia_de_la_semana == 7) {dia de la semana: Domingo}
+                            </h5>
+                        </li>
                     </ul>
+                    <p></p>
                 }
             </div>
         }@else {
             <p></p>
             <div class="alert alert-primary" role="alert">
-                <h4> hay actividades disponibles </h4>
+                <h4> NO hay actividades disponibles </h4>
             </div>
         }
     </div>

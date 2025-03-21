@@ -5,19 +5,20 @@
       <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
     </a>
     <p></p>
-    <h2>Mostrar Guardias</h2>
+    <h2>Guardias Activos</h2>
     <p></p>
 
     @for (item of service.guardias.data; track $index) {
       <ul class="list-group">
         <li class="list-group-item disabled" aria-disabled="true">
-          <p>codigo de guardia: {{item.cod_guardia}}<br>
+          <h5>codigo de guardia: {{item.cod_guardia}}<br>
             nombre: {{item.nombre}}<br>
             apellido: {{item.apellido}}<br>
             dni: {{item.dni}}<br>
-          </p>
+          </h5>
         </li>
       </ul>
+      <p></p>
       }
   </div>
   

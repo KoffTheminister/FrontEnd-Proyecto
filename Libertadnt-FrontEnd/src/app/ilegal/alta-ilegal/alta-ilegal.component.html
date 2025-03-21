@@ -6,7 +6,7 @@
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
         </a>
           
-        <h2 class="tituloi">ingrese los datos de la NUEVA actividad</h2>
+        <h2 class="tituloi">Ingrese los datos de la NUEVA actividad ILEGAL</h2>
         <p></p>
         <form [formGroup]="ilegal" (submit)="validarActividad()">
             <fieldset>
@@ -17,7 +17,7 @@
             </fieldset>
             <fieldset>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">descipcion</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">descripcion</span>
                     <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>     
             </fieldset>
@@ -60,7 +60,7 @@
             <p></p>
             <fieldset>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Cantidad Maxima</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">cantidad maxima</span>
                     <input type="number" formControlName="cantidad_maxima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>     
             </fieldset>
@@ -83,20 +83,20 @@
         @if (bandera === 'existente') {
             <p></p>
             <div class="alert alert-warning" role="alert">
-                <p>actividad ya existente</p>
+                <h4>actividad ya existente</h4>
             </div>
             }
         @if (bandera === 'error') {
             <p></p>
             <div class="alert alert-dark" role="alert">
-                <p>error al postear</p>
+                <h4>error al postear</h4>
             </div>
             }
         @if (bandera === 'correcto')
         { 
             <p></p>
             <div class="alert alert-success" role="alert">
-                <p>actividad registrada con exito</p>
+                <h4>actividad registrada con exito</h4>
             </div>
             }
         @if (bandera === 'mensaje') {

@@ -39,6 +39,7 @@ import { CrearTurnosComponent } from './sector/crear-turnos/crear-turnos.compone
 import { FinalizarTurnosComponent } from './sector/finalizar-turnos/finalizar-turnos.component.js';
 
 
+
 export const routes: Routes = [
     //log in
     {path: ':usuario', component: LogInComponent},
@@ -51,6 +52,7 @@ export const routes: Routes = [
     {path: 'menu/sentencia', component: MenuSentenciaComponent},
     {path: 'menu/sentencia/alta', component: AltaSentenciaComponent},
     {path: 'menu/sentencia/sentencias', component: MostrarSenteniasComponent},
+   
     //guardia
     {path: 'menu/guardia', component: MenuGuardiaComponent},
     {path: 'menu/guardia/alta-guardia', component:AltaGuardiaComponent },

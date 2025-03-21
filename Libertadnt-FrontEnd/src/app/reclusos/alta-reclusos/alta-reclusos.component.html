@@ -77,7 +77,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     }
-  
+    @if (bandRecluso == 'sentencia') {
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <h5> no hay cupo para el recluso en los sectores asignados a la sentencias elegidas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    }
+
   
     
   

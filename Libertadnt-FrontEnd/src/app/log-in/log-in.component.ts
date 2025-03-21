@@ -16,7 +16,6 @@ export class LogInComponent  {
   usuario: FormGroup;
   cod_administrador:FormControl;
   contrasenia: FormControl;
-
   bander = false;
   toaster: any;
   eToken: string | null | undefined;
@@ -71,8 +70,14 @@ export class LogInComponent  {
         if(e.status==404){
           this.bandUsuario='no encontrado';
         }
-        if(e.status == 401){
+        if(e.status == 409){
           this.bandUsuario='incorrecto'
+        }
+        if(e.status == 401){
+          this.bandUsuario='noAutorizado'
+        }
+        if(e.status == 403){
+          this.bandUsuario='expirado'
         }
       }
     });

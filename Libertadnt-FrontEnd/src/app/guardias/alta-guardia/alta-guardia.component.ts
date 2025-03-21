@@ -30,7 +30,8 @@ export class AltaGuardiaComponent {
   apellido : FormControl;
   dni: FormControl;
   bandera: undefined| string
- 
+  error: any=''
+  
   enviarGuarida(){
     this.bandera=undefined
     this.service.guardia=this.guardia.value
@@ -47,9 +48,14 @@ export class AltaGuardiaComponent {
         }
       },
       error:(e)=>{
-        if(e.status === 404){
+        if(e.status === 409){
           console.log("el guardia ya existe y se encuentra con contrato activo")
           this.bandera = 'activo'
+        }
+        if(e.status === 400){
+          console.log("error de msj")
+          this.error=e.error.message
+          this.bandera = 'msj'
         }
       }
     })

@@ -1,0 +1,10 @@
+.titulo{
+    color: red;
+}
+:host{
+    background-color:  #090100;
+    display: block;
+  width: 100vw;
+  height: 100vh;
+  color: white; /* Opcional, para que el texto sea visible */
+}

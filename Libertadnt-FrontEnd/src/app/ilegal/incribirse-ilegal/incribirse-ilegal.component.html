@@ -9,52 +9,65 @@
             <div>
                 @for (item of service.ilegales.data; track $index) {
                     <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item">nombre:{{item.nombre}}</li>
-                        <li class="list-group-item">descripcion: {{item.descripcion}} </li>
-                        <li class="list-group-item">diaDeLaSemana: {{item.diaDeLaSemana}} </li>
-                        <li class="list-group-item">horaInicio: {{item.horaInicio}} </li>
-                        <li class="list-group-item">horaFin: {{item.horaFin}} </li>
-                        <li class="list-group-item">estado: {{item.estado}} </li>
-                        <li class="list-group-item">cantidad_maxima: {{item.cantidad_maxima}} </li>
-                        <li class="list-group-item">locacion: {{item.locacion}}</li>
-                        <button (click)="ingresarIsncripcion(item)" type="button" class="btn btn-secondary">expandir</button>
-                    </ul>
-                    @if (item.inscripcion) {
+                        <li class="list-group-item">
+                            <h5>
+                                nombre: {{item.nombre}}<br>
+                                locacion: {{item.locacion}} <br>
+                                descripcion: {{item.descripcion}} <br>
+                                @if (item.dia_de_la_semana == 1) {dia de la semana: Lunes <br>}
+                                @if (item.dia_de_la_semana == 2) {dia de la semana: Martes <br>}
+                                @if (item.dia_de_la_semana == 3) {dia de la semana: Miercoles <br>}
+                                @if (item.dia_de_la_semana == 4) {dia de la semana: Jueves <br>}
+                                @if (item.dia_de_la_semana == 5) {dia de la semana: Viernes <br>}
+                                @if (item.dia_de_la_semana == 6) {dia de la semana: Sabado <br>}
+                                @if (item.dia_de_la_semana == 7) {dia de la semana: Domingo <br>}
+                                hora de inicio: {{item.hora_inicio}} <br>
+                                hora de fin: {{item.hora_fin}} <br>
+                                cantidad maxima: {{item.cantidad_maxima}} <br>
+                                locacion: {{item.locacion}} <br>
+                            </h5>
+                        </li>
                         <p></p>
-                        <form [formGroup]="recluso" (submit)="validarRecluso(item)">
-                            <fieldset>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">codigo</span>
-                                    <input type="text" formControlName="cod_recluso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                </div>     
-                            </fieldset>
-                            <button type="button" class="btn btn-dark">inscribir recluso</button>
-                        </form>
-                        @if (banderaRecluso==='inscripto') {
-                            <div class="alert alert-success" role="alert">
-                                <p>inscripcion valida</p>
-                            </div>
-                        }@else if (banderaRecluso==='no inscripto') {
-                            <div class="alert alert-primary" role="alert">
-                                <p>recluso no encontrado</p>
-                            </div>
+                        <button (click)="ingresarIsncripcion(item)" type="button" class="btn btn-secondary">expandir</button>
+                        <p></p>
+                        @if (item.inscripcion) {
+                            <p></p>
+                            <form [formGroup]="recluso" (submit)="validarRecluso(item)">
+                                <fieldset>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">codigo de recluso</span>
+                                        <input type="number" formControlName="cod_recluso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>     
+                                </fieldset>
+                                <button type="button" [disabled]="recluso.invalid"  class="btn btn-dark"  (click)="validarRecluso(item)">inscribir recluso</button>
+                            </form>
+                            @if (banderaRecluso==='inscripto') {
+                                <div class="alert alert-success" role="alert">
+                                    <p>inscripcion valida</p>
+                                </div>
+                            }@else if (banderaRecluso==='no inscripto') {
+                                <div class="alert alert-primary" role="alert">
+                                    <p>recluso no encontrado</p>
+                                </div>
+                            }
+                            @else if (banderaRecluso==='existente'){
+                                <div class="alert alert-warning" role="alert">
+                                    <p>recluso ya inscripto</p>
+                                </div>
+                            }
+                            @else if (banderaRecluso==='lleno') {
+                                <div class="alert alert-danger" role="alert">
+                                    <p>no hay cupas para esta actividad</p>
+                                </div>
+                            }
+                            @else if (banderaRecluso==='no encontrada') {
+                                <div class="alert alert-dark" role="alert">
+                                    <p>actividad no encontrada</p>
+                                </div>
+                            }
                         }
-                        @else if (banderaRecluso==='existente'){
-                            <div class="alert alert-warning" role="alert">
-                                <p>recluso ya inscripto</p>
-                            </div>
-                        }
-                        @else if (banderaRecluso==='lleno') {
-                            <div class="alert alert-danger" role="alert">
-                                <p>no hay cupas para esta actividad</p>
-                            </div>
-                        }
-                        @else if (banderaRecluso==='no encontrada') {
-                            <div class="alert alert-dark" role="alert">
-                                <p>actividad no encontrada</p>
-                            </div>
-                        }
-                    }
+                    </ul>
+                    <p></p>
                 }
             </div>
         }@else {

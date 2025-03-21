@@ -26,23 +26,28 @@
               <input type="number" formControlName="dni" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
 
-            <button (click)="enviarGuarida()" type="button" class="btn btn-primary">Enviar</button>
+            <button (click)="enviarGuarida()" [disabled]="guardia.invalid" type="button" class="btn btn-primary">Enviar</button>
             <!-- <button [disabled]="guardia.invalid" type="button" class="btn btn-primary">Enviar</button> -->
             <p></p>
         </form>
         @if(bandera === 'creado'){
             <div class="alert alert-success" role="alert">
-                <p>GUARDIA GUARDADO</p>
+                <h5>GUARDIA GUARDADO</h5>
             </div>
         }
         @if(bandera === 'existente'){
             <div class="alert alert-primary" role="alert">
-                <p>GUARDIA EXISTENTE CONTRATADO</p>
+                <h5>GUARDIA EXISTENTE CONTRATADO</h5>
             </div>
         }
         @if(bandera === 'activo'){
             <div class="alert alert-danger" role="alert">
-                <p>GUARDIA YA EXISTENTE Y OPERATIVO</p>
+                <h5>GUARDIA YA EXISTENTE Y OPERATIVO</h5>
+            </div>
+        }
+        @if(bandera === 'msj'){
+            <div class="alert alert-danger" role="alert">
+                <h5>{{error}}</h5>
             </div>
         }
     </div>

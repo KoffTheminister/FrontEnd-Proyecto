@@ -27,11 +27,14 @@ html, body{
   align-items: center;
 }
 .listadoi{
-  background-color:  #090100;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background-color:  #090100;
+  width: 150vw;
+  height: 150vh;
+  color: white; /* Opcional, para que el texto sea visible */
 }
 .login{
   background-color:  #a2a6aa;

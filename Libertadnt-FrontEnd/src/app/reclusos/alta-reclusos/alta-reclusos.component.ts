@@ -113,8 +113,9 @@ enviarCondena(){
       }
     },
     error:(e)=>{
-      if(e.status == 404){
-        console.log("condena no posteada")
+      if(e.status == 409){
+        console.log("no hay cupo para las sentencias de la condena")
+        this.bandRecluso = 'sentencia'
       }
     }})
     this.bandRecluso = undefined

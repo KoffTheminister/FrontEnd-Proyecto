@@ -11,14 +11,14 @@ import { ActividadService } from '../../actividades/actividad.service.js';
 })
 export class AltaIlegalComponent {
   constructor(private service : ActividadService){
-    this.decripcion= new FormControl('',[Validators.required, Validators.maxLength(100),Validators.minLength(0)]);
-    this.locacion= new FormControl('',[Validators.required,Validators.maxLength(60)]);
-    this.dia_de_la_semana = new FormControl(0,[Validators.required])
+    this.decripcion= new FormControl('',[Validators.required, Validators.maxLength(100),Validators.minLength(1)]);
+    this.locacion= new FormControl('',[Validators.required,Validators.maxLength(60),Validators.min(1)]);
+    this.dia_de_la_semana = new FormControl('',[Validators.required,])
     this.cantidad_maxima= new FormControl('',[Validators.required,]);
     this.nombre= new FormControl('',[Validators.required,Validators.maxLength(60),Validators.minLength(8)]);
     this.hora_inicio= new FormControl('',[Validators.required,Validators.maxLength(2)]);
     this.hora_fin= new FormControl('',[Validators.required,Validators.maxLength(2)]);
-    this.estado= new FormControl(1);
+    
       
       
     
@@ -30,9 +30,8 @@ export class AltaIlegalComponent {
       dia_de_la_semana: this.dia_de_la_semana, 
       hora_inicio: this.hora_inicio, 
       hora_fin: this.hora_fin,
-      estado: this.estado,
       cantidad_maxima: this.cantidad_maxima
-    })
+    },Validators.required)
   }
   ilegal  : FormGroup;
   nombre:FormControl
@@ -45,7 +44,7 @@ export class AltaIlegalComponent {
 
   hora_inicio:FormControl;
   hora_fin:FormControl;
-  estado:FormControl;
+
 
   bandera:string |undefined;
   validarActividad(){
