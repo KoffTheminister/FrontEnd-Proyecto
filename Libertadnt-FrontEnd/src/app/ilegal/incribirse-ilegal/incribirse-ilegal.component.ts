@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReclusosService } from '../../reclusos/reclusos.service.js';
 import { ActividadService } from '../../actividades/actividad.service.js';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @Component({
   selector: 'app-incribirse-ilegal',
@@ -11,11 +15,15 @@ import { ActividadService } from '../../actividades/actividad.service.js';
   styleUrl: './incribirse-ilegal.component.css'
 })
 export class IncribirseIlegalComponent implements OnInit{
-  constructor (public service : ActividadService,public sRecluso : ReclusosService){
+  constructor (public service : ActividadService,public sRecluso : ReclusosService, private modalService: NgbModal){
     this.cod_recluso= new FormControl('',[Validators.required,]);
   this.recluso = new FormGroup({
         cod_recluso:this.cod_recluso
       })    
+      
+  }
+  open(content: any) {
+    this.modalService.open(content, { centered: true });
   }
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
@@ -31,6 +39,7 @@ export class IncribirseIlegalComponent implements OnInit{
         }
       }})
   }
+  error:string=''
   recluso  : FormGroup;
   banana=false
   cod_recluso: FormControl;
@@ -56,12 +65,9 @@ export class IncribirseIlegalComponent implements OnInit{
           this.banderaRecluso='no encontrada'
         }
         if(data.status == 409){
-          console.log("no hay mas lugar", data.status)
-          this.banderaRecluso='lleno'
-        }
-        if(data.status == 408){
-          console.log("recluso ya inscripto", data.status)
-          this.banderaRecluso='existente'
+          console.log("mensaje ", data ,data.message)
+          this.error=data.error.message
+          this.banderaRecluso='message'
         }
       },
       error:(e)=>{
@@ -71,8 +77,9 @@ export class IncribirseIlegalComponent implements OnInit{
           this.banderaRecluso='no inscripto'
         }
         if(e.status == 409){
-          console.log("no hay mas lugar", e.status)
-          this.banderaRecluso='lleno'
+          console.log("mensaje ", e , e.message)
+          this.error=e.error.message
+          this.banderaRecluso='message'
         }
         if(e.status== 405){
           console.log("actividad no encontrada ",e.status)
@@ -83,6 +90,8 @@ export class IncribirseIlegalComponent implements OnInit{
       }
       
     }
+    
+
     
  
   

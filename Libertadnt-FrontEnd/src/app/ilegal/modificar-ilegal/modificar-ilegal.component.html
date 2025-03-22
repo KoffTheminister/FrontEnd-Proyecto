@@ -1,99 +1,73 @@
 
-<body class="listadoi">
+<body class="formularioi">
     <div class="w-50 p-3">
         <a class="icon-link icon-link-hover" href="usuario/menu-maestro/menu">
             ATRAS
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
         </a>
         <p></p>
-    @if(banana){
-        <div>
-            @for (item of service.ilegales.data; track $index) {
+        <h2 class="tituloi">Buscar Actividad ILEGAL</h2>
+        <form [formGroup]="ilegal">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">codigo de actividad</span>
+              <input type="number" formControlName="codigo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+      
+            <button  [disabled]="ilegal.invalid" (click)="buscarIlegal()" type="button" class="btn btn-primary">Enviar</button>
+            <p></p>
+        </form>
+        @if (bandera == 'encontrado') {
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">actividad Encontrada</div>
+                <div class="card-body">
+                  <h5 class="card-title">nombre: {{service.ilegal.nombre}}</h5>
+                  <p class="card-text">
+                    locacion: {{service.ilegal.locacion}} <br>
+                    descripcion: {{service.ilegal.descripcion}} <br>
+                    hora de inicio: {{service.ilegal.hora_inicio}} <br>
+                    hora de fin: {{service.ilegal.hora_fin}} <br>
+                    cantidad maxima: {{service.ilegal.cantidad_maxima}} <br>
+                    locacion: {{service.ilegal.locacion}} <br>
+                    @if (service.ilegal.dia_de_la_semana == 1) {dia de la semana: Lunes}
+                    @if (service.ilegal.dia_de_la_semana == 2) {dia de la semana: Martes}
+                    @if (service.ilegal.dia_de_la_semana == 3) {dia de la semana: Miercoles}
+                    @if (service.ilegal.dia_de_la_semana == 4) {dia de la semana: Jueves}
+                    @if (service.ilegal.dia_de_la_semana == 5) {dia de la semana: Viernes}
+                    @if (service.ilegal.dia_de_la_semana == 6) {dia de la semana: Sabado}
+                    @if (service.ilegal.dia_de_la_semana == 7) {dia de la semana: Domingo}
+                    </p>
+                </div>
+            </div>
+            <h3 class="tituloi">Reclusos Incriptos </h3>
+            @if(bandReclusos){
                 <p></p>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item">
-                        nombre: {{item.nombre}} <br>
-                        descripcion: {{item.descripcion}} <br>
-                        dia De La Semana: {{item.dia_de_laSemana}} <br>
-                        hora inicio: {{item.hora_inicio}} <br>
-                        hora fin: {{item.hora_fin}} <br>
-                        cantidad_maxima: {{item.cantidad_maxima}} <br>
-                        locacion: {{item.locacion}} <br>
-                    </li>
-                </ul>
-                <button (click)="modificarIlegal(item)">modificar</button>
-                <p></p>
-                @if (item.inscripcion) {
-                    <form [formGroup]="ilegal" (submit)="enviarModificacion(item)">
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">nombre</span>
-                                <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">descripcion</span>
-                                <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>     
-                        </fieldset>
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">locacion</span>
-                                <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>      
-                        </fieldset>
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">dia de la semana</span>
-                                <input type="text" formControlName="diaDeLaSemana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>     
-                        </fieldset>
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">cantidad maxima</span>
-                                <input type="text" formControlName="cantidad_maxima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>     
-                        </fieldset>
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">horario de inicio</span>
-                                <input type="text" formControlName="horaInicio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>     
-                        </fieldset>
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">horario de fin</span>
-                                <input type="text" formControlName="horaFin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>     
-                        </fieldset>
-                        
-                        <button [disabled]="ilegal.invalid" type="button" class="btn btn-dark">enviar</button>
-                    </form>
-                    @if(bandera=='modificado'){
-                        <div class="alert alert-success" role="alert">
-                            <p>la actividad fue modificada</p>
-                        </div>
-                    }
-                    @if(bandera == 'no encontrado'){
-                        <div class="alert alert-warning" role="alert">
-                            <p>la actividad no fue encontrada</p>
-                        </div>
-                    }
-                    @if(bandera == 'imposible'){
-                        <div class="alert alert-dark" role="alert">
-                            <p>la actividad no puede ser modificada </p>
-                        </div>
-                    }
+                <div class="alert alert-primary" role="alert">
+                    <h4> la actividad no posee reclusos asignados </h4>
+                </div>
+            }@else {
+                @for (item of service.ilegal.reclusos; track $index) {
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                            <h5>
+                                codigo recluso: {{item.cod_recluso}} <br>
+                                nombre: {{item.nombre}} <br>
+                                apellido: {{item.apellido}}
+                            </h5>
+                        </li>
+                    </ul>
+                    <p></p>
                 }
-            }
-        </div>
-    }@else {
-        <p></p>
-        <div class="alert alert-primary" role="alert">
-            <h4> hay actividades disponibles </h4>
-        </div>
-    }
-        
+            }        
+
+            
+        }@else if (bandera == 'no encontrado') {
+            <p></p>
+            <div class="alert alert-primary" role="alert">
+                <h4> No se encontro la actividad solicitada </h4>
+            </div>
+
+        }
+       
+                
     </div>
 </body>

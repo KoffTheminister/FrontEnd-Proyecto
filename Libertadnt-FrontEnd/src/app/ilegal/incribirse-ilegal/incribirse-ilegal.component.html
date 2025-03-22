@@ -5,6 +5,9 @@
             ATRAS
             <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
         </a>
+        <p></p>
+        <h2 class="tituloi">Inscripcion a actividad ILEGAL</h2>
+        <p></p>
         @if (banana) {
             <div>
                 @for (item of service.ilegales.data; track $index) {
@@ -28,10 +31,14 @@
                             </h5>
                         </li>
                         <p></p>
-                        <button (click)="ingresarIsncripcion(item)" type="button" class="btn btn-secondary">expandir</button>
-                        <p></p>
-                        @if (item.inscripcion) {
-                            <p></p>
+                        <button class="btn btn-primary" (click)="open(content)">inscribir</button>
+
+                        <ng-template #content let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Inscripcion de recluso a {{item.nombre}} </h4>
+                            <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+                        </div>
+                        <div class="modal-body">
                             <form [formGroup]="recluso" (submit)="validarRecluso(item)">
                                 <fieldset>
                                     <div class="input-group mb-3">
@@ -39,43 +46,51 @@
                                         <input type="number" formControlName="cod_recluso" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                     </div>     
                                 </fieldset>
-                                <button type="button" [disabled]="recluso.invalid"  class="btn btn-dark"  (click)="validarRecluso(item)">inscribir recluso</button>
+                                <p></p>
                             </form>
-                            @if (banderaRecluso==='inscripto') {
-                                <div class="alert alert-success" role="alert">
-                                    <p>inscripcion valida</p>
-                                </div>
-                            }@else if (banderaRecluso==='no inscripto') {
-                                <div class="alert alert-primary" role="alert">
-                                    <p>recluso no encontrado</p>
-                                </div>
-                            }
-                            @else if (banderaRecluso==='existente'){
-                                <div class="alert alert-warning" role="alert">
-                                    <p>recluso ya inscripto</p>
-                                </div>
-                            }
-                            @else if (banderaRecluso==='lleno') {
-                                <div class="alert alert-danger" role="alert">
-                                    <p>no hay cupas para esta actividad</p>
-                                </div>
-                            }
-                            @else if (banderaRecluso==='no encontrada') {
-                                <div class="alert alert-dark" role="alert">
-                                    <p>actividad no encontrada</p>
-                                </div>
-                            }
-                        }
+                            <p></p>
+                                @if (banderaRecluso==='inscripto') {
+                                    <div class="alert alert-success" role="alert">
+                                        <h5>inscripcion valida</h5>
+                                    </div>
+                                }@else if (banderaRecluso==='no inscripto') {
+                                    <div class="alert alert-primary" role="alert">
+                                        <h5>recluso no encontrado</h5>
+                                    </div>
+                                }
+                                @else if (banderaRecluso==='existente'){
+                                    <div class="alert alert-warning" role="alert">
+                                        <h5>recluso ya inscripto</h5>
+                                    </div>
+                                }
+                                @else if (banderaRecluso =='message') {
+                                    <div class="alert alert-danger" role="alert">
+                                        <h5>{{error}}</h5>
+                                    </div>
+                                }
+                                @else if (banderaRecluso==='no encontrada') {
+                                    <div class="alert alert-dark" role="alert">
+                                        <p>actividad no encontrada</p>
+                                    </div>
+                                }
+                        </div>
+                        <div class="modal-footer">
+                            <button [disabled]="recluso.invalid" (click)="validarRecluso(item)" type="button" class="btn btn-success">enviar</button>
+                        </div>
+                        </ng-template>   
+                        <p></p>
                     </ul>
                     <p></p>
                 }
+                
             </div>
         }@else {
             <p></p>
-            <div class="alert alert-primary" role="alert">
-                <h4> hay actividades disponibles </h4>
+            <div class="alert alert-danger" role="alert">
+                <h4> NO hay actividades disponibles </h4>
             </div>
         }
         
     </div>
+    
 </body>
