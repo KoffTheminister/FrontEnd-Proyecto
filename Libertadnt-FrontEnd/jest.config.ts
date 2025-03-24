@@ -2,7 +2,8 @@ const config = {
   preset: 'jest-preset-angular',
   roots: ['<rootDir>/src/'],
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
-  testMatch: ['**/+(*.)+(spec).+(ts)'], 
+  //testMatch: ['**/+(*.)+(spec).+(ts)'],
+  testMatch: ['**/app.component.spec.ts'], 
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

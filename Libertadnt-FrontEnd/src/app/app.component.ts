@@ -7,8 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [RouterOutlet],// ,RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  
+  title = 'Libertadnt-FrontEnd'
 }
