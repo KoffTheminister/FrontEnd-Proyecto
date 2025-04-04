@@ -1,0 +1,10 @@
+d24fa85421649c898ab71837d6088e43
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const square_1 = require("./square");
+require("zone.js");
+const square = new square_1.Square(4);
+it('should', () => {
+    expect(square.getArea()).toBe(16);
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvdGVuZXQ3NzUwL3RwZGVzYXJyb2xsb2ZlL0xpYmVydGFkbnQtRnJvbnRFbmQvc3JjL2FwcC9jbGFzZXMvc2hhcGUuc3BlYy50cyIsIm1hcHBpbmdzIjoiOztBQUFBLHFDQUFrQztBQUNsQyxtQkFBaUI7QUFFakIsTUFBTSxNQUFNLEdBQUcsSUFBSSxlQUFNLENBQUMsQ0FBQyxDQUFDLENBQUE7QUFDNUIsRUFBRSxDQUFDLFFBQVEsRUFBRSxHQUFHLEVBQUU7SUFDZCxNQUFNLENBQUMsTUFBTSxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxDQUFBO0FBQ3JDLENBQUMsQ0FBQyxDQUFBIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9ob21lL3RlbmV0Nzc1MC90cGRlc2Fycm9sbG9mZS9MaWJlcnRhZG50LUZyb250RW5kL3NyYy9hcHAvY2xhc2VzL3NoYXBlLnNwZWMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgU3F1YXJlIH0gZnJvbSBcIi4vc3F1YXJlXCI7XG5pbXBvcnQgJ3pvbmUuanMnO1xuXG5jb25zdCBzcXVhcmUgPSBuZXcgU3F1YXJlKDQpXG5pdCgnc2hvdWxkJywgKCkgPT4ge1xuICAgIGV4cGVjdChzcXVhcmUuZ2V0QXJlYSgpKS50b0JlKDE2KVxufSkiXSwidmVyc2lvbiI6M30=

@@ -17,20 +17,20 @@ export class BuscarReclusosComponent {
     this.dni= new FormControl('',[Validators.required,]);
   
   
-  this.recluso = new FormGroup({
-        nombre: this.nombre,
-        cod_recluso: this.cod_recluso,
-        apellido: this.apellido,
-        dni: this.dni})    
+    this.recluso = new FormGroup({
+      nombre: this.nombre,
+      cod_recluso: this.cod_recluso,
+      apellido: this.apellido,
+      dni: this.dni
+    })    
   }
   fecha:Date = new Date()
   recluso  : FormGroup;
   nombre : FormControl;
   apellido : FormControl;
-  cod_recluso: FormControl;
-  dni: FormControl;
-  bandera: boolean | undefined;
-  ;
+  cod_recluso: FormControl
+  dni: FormControl
+  bandera: boolean | undefined
   validarRecluso(){
     console.log("peticion")
     this.service.getOneRecluso(this.dni.value).subscribe({
@@ -41,18 +41,16 @@ export class BuscarReclusosComponent {
           this.bandera = true   
           this.fecha = new Date(this.service.recluso.data.fecha_nac) 
         }
-
-    }
-    ,error: (e)=>{
-      if(e.status == 404){
-        console.log("recluso no existente")
-        console.log(e)
-        this.bandera=false  
-      }
-    }
+      } ,error: (e)=>{
+        if(e.status == 404){
+          console.log("recluso no existente")
+          console.log(e)
+          this.bandera=false  
+        }
+      } 
     });
-  ;
-  this.recluso.reset();
+  
+    this.recluso.reset();
   }
   
 

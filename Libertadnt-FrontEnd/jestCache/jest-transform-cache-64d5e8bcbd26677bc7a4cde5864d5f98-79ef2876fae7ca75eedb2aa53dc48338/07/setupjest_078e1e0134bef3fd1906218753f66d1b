@@ -1,0 +1,10 @@
+97451bafa22b14d2d8ac87c9aac49e56
+"use strict";
+// import 'jest-preset-angular/setup-jest';
+// import '@testing-library/jest-dom'
+// import 'zone.js';
+// import 'zone.js/testing';
+Object.defineProperty(exports, "__esModule", { value: true });
+const zone_1 = require("jest-preset-angular/setup-env/zone");
+(0, zone_1.setupZoneTestEnv)();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvdGVuZXQ3NzUwL3RwZGVzYXJyb2xsb2ZlL0xpYmVydGFkbnQtRnJvbnRFbmQvc2V0dXAtamVzdC50cyIsIm1hcHBpbmdzIjoiO0FBQUEsMkNBQTJDO0FBQzNDLHFDQUFxQztBQUNyQyxvQkFBb0I7QUFDcEIsNEJBQTRCOztBQUU1Qiw2REFBc0U7QUFFdEUsSUFBQSx1QkFBZ0IsR0FBRSxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9ob21lL3RlbmV0Nzc1MC90cGRlc2Fycm9sbG9mZS9MaWJlcnRhZG50LUZyb250RW5kL3NldHVwLWplc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gaW1wb3J0ICdqZXN0LXByZXNldC1hbmd1bGFyL3NldHVwLWplc3QnO1xuLy8gaW1wb3J0ICdAdGVzdGluZy1saWJyYXJ5L2plc3QtZG9tJ1xuLy8gaW1wb3J0ICd6b25lLmpzJztcbi8vIGltcG9ydCAnem9uZS5qcy90ZXN0aW5nJztcblxuaW1wb3J0IHsgc2V0dXBab25lVGVzdEVudiB9IGZyb20gJ2plc3QtcHJlc2V0LWFuZ3VsYXIvc2V0dXAtZW52L3pvbmUnO1xuICAgIFxuc2V0dXBab25lVGVzdEVudigpO1xuXG4iXSwidmVyc2lvbiI6M30=

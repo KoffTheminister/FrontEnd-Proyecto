@@ -1,7 +1,6 @@
 import { HttpClient,  HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,13 +16,20 @@ export class ReclusosService {
   messageService: any;
   celda:any;
   celdas:any;
-  constructor(private http: HttpClient) {this.reclusos =  [],
-    this.recluso={
+  constructor(private http: HttpClient) {
+    this.reclusos = [],
+    this.recluso = {
       nombre:'',
       apellido:'',
       dni:'', 
-      fecha_nac:''},
-    this.condena={ fecha_ini:'', fecha_fin_estimada:'',fecha_fin_real :'',celda:this.celda},
+      fecha_nac:''
+    },
+    this.condena={ 
+      fecha_ini: '', 
+      fecha_fin_estimada: '',
+      fecha_fin_real : '',
+      celda:this.celda
+    },
     this.condenas = []
     this.celda= {}
     this.celdas= []
@@ -56,10 +62,7 @@ export class ReclusosService {
     return this.http.get<any[] | JSON>(this.api_celda)
   }
   getLiberarRecluso(){
-    let ObjetoVacio={respuesta:"este objeto esta vacio "}///<-----esto esta mal, deberia ser un get
-    return this.http.post<any | JSON>("http://localhost:8080/condenas/finalizar_condenas",ObjetoVacio)
+    return this.http.patch<any | JSON>("http://localhost:8080/condenas/finalizar_condenas", null)
   }
-
-
 }
 

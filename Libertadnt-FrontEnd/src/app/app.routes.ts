@@ -36,9 +36,9 @@ import { LiberarReclusoComponent } from './reclusos/liberar-recluso/liberar-recl
 import { FinalizarGuardiaComponent } from './guardias/finalizar-guardia/finalizar-guardia.component.js';
 import { MostrarSenteniasComponent } from './sentencia/mostrar-sentencias/mostrar-sentenias.component.js';
 import { CrearTurnosComponent } from './sector/crear-turnos/crear-turnos.component.js';
-import { FinalizarTurnosComponent } from './sector/finalizar-turnos/finalizar-turnos.component.js';
-
-
+import { FinalizarTurnosComponent } from './sector/finalizar-turnos/finalizar-turnos.component.js'
+import { AuthGuardEspecial } from './shared/auth.guard_especial.js';
+import { AuthGuard } from './shared/auth.guard.js';
 
 export const routes: Routes = [
     //log in
@@ -47,48 +47,47 @@ export const routes: Routes = [
     {path: 'usuario/:menu', component: MenuComponent},
     {path: '',redirectTo: 'usuario',pathMatch:'full'},
     //usuario
-    {path: 'usuario/:menu/ver-usuarios', component: UsuariosComponent},
+    {path: 'usuario/:menu/ver-usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
     //sentencia
-    {path: 'menu/sentencia', component: MenuSentenciaComponent},
-    {path: 'menu/sentencia/alta', component: AltaSentenciaComponent},
-    {path: 'menu/sentencia/sentencias', component: MostrarSenteniasComponent},
+    {path: 'menu/sentencia', component: MenuSentenciaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/sentencia/alta', component: AltaSentenciaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/sentencia/sentencias', component: MostrarSenteniasComponent, canActivate: [AuthGuard] },
    
     //guardia
-    {path: 'menu/guardia', component: MenuGuardiaComponent},
-    {path: 'menu/guardia/alta-guardia', component:AltaGuardiaComponent },
-    {path: 'menu/guardia/buscar-guardia', component:BuscarGuardiaComponent },
-    {path: 'menu/guardia/modificar-guardia', component: ModificarGuardiaComponent},
-    {path: 'menu/guardia/mostrar-guardia', component:MostrarGuardiaComponent },
-    {path: 'menu/guardia/finalizar-guarida', component: FinalizarGuardiaComponent},
+    {path: 'menu/guardia', component: MenuGuardiaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/guardia/alta-guardia', component:AltaGuardiaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/guardia/buscar-guardia', component:BuscarGuardiaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/guardia/modificar-guardia', component: ModificarGuardiaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/guardia/mostrar-guardia', component:MostrarGuardiaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/guardia/finalizar-guarida', component: FinalizarGuardiaComponent, canActivate: [AuthGuard] },
     //recluso
-    {path: 'menu/recluso', component: MenuReclusosComponent},
-    {path: 'menu/recluso/alta-recluso', component:AltaReclusosComponent },
-    {path: 'menu/recluso/buscar-recluso', component: BuscarReclusosComponent},
-    {path: 'menu/recluso/modificar-condena', component: ModificarCondenaComponent},
-    {path: 'menu/recluso/Mover-Recluso', component: MoverReclusoComponent},
-    {path: 'menu/recluso/liberar-recluso', component: LiberarReclusoComponent},
+    {path: 'menu/recluso', component: MenuReclusosComponent, canActivate: [AuthGuard] },
+    {path: 'menu/recluso/alta-recluso', component:AltaReclusosComponent, canActivate: [AuthGuard] },
+    {path: 'menu/recluso/buscar-recluso', component: BuscarReclusosComponent, canActivate: [AuthGuard] },
+    {path: 'menu/recluso/modificar-condena', component: ModificarCondenaComponent, canActivate: [AuthGuard] },
+    {path: 'menu/recluso/Mover-Recluso', component: MoverReclusoComponent, canActivate: [AuthGuard] },
+    {path: 'menu/recluso/liberar-recluso', component: LiberarReclusoComponent, canActivate: [AuthGuard] },
     //actividad
-    {path: 'menu/actividad', component: MenuActividadComponent},
-    {path: 'menu/actividad/alta-actividad', component: AltaActividadComponent},
-    {path: 'menu/actividad/modificar-actividad', component: ModificarActividadComponent},
-    {path: 'menu/actividad/mostrar-actividad', component: MostrarActividadComponent},
+    {path: 'menu/actividad', component: MenuActividadComponent, canActivate: [AuthGuard] },
+    {path: 'menu/actividad/alta-actividad', component: AltaActividadComponent, canActivate: [AuthGuard] },
+    {path: 'menu/actividad/modificar-actividad', component: ModificarActividadComponent, canActivate: [AuthGuard] },
+    {path: 'menu/actividad/mostrar-actividad', component: MostrarActividadComponent, canActivate: [AuthGuard] },
     //taller
-    {path: 'menu/taller', component: MenuTallerComponent},
-    {path: 'menu/taller/alta-taller', component: AltaTallerComponent},
-    {path: 'menu/taller/inscripcion-taller', component:InscripcionTallerComponent },
-    {path: 'menu/taller/modificar-taller', component: ModificarTallerComponent},
-    {path: 'menu/taller/mostrar-taller', component: MostrarTallerComponent},
+    {path: 'menu/taller', component: MenuTallerComponent, canActivate: [AuthGuard] },
+    {path: 'menu/taller/alta-taller', component: AltaTallerComponent, canActivate: [AuthGuard] },
+    {path: 'menu/taller/inscripcion-taller', component:InscripcionTallerComponent, canActivate: [AuthGuard] },
+    {path: 'menu/taller/modificar-taller', component: ModificarTallerComponent, canActivate: [AuthGuard] },
+    {path: 'menu/taller/mostrar-taller', component: MostrarTallerComponent, canActivate: [AuthGuard] },
     //sector
-    {path: 'usuario/menu/sector', component: MenuSectorComponent},
-    {path: 'usuario/menu/sector/t/:sector', component: MenuTurnosComponent},
-    {path: 'usuario/menu/sector/c/:sector', component: MostrarCeldasComponent},
-    {path: 'usuario/menu/sector/t/:sector/crear-turnos', component: CrearTurnosComponent},
-    {path: 'usuario/menu/sector/t/:sector/finalizar-turnos', component: FinalizarTurnosComponent},
+    {path: 'usuario/menu/sector', component: MenuSectorComponent, canActivate: [AuthGuard] },
+    {path: 'usuario/menu/sector/t/:sector', component: MenuTurnosComponent, canActivate: [AuthGuard] },
+    {path: 'usuario/menu/sector/c/:sector', component: MostrarCeldasComponent, canActivate: [AuthGuard] },
+    {path: 'usuario/menu/sector/t/:sector/crear-turnos', component: CrearTurnosComponent, canActivate: [AuthGuard] },
+    {path: 'usuario/menu/sector/t/:sector/finalizar-turnos', component: FinalizarTurnosComponent, canActivate: [AuthGuard] },
     //ilegal
-    {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent},
-    {path: 'usuario/menu-maestro/menu/alta-actvidad', component: AltaIlegalComponent},
-    {path: 'usuario/menu-maestro/menu/modificar-actividad', component: ModificarIlegalComponent},
-    {path: 'usuario/menu-maestro/menu/inscripcion-actividad', component: IncribirseIlegalComponent},
-    {path: 'usuario/menu-maestro/menu/mostrar-actividad', component: MostrarIlegalComponent},
-
-];
+    {path: 'usuario/menu-maestro/menu', component: MenuIlegalComponent, canActivate: [AuthGuardEspecial] },
+    {path: 'usuario/menu-maestro/menu/alta-actvidad', component: AltaIlegalComponent, canActivate: [AuthGuardEspecial] },
+    {path: 'usuario/menu-maestro/menu/modificar-actividad', component: ModificarIlegalComponent, canActivate: [AuthGuardEspecial] },
+    {path: 'usuario/menu-maestro/menu/inscripcion-actividad', component: IncribirseIlegalComponent, canActivate: [AuthGuardEspecial] },
+    {path: 'usuario/menu-maestro/menu/mostrar-actividad', component: MostrarIlegalComponent, canActivate: [AuthGuardEspecial]},
+]

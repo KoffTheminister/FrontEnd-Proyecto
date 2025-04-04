@@ -1,0 +1,176 @@
+423c4b15cea1e2f65006127bff506fa3
+"use strict";
+
+/* istanbul ignore next */
+function cov_154ukrdbjk() {
+  var path = "/home/tenet7750/tpdesarrollofe/Libertadnt-FrontEnd/src/app/clases/square.ts";
+  var hash = "3330d8aea6206147bc2c3f0e9a82e51f8da6d361";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/home/tenet7750/tpdesarrollofe/Libertadnt-FrontEnd/src/app/clases/square.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 24
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 8
+        },
+        end: {
+          line: 6,
+          column: 27
+        }
+      },
+      "3": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 31
+        }
+      },
+      "4": {
+        start: {
+          line: 12,
+          column: 0
+        },
+        end: {
+          line: 12,
+          column: 24
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 4
+          },
+          end: {
+            line: 5,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 23
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 8,
+            column: 4
+          },
+          end: {
+            line: 8,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 14
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        line: 8
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/home/tenet7750/tpdesarrollofe/Libertadnt-FrontEnd/src/app/clases/square.ts",
+      mappings: ";;;AAEA,MAAa,MAAM;IAEf,YAAY,KAAa;QACrB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACtB,CAAC;IAED,OAAO;QACH,OAAO,IAAI,CAAC,KAAK,IAAE,CAAC,CAAA;IACxB,CAAC;CACJ;AATD,wBASC",
+      names: [],
+      sources: ["/home/tenet7750/tpdesarrollofe/Libertadnt-FrontEnd/src/app/clases/square.ts"],
+      sourcesContent: ["import { Shape } from \"./shape.js\";\n\nexport class Square implements Shape {\n    width: number\n    constructor(width: number){\n        this.width = width\n    }\n\n    getArea(): number {\n        return this.width**2\n    }\n}\n\n\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "3330d8aea6206147bc2c3f0e9a82e51f8da6d361"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_154ukrdbjk = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_154ukrdbjk();
+cov_154ukrdbjk().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_154ukrdbjk().s[1]++;
+exports.Square = void 0;
+class Square {
+  constructor(width) {
+    /* istanbul ignore next */
+    cov_154ukrdbjk().f[0]++;
+    cov_154ukrdbjk().s[2]++;
+    this.width = width;
+  }
+  getArea() {
+    /* istanbul ignore next */
+    cov_154ukrdbjk().f[1]++;
+    cov_154ukrdbjk().s[3]++;
+    return this.width ** 2;
+  }
+}
+/* istanbul ignore next */
+cov_154ukrdbjk().s[4]++;
+exports.Square = Square;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTcXVhcmUiLCJjb25zdHJ1Y3RvciIsIndpZHRoIiwiY292XzE1NHVrcmRiamsiLCJmIiwicyIsImdldEFyZWEiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiL2hvbWUvdGVuZXQ3NzUwL3RwZGVzYXJyb2xsb2ZlL0xpYmVydGFkbnQtRnJvbnRFbmQvc3JjL2FwcC9jbGFzZXMvc3F1YXJlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFNoYXBlIH0gZnJvbSBcIi4vc2hhcGUuanNcIjtcblxuZXhwb3J0IGNsYXNzIFNxdWFyZSBpbXBsZW1lbnRzIFNoYXBlIHtcbiAgICB3aWR0aDogbnVtYmVyXG4gICAgY29uc3RydWN0b3Iod2lkdGg6IG51bWJlcil7XG4gICAgICAgIHRoaXMud2lkdGggPSB3aWR0aFxuICAgIH1cblxuICAgIGdldEFyZWEoKTogbnVtYmVyIHtcbiAgICAgICAgcmV0dXJuIHRoaXMud2lkdGgqKjJcbiAgICB9XG59XG5cblxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBRUEsTUFBYUEsTUFBTTtFQUVmQyxZQUFZQyxLQUFhO0lBQUE7SUFBQUMsY0FBQSxHQUFBQyxDQUFBO0lBQUFELGNBQUEsR0FBQUUsQ0FBQTtJQUNyQixJQUFJLENBQUNILEtBQUssR0FBR0EsS0FBSztFQUN0QjtFQUVBSSxPQUFPQSxDQUFBO0lBQUE7SUFBQUgsY0FBQSxHQUFBQyxDQUFBO0lBQUFELGNBQUEsR0FBQUUsQ0FBQTtJQUNILE9BQU8sSUFBSSxDQUFDSCxLQUFLLElBQUUsQ0FBQztFQUN4Qjs7QUFDSDtBQUFBQyxjQUFBLEdBQUFFLENBQUE7QUFUREUsT0FBQSxDQUFBUCxNQUFBLEdBQUFBLE1BQUEiLCJpZ25vcmVMaXN0IjpbXX0=
