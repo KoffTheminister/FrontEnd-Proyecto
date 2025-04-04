@@ -17,7 +17,7 @@ describe('ReclusoService tests', () => {
       "cod_recluso": 4,
       "cod_sentencias": [1, 2]
     }
-    
+
     let unos_reclusos = [
       {
         "cod_recluso": 1,
@@ -51,7 +51,6 @@ describe('ReclusoService tests', () => {
             ReclusosService,
           ]
       })
-
       r_service = TestBed.inject(ReclusosService)
       controller = TestBed.inject(HttpTestingController)
     })
@@ -73,28 +72,27 @@ describe('ReclusoService tests', () => {
     })
 
     it('deberia devolver todos los reclusos', () => {
-      r_service.getReclusos().subscribe(response => {
+      r_service.getReclusos().subscribe((response) => {
         expect(unos_reclusos.length).toBeGreaterThan(0)
       })
+
       const request = controller.expectOne("http://localhost:8080/reclusos")
       request.flush(unos_reclusos)
     })
 
     it('deberia crear un recluso', () => {
-      // postRecluso(x:any){
-      //   return this.http.post<any|JSON>("http://localhost:8080/reclusos/", x);
-      // }
-
+      const mockResponse = { id: 4 }
       r_service.postRecluso(nuevo_recluso).subscribe(response => {
-        expect(response).toEqual(nuevo_recluso);
-      });
-    
+        expect(response).toEqual(mockResponse);
+      })
+
       const request = controller.expectOne('http://localhost:8080/reclusos/');
       expect(request.request.method).toBe('POST');
       expect(request.request.body).toEqual(nuevo_recluso);
     
-      request.flush(nuevo_recluso);
+      request.flush(mockResponse);
     })
-
 })
+
+
 

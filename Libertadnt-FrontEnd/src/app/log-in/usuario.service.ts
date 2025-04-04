@@ -7,7 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UsuarioService {
 
 readonly api_url ='https://jsonplaceholder.typicode.com/todos/'
-//readonly api_url ='tuma/usuarios/id'
 messageService: any;
 usuario:any
 usuarios:any
