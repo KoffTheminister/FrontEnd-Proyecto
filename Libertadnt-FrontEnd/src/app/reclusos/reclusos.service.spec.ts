@@ -2,6 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from "@angular/core/testing"
 import { ReclusosService } from './reclusos.service'
 import { servicesVersion } from 'typescript';
+import { take } from 'rxjs';
 
 describe('ReclusoService tests', () => {
     let r_service: ReclusosService
@@ -82,7 +83,7 @@ describe('ReclusoService tests', () => {
 
     it('deberia crear un recluso', () => {
       const mockResponse = { id: 4 }
-      r_service.postRecluso(nuevo_recluso).subscribe(response => {
+      r_service.postRecluso(nuevo_recluso).pipe(take(1)).subscribe(response => {
         expect(response).toEqual(mockResponse);
       })
 
@@ -90,7 +91,8 @@ describe('ReclusoService tests', () => {
       expect(request.request.method).toBe('POST');
       expect(request.request.body).toEqual(nuevo_recluso);
     
-      request.flush(mockResponse);
+      request.flush(mockResponse)
+      //
     })
 })
 

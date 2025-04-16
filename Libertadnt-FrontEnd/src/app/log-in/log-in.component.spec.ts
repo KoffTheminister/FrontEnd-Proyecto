@@ -1,10 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { LogInComponent } from './log-in.component'
-import { UsuarioService } from './usuario.service.js';
+import { UsuarioService } from './usuario.service'
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs'
+import { findConfigFile } from 'typescript';
+
+const un_usuario = {
+  "cod_administrador": 1,
+  "contrasenia": "123r"
+}
 
 const UsuarioServiceMock = {
-  postAdministrador: jest.fn()
+  postAdministrador: jest.fn(() => {
+    return of({})
+  })
 }
 
 describe('LogInComponent', () => {
@@ -13,11 +23,11 @@ describe('LogInComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        LogInComponent,
-      ],      
-      imports: [LogInComponent, HttpClientTestingModule], //NO borrar esta parte],
-      providers: [{provide: UsuarioService, useValue: UsuarioServiceMock}]
+      // declarations: [
+      //   LogInComponent,
+      // ],      
+      imports: [LogInComponent, HttpClientTestingModule], //NO borrar esta parte
+      providers: [{provide: UsuarioService, useValue: UsuarioServiceMock}, {provide: ActivatedRoute, useValue: {paramMap: of({})}}]
     })
     .compileComponents()
 
@@ -29,12 +39,20 @@ describe('LogInComponent', () => {
   });
 
   it('should create', () => {
-    const fixture = TestBed.createComponent(LogInComponent);
-    const app = fixture.componentInstance;
-    expect(component).toBeTruthy();
-  });
+    const fixture = TestBed.createComponent(LogInComponent)
+    const app = fixture.componentInstance
+    expect(app).toBeTruthy()
+  })
 
-});
+  it('llamada a postAdministrador', () => {
+    const fixture = TestBed.createComponent(LogInComponent)
+    const app = fixture.componentInstance
+    app.usuario = 
+    app.enviarUsuario()
+    expect(UsuarioServiceMock.postAdministrador()).toHaveBeenCalled()
+  })
+
+})
 
 
 

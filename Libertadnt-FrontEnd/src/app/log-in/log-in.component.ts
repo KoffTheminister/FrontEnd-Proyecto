@@ -2,7 +2,7 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; 
 import { RouterOutlet ,RouterLink, Route, Router, ActivatedRoute} from '@angular/router';
-import { UsuarioService } from './usuario.service.js';
+import { UsuarioService } from './usuario.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -82,6 +82,7 @@ export class LogInComponent  {
       }
     });
   }
+  
   mensajeError(e:HttpErrorResponse){
     if(e.error.msg){
       this.toaster.error(e.error.msg, "error");

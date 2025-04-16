@@ -1,0 +1,45 @@
+6f06f1893434d7a7cd7ad2dbd4d8d130
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const testing_1 = require("@angular/core/testing");
+const testing_2 = require("@angular/common/http/testing");
+const log_in_component_1 = require("./log-in.component");
+//import { UsuarioService } from './usuario.service'
+const reclusos_service_js_1 = require("../reclusos/reclusos.service.js");
+const UsuarioServiceMock = {
+    postAdministrador: jest.fn()
+};
+describe('LogInComponent', () => {
+    let component;
+    let fixture;
+    beforeEach(async () => {
+        await testing_1.TestBed.configureTestingModule({
+            declarations: [
+                log_in_component_1.LogInComponent,
+            ],
+            imports: [log_in_component_1.LogInComponent, testing_2.HttpClientTestingModule], //NO borrar esta parte
+            providers: [{ provide: reclusos_service_js_1.ReclusosService, useValue: UsuarioServiceMock }]
+        })
+            .compileComponents();
+        fixture = testing_1.TestBed.createComponent(log_in_component_1.LogInComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+        let service = testing_1.TestBed.inject(reclusos_service_js_1.ReclusosService);
+        fixture.detectChanges();
+    });
+    it('should create', () => {
+        const fixture = testing_1.TestBed.createComponent(log_in_component_1.LogInComponent);
+        const app = fixture.componentInstance;
+        expect(app).toBeTruthy();
+    });
+    it('llamada a postAdministrador', () => {
+        const fixture = testing_1.TestBed.createComponent(log_in_component_1.LogInComponent);
+        const app = fixture.componentInstance;
+        app.enviarUsuario();
+        expect(UsuarioServiceMock.postAdministrador).toHaveBeenCalled;
+    });
+});
+function beforeEach(arg0) {
+    throw new Error('Function not implemented.');
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL2hvbWUvdGVuZXQ3NzUwL3RwZGVzYXJyb2xsb2ZlL0xpYmVydGFkbnQtRnJvbnRFbmQvc3JjL2FwcC9sb2ctaW4vbG9nLWluLmNvbXBvbmVudC5zcGVjLnRzIiwibWFwcGluZ3MiOiI7O0FBQUEsbURBQWtFO0FBQ2xFLDBEQUE2RjtBQUM3Rix5REFBbUQ7QUFDbkQsb0RBQW9EO0FBQ3BELHlFQUFrRTtBQUVsRSxNQUFNLGtCQUFrQixHQUFHO0lBQ3pCLGlCQUFpQixFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUU7Q0FDN0IsQ0FBQTtBQUVELFFBQVEsQ0FBQyxnQkFBZ0IsRUFBRSxHQUFHLEVBQUU7SUFDOUIsSUFBSSxTQUF5QixDQUFDO0lBQzlCLElBQUksT0FBeUMsQ0FBQztJQUU5QyxVQUFVLENBQUMsS0FBSyxJQUFJLEVBQUU7UUFDcEIsTUFBTSxpQkFBTyxDQUFDLHNCQUFzQixDQUFDO1lBQ25DLFlBQVksRUFBRTtnQkFDWixpQ0FBYzthQUNmO1lBQ0QsT0FBTyxFQUFFLENBQUMsaUNBQWMsRUFBRSxpQ0FBdUIsQ0FBQyxFQUFFLHNCQUFzQjtZQUMxRSxTQUFTLEVBQUUsQ0FBQyxFQUFDLE9BQU8sRUFBRSxxQ0FBZSxFQUFFLFFBQVEsRUFBRSxrQkFBa0IsRUFBQyxDQUFDO1NBQ3RFLENBQUM7YUFDRCxpQkFBaUIsRUFBRSxDQUFBO1FBRXBCLE9BQU8sR0FBRyxpQkFBTyxDQUFDLGVBQWUsQ0FBQyxpQ0FBYyxDQUFDLENBQUE7UUFDakQsU0FBUyxHQUFHLE9BQU8sQ0FBQyxpQkFBaUIsQ0FBQTtRQUNyQyxPQUFPLENBQUMsYUFBYSxFQUFFLENBQUE7UUFDdkIsSUFBSSxPQUFPLEdBQUcsaUJBQU8sQ0FBQyxNQUFNLENBQUMscUNBQWUsQ0FBQyxDQUFBO1FBQzdDLE9BQU8sQ0FBQyxhQUFhLEVBQUUsQ0FBQTtJQUN6QixDQUFDLENBQUMsQ0FBQztJQUVILEVBQUUsQ0FBQyxlQUFlLEVBQUUsR0FBRyxFQUFFO1FBQ3ZCLE1BQU0sT0FBTyxHQUFHLGlCQUFPLENBQUMsZUFBZSxDQUFDLGlDQUFjLENBQUMsQ0FBQztRQUN4RCxNQUFNLEdBQUcsR0FBRyxPQUFPLENBQUMsaUJBQWlCLENBQUM7UUFDdEMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxDQUFDLFVBQVUsRUFBRSxDQUFDO0lBQzNCLENBQUMsQ0FBQyxDQUFDO0lBRUgsRUFBRSxDQUFDLDZCQUE2QixFQUFDLEdBQUUsRUFBRTtRQUNuQyxNQUFNLE9BQU8sR0FBRyxpQkFBTyxDQUFDLGVBQWUsQ0FBQyxpQ0FBYyxDQUFDLENBQUM7UUFDeEQsTUFBTSxHQUFHLEdBQUcsT0FBTyxDQUFDLGlCQUFpQixDQUFDO1FBQ3RDLEdBQUcsQ0FBQyxhQUFhLEVBQUUsQ0FBQTtRQUNuQixNQUFNLENBQUMsa0JBQWtCLENBQUMsaUJBQWlCLENBQUMsQ0FBQyxnQkFBZ0IsQ0FBQTtJQUMvRCxDQUFDLENBQUMsQ0FBQTtBQUVKLENBQUMsQ0FBQyxDQUFDO0FBR0gsU0FBUyxVQUFVLENBQUMsSUFBeUI7SUFDM0MsTUFBTSxJQUFJLEtBQUssQ0FBQywyQkFBMkIsQ0FBQyxDQUFDO0FBQy9DLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL2hvbWUvdGVuZXQ3NzUwL3RwZGVzYXJyb2xsb2ZlL0xpYmVydGFkbnQtRnJvbnRFbmQvc3JjL2FwcC9sb2ctaW4vbG9nLWluLmNvbXBvbmVudC5zcGVjLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudEZpeHR1cmUsIFRlc3RCZWQgfSBmcm9tICdAYW5ndWxhci9jb3JlL3Rlc3RpbmcnO1xuaW1wb3J0IHsgSHR0cENsaWVudFRlc3RpbmdNb2R1bGUsIEh0dHBUZXN0aW5nQ29udHJvbGxlciB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbi9odHRwL3Rlc3RpbmcnXG5pbXBvcnQgeyBMb2dJbkNvbXBvbmVudCB9IGZyb20gJy4vbG9nLWluLmNvbXBvbmVudCdcbi8vaW1wb3J0IHsgVXN1YXJpb1NlcnZpY2UgfSBmcm9tICcuL3VzdWFyaW8uc2VydmljZSdcbmltcG9ydCB7IFJlY2x1c29zU2VydmljZSB9IGZyb20gJy4uL3JlY2x1c29zL3JlY2x1c29zLnNlcnZpY2UuanMnO1xuXG5jb25zdCBVc3VhcmlvU2VydmljZU1vY2sgPSB7XG4gIHBvc3RBZG1pbmlzdHJhZG9yOiBqZXN0LmZuKClcbn1cblxuZGVzY3JpYmUoJ0xvZ0luQ29tcG9uZW50JywgKCkgPT4ge1xuICBsZXQgY29tcG9uZW50OiBMb2dJbkNvbXBvbmVudDtcbiAgbGV0IGZpeHR1cmU6IENvbXBvbmVudEZpeHR1cmU8TG9nSW5Db21wb25lbnQ+O1xuXG4gIGJlZm9yZUVhY2goYXN5bmMgKCkgPT4ge1xuICAgIGF3YWl0IFRlc3RCZWQuY29uZmlndXJlVGVzdGluZ01vZHVsZSh7XG4gICAgICBkZWNsYXJhdGlvbnM6IFtcbiAgICAgICAgTG9nSW5Db21wb25lbnQsXG4gICAgICBdLCAgICAgIFxuICAgICAgaW1wb3J0czogW0xvZ0luQ29tcG9uZW50LCBIdHRwQ2xpZW50VGVzdGluZ01vZHVsZV0sIC8vTk8gYm9ycmFyIGVzdGEgcGFydGVcbiAgICAgIHByb3ZpZGVyczogW3twcm92aWRlOiBSZWNsdXNvc1NlcnZpY2UsIHVzZVZhbHVlOiBVc3VhcmlvU2VydmljZU1vY2t9XVxuICAgIH0pXG4gICAgLmNvbXBpbGVDb21wb25lbnRzKClcblxuICAgIGZpeHR1cmUgPSBUZXN0QmVkLmNyZWF0ZUNvbXBvbmVudChMb2dJbkNvbXBvbmVudClcbiAgICBjb21wb25lbnQgPSBmaXh0dXJlLmNvbXBvbmVudEluc3RhbmNlXG4gICAgZml4dHVyZS5kZXRlY3RDaGFuZ2VzKClcbiAgICBsZXQgc2VydmljZSA9IFRlc3RCZWQuaW5qZWN0KFJlY2x1c29zU2VydmljZSlcbiAgICBmaXh0dXJlLmRldGVjdENoYW5nZXMoKVxuICB9KTtcblxuICBpdCgnc2hvdWxkIGNyZWF0ZScsICgpID0+IHtcbiAgICBjb25zdCBmaXh0dXJlID0gVGVzdEJlZC5jcmVhdGVDb21wb25lbnQoTG9nSW5Db21wb25lbnQpO1xuICAgIGNvbnN0IGFwcCA9IGZpeHR1cmUuY29tcG9uZW50SW5zdGFuY2U7XG4gICAgZXhwZWN0KGFwcCkudG9CZVRydXRoeSgpO1xuICB9KTtcblxuICBpdCgnbGxhbWFkYSBhIHBvc3RBZG1pbmlzdHJhZG9yJywoKT0+e1xuICAgIGNvbnN0IGZpeHR1cmUgPSBUZXN0QmVkLmNyZWF0ZUNvbXBvbmVudChMb2dJbkNvbXBvbmVudCk7XG4gICAgY29uc3QgYXBwID0gZml4dHVyZS5jb21wb25lbnRJbnN0YW5jZTtcbiAgICBhcHAuZW52aWFyVXN1YXJpbygpXG4gICAgZXhwZWN0KFVzdWFyaW9TZXJ2aWNlTW9jay5wb3N0QWRtaW5pc3RyYWRvcikudG9IYXZlQmVlbkNhbGxlZFxuICB9KVxuXG59KTtcblxuXG5mdW5jdGlvbiBiZWZvcmVFYWNoKGFyZzA6ICgpID0+IFByb21pc2U8dm9pZD4pIHtcbiAgdGhyb3cgbmV3IEVycm9yKCdGdW5jdGlvbiBub3QgaW1wbGVtZW50ZWQuJyk7XG59XG5cblxuXG4iXSwidmVyc2lvbiI6M30=
