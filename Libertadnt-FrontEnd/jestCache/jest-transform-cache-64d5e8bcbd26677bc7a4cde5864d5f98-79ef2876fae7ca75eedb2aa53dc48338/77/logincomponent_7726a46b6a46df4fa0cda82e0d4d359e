@@ -1,0 +1,47 @@
+eef42472ce818941604b1eadf25adb90
+/* istanbul ignore next */
+function cov_yjh1ym16v() {
+  var path = "/home/tenet7750/tpdesarrollofe/Libertadnt-FrontEnd/src/app/log-in/log-in.component.html";
+  var hash = "073253e973cdaac85a8abb0bab0b2d20ac23d6fe";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/home/tenet7750/tpdesarrollofe/Libertadnt-FrontEnd/src/app/log-in/log-in.component.html",
+    statementMap: {
+      "0": {
+        start: {
+          line: 1,
+          column: 0
+        },
+        end: {
+          line: 1,
+          column: 2291
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "073253e973cdaac85a8abb0bab0b2d20ac23d6fe"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_yjh1ym16v = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_yjh1ym16v();
+cov_yjh1ym16v().s[0]++;
+module.exports = "<body class=\"login\">\n    <div class=\"w-50 p-3\">\n            \n        <h1>BIENVENIDO</h1>\n        <p></p>\n                \n                \n                    <form [formGroup]=\"usuario\" (submit)=\"validarUsuarios()\" >\n                        <div class=\"form-floating mb-3\">\n                            <input type=\"number\" class=\"form-control\"  formControlName=\"cod_administrador\" placeholder=\"ingrese codigo de usuario\">\n                            <label >codigo de usuario:</label>\n                        </div>\n\n                        <div class=\"form-floating mb-3\">\n                            <input type=\"password\" class=\"form-control\"  formControlName=\"contrasenia\" placeholder=\"ingrese contraseña de usuario\">\n                            <label >contraseña:</label>\n                        </div>\n                        <button (click)=\"validarUsuarios()\" type=\"button\" class=\"btn btn-primary\" [disabled]=\"usuario.invalid\">enviar</button>\n                        <p></p>\n                    </form>\n                \n                \n                    \n                    @if (bandUsuario ==='encontrado') {\n                    }@else if (bandUsuario==='no encontrado') {\n                        <div class=\"alert alert-warning\" role=\"alert\">\n                            <h4> usuario o contraseña incorrecta </h4>\n                        </div>\n                    }@else if (bandUsuario === 'incorrecto') {\n                        <div class=\"alert alert-warning\" role=\"alert\">\n                            <h4> usuario o contraseña incorrecta </h4>\n                        </div>\n                    }@else if (bandUsuario === 'noAutorizado') {\n                        <div class=\"alert alert-danger\" role=\"alert\">\n                            <h4> sesion no fue correctamente autorizada, ingrese nuevamente </h4> \n                        </div>\n                        \n                    }@else if (bandUsuario === 'expirado') {\n                        <div class=\"alert alert-danger\" role=\"alert\">\n                            <h4> sesion fue expirada, ingrese nuevamente </h4> \n                        </div>\n                    }  \n    </div>\n    \n</body>\n";

@@ -54,7 +54,7 @@ describe('LogInComponent', () => {
 
   })
   
-  it('se geneera el h1 css', () => {
+  it('se genera el h1 en HTML', () => {
     const fixture = TestBed.createComponent(LogInComponent)
     const app = fixture.componentInstance
     fixture.detectChanges();
@@ -62,6 +62,24 @@ describe('LogInComponent', () => {
     const h1 = copiled.getElementsByTagName('h1')
     expect(h1.length).toBe(1)
 
+  })
+  
+  it('bandUsuario se vuelve encontrado ', () => {
+    const fixture = TestBed.createComponent(LogInComponent)
+    const app = fixture.componentInstance
+    UsuarioServiceMock.postAdministrador.mockReturnValue(of({}));
+    app.enviarUsuario()
+    expect(UsuarioServiceMock.postAdministrador).toHaveBeenCalled()
+    expect(app.bandUsuario).toBe('encontrado')
+  })
+
+  it('el usuario es especial', () => {
+    const fixture = TestBed.createComponent(LogInComponent)
+    const app = fixture.componentInstance
+    UsuarioServiceMock.postAdministrador.mockReturnValue(of({es_especial:true}));
+    app.enviarUsuario()
+    expect(UsuarioServiceMock.postAdministrador).toHaveBeenCalled()
+    expect(app.bandera).toBe('menu-maestro')
   })
 
 })
