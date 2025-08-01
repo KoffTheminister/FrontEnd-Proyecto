@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet ,RouterLink, Route, Router, ActivatedRoute} from '@angular/router';
 import { UsuarioService } from './usuario.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
@@ -22,7 +23,6 @@ export class LogInComponent  {
   constructor (private service : UsuarioService,private router:Router,private route: ActivatedRoute ){
     this.contrasenia= new FormControl('',[Validators.required])
     this.cod_administrador= new FormControl('',[Validators.required])
-    console.log(this.cod_administrador)
     this.usuario = new FormGroup({
       cod_administrador: this.cod_administrador,
       contrasenia: this.contrasenia,
@@ -48,7 +48,6 @@ export class LogInComponent  {
   enviarUsuario(){
     this.service.postAdministrador(this.usuario.value).subscribe({
       next: (response)=> {
-        console.log(response)
         if(!response.es_especial){
           this.bandUsuario='encontrado';
           this.bandera='menu'
@@ -66,9 +65,12 @@ export class LogInComponent  {
       },
       error: (e)=> {
         console.log("usuario no valido ")
-        console.log(e)
-        if(e.status==404){
+        console.log("status enviado: ",e.status)
+        console.log("esto es el header ??",e.headers.get('status'))
+        
+        if(e.status== 404  ){
           this.bandUsuario='no encontrado';
+          console.log("bandUsuario:", this.bandUsuario);
         }
         if(e.status == 409){
           this.bandUsuario='incorrecto'
@@ -82,16 +84,4 @@ export class LogInComponent  {
       }
     });
   }
-  
-  mensajeError(e:HttpErrorResponse){
-    if(e.error.msg){
-      this.toaster.error(e.error.msg, "error");
-    }else{
-      this.toaster.error('ocurrio un error', 'error')
-    }
-  }
-
-
-
-
 }

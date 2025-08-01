@@ -15,31 +15,27 @@
                             <input type="password" class="form-control"  formControlName="contrasenia" placeholder="ingrese contraseña de usuario">
                             <label >contraseña:</label>
                         </div>
-                        <button (click)="validarUsuarios()" type="button" class="btn btn-primary" [disabled]="usuario.invalid">enviar</button>
+
+                        <button type="submit" class="btn btn-primary" [disabled]="usuario.invalid">Enviar</button>
+                        <!-- <button (click)="validarUsuarios()" type="button" class="btn btn-primary" [disabled]="usuario.invalid">enviar</button> -->
+
                         <p></p>
                     </form>
                 
                 
                     
-                    @if (bandUsuario ==='encontrado') {
-                    }@else if (bandUsuario==='no encontrado') {
-                        <div class="alert alert-warning" role="alert">
-                            <h4> usuario o contraseña incorrecta </h4>
-                        </div>
-                    }@else if (bandUsuario === 'incorrecto') {
-                        <div class="alert alert-warning" role="alert">
-                            <h4> usuario o contraseña incorrecta </h4>
-                        </div>
-                    }@else if (bandUsuario === 'noAutorizado') {
-                        <div class="alert alert-danger" role="alert">
-                            <h4> sesion no fue correctamente autorizada, ingrese nuevamente </h4> 
-                        </div>
-                        
-                    }@else if (bandUsuario === 'expirado') {
-                        <div class="alert alert-danger" role="alert">
-                            <h4> sesion fue expirada, ingrese nuevamente </h4> 
-                        </div>
-                    }  
+                    <div *ngIf="bandUsuario === 'no encontrado' || bandUsuario === 'incorrecto'" class="alert alert-warning" role="alert">
+                    <h4>Usuario o contraseña incorrecta</h4>
+                    </div>
+
+                    <div *ngIf="bandUsuario === 'noAutorizado'" class="alert alert-danger" role="alert">
+                    <h4>Sesión no fue correctamente autorizada, ingrese nuevamente</h4>
+                    </div>
+
+                    <div *ngIf="bandUsuario === 'expirado'" class="alert alert-danger" role="alert">
+                    <h4>Sesión fue expirada, ingrese nuevamente</h4>
+                    </div>
     </div>
     
 </body>
+

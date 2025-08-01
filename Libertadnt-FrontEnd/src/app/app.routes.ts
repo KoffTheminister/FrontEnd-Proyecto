@@ -30,29 +30,29 @@ import { AltaIlegalComponent } from './ilegal/alta-ilegal/alta-ilegal.component.
 import { ModificarIlegalComponent } from './ilegal/modificar-ilegal/modificar-ilegal.component.js';
 import { IncribirseIlegalComponent } from './ilegal/incribirse-ilegal/incribirse-ilegal.component.js';
 import { MostrarIlegalComponent } from './ilegal/mostrar-ilegal/mostrar-ilegal.component.js';
-import { UsuarioService } from './log-in/usuario.service.js';
+import { UsuarioService } from './log-in/usuario.service.js'; //por que esto no se usa?
 import { UsuariosComponent } from './log-in/administradores/usuarios.component.js';
 import { LiberarReclusoComponent } from './reclusos/liberar-recluso/liberar-recluso.component.js';
 import { FinalizarGuardiaComponent } from './guardias/finalizar-guardia/finalizar-guardia.component.js';
 import { MostrarSenteniasComponent } from './sentencia/mostrar-sentencias/mostrar-sentenias.component.js';
 import { CrearTurnosComponent } from './sector/crear-turnos/crear-turnos.component.js';
 import { FinalizarTurnosComponent } from './sector/finalizar-turnos/finalizar-turnos.component.js'
-import { AuthGuardEspecial } from './shared/auth.guard_especial.js';
-import { AuthGuard } from './shared/auth.guard.js';
+import { AuthGuard } from './shared/authguards/auth.guard.js';
+import { AuthGuardEspecial } from './shared/authguards/auth.guard_especial.js';
 
 export const routes: Routes = [
     //log in
     {path: ':usuario', component: LogInComponent},
     //menu
     {path: 'usuario/:menu', component: MenuComponent},
-    {path: '',redirectTo: 'usuario',pathMatch:'full'},
+    {path: '',redirectTo: 'usuario', pathMatch:'full'},
     //usuario
     {path: 'usuario/:menu/ver-usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
     //sentencia
     {path: 'menu/sentencia', component: MenuSentenciaComponent, canActivate: [AuthGuard] },
     {path: 'menu/sentencia/alta', component: AltaSentenciaComponent, canActivate: [AuthGuard] },
     {path: 'menu/sentencia/sentencias', component: MostrarSenteniasComponent, canActivate: [AuthGuard] },
-   
+
     //guardia
     {path: 'menu/guardia', component: MenuGuardiaComponent, canActivate: [AuthGuard] },
     {path: 'menu/guardia/alta-guardia', component:AltaGuardiaComponent, canActivate: [AuthGuard] },
@@ -91,3 +91,9 @@ export const routes: Routes = [
     {path: 'usuario/menu-maestro/menu/inscripcion-actividad', component: IncribirseIlegalComponent, canActivate: [AuthGuardEspecial] },
     {path: 'usuario/menu-maestro/menu/mostrar-actividad', component: MostrarIlegalComponent, canActivate: [AuthGuardEspecial]},
 ]
+
+
+
+
+
+

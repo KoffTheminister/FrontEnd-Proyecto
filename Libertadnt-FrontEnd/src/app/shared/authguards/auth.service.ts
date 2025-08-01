@@ -7,22 +7,23 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/verificar_token';
+  private apiUrl = 'http://localhost:8080/verificar_token'; // ¡esto faltaba!
 
   constructor(private http: HttpClient, private router: Router) {}
 
   async verifyToken(token: string): Promise<boolean> {
     try {
-      const response = await lastValueFrom(this.http.get(this.apiUrl));
-      return true; // If request succeeds, token is valid
+      // No hace falta agregar headers si ya tenés interceptor
+      await lastValueFrom(this.http.get(this.apiUrl));
+      return true; // Token válido
     } catch (error: any) {
       if (error.status === 401) {
-        //console.error('Unauthorized: Redirecting to login');
         this.router.navigate(['/noAutorizado']);
       } else if (error.status === 403) {
         this.router.navigate(['/expirado']);
       }
-      return false; // Invalid token
+      return false;
     }
   }
 }
+

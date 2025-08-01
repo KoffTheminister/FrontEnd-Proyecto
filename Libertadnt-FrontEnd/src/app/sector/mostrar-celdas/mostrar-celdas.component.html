@@ -7,7 +7,7 @@
           </a>
           <p></p>
 
-          <h2>celdas :</h2>
+          <h2>celdas del sector</h2>
         <p></p>
         @for (celda of service.celdas.data; track $index) {
             <ul class="list-group list-group-flush">
@@ -15,7 +15,7 @@
                     <p>
                         capacidad: {{celda.capacidad}}
                         <br>codigo de celda: {{celda.cod_celda}}
-                        <br>descipcion: {{celda.descipcion}}
+                        <br>descripcion: {{celda.descripcion}}
                     </p>
                 </li>
               </ul>

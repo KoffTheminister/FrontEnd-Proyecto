@@ -2,6 +2,7 @@ import { HttpInterceptorFn, HttpRequest, HttpHandlerFn, HttpEvent, HttpErrorResp
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, catchError } from "rxjs";
+import { throwError } from 'rxjs';
 
 export const Interceptor_token_fallida: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
   const router = inject(Router);
@@ -14,11 +15,13 @@ export const Interceptor_token_fallida: HttpInterceptorFn = (req: HttpRequest<un
       } else if (error.status === 403) {
         if(error.message == 'token expirado'){
           router.navigate(['/expirado'])
-        } else {
+        } 
+        // else {
         
-        }
+        // }
       }
-      throw error
+      return throwError(() => error);
     })
   )
 }
+
