@@ -10,9 +10,9 @@
           
         <div>
             @for (sector of service.sectores.data; track $index) {
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-horizontal-sm">
                     <li class="list-group-item">
-                        nombre: {{sector.nombre}}<br>
+                         nombre: {{sector.nombre}}<br>
                         descripcion: {{sector.descripcion}}<br>
                         codigo de sector: {{sector.cod_sector}}<br>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
@@ -20,7 +20,7 @@
                             <button [routerLink]="direccion" (click)="verTurnos(sector.cod_sector)" type="button" class="btn btn-outline-primary">turnos</button>
                         </div> 
                     </li>
-                  </ul>
+                </ul>
             }
         </div>
     </div>

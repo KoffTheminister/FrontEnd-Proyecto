@@ -19,6 +19,7 @@ export class ModificarActividadComponent {
   
 
   this.actividad = new FormGroup({
+        nombre: this.nombre,
         descripcion: this.descripcion,
         cod_actividad: this.cod_actividad,
         locacion: this.locacion,
@@ -32,17 +33,25 @@ export class ModificarActividadComponent {
   cod_actividad: FormControl;
   estado: FormControl
   bandActividad:boolean | undefined
+  placeholderNombre:string|undefined
+  placeholderLocacion:string|undefined
+  placeholderDescripcion:string|undefined
+  placeholderEstado:string|undefined
   validarActividad(){
     this.service.getOneActividad(this.cod_actividad.value).subscribe({
       next:(data)=>{
-        if(data.status === undefined ){
+        if(data.status == 201 ){
           this.service.actividad=data
           console.log("actividad existente ",data);
           this.bandActividad=true;
+          this.placeholderNombre= data.data.nombre
+          this.placeholderDescripcion = data.data.descripcion
+          this.placeholderLocacion= data.data.locacion
+          this.placeholderEstado = data.data.estado
         }
       },
       error:(e)=>{
-        if(e.status){
+        if(e.status == 404){
           console.log("actividad no encontrada ",e)
           this.bandActividad=false
         }

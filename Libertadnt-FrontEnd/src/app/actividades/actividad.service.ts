@@ -19,12 +19,13 @@ export class ActividadService {
       descripcion: "", 
       locacion: "", 
       dia_de_la_semana: 0, 
-      hora_inicio: 0, 
-      hora_fin: 0,
+      hora_inicio: "", 
+      hora_fin: "",
       estado: 0,
       cantidad_minima: 0,
-      edad_Minima: 0, 
-      cod_sector: 0}
+      edad_minima: 0, 
+      cod_sector: 0
+    }
     this.actividades= []
     this.ilegal={
       nombre: "",
@@ -37,8 +38,8 @@ export class ActividadService {
       cantidad_maxima: 0
     }
     this.ilegales=[]
-
   }
+
   private log(message: string) {
     this.messageService.add(`GuaridaService: ${message}`);
   }
@@ -49,6 +50,21 @@ export class ActividadService {
     return this.http.get<any | JSON>("http://localhost:8080/actividades/"+`${id}`)
   }
   postActividad(uActual:any){
+    // const raw = uActual.value;
+    // const parseHour = (timeStr: string) => {
+    //   if (!timeStr) return null;
+    //   return parseInt(timeStr.split(":")[0], 10);
+    // };
+
+    // const sanitizedInput = {
+    //   ...raw,
+    //   hora_inicio: parseHour(raw.hora_inicio),
+    //   hora_fin: parseHour(raw.hora_fin)
+    // };
+     uActual.hora_inicio =  parseInt(uActual.hora_inicio.substring(0, 2))
+     uActual.hora_fin =  parseInt(uActual.hora_fin.substring(0, 2)) 
+     uActual.cod_sector = parseInt(uActual.cod_sector)
+     uActual.dia_de_la_semana= parseInt(uActual.dia_de_la_semana)
     return this.http.post<any| JSON>("http://localhost:8080/actividades",uActual)
   }
   putActividad(id:any,uActual:any){
@@ -56,7 +72,7 @@ export class ActividadService {
   }
   ///////ILEGALES/////////
   getIlegales() {
-    return this.http.get<any | JSON>("http://localhost:8080/actividades_Ilegales")
+    return this.http.get<any | JSON>("http://localhost:8080/actividades_ilegales")
   }
   getOneIlegal(id:any) {
 

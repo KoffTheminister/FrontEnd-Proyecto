@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule],
+  imports: [FormsModule,ReactiveFormsModule,],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
@@ -23,6 +23,7 @@ export class LogInComponent  {
   constructor (private service : UsuarioService,private router:Router,private route: ActivatedRoute ){
     this.contrasenia= new FormControl('',[Validators.required])
     this.cod_administrador= new FormControl('',[Validators.required])
+    console.log(this.cod_administrador)
     this.usuario = new FormGroup({
       cod_administrador: this.cod_administrador,
       contrasenia: this.contrasenia,
@@ -38,6 +39,7 @@ export class LogInComponent  {
   }
       
 
+
   bandUsuario: string | undefined
   bandera = ''
   validarUsuarios(){
@@ -48,6 +50,7 @@ export class LogInComponent  {
   enviarUsuario(){
     this.service.postAdministrador(this.usuario.value).subscribe({
       next: (response)=> {
+        console.log(response.header)
         if(!response.es_especial){
           this.bandUsuario='encontrado';
           this.bandera='menu'
@@ -65,12 +68,11 @@ export class LogInComponent  {
       },
       error: (e)=> {
         console.log("usuario no valido ")
-        console.log("status enviado: ",e.status)
-        console.log("esto es el header ??",e.headers.get('status'))
+        console.log("estatus enviado: ",e.status)
+        console.log("esto es el header ??")
         
-        if(e.status== 404  ){
+        if(e.status == 404){
           this.bandUsuario='no encontrado';
-          console.log("bandUsuario:", this.bandUsuario);
         }
         if(e.status == 409){
           this.bandUsuario='incorrecto'

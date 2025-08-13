@@ -1,7 +1,5 @@
-
-
 <body class="formulario">
-  <div class="w-50 p-3">
+  <div class="w-25 p-3">
 
     <a class="icon-link icon-link-hover" href="menu/actividad">
       ATRAS
@@ -9,51 +7,186 @@
     </a>
     <p></p>
 
-    <h2>Alta Actividad</h2>
+    <h2>Crear actividad</h2>
 
     <form [formGroup]="actividad" (submit)="validarActividad()">
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">descipcion</span>
-        <input type="text" formControlName="decripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+        <input type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">locacion</span>
+        <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
+        <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Locacion de ocurrencia</span>
         <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">hora</span>
-        <input type="text" formControlName="hora" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span class="input-group-text" id="inputGroup-sizing-default">Hora de inicio</span>
+        <input type="time" step="3600" value=number formControlName="hora_inicio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">dia de la semana</span>
-        <input type="text" formControlName="diaDeLaSemana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span class="input-group-text" id="inputGroup-sizing-default">Hora de fin</span>
+        <input type="time" value=number step="3600" formControlName="hora_fin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
+      
+      <h5>Dia de la semana:</h5>
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value= 1 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Lunes
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value= 2 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Martes
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value= 3 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Miercoles
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value=4 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Jueves
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value=5 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Viernes
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value=6 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Sabado
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="dia_de_la_semana" class="form-check-input" type="radio" value=7 id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+          Domingo
+        </label>
+      </div>
+      <p></p>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Cupo de Participantes</span>
-        <input type="text" formControlName="cantMax" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <input type="number" formControlName="cantidad_minima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Edad Minima</span>
-        <input type="text" formControlName="edadMin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <input type="number" formControlName="edad_minima" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+       <p></p>
+
+                  <!-- Botón que controla el colapso -->
+      <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Elija un sector
+      </button>
+      <div class="collapse" id="collapseExample">
+        <p></p>
+        <div class="card card-body">
+          <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=1 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 1 
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=2 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 2
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=3 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 3
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=4 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 4
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=5 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 5
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=6 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 6
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=7 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 7
+            </label>
+          </div>
+
+           <div class="form-check">
+            <input formControlName="cod_sector" class="form-check-input" type="radio" value=8 id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+              sector 8
+            </label>
+          </div>
+
+
+        </div>
       </div>
 
-      <button [disabled]="actividad.invalid" type="button" class="btn btn-primary">enviar</button>
+
+        <p></p>
+        <button [disabled]="actividad.invalid"  (click)="validarActividad()" cias type="button" class="btn btn-primary" >Crear</button>
     </form>
-    @if (bandActividad === true) {
+    <p></p>
+
+    @if (bandActividad == 'exito') {
       <div class="alert alert-success" role="alert">
-        <p>datos enviados con exito </p>
+        <h5>datos guardados con exito</h5>
       </div>
-    }@else if (bandActividad === false) {
+    }@else if (bandActividad == 'superpuesta') {
       <div class="alert alert-danger" role="alert">
-        <p>actividad ya existente </p>
+        <h5>{{mensaje}}</h5>
+      </div>
+    }@else if (bandActividad == 'otro error'){
+       <div class="alert alert-danger" role="alert">
+        <h5>{{mensaje}}</h5>
       </div>
     }
   </div>
 
 
+
+
+  

@@ -1,4 +1,3 @@
-
 <body class="formulario">
     <div class="w-50 p-3">
             <a class="icon-link icon-link-hover" href="usuario/menu/sector/t/:sector">
@@ -6,34 +5,51 @@
                 <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
             </a>
             <p></p>
-            <h2>crear turnos: </h2>
+            <h2>Crear turno: </h2>
             <p></p>
             <form [formGroup]="nuevo_turno" (submit)="crearTurno()">
                 <fieldset>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">codigo de guardia</span>
-                        <input type="number" formControlName="cod_guardia" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>        
-                </fieldset>
-                <fieldset>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">turno</span>
-                        <input type="text" formControlName="turno" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <div class="mb-3 row">
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">codigo de guardia</span>
+                                <input  placeholder="Ingrese codigo" type="number" formControlName="cod_guardia" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
                     </div>       
                 </fieldset>
-                <button [disabled]="nuevo_turno.invalid" type="button" class="btn btn-outline-success">crear</button>
+                <h4>Seleccione franja horaria</h4>
+                <fieldset>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="turno" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
+                        <label class="form-check-label" for="inlineRadio1">mañana</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="turno" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="T">
+                        <label class="form-check-label" for="inlineRadio1">tarde</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="turno" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="N">
+                        <label class="form-check-label" for="inlineRadio1">noche</label>
+                    </div>    
+                </fieldset>
+                <p></p>
+                <button [disabled]="nuevo_turno.invalid" type="button" class="btn btn-success"  (click)="crearTurno()" >crear</button>
             </form>
             @if(bandera== 'exito'){
+                <p></p>
                 <div class="alert alert-success" role="alert">
                     <p> el turno se creo con exito </p>
                 </div>
             }
             @if(bandera== 'ocupado'){
+                <p></p>
                 <div class="alert alert-warning" role="alert">
-                    <p> el guardia no esta disponible en ese turno </p>
+                    <p> el guardia no esta disponible en la franja horaria elegida</p>
                 </div>
             }
             @if(bandera== 'no encontrado'){
+                <p></p>
                 <div class="alert alert-danger" role="alert">
                     <p> no se pudo encontrar ningun guardia activo con ese codigo  </p>
                 </div>

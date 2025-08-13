@@ -7,7 +7,7 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/verificar_token'; // ¡esto faltaba!
+  private apiUrl = 'http://localhost:8080/verificar_token';
 
   constructor(private http: HttpClient, private router: Router) {}
 

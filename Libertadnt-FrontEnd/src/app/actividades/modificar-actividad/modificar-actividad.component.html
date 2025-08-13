@@ -10,56 +10,45 @@
     <form [formGroup]="actividad" (submit)="validarActividad()">
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Codigo de Actividad:</span>
-        <input type="text" formControlName="cod_actividad" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <input  type="text" formControlName="cod_actividad" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
      
-      <button  type="button" class="btn btn-primary">enviar</button>
+      <button  (click)="validarActividad()" type="button" class="btn btn-primary">enviar</button>
     </form>
     <p></p>
     <p></p>
     @if (bandActividad) {
     <div>
       <h2>Modificación</h2>
-      <div class="alert alert-info" role="alert">
-        ingese únicamente el valor que desea cambiar
+      <div class="alert alert-dark" role="alert">
+        <h5>ingese únicamente el valor que desea cambiar</h5>
       </div>
       <form [formGroup]="actividad" (submit)="cambiarActiviada()">
         <fieldset>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Descipcion </span>
-            <input type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input [placeholder]="placeholderDescripcion" type="text" formControlName="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
         </fieldset>
         <fieldset>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Locacion </span>
-            <input type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input [placeholder]="placeholderLocacion" type="text" formControlName="locacion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
         </fieldset>
         <fieldset>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Hora </span>
-            <input type="text" formControlName="hora" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span class="input-group-text" id="inputGroup-sizing-default">nombre </span>
+            <input [placeholder]="placeholderNombre" type="text" formControlName="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
         </fieldset>
         <fieldset>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Dia de la semana </span>
-            <input type="text" formControlName="diaDeLaSemana" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span class="input-group-text" id="inputGroup-sizing-default">estado </span>
+            <input [placeholder]="placeholderEstado" type="text" formControlName="estado" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
         </fieldset>
-        <fieldset>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Cupo </span>
-            <input type="text" formControlName="cantMax" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-        </fieldset>
-        <fieldset>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Edad Minima </span>
-            <input type="text" formControlName="edadMin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-        </fieldset>
+
         <button  type="button" class="btn btn-primary">enviar</button>
       </form>
     </div>

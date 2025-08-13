@@ -41,7 +41,7 @@ export class CrearTurnosComponent implements OnInit {
       this.service.postTurno(this.nuevo_turno.value).subscribe({
         next:(data)=>{
           if(data.status == 201){
-            console.log("se guardo el guaridia exitosamente")
+            console.log("EL TURNO SE CREO EXITOSAMENTE")
             this.bandera='exito'
           }
         },

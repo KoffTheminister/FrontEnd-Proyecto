@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ReclusosService } from '../../reclusos/reclusos.service.js';
 import { ActividadService } from '../actividad.service.js';
+
 
 @Component({
   selector: 'app-alta-actividad',
@@ -12,59 +12,72 @@ import { ActividadService } from '../actividad.service.js';
 })
 export class AltaActividadComponent {
   constructor (private service : ActividadService){
-    this.cod_actividad= new FormControl('',[Validators.required,Validators.maxLength(30)]);
-    this.decripcion= new FormControl('',[Validators.required,]);
+    this.nombre= new FormControl('',[Validators.required,Validators.maxLength(30)]);
+    this.cod_actividad= new FormControl('',[]);
+    this.cod_sector= new FormControl('',[Validators.required]);
+    this.descripcion= new FormControl('',[Validators.required,]);
     this.locacion= new FormControl('',[Validators.required,]);
-    this.hora= new FormControl('',[Validators.required,]);
-    this.diaDeLaSemana = new FormControl('',[Validators.required])
-    this.cantMax= new FormControl('',[Validators.required,]);
-    this.edadMin= new FormControl('',[Validators.required,]);
+    this.hora_inicio= new FormControl(0,[Validators.required,]);
+    this.hora_fin = new FormControl(0,[Validators.required,]);
+    this.dia_de_la_semana = new FormControl(0,[Validators.required])
+    this.cantidad_minima= new FormControl('',[Validators.required,]);
+    this.edad_minima= new FormControl('',[Validators.required,]);
+
   
-  
-  this.actividad = new FormGroup({
-        decripcion: this.decripcion,
-        cod_actividad: this.cod_actividad,
-        locacion: this.locacion,
-        hora: this.hora,
-        diaDeLaSemana:this.diaDeLaSemana,
-        cantMax:this.cantMax,
-        edadMin:this.edadMin
-      })      
-}
-  actividad  : FormGroup;
-  decripcion : FormControl;
-  locacion : FormControl;
+    this.actividad = new FormGroup({
+      nombre: this.nombre,
+      descripcion: this.descripcion,
+      cod_actividad: this.cod_actividad,
+      locacion: this.locacion,
+      hora_inicio: this.hora_inicio,
+      hora_fin: this.hora_fin,
+      dia_de_la_semana:this.dia_de_la_semana,
+      cantidad_minima:this.cantidad_minima,
+      edad_minima:this.edad_minima,
+      cod_sector:this.cod_sector
+    })      
+  }
+
+  nombre: FormControl;
+  actividad: FormGroup;
+  descripcion: FormControl;
+  locacion: FormControl;
   cod_actividad: FormControl;
-  diaDeLaSemana: FormControl;
-  hora: FormControl;
-  cantMax: FormControl;
-  edadMin: FormControl;
-  bandActividad:boolean | undefined
+  cod_sector: FormControl;
+  dia_de_la_semana: FormControl;
+  hora_inicio: FormControl;
+  hora_fin: FormControl;
+  cantidad_minima: FormControl;
+  edad_minima: FormControl;
+  bandActividad: string | undefined
+  mensaje: string | undefined
+
   validarActividad(){
-    this.service.getOneActividad(this.decripcion.value).subscribe({
+    this.service.postActividad(this.actividad.value).subscribe({
       next:(data)=>{
-        if(data.status == undefined){
-          console.log("la actividad fue validada", data.status)
-          this.service.actividad=data 
-          this.bandActividad=false
-          }
-        },
+        if(data.status == 201){
+          console.log("actvidad posteada 201")
+          this.bandActividad = 'exito'
+        }
+      },
       error:(e)=>{
-         console.log("actividad no validada")
-         if(e.status === 404){
-          this.bandActividad = true
-          console.log(this.actividad.value)
-          this.service.postActividad(this.service.actividad).subscribe({
-            next:(data)=>{
-              console.log("estatus:",data.status)
-              console.log("actvidad posteada")
-            },
-            error:(e)=>{
-              console.log(e.status)
-              console.log("la actividad NO pudo ser posteada")
-            }})
-          this.actividad.reset() 
-         }
-        }})
+        if(e.status == 409){
+          console.log("la actividad es superpuesta error 409")
+          this.bandActividad = 'superpuesta'
+          this.mensaje = e.error.message
+        }
+        else if(e.status == 400){
+          this.mensaje = e.error.message
+          console.log("la actividad es superpuesta error 400")
+          this.bandActividad = 'otro error'
+        }
+      }
+    })
+    this.actividad.reset() 
   }
 }
+  
+
+
+
+
