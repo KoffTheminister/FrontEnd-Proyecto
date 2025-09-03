@@ -38,13 +38,13 @@ export class AltaGuardiaComponent {
     console.log(this.service.guardia)
     this.service.postGuardia(this.service.guardia).subscribe({
       next:(data)=>{
-        if(data.status === 201){
-          console.log("el guardia se creo ", data)
+        if(data){
+          console.log("el guardia se creo status = 201 ", data)
           this.bandera='creado'
         }
-        if(data.status == 202){
+        if(data){
           this.bandera='existente'
-          console.log("el guardia ya existe y se reanuda el contrato")
+          console.log("el guardia ya existe y se reanuda el contrato status == 202")
         }
       },
       error:(e)=>{

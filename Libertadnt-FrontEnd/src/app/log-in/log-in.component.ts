@@ -58,7 +58,7 @@ export class LogInComponent  {
           sessionStorage.setItem("usuario", "menu");
           this.router.navigate(['usuario/menu'])
         }
-        if(response.es_especial){
+        if(response){
           this.bandUsuario ='encontrado'
           this.bandera = "menu-maestro"
           sessionStorage.setItem("token", response.token);

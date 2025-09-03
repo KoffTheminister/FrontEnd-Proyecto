@@ -55,8 +55,8 @@ export class AltaActividadComponent {
   validarActividad(){
     this.service.postActividad(this.actividad.value).subscribe({
       next:(data)=>{
-        if(data.status == 201){
-          console.log("actvidad posteada 201")
+        if(data){
+          console.log("actvidad posteada status == 201")
           this.bandActividad = 'exito'
         }
       },

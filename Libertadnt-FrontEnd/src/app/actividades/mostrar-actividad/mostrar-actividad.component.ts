@@ -14,7 +14,7 @@ export class MostrarActividadComponent implements OnInit{
   ngOnInit(): void {
     this.service.getActividades().subscribe({
       next:(data)=>{
-        if(data.status === undefined){
+        if(data){
           this.service.actividades=data
           console.log("actividades encontradas" , data)
         }

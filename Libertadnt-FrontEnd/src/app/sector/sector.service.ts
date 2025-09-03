@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,28 +25,28 @@ private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 getSectores() {
-  return this.http.get<any | JSON>("http://localhost:8080/sectores")
+  return this.http.get<any | JSON>(`${environment.API_URL}`+"sectores")
   
 }
 getOneSector(id:any) {
-  return this.http.get<any | JSON>("http://localhost:8080/sectores/"+`${id}`)
+  return this.http.get<any | JSON>(`${environment.API_URL}`+"sectores/"+`${id}`)
 }
 postSector(uActual:any){
-  return this.http.post<any| JSON>("http://localhost:8080/sectores",uActual)
+  return this.http.post<any| JSON>(`${environment.API_URL}`+"sectores",uActual)
 }
 getCeldasDSeSector(id:any) {
-  return this.http.get<any | JSON>("http://localhost:8080/sectores/celdas/"+`${id}`)
+  return this.http.get<any | JSON>(`${environment.API_URL}`+"sectores/celdas/"+`${id}`)
   
 }
 getTuenosDSeSector(cod_sector:any) {
-  return this.http.get<any | JSON>("http://localhost:8080/turnos/"+`${cod_sector}`)
+  return this.http.get<any | JSON>(`${environment.API_URL}`+"turnos/"+`${cod_sector}`)
   
 }
 getOneCeldaDeSector(idSector:any,idCelda:any) {
   return this.http.get<any | JSON>(this.celda_url+`${idSector}`+`${idCelda}`)
 }
 postTurno(uActual:any){
-  return this.http.post<any| JSON>("http://localhost:8080/turnos",uActual)
+  return this.http.post<any| JSON>(`${environment.API_URL}`+"turnos",uActual)
 }
 putBajaTurno(cod_guardia:any,cod_sector:any,turno:any){
   let respuesta={
@@ -53,7 +54,7 @@ putBajaTurno(cod_guardia:any,cod_sector:any,turno:any){
     cod_sector: cod_sector,
     turno: turno}
   console.log(respuesta)
-  return this.http.put<any | JSON>("http://localhost:8080/turnos",respuesta)
+  return this.http.put<any | JSON>(`${environment.API_URL}`+"turnos",respuesta)
 }
 
 

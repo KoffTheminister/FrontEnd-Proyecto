@@ -1,4 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-ReferrerUrl=https://cloudconvert.com/
-HostUrl=https://eu-central.storage.cloudconvert.com/tasks/8c79d85d-9d81-4066-8e6f-2a8abc71ebfd/libertadnt_logo.ico?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20250811%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20250811T185500Z&X-Amz-Expires=86400&X-Amz-Signature=cf86711cc694227703b73d968bf3821e748c97e10fa960afd58b634cadeb50ed&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22libertadnt_logo.ico%22&response-content-type=image%2Fvnd.microsoft.icon&x-id=GetObject

@@ -21,20 +21,21 @@
 
                         <p></p>
                     </form>
-                
-                
-                    
-                    <div *ngIf="bandUsuario === 'no encontrado' || bandUsuario === 'incorrecto'" class="alert alert-warning" role="alert">
-                    <h4>Usuario o contraseña incorrecta</h4>
-                    </div>
-
-                    <div *ngIf="bandUsuario === 'noAutorizado'" class="alert alert-danger" role="alert">
-                    <h4>Sesión no fue correctamente autorizada, ingrese nuevamente</h4>
-                    </div>
-
-                    <div *ngIf="bandUsuario === 'expirado'" class="alert alert-danger" role="alert">
-                    <h4>Sesión fue expirada, ingrese nuevamente</h4>
-                    </div>
+                    @if (bandUsuario === 'no encontrado' || bandUsuario === 'incorrecto') {
+                        <div  class="alert alert-warning" role="alert">
+                        <h4>Usuario o contraseña incorrecta</h4>
+                        </div>
+                    }
+                    @if (bandUsuario === 'noAutorizado') {
+                        <div  class="alert alert-danger" role="alert">
+                        <h4>Sesión no fue correctamente autorizada, ingrese nuevamente</h4>
+                        </div>
+                    }
+                    @if (bandUsuario === 'expirado') {
+                        <div  class="alert alert-danger" role="alert">
+                        <h4>Sesión fue expirada, ingrese nuevamente</h4>
+                        </div>
+                    }          
     </div>
     
 </body>
