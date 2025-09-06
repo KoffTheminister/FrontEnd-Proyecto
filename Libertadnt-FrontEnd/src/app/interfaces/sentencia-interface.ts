@@ -1,9 +1,13 @@
+import { Condena } from "./condena-interface";
+import { Sector } from "./sector-interface";
+
 export interface Sentencia {
       cod_sentencia :number, 
       nombre :string, 
       descripcion: string, 
-      duracion_anios:string,
-      orden_de_gravedad:string,
-      cod_recluso:number
+      duracion_anios:number,
+      orden_de_gravedad:number,
+      condenas:Condena[],
+      sectores:Sector[]
       
 }
