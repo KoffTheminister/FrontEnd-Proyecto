@@ -27,8 +27,8 @@ export class BuscarGuardiaComponent {
     console.log(sessionStorage.getItem('token'))
     this.service.getOneGuardias(this.dni.value).subscribe({
       next:(respuesta)=> {
-        if(respuesta.status == 201){
-          console.log("guardia encontrado",respuesta.data)
+        if(respuesta){
+          console.log("guardia encontrado 201",respuesta)
           this.service.guardia = respuesta
           this.bandera = false;
           this.fecha = new Date(this.service.guardia.data.fecha_ini_contrato)

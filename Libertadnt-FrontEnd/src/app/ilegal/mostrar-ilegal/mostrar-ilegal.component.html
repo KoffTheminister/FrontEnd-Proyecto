@@ -7,7 +7,7 @@
         <h2 class="titulo">Actividades Ilegales Activas </h2>
         @if (banana) {
             <div>
-                @for (item of service.ilegales.data; track $index) {
+                @for (item of service.ilegales; track $index) {
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item">
                             <h5>

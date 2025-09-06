@@ -1,5 +1,9 @@
 import { HttpClient,  HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Recluso } from '../interfaces/recluso-interface.js';
+import { Data } from '../interfaces/data-interface.js';
+import { Condena } from '../interfaces/condena-interface.js';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -37,22 +41,22 @@ export class ReclusosService {
 
 
   getReclusos() { 
-    return this.http.get<any | JSON>("http://localhost:8080/reclusos")
+    return this.http.get<Recluso | any>(`${environment.API_URL}`+"reclusos")
   }
   postRecluso(x:any){
-    return this.http.post<any|JSON>("http://localhost:8080/reclusos/", x);
+    return this.http.post<Recluso|any>(`${environment.API_URL}`+"reclusos/", x);
   }
   getOneRecluso(id:number) {
-    return this.http.get<any | JSON>("http://localhost:8080/reclusos/"+`${id}`);
+    return this.http.get<Recluso | any>(`${environment.API_URL}`+"reclusos/"+`${id}`);
   }
   getOneCondena(id:number) {
-    return this.http.get<any | JSON>(this.api_condena+`${id}`);
+    return this.http.get<Condena | any>(this.api_condena+`${id}`);
   }
   getCondena() {
-    return this.http.get<any[] | JSON>("http://localhost:8080/condenas")
+    return this.http.get<Condena | any>(`${environment.API_URL}`+"condenas")
   }
-  postCondena(x:any|JSON){
-    return this.http.post<any|JSON>("http://localhost:8080/condenas",x);
+  postCondena(x:any){
+    return this.http.post<Condena|any|Data>(`${environment.API_URL}`+"/condenas",x);
   }
   getOneCelda(id:number) {
     return this.http.get<any | JSON>(this.api_celda+`${id}`);
@@ -62,7 +66,7 @@ export class ReclusosService {
     return this.http.get<any[] | JSON>(this.api_celda)
   }
   getLiberarRecluso(){
-    return this.http.patch<any | JSON>("http://localhost:8080/condenas/finalizar_condenas", null)
+    return this.http.patch<Recluso | any>(`${environment.API_URL}`+"condenas/finalizar_condenas", null)
   }
 }
 

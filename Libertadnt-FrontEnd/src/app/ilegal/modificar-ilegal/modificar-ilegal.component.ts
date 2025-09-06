@@ -34,11 +34,11 @@ export class ModificarIlegalComponent {
     console.log(this.codigo.value)
     this.service.getOneIlegal(this.codigo.value).subscribe({
       next:(data)=>{
-        if(data.status ==201){
-          console.log("encontrado", data.data)
-          this.service.ilegal=data.data
+        if(data){
+          console.log("encontrado", data)
+          this.service.ilegales=data
           this.bandera= 'encontrado'
-          if (!this.service.ilegal.reclusos.length) {
+          if (!this.service.ilegales.reclusos.length) {
             this.bandReclusos=true
           }
         }

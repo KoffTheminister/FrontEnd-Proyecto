@@ -29,8 +29,8 @@ export class IncribirseIlegalComponent implements OnInit{
     this.service.getIlegales().subscribe({
       next:(data)=>{
         this.banana=true
-        if(data.status== 201){
-          console.log("se recuperaron las actividades",data)
+        if(data){
+          console.log("se recuperaron las actividades 201",data)
           this.service.ilegales=data
         }},
       error:(e)=>{

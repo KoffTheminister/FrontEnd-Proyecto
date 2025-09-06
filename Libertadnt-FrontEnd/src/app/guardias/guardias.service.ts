@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Guardia } from '../interfaces/guardia-interface.js';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class GuardiasService {
   readonly api_url="https://jsonplaceholder.typicode.com/todos/"
   guardia: any
-  guardias:any //
+  guardias:any=[] //
   messageService: any;
   constructor(private http: HttpClient) {this.guardias =  [],
     this.guardia={
@@ -22,18 +24,18 @@ export class GuardiasService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     })
-    return this.http.get<any | JSON>("http://localhost:8080/guardias", {headers})
+    return this.http.get<Guardia | JSON>(`${environment.API_URL}`+"guardias", {headers})
   }
   postGuardia(x:any){
-    return this.http.post<any|JSON>("http://localhost:8080/guardias",x);
+    return this.http.post<Guardia|JSON>(`${environment.API_URL}`+"guardias",x);
   }
 
   putFinalizarGuardia(x:any){
-    return this.http.put<any | JSON>("http://localhost:8080/guardias/finalizarContrato",x);
+    return this.http.put<Guardia | JSON>(`${environment.API_URL}`+"guardias/finalizarContrato",x);
   }
 
   getOneGuardias(id:number) {
-    return this.http.get<any | JSON>("http://localhost:8080/guardias/"+`${id}`);
+    return this.http.get<Guardia | JSON>(`${environment.API_URL}`+"guardias/"+`${id}`);
   }
 }
 

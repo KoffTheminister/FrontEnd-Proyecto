@@ -20,21 +20,21 @@
             <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header">actividad Encontrada</div>
                 <div class="card-body">
-                  <h5 class="card-title">nombre: {{service.ilegal.nombre}}</h5>
+                  <h5 class="card-title">nombre: {{service.ilegales.nombre}}</h5>
                   <p class="card-text">
-                    locacion: {{service.ilegal.locacion}} <br>
-                    descripcion: {{service.ilegal.descripcion}} <br>
-                    hora de inicio: {{service.ilegal.hora_inicio}} <br>
-                    hora de fin: {{service.ilegal.hora_fin}} <br>
-                    cantidad maxima: {{service.ilegal.cantidad_maxima}} <br>
-                    locacion: {{service.ilegal.locacion}} <br>
-                    @if (service.ilegal.dia_de_la_semana == 1) {dia de la semana: Lunes}
-                    @if (service.ilegal.dia_de_la_semana == 2) {dia de la semana: Martes}
-                    @if (service.ilegal.dia_de_la_semana == 3) {dia de la semana: Miercoles}
-                    @if (service.ilegal.dia_de_la_semana == 4) {dia de la semana: Jueves}
-                    @if (service.ilegal.dia_de_la_semana == 5) {dia de la semana: Viernes}
-                    @if (service.ilegal.dia_de_la_semana == 6) {dia de la semana: Sabado}
-                    @if (service.ilegal.dia_de_la_semana == 7) {dia de la semana: Domingo}
+                    locacion: {{service.ilegales.locacion}} <br>
+                    descripcion: {{service.ilegales.descripcion}} <br>
+                    hora de inicio: {{service.ilegales.hora_inicio}} <br>
+                    hora de fin: {{service.ilegales.hora_fin}} <br>
+                    cantidad maxima: {{service.ilegales.cantidad_maxima}} <br>
+                    locacion: {{service.ilegales.locacion}} <br>
+                    @if (service.ilegales.dia_de_la_semana == 1) {dia de la semana: Lunes}
+                    @if (service.ilegales.dia_de_la_semana == 2) {dia de la semana: Martes}
+                    @if (service.ilegales.dia_de_la_semana == 3) {dia de la semana: Miercoles}
+                    @if (service.ilegales.dia_de_la_semana == 4) {dia de la semana: Jueves}
+                    @if (service.ilegales.dia_de_la_semana == 5) {dia de la semana: Viernes}
+                    @if (service.ilegales.dia_de_la_semana == 6) {dia de la semana: Sabado}
+                    @if (service.ilegales.dia_de_la_semana == 7) {dia de la semana: Domingo}
                     </p>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     <h4> la actividad no posee reclusos asignados </h4>
                 </div>
             }@else {
-                @for (item of service.ilegal.reclusos; track $index) {
+                @for (item of service.ilegales.reclusos; track $index) {
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group-item">
                             <h5>

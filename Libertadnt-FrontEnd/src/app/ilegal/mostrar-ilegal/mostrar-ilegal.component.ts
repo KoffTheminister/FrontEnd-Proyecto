@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActividadService } from '../../actividades/actividad.service.js';
+import { Ilegal } from '../../interfaces/ilegal-interface.js';
 
 @Component({
   selector: 'app-mostrar-ilegal',
@@ -14,7 +15,7 @@ export class MostrarIlegalComponent implements OnInit{
   ngOnInit(): void {
     this.service.getIlegales().subscribe({
       next:(data)=>{
-        this.service.ilegales=data
+        this.service.ilegales = data
         this.banana=true
       },
       error:(e)=>{console.log(e)}})

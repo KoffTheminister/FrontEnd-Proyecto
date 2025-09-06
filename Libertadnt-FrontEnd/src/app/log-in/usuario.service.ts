@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Usuario } from '../interfaces/usuario-interface.js';
+import { Data } from '../interfaces/data-interface.js';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +22,14 @@ private log(message: string) {
   this.messageService.add(`GuaridaService: ${message}`);
 }
 getUsuario() {
-  return this.http.get<any | JSON>("http://localhost:8080/administradores")
+  return this.http.get<Usuario | JSON>(`${environment.API_URL}`+"administradores")
   
 }
 getOneUsuario(id:any) {
-  return this.http.get<any | JSON>("http://localhost:8080/administradores/"+`${id}`)
+  return this.http.get<Usuario >(`${environment.API_URL}`+"administradores/"+`${id}`)
 }
-postAdministrador(uActual:any){
-  return this.http.post<any| JSON>("http://localhost:8080/administradores/logIn", uActual)
+postAdministrador(uActual:Usuario){
+  return this.http.post<Usuario | any>(`${environment.API_URL}`+"administradores/logIn", uActual)
 }
 
 }

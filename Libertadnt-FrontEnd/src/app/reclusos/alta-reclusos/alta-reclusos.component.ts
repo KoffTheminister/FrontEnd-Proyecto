@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReclusosService } from '../reclusos.service.js';
 import { SentenciasService } from '../../sentencia/sentencias.service.js';
+import { Sentencia } from '../../interfaces/sentencia-interface.js';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-alta-reclusos',
@@ -58,7 +60,7 @@ export class AltaReclusosComponent implements OnInit{
   condena: FormGroup;
   respuesta:any = []
   value:string|undefined
-  cod_rec: number | undefined
+  cod_rec: number =0
 
 
 validarRecluso(){ 
@@ -100,7 +102,7 @@ validarRecluso(){
 enviarCondena(){
   let sentencia_enviar={
     cod_recluso: this.cod_rec,
-    cod_sentencias: this.respuesta
+    cod_sentencia: this.respuesta
   }
   console.log(sentencia_enviar)
   this.service.postCondena(sentencia_enviar).subscribe({

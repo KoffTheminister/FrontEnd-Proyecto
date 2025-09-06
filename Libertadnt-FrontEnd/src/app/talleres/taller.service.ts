@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Taller } from '../interfaces/taller-interface.js';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,7 @@ export class TallerService {
 }
 
 getTalleres() {
-  return this.http.get<any | JSON>("http://localhost:8080/talleres")
+  return this.http.get<any | JSON>(`${environment.API_URL}`+"talleres")
 }
 validarTaller(tAtual:any){
   this.getTalleres().subscribe({
@@ -39,18 +41,18 @@ validarTaller(tAtual:any){
   }
   return false
 }
-postTaller(x:any){
-  return this.http.post<any|JSON>("http://localhost:8080/talleres",x);
+postTaller(x:Taller){
+  return this.http.post<any|JSON>(`${environment.API_URL}`+"talleres",x);
 }
 getOneTaller(id:number) {
-  return this.http.get<any | JSON>("http://localhost:8080/talleres/"+`${id}`);
+  return this.http.get<Taller | JSON>(`${environment.API_URL}`+"talleres/"+`${id}`);
 }
 postIncripcionTaller(cod_recluso:any,cod_taller:any){
   let respuesta={cod_recluso:cod_recluso,cod_taller:cod_taller}
-return this.http.post<any | JSON>("http://localhost:8080/talleres/inscripcion/"+`${cod_taller}`+"&"+`${cod_recluso}`,respuesta)
+return this.http.post<any | JSON>(`${environment.API_URL}`+"talleres/inscripcion/"+`${cod_taller}`+"&"+`${cod_recluso}`,respuesta)
 }
-putTaller(taller:any){
-return this.http.put<any| JSON>("http://localhost:8080/talleres/"+`${taller.cod_taller}`,taller)
+putTaller(taller:Taller){
+return this.http.put<any| JSON>(`${environment.API_URL}`+"talleres/"+`${taller.cod_taller}`,taller)
 }
   
 }

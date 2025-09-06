@@ -28,8 +28,8 @@ export class FinalizarGuardiaComponent {
     console.log(this.cod_guardia.value)
     this.service.putFinalizarGuardia(this.guardia.value).subscribe({
       next:(data)=>{
-        if(data.status==201){
-          console.log("contrato finalizado")
+        if(data){
+          console.log("contrato finalizado 201")
           this.fin="exito"
           
         }

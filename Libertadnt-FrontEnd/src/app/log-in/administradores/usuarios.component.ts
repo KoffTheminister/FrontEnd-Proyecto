@@ -13,8 +13,8 @@ export class UsuariosComponent implements OnInit{
   ngOnInit(): void {
     this.service.getUsuario().subscribe({
       next:(data)=>{
-        if(data.status == 201){
-          console.log("administradores encontrados ")
+        if(data){
+          console.log("administradores encontrados status == 201")
           this.service.usuarios=data
           this.bandera=true
           console.log(this.service.usuarios)

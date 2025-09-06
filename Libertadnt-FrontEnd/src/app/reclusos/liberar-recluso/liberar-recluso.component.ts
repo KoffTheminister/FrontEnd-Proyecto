@@ -16,7 +16,7 @@ export class LiberarReclusoComponent  implements OnInit{
     
     this.sRecluso.getLiberarRecluso().subscribe({
       next:(data)=>{
-        if(data.status === 201){
+        if(data.status == 201){
           this.sRecluso.reclusos=data
           console.log("los reclusos fueron obtenidos",this.sRecluso.reclusos )
           for (let item of this.sRecluso.reclusos.data) {

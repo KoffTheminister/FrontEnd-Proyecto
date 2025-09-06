@@ -40,14 +40,14 @@ export class ModificarActividadComponent {
   validarActividad(){
     this.service.getOneActividad(this.cod_actividad.value).subscribe({
       next:(data)=>{
-        if(data.status == 201 ){
+        if(data ){
           this.service.actividad=data
-          console.log("actividad existente ",data);
+          console.log("actividad existente status = 201",data);
           this.bandActividad=true;
-          this.placeholderNombre= data.data.nombre
-          this.placeholderDescripcion = data.data.descripcion
-          this.placeholderLocacion= data.data.locacion
-          this.placeholderEstado = data.data.estado
+          this.placeholderNombre= data.nombre
+          this.placeholderDescripcion = data.descripcion
+          this.placeholderLocacion= data.locacion
+          this.placeholderEstado = String(data.estado)
         }
       },
       error:(e)=>{

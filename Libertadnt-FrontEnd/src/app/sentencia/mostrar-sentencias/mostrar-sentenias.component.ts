@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SentenciasService } from '../sentencias.service.js';
 import { FormsModule } from '@angular/forms';
+import { Sentencia } from '../../interfaces/sentencia-interface.js';
 
 @Component({
   selector: 'app-mostrar-sentenias',
@@ -15,7 +16,7 @@ export class MostrarSenteniasComponent implements OnInit {
     ngOnInit(): void {
       this.service.getSentencias().subscribe({
         next: (data)=> {
-          if(data.status== 201){
+          if(data){
             this.service.sentencia = data
             console.log("sentencias obteidas",this.service.sentencia)
           }
@@ -31,7 +32,14 @@ export class MostrarSenteniasComponent implements OnInit {
   ban = false;
   
   
-  uno = {name:'',};
+   uno:Sentencia ={
+     cod_sentencia: 0,
+     nombre: '',
+     descripcion: '',
+     duracion_anios: '',
+     orden_de_gravedad: '',
+     cod_recluso: 0
+   } ;
   validarband(){
     if(this.id !!= ''){
       this.ban = true;

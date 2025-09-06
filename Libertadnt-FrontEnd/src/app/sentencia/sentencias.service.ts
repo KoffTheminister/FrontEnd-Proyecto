@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Sentencia } from '../interfaces/sentencia-interface.js';
+import { environment } from './../../environments/environment';
 
 
 @Injectable({
@@ -25,13 +27,13 @@ export class SentenciasService {
   }
 
   getSentencias() {
-    return this.http.get<any | JSON>("http://localhost:8080/sentencias")
+    return this.http.get<Sentencia >(`${environment.API_URL}`+"sentencias")
   }
   getOneSentencias(id:any) {
-    return this.http.get<any | JSON>(`http://localhost:8080/sentencias/${id}`)
+    return this.http.get<Sentencia >(`${environment.API_URL}`+`sentencias/${id}`)
   }
-  postSentencias(sActual:any){
-    return this.http.post<any| JSON>("http://localhost:8080/sentencias",sActual)
+  postSentencias(sActual:Sentencia){
+    return this.http.post<any| JSON>(`${environment.API_URL}`+"sentencias",sActual)
   }
 
 }
